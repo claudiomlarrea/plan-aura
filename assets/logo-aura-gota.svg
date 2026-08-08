@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 240" role="img" aria-label="Plan AURA">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4EB6E8"/>
+      <stop offset="55%" stop-color="#2B8FC9"/>
+      <stop offset="100%" stop-color="#1A6FA8"/>
+    </linearGradient>
+  </defs>
+  <!-- outer drop curve -->
+  <path fill="url(#g)" d="M118 18 C78 70, 28 120, 34 168 C40 214, 92 228, 128 208 C98 190, 78 150, 92 108 C100 82, 112 52, 118 18Z"/>
+  <!-- middle -->
+  <path fill="#2B8FC9" d="M132 48 C108 88, 78 124, 84 164 C88 194, 118 206, 140 192 C118 178, 106 148, 116 116 C122 94, 128 70, 132 48Z"/>
+  <!-- inner -->
+  <path fill="#1A6FA8" d="M148 78 C132 108, 116 132, 120 158 C123 178, 140 186, 152 176 C140 166, 132 148, 138 128 C142 112, 146 94, 148 78Z"/>
+</svg>
