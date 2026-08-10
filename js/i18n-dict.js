@@ -67,8 +67,8 @@ window.I18N_DICT = {
     en: "Plan AURA"
   },
   "nav.comision": {
-    es: "Comisión",
-    en: "Commission"
+    es: "Sala de trabajo",
+    en: "Workroom"
   },
   "nav.equipo": {
     es: "Equipo coordinador",
@@ -128,8 +128,8 @@ window.I18N_DICT = {
     en: "Institutional network"
   },
   "hero.cta.comision": {
-    es: "Sala de la Comisión",
-    en: "Commission workspace"
+    es: "Sala de trabajo",
+    en: "Workroom"
   },
   "hero.cta.equipo": {
     es: "Equipo coordinador",
@@ -222,20 +222,20 @@ window.I18N_DICT = {
     en: "Internal work"
   },
   "sec.comision.title": {
-    es: "Sala de la Comisión AURA",
-    en: "AURA Commission workspace"
+    es: "Sala de trabajo",
+    en: "Workroom"
   },
   "sec.comision.intro": {
-    es: "Espacio único de comunicación y trabajo de la Comisión del Plan AURA. La idea es concentrar novedades, conversación, documentos y agenda acá, para no dispersar la coordinación entre WhatsApp, correos sueltos y carpetas personales. El acceso a Chat, Drive y Calendar es para integrantes de la Comisión (cuentas UCCuyo).",
-    en: "Single communication and work hub for the Plan AURA Commission. The goal is to centralize updates, conversation, documents, and the calendar here, rather than scattering coordination across WhatsApp, scattered emails, and personal folders. Access to Chat, Drive, and Calendar is for Commission members (UCCuyo accounts)."
+    es: "Espacio único de comunicación y trabajo del Equipo coordinador del Plan AURA. La idea es concentrar novedades, conversación, documentos y agenda acá, para no dispersar la coordinación entre WhatsApp, correos sueltos y carpetas personales. El acceso a Chat, Drive y Calendar es para integrantes del Equipo (cuentas UCCuyo).",
+    en: "Single communication and work hub for Plan AURA's coordinating team. The goal is to centralize updates, conversation, documents, and the calendar here, rather than scattering coordination across WhatsApp, scattered emails, and personal folders. Access to Chat, Drive, and Calendar is for team members (UCCuyo accounts)."
   },
   "sec.comision.novedades.title": {
     es: "Novedades",
     en: "Updates"
   },
   "sec.comision.novedades.body": {
-    es: "Avisos oficiales de la Comisión: plazos, reuniones y decisiones. Canal de lectura; no reemplaza la conversación de trabajo.",
-    en: "Official Commission announcements: deadlines, meetings, and decisions. A read-only channel; it does not replace working conversation."
+    es: "Avisos oficiales del Equipo: plazos, reuniones y decisiones. Canal de lectura; no reemplaza la conversación de trabajo.",
+    en: "Official team announcements: deadlines, meetings, and decisions. A read-only channel; it does not replace working conversation."
   },
   "sec.comision.novedades.cta": {
     es: "Configurar novedades",
@@ -246,8 +246,8 @@ window.I18N_DICT = {
     en: "Conversation"
   },
   "sec.comision.conversacion.body": {
-    es: "Canal único de mensajería de la Comisión (recomendado: Google Chat institucional). Sustituye hilos de WhatsApp y cadenas de correo.",
-    en: "Single messaging channel for the Commission (recommended: institutional Google Chat). Replaces WhatsApp threads and email chains."
+    es: "Canal único de mensajería del Equipo (recomendado: Google Chat institucional). Sustituye hilos de WhatsApp y cadenas de correo.",
+    en: "Single messaging channel for the team (recommended: institutional Google Chat). Replaces WhatsApp threads and email chains."
   },
   "sec.comision.conversacion.cta": {
     es: "Pedir acceso / configurar Chat",
@@ -258,20 +258,20 @@ window.I18N_DICT = {
     en: "Working documents"
   },
   "sec.comision.documentos.body": {
-    es: "Carpeta Drive de la Comisión (actas, borradores, cronogramas). Distinta de las carpetas públicas de la convocatoria.",
-    en: "Commission Drive folder (minutes, drafts, timelines). Separate from the public call-for-proposals folders."
+    es: "Carpeta Drive del Equipo (actas, borradores, cronogramas). Distinta de las carpetas públicas de la convocatoria.",
+    en: "Team Drive folder (minutes, drafts, timelines). Separate from the public call-for-proposals folders."
   },
   "sec.comision.documentos.cta": {
-    es: "Configurar Drive de Comisión",
-    en: "Set up Commission Drive"
+    es: "Configurar Drive del Equipo",
+    en: "Set up Team Drive"
   },
   "sec.comision.agenda.title": {
     es: "Agenda",
     en: "Calendar"
   },
   "sec.comision.agenda.body": {
-    es: "Calendar compartido: reuniones de Comisión, hitos del Plan y fechas de evaluación de la convocatoria.",
-    en: "Shared calendar: Commission meetings, Plan milestones, and call-for-proposals evaluation dates."
+    es: "Calendar compartido: reuniones del Equipo, hitos del Plan y fechas de evaluación de la convocatoria.",
+    en: "Shared calendar: team meetings, Plan milestones, and call-for-proposals evaluation dates."
   },
   "sec.comision.agenda.cta": {
     es: "Configurar Calendar",
@@ -424,8 +424,8 @@ window.I18N_DICT = {
     en: "Internal and external communication mechanisms with the educational community and social and economic stakeholders in the Province."
   },
   "sec.red.comunicacion.ctaComision": {
-    es: "Sala de la Comisión",
-    en: "Commission workspace"
+    es: "Sala de trabajo",
+    en: "Workroom"
   },
   "sec.red.comunicacion.ctaResolucion": {
     es: "Ver Resolución 418",
