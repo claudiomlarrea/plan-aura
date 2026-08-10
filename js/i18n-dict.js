@@ -70,6 +70,10 @@ window.I18N_DICT = {
     es: "Comisión",
     en: "Commission"
   },
+  "nav.equipo": {
+    es: "Equipo",
+    en: "Team"
+  },
   "nav.red": {
     es: "Red institucional",
     en: "Institutional network"
@@ -126,6 +130,10 @@ window.I18N_DICT = {
   "hero.cta.comision": {
     es: "Sala de la Comisión",
     en: "Commission workspace"
+  },
+  "hero.cta.equipo": {
+    es: "Equipo coordinador",
+    en: "Coordinating team"
   },
   "hero.cta.documentos": {
     es: "Documentos",
@@ -274,20 +282,65 @@ window.I18N_DICT = {
     en: "Members"
   },
   "sec.comision.integrantes.note": {
-    es: "Completar con la nómina oficial de la Comisión. Mientras tanto, la coordinación central es la Dirección del Plan.",
-    en: "To be completed with the official Commission roster. Until then, central coordination is the Plan Directorate."
+    es: 'La nómina oficial del Equipo Coordinador y de Comunicación está establecida por la Resolución N.º&nbsp;620-R-2025. Ver <a href="#equipo">Equipo coordinador y de comunicación</a>.',
+    en: 'The official roster of the Coordinating and Communication Team is set by Resolution No.&nbsp;620-R-2025. See <a href="#equipo">Coordinating and communication team</a>.'
   },
-  "sec.comision.integrantes.luis": {
-    es: '<strong>Ing. Luis Jiménez</strong> — Director del Plan AURA<br /><a href="mailto:luisjimenez@uccuyo.edu.ar">luisjimenez@uccuyo.edu.ar</a>',
-    en: '<strong>Eng. Luis Jiménez</strong> — Plan AURA Director<br /><a href="mailto:luisjimenez@uccuyo.edu.ar">luisjimenez@uccuyo.edu.ar</a>'
-  },
-  "sec.comision.integrantes.pending": {
-    es: "Integrante · rol (pendiente)",
-    en: "Member · role (pending)"
+  "sec.comision.integrantes.ctaEquipo": {
+    es: "Ver equipo (Res. 620-R-2025)",
+    en: "See team (Res. 620-R-2025)"
   },
   "sec.comision.integrantes.cta": {
-    es: "Solicitar alta en la Comisión",
-    en: "Request Commission membership"
+    es: "Consultar a la Dirección del Plan",
+    en: "Contact Plan Direction"
+  },
+
+  "sec.equipo.kicker": {
+    es: "Resolución N.º 620-R-2025",
+    en: "Resolution No. 620-R-2025"
+  },
+  "sec.equipo.title": {
+    es: "Equipo coordinador y de comunicación",
+    en: "Coordinating and communication team"
+  },
+  "sec.equipo.intro": {
+    es: "Conforme a la Resolución N.º&nbsp;620-R-2025 (Rectora de la UCCuyo, ad referendum del Consejo Superior, 5 de mayo de 2025), se conforma el <strong>Equipo Coordinador</strong> y el <strong>Equipo de Comunicación</strong> del Plan Integral de Ahorro y Uso Responsable del Agua (Plan AURA) para el ciclo académico 2025.",
+    en: "Pursuant to Resolution No.&nbsp;620-R-2025 (Rector of UCCuyo, ad referendum of the Superior Council, 5 May 2025), the <strong>Coordinating Team</strong> and the <strong>Communication Team</strong> of the AURA Integral Plan are established for the 2025 academic cycle."
+  },
+  "sec.equipo.coord.title": {
+    es: "Equipo coordinador",
+    en: "Coordinating team"
+  },
+  "sec.equipo.coord.body": {
+    es: "Representantes institucionales designados para la coordinación operativa e interdisciplinaria del Plan AURA.",
+    en: "Institutional representatives designated for the operational and interdisciplinary coordination of Plan AURA."
+  },
+  "sec.equipo.com.title": {
+    es: "Equipo de comunicación",
+    en: "Communication team"
+  },
+  "sec.equipo.com.body": {
+    es: "Área de Comunicación Institucional · Secretaría de Extensión y Relaciones Institucionales.",
+    en: "Institutional Communication Area · Secretariat of Extension and Institutional Relations."
+  },
+  "sec.equipo.ctaResolucion": {
+    es: "Ver Resolución N.º 620-R-2025 (PDF)",
+    en: "View Resolution No. 620-R-2025 (PDF)"
+  },
+  "sec.equipo.ctaDocs": {
+    es: "Ir a Documentos",
+    en: "Go to Documents"
+  },
+  "sec.docs.res620.tag": {
+    es: "PDF · Resolución",
+    en: "PDF · Resolution"
+  },
+  "sec.docs.res620.title": {
+    es: "Resolución N.º 620-R-2025",
+    en: "Resolution No. 620-R-2025"
+  },
+  "sec.docs.res620.meta": {
+    es: "Equipo Coordinador y de Comunicación del Plan AURA",
+    en: "Plan AURA Coordinating and Communication Team"
   },
 
   "sec.red.kicker": {

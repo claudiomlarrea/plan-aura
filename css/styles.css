@@ -968,6 +968,26 @@ header.section-head--bar h2 {
   margin-top: 0.65rem;
 }
 
+.equipo-grid {
+  display: grid;
+  gap: 1.25rem;
+}
+
+@media (min-width: 800px) {
+  .equipo-grid {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+}
+
+.equipo-list {
+  margin-top: 0.85rem;
+}
+
+.equipo-list li + li {
+  margin-top: 0.35rem;
+}
+
 /* —— Red institucional (Res. 418) —— */
 
 .section--red {
