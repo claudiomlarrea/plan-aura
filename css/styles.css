@@ -500,19 +500,55 @@ a:hover {
 }
 
 .hero-actions .btn-ghost {
-  background: linear-gradient(180deg, #ffffff 0%, #f0e8eb 55%, #e4d4da 100%);
-  color: var(--color-institutional-dark);
-  border: 1px solid rgba(255, 255, 255, 0.95);
+  background: linear-gradient(
+    180deg,
+    #3ecf8e 0%,
+    var(--color-banner-green) 38%,
+    var(--color-banner-green-dark) 100%
+  );
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-bottom-color: rgba(8, 40, 28, 0.55);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.95),
-    0 3px 0 rgba(40, 8, 18, 0.35),
-    0 8px 18px rgba(0, 0, 0, 0.28);
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    inset 0 -2px 0 rgba(8, 40, 28, 0.22),
+    0 4px 0 rgba(8, 40, 28, 0.55),
+    0 10px 22px rgba(0, 0, 0, 0.32);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+  transform: translateY(0);
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    filter 0.15s ease;
 }
 
 .hero-actions .btn-ghost:hover {
-  color: var(--color-institutional-dark);
+  filter: brightness(1.05);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -2px 0 rgba(8, 40, 28, 0.24),
+    0 5px 0 rgba(8, 40, 28, 0.55),
+    0 14px 26px rgba(0, 0, 0, 0.36);
+}
+
+.hero-actions .btn-ghost:active {
   filter: none;
-  background: linear-gradient(180deg, #ffffff 0%, #f7f0f2 50%, #eddde3 100%);
+  color: #fff;
+  transform: translateY(3px);
+  box-shadow:
+    inset 0 2px 5px rgba(8, 40, 28, 0.35),
+    0 1px 0 rgba(8, 40, 28, 0.4);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-actions .btn-ghost,
+  .hero-actions .btn-ghost:hover,
+  .hero-actions .btn-ghost:active {
+    transition: none;
+    transform: none;
+  }
 }
 
 .hero-mail-row {
