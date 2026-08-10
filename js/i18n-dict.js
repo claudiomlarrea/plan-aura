@@ -71,8 +71,8 @@ window.I18N_DICT = {
     en: "Commission"
   },
   "nav.equipo": {
-    es: "Equipo",
-    en: "Team"
+    es: "Equipo coordinador",
+    en: "Coordinating team"
   },
   "nav.red": {
     es: "Red institucional",
