@@ -108,8 +108,8 @@ window.I18N_DICT = {
     en: "AURA Integral Plan"
   },
   "hero.lead": {
-    es: "Programa institucional de la Universidad Católica de Cuyo para el ahorro y el uso responsable del agua: investigación, formación y vinculación con el territorio, con enfoque académico, ético y regional en San Juan.",
-    en: "Universidad Católica de Cuyo institutional program for water conservation and responsible use: research, training, and engagement with the region, with an academic, ethical, and regional focus in San Juan."
+    es: "Programa institucional de la Universidad Católica de Cuyo para el ahorro y el uso responsable del agua: investigación, formación y vinculación con el territorio, con enfoque académico, ético y regional en San Juan, San Luis y Mendoza.",
+    en: "Universidad Católica de Cuyo institutional program for water conservation and responsible use: research, training, and engagement with the region, with an academic, ethical, and regional focus in San Juan, San Luis, and Mendoza."
   },
   "hero.cta.convocatorias": {
     es: "Convocatorias",
