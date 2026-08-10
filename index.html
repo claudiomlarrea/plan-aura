@@ -10,7 +10,7 @@
     <title>Plan AURA | Universidad Católica de Cuyo</title>
     <link rel="canonical" href="https://plan-aura.com.ar/" />
     <link rel="icon" type="image/png" href="assets/logo-aura-slogan-header.png" />
-    <link rel="stylesheet" href="css/styles.css?v=17" />
+    <link rel="stylesheet" href="css/styles.css?v=18" />
   </head>
   <body>
     <a class="skip-link" href="#contenido" data-i18n="a11y.skipLink">Ir al contenido</a>
@@ -453,12 +453,19 @@
         </div>
       </section>
 
-      <section class="section section--convocatoria" id="convocatoria" aria-labelledby="sec-convocatoria">
+      <section class="section section--convocatoria is-wip" id="convocatoria" aria-labelledby="sec-convocatoria">
         <div class="section-inner">
           <header class="section-head section-head--bar section-head--water">
             <p class="section-kicker" data-i18n="sec.conv.kicker">Convocatorias 2026</p>
             <h2 id="sec-convocatoria" data-i18n="sec.conv.title">Proyectos de investigación y extensión · Plan AURA</h2>
           </header>
+
+          <p class="conv-wip-badge" data-i18n="sec.conv.badge">En construcción</p>
+          <p class="conv-wip-note" data-i18n="sec.conv.status">
+            La convocatoria a proyectos todavía no está abierta. La sección permanece
+            visible a modo informativo; los formularios, plantillas y cargas en Drive
+            se habilitarán cuando se publique oficialmente.
+          </p>
 
           <p class="text-intro" data-i18n-html="sec.conv.intro">
             Convocatoria del <strong>Plan Integral AURA</strong> de la Universidad
@@ -729,38 +736,30 @@
           </header>
           <p class="text-intro" data-i18n="sec.docs.intro">
             Resoluciones del Consejo Superior, instructivos de presentación y
-            plantillas de la convocatoria Plan AURA.
+            plantillas de la convocatoria Plan AURA. Los materiales de presentación
+            de proyectos figuran como en construcción hasta la apertura oficial.
           </p>
           <div class="doc-grid">
-            <a class="doc-link" href="documentos/Instructivo_presentacion_proyectos_investigacion_AURA.pdf" target="_blank" rel="noopener noreferrer">
-              <span class="doc-link__tag" data-i18n="sec.docs.instructivoInvestigacion.tag">PDF · Instructivo</span>
+            <span class="doc-link doc-link--wip" aria-disabled="true">
+              <span class="doc-link__tag" data-i18n="sec.conv.badge">En construcción</span>
               <span class="doc-link__title" data-i18n="sec.docs.instructivoInvestigacion.title">Instructivo presentación · Investigación</span>
               <span class="doc-link__meta" data-i18n="sec.docs.instructivoInvestigacion.meta">Anexo I, circuito y carpeta Drive de investigación</span>
-            </a>
-            <a class="doc-link" href="documentos/Instructivo_presentacion_proyectos_extension_AURA.pdf" target="_blank" rel="noopener noreferrer">
-              <span class="doc-link__tag" data-i18n="sec.docs.instructivoExtension.tag">PDF · Instructivo</span>
+            </span>
+            <span class="doc-link doc-link--wip" aria-disabled="true">
+              <span class="doc-link__tag" data-i18n="sec.conv.badge">En construcción</span>
               <span class="doc-link__title" data-i18n="sec.docs.instructivoExtension.title">Instructivo presentación · Extensión</span>
               <span class="doc-link__meta" data-i18n="sec.docs.instructivoExtension.meta">Google Forms, circuito y carpeta Drive de extensión</span>
-            </a>
-            <a
-              class="doc-link"
-              href="documentos/plantillas/Anexo-I-Presentacion-proyectos-investigacion.docx"
-              download
-            >
-              <span class="doc-link__tag" data-i18n="sec.docs.anexoI.tag">DOCX · Plantilla</span>
+            </span>
+            <span class="doc-link doc-link--wip" aria-disabled="true">
+              <span class="doc-link__tag" data-i18n="sec.conv.badge">En construcción</span>
               <span class="doc-link__title" data-i18n="sec.docs.anexoI.title">Anexo I · Proyectos de investigación</span>
               <span class="doc-link__meta" data-i18n="sec.docs.anexoI.meta">Formulario oficial para proyectos de investigación</span>
-            </a>
-            <a
-              class="doc-link"
-              href="https://docs.google.com/forms/d/e/1FAIpQLSd8aTV1eH_cDeOiMdw4l-dcoUnuZg4lr8lVg-pj9R_exuJQoA/viewform"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <span class="doc-link__tag" data-i18n="sec.docs.formsExtension.tag">Forms · Extensión</span>
+            </span>
+            <span class="doc-link doc-link--wip" aria-disabled="true">
+              <span class="doc-link__tag" data-i18n="sec.conv.badge">En construcción</span>
               <span class="doc-link__title" data-i18n="sec.docs.formsExtension.title">Formulario Google Forms · Extensión</span>
               <span class="doc-link__meta" data-i18n="sec.docs.formsExtension.meta">Presentación obligatoria de proyectos de extensión</span>
-            </a>
+            </span>
             <a class="doc-link" href="documentos/Resolucion_418-CS-2024_Plan_AURA.pdf" target="_blank" rel="noopener noreferrer">
               <span class="doc-link__tag" data-i18n="sec.docs.res418.tag">PDF · Resolución</span>
               <span class="doc-link__title" data-i18n="sec.docs.res418.title">Resolución N.º 418-CS-2024</span>
@@ -781,11 +780,11 @@
               <span class="doc-link__title" data-i18n="sec.docs.planificacion.title">Actividades de integración curricular 2026</span>
               <span class="doc-link__meta" data-i18n="sec.docs.planificacion.meta">Planificación de actividades PLAN AURA — UCCuyo</span>
             </a>
-            <a class="doc-link" href="documentos/Convocatoria_Proyectos_AURA.docx" download>
-              <span class="doc-link__tag" data-i18n="sec.docs.bases.tag">DOCX · Bases</span>
+            <span class="doc-link doc-link--wip" aria-disabled="true">
+              <span class="doc-link__tag" data-i18n="sec.conv.badge">En construcción</span>
               <span class="doc-link__title" data-i18n="sec.docs.bases.title">Convocatoria a proyectos AURA</span>
               <span class="doc-link__meta" data-i18n="sec.docs.bases.meta">Texto de bases de la convocatoria</span>
-            </a>
+            </span>
           </div>
         </div>
       </section>

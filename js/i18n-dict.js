@@ -464,6 +464,14 @@ window.I18N_DICT = {
     es: "Convocatorias 2026",
     en: "2026 calls for proposals"
   },
+  "sec.conv.badge": {
+    es: "En construcción",
+    en: "Under construction"
+  },
+  "sec.conv.status": {
+    es: "La convocatoria a proyectos todavía no está abierta. La sección permanece visible a modo informativo; los formularios, plantillas y cargas en Drive se habilitarán cuando se publique oficialmente.",
+    en: "The call for projects is not open yet. This section remains visible for information only; forms, templates, and Drive uploads will be enabled when it is officially published."
+  },
   "sec.conv.title": {
     es: "Proyectos de investigación y extensión · Plan AURA",
     en: "Research and outreach projects · Plan AURA"
@@ -471,6 +479,10 @@ window.I18N_DICT = {
   "sec.conv.intro": {
     es: 'Convocatoria del <strong>Plan Integral AURA</strong> de la Universidad Católica de Cuyo (Resoluciones 418-CS-2024, 767-CS-2025 y 849-CS-2026) a presentar <strong>proyectos de investigación</strong> y <strong>proyectos de extensión</strong>. Son dos modalidades con plantilla/formulario y carpeta Drive distintas. Destinada a docentes, investigadores, equipos de cátedra, estudiantes avanzados y equipos interdisciplinarios de la UCCuyo · Sede San Juan.',
     en: 'Call from Universidad Católica de Cuyo\'s <strong>AURA Integral Plan</strong> (Resolutions 418-CS-2024, 767-CS-2025, and 849-CS-2026) to submit <strong>research projects</strong> and <strong>outreach projects</strong>. These are two modalities with different templates/forms and Drive folders. Open to faculty, researchers, course teams, advanced students, and interdisciplinary teams at UCCuyo · San Juan campus.'
+  },
+  "sec.conv.cta.disabled": {
+    es: "En construcción",
+    en: "Under construction"
   },
   "sec.conv.facts.ariaLabel": {
     es: "Datos de la convocatoria",
@@ -715,8 +727,8 @@ window.I18N_DICT = {
     en: "Documents"
   },
   "sec.docs.intro": {
-    es: "Resoluciones del Consejo Superior, instructivos de presentación y plantillas de la convocatoria Plan AURA.",
-    en: "Superior Council resolutions, submission guidelines, and Plan AURA call templates."
+    es: "Resoluciones del Consejo Superior, instructivos de presentación y plantillas de la convocatoria Plan AURA. Los materiales de presentación de proyectos figuran como en construcción hasta la apertura oficial.",
+    en: "Superior Council resolutions, submission guidelines, and Plan AURA call templates. Project submission materials are marked under construction until the official opening."
   },
   "sec.docs.instructivoInvestigacion.tag": {
     es: "PDF · Instructivo",
