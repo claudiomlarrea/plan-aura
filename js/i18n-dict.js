@@ -148,8 +148,8 @@ window.I18N_DICT = {
     en: "Contact"
   },
   "hero.director": {
-    es: 'Coordinador del Programa: Ing. Luis Jiménez · Director del Instituto del Agua de la Facultad de Ciencias Químicas y Tecnológicas · <a href="mailto:luisjimenez@uccuyo.edu.ar">luisjimenez@uccuyo.edu.ar</a>',
-    en: 'Program Coordinator: Eng. Luis Jiménez · Director of the Water Institute, Faculty of Chemical and Technological Sciences · <a href="mailto:luisjimenez@uccuyo.edu.ar">luisjimenez@uccuyo.edu.ar</a>'
+    es: 'Coordinador del Programa: Ing. Luis Jiménez · <a href="mailto:luisjimenez@uccuyo.edu.ar">luisjimenez@uccuyo.edu.ar</a>',
+    en: 'Program Coordinator: Eng. Luis Jiménez · <a href="mailto:luisjimenez@uccuyo.edu.ar">luisjimenez@uccuyo.edu.ar</a>'
   },
 
   "sec.elPlan.kicker": {
@@ -185,8 +185,8 @@ window.I18N_DICT = {
     en: "Coordination"
   },
   "sec.elPlan.direccion.body": {
-    es: '<strong>Ing. Luis Jiménez</strong><br />Coordinador del Programa Plan AURA<br />Director del Instituto del Agua de la Facultad de Ciencias Químicas y Tecnológicas — Universidad Católica de Cuyo<br /><a href="mailto:luisjimenez@uccuyo.edu.ar">luisjimenez@uccuyo.edu.ar</a>',
-    en: '<strong>Eng. Luis Jiménez</strong><br />AURA Program Coordinator<br />Director of the Water Institute, Faculty of Chemical and Technological Sciences — Universidad Católica de Cuyo<br /><a href="mailto:luisjimenez@uccuyo.edu.ar">luisjimenez@uccuyo.edu.ar</a>'
+    es: '<strong>Ing. Luis Jiménez</strong><br />Coordinador del Programa Plan AURA — Universidad Católica de Cuyo<br /><a href="mailto:luisjimenez@uccuyo.edu.ar">luisjimenez@uccuyo.edu.ar</a>',
+    en: '<strong>Eng. Luis Jiménez</strong><br />AURA Program Coordinator — Universidad Católica de Cuyo<br /><a href="mailto:luisjimenez@uccuyo.edu.ar">luisjimenez@uccuyo.edu.ar</a>'
   },
   "sec.elPlan.lineas.title": {
     es: "Líneas de trabajo",
@@ -1083,8 +1083,8 @@ window.I18N_DICT = {
     en: "Universidad Católica de Cuyo · San Juan campus"
   },
   "sec.contacto.plan.director": {
-    es: '<strong>Coordinador del Programa:</strong> Ingeniero Luis Jiménez<br />Director del Instituto del Agua de la Facultad de Ciencias Químicas y Tecnológicas<br /><a href="mailto:luisjimenez@uccuyo.edu.ar">luisjimenez@uccuyo.edu.ar</a>',
-    en: '<strong>Program Coordinator:</strong> Engineer Luis Jiménez<br />Director of the Water Institute, Faculty of Chemical and Technological Sciences<br /><a href="mailto:luisjimenez@uccuyo.edu.ar">luisjimenez@uccuyo.edu.ar</a>'
+    es: '<strong>Coordinador del Programa:</strong> Ingeniero Luis Jiménez<br /><a href="mailto:luisjimenez@uccuyo.edu.ar">luisjimenez@uccuyo.edu.ar</a>',
+    en: '<strong>Program Coordinator:</strong> Engineer Luis Jiménez<br /><a href="mailto:luisjimenez@uccuyo.edu.ar">luisjimenez@uccuyo.edu.ar</a>'
   },
   "sec.contacto.enlaces.title": {
     es: "Enlaces institucionales",
