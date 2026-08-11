@@ -584,12 +584,35 @@
     };
   }
 
+  function regionCountryLabel(r) {
+    var code = String(r.country || "").toUpperCase();
+    if (code === "AR") return "Argentina";
+    return String(r.countryName || code || "").trim() || code;
+  }
+
+  /** Argentina primero; resto por país; dentro del país, por cantidad. */
+  function sortRegionsByCountry(regions) {
+    return (regions || []).slice().sort(function (a, b) {
+      var codeA = String(a.country || "").toUpperCase();
+      var codeB = String(b.country || "").toUpperCase();
+      if (codeA === "AR" && codeB !== "AR") return -1;
+      if (codeB === "AR" && codeA !== "AR") return 1;
+      var cmp = regionCountryLabel(a).localeCompare(regionCountryLabel(b), "es", {
+        sensitivity: "base"
+      });
+      if (cmp !== 0) return cmp;
+      var byCount = (b.count || 0) - (a.count || 0);
+      if (byCount !== 0) return byCount;
+      return String(a.region || "").localeCompare(String(b.region || ""), "es", {
+        sensitivity: "base"
+      });
+    });
+  }
+
   function regionRowHtml(r, idx, maxCount, total) {
     var code = String(r.country || "").toUpperCase();
     var preferred = regionMarkerKey(code, r.region);
     var key = resolveListMarkerKey(preferred, code);
-    var label = r.region;
-    if (r.countryName && code !== "AR") label += " (" + r.countryName + ")";
     return (
       '<li><button type="button" class="visitas-rank__btn" data-marker-key="' +
       escapeHtml(key) +
@@ -600,7 +623,7 @@
       (idx + 1) +
       "</span>" +
       '<span class="visitas-rank__meta"><span class="visitas-rank__name">' +
-      escapeHtml(label) +
+      escapeHtml(r.region) +
       '</span><span class="visitas-rank__bar" aria-hidden="true"><i style="width:' +
       Math.max(6, Math.round((100 * r.count) / (maxCount || 1))) +
       '%"></i></span></span>' +
@@ -655,15 +678,34 @@
     html += "</ol></div>";
 
     if (regions.length) {
-      var shownRegions = regions.slice(0, regionsVisibleLimit);
-      var restantes = regions.length - shownRegions.length;
-      var maxRegion = regions[0].count || 1;
+      var sortedRegions = sortRegionsByCountry(regions);
+      var shownRegions = sortedRegions.slice(0, regionsVisibleLimit);
+      var restantes = sortedRegions.length - shownRegions.length;
+      var maxRegion = 1;
+      for (var ri = 0; ri < sortedRegions.length; ri++) {
+        if ((sortedRegions[ri].count || 0) > maxRegion) {
+          maxRegion = sortedRegions[ri].count || 0;
+        }
+      }
       html +=
         "<div><h3>" +
         tt("dyn.visitas.regions", "Provincias / regiones") +
         '</h3><ol class="visitas-rank">';
-      shownRegions.forEach(function (r, idx) {
-        html += regionRowHtml(r, idx, maxRegion, total);
+      var lastCountry = null;
+      var regionIdx = 0;
+      shownRegions.forEach(function (r) {
+        var countryLabel = regionCountryLabel(r);
+        var countryKey = String(r.country || "").toUpperCase() || countryLabel;
+        if (countryKey !== lastCountry) {
+          lastCountry = countryKey;
+          html +=
+            '<li class="visitas-rank__country" aria-hidden="false">' +
+            escapeHtml(countryLabel) +
+            "</li>";
+          regionIdx = 0;
+        }
+        html += regionRowHtml(r, regionIdx, maxRegion, total);
+        regionIdx += 1;
       });
       html += "</ol>";
       if (restantes > 0) {

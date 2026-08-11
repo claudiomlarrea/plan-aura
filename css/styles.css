@@ -1895,6 +1895,22 @@ body.gallery-lightbox-open {
   border-top: 0;
 }
 
+.visitas-rank__country {
+  margin: 0;
+  padding: 0.45rem 0.75rem 0.3rem;
+  border-top: 1px solid rgba(var(--rgb-inst), 0.12);
+  background: rgba(var(--rgb-inst), 0.06);
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--color-green-dark);
+}
+
+.visitas-rank li:first-child.visitas-rank__country {
+  border-top: 0;
+}
+
 .visitas-rank__btn {
   display: flex;
   align-items: center;
