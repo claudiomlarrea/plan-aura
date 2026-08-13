@@ -2,7 +2,7 @@
 
 **Modalidad:** Investigación (Anexo I — Secretaría de Investigación)  
 **Documento de trabajo** para volcar a la plantilla oficial DOCX.  
-**Versión:** borrador 1.0 — agosto 2026
+**Versión:** borrador 1.1 — agosto 2026
 
 ---
 
@@ -17,20 +17,21 @@
 | **Sede** | Universidad Católica de Cuyo — Sede San Juan |
 | **Duración** | 12 meses (inicio tras oficialización por Consejo Superior; ejecución hasta octubre de 2027) |
 | **Monto solicitado** | `$[COMPLETAR]` (tope máximo de la convocatoria: $1.000.000) |
-| **Director/a del proyecto** | Claudio Marcelo Larrea Arnau — docente UCCuyo — `[COMPLETAR: cargo / dedicación / correo institucional]` |
+| **Director/a del proyecto** | Claudio Marcelo Larrea — docente UCCuyo — `[COMPLETAR: cargo / dedicación / correo institucional]` |
 | **Contacto** | `[COMPLETAR: email UCCuyo]` |
 
 ### 1.1 Equipo de investigación
 
 | Rol | Apellido y nombre | Condición | UA / carrera | Tareas principales |
 | --- | --- | --- | --- | --- |
-| Director/a | Claudio Marcelo Larrea Arnau | Docente UCCuyo | `[COMPLETAR]` | Dirección científica, diseño metodológico EPH, análisis, redacción de informes |
-| Integrante docente / investigador/a | `[COMPLETAR o N/A]` | `[COMPLETAR]` | `[COMPLETAR]` | `[COMPLETAR]` |
-| Estudiante 1 (obligatorio) | `[COMPLETAR]` | Estudiante | `[COMPLETAR: carrera y año]` | Revisión de diccionarios EPH, limpieza de datos, tabulación, apoyo a informe |
-| Estudiante 2 (obligatorio) | `[COMPLETAR]` | Estudiante | `[COMPLETAR: carrera y año]` | Revisión bibliográfica, indicadores, visualizaciones, transferencia AURA |
-| Integrante adicional | `[COMPLETAR o N/A]` | `[COMPLETAR]` | `[COMPLETAR]` | `[COMPLETAR]` |
+| Director | Claudio Marcelo Larrea | Docente UCCuyo | `[COMPLETAR]` | Dirección científica, diseño metodológico EPH, análisis, redacción de informes |
+| Integrante | José La Malfa | `[COMPLETAR: Docente / Estudiante]` | `[COMPLETAR]` | Análisis EPH, tabulación e interpretación de resultados |
+| Integrante | Belén Arias | `[COMPLETAR: Docente / Estudiante]` | `[COMPLETAR]` | Revisión de diccionarios, limpieza de datos y apoyo al informe |
+| Integrante | Laura Pizarro | `[COMPLETAR: Docente / Estudiante]` | `[COMPLETAR]` | Indicadores, visualizaciones y revisión bibliográfica |
+| Integrante | Javier Coria | `[COMPLETAR: Docente / Estudiante]` | `[COMPLETAR]` | Procesamiento de microdatos y control de calidad |
+| Integrante | Stefanía Young | `[COMPLETAR: Docente / Estudiante]` | `[COMPLETAR]` | Articulación institucional AURA y transferencia de resultados |
 
-> **Requisito convocatoria:** dirección a cargo de un/a docente UCCuyo; equipo con **mínimo dos (2) estudiantes** por proyecto.
+> **Requisito convocatoria:** dirección a cargo de un/a docente UCCuyo; equipo con **mínimo dos (2) estudiantes** por proyecto. Completar la columna *Condición* y asegurar que al menos dos integrantes figureen como estudiantes.
 
 ### 1.2 Datos administrativos (completar antes de presentar)
 
