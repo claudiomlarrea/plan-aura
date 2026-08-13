@@ -13,7 +13,7 @@
 | **Título** | Acceso al agua y condiciones de abastecimiento en hogares: evidencia a partir de la EPH-INDEC con énfasis en Gran San Juan (contexto árido y Plan AURA) |
 | **Eje temático principal** | **(c)** Impacto económico, social y productivo del recurso hídrico en la provincia de San Juan |
 | **Eje secundario** | **(a)** Estudios sobre consumo y comportamiento hídrico (hábitos, percepciones y prácticas institucionales, familiares o comunitarias) |
-| **Unidad Académica / Instituto** | `[COMPLETAR: Unidad Académica e Instituto de pertenencia, p. ej. Facultad de … / Instituto del Agua]` |
+| **Unidad Académica / Instituto** | Observatorio de Inteligencia Artificial — Universidad Católica de Cuyo (Sede San Juan) |
 | **Sede** | Universidad Católica de Cuyo — Sede San Juan |
 | **Duración** | 12 meses (inicio tras oficialización por Consejo Superior; ejecución hasta octubre de 2027) |
 | **Monto solicitado** | `$[COMPLETAR]` (tope máximo de la convocatoria: $1.000.000) |
@@ -24,12 +24,12 @@
 
 | Rol | Apellido y nombre | Condición | UA / carrera | Tareas principales |
 | --- | --- | --- | --- | --- |
-| Director | Claudio Marcelo Larrea | Docente UCCuyo | `[COMPLETAR]` | Dirección científica, diseño metodológico EPH, análisis, redacción de informes |
-| Integrante | José La Malfa | `[COMPLETAR: Docente / Estudiante]` | `[COMPLETAR]` | Análisis EPH, tabulación e interpretación de resultados |
-| Integrante | Belén Arias | `[COMPLETAR: Docente / Estudiante]` | `[COMPLETAR]` | Revisión de diccionarios, limpieza de datos y apoyo al informe |
-| Integrante | Laura Pizarro | `[COMPLETAR: Docente / Estudiante]` | `[COMPLETAR]` | Indicadores, visualizaciones y revisión bibliográfica |
-| Integrante | Javier Coria | `[COMPLETAR: Docente / Estudiante]` | `[COMPLETAR]` | Procesamiento de microdatos y control de calidad |
-| Integrante | Stefanía Young | `[COMPLETAR: Docente / Estudiante]` | `[COMPLETAR]` | Articulación institucional AURA y transferencia de resultados |
+| Director | Claudio Marcelo Larrea | Docente UCCuyo | Observatorio de IA | Dirección científica, diseño metodológico EPH, análisis, redacción de informes |
+| Integrante | José La Malfa | Integrante Observatorio de IA — `[Docente/Estudiante]` | Observatorio de IA | Análisis EPH, tabulación e interpretación de resultados |
+| Integrante | Belén Arias | Integrante Observatorio de IA — `[Docente/Estudiante]` | Observatorio de IA | Revisión de diccionarios, limpieza de datos y apoyo al informe |
+| Integrante | Laura Pizarro | Integrante Observatorio de IA — `[Docente/Estudiante]` | Observatorio de IA | Indicadores, visualizaciones y revisión bibliográfica |
+| Integrante | Javier Coria | Integrante Observatorio de IA — `[Docente/Estudiante]` | Observatorio de IA | Procesamiento de microdatos y control de calidad |
+| Integrante | Stefanía Young | Integrante Observatorio de IA — `[Docente/Estudiante]` | Observatorio de IA | Articulación institucional AURA y transferencia de resultados |
 
 > **Requisito convocatoria:** dirección a cargo de un/a docente UCCuyo; equipo con **mínimo dos (2) estudiantes** por proyecto. Completar la columna *Condición* y asegurar que al menos dos integrantes figureen como estudiantes.
 
