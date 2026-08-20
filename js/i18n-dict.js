@@ -570,16 +570,16 @@ window.I18N_DICT = {
     en: "Total budget"
   },
   "sec.conv.facts.presupuesto.value": {
-    es: "$20.000.000",
-    en: "ARS 20,000,000"
+    es: "$10.000.000",
+    en: "ARS 10,000,000"
   },
   "sec.conv.facts.tope.label": {
     es: "Tope por proyecto",
     en: "Cap per project"
   },
   "sec.conv.facts.tope.value": {
-    es: "Hasta $1.000.000",
-    en: "Up to ARS 1,000,000"
+    es: "Hasta $1.000.000 · 10 proyectos",
+    en: "Up to ARS 1,000,000 · 10 projects"
   },
 
   "sec.conv.investigacion.title": {
