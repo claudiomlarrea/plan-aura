@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap");
-@import "variables.css?v=29";
+@import "variables.css?v=30";
 
 *,
 *::before,
@@ -326,13 +326,27 @@ a:hover {
 }
 
 .btn-ghost {
-  background: transparent;
-  color: var(--color-institutional);
-  border: 2px solid var(--color-institutional);
+  background: linear-gradient(
+    135deg,
+    #4eb6e8 0%,
+    #3f8eca 55%,
+    #2b8fc9 100%
+  );
+  color: #ffffff !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 14px rgba(63, 142, 202, 0.3);
 }
 
 .btn-ghost:hover {
-  background: rgba(var(--rgb-inst), 0.06);
+  background: linear-gradient(
+    135deg,
+    #5fc0ec 0%,
+    #4a9ad4 55%,
+    #3498d0 100%
+  );
+  color: #ffffff !important;
+  filter: brightness(1.05);
 }
 
 .btn-water {
