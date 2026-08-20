@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap");
-@import "variables.css?v=34";
+@import "variables.css?v=35";
 
 *,
 *::before,
@@ -309,52 +309,49 @@ a:hover {
   border: none;
   cursor: pointer;
   font-family: inherit;
+  transform: translateY(0);
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    filter 0.15s ease,
+    background 0.15s ease;
 }
 
-.btn-primary {
-  background: var(--btn-celeste-bg);
-  color: #fff;
-  border: 1.5px solid rgba(255, 255, 255, 0.4);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-  box-shadow: var(--btn-celeste-shadow);
-}
-
-.btn-primary:hover {
-  background: var(--btn-celeste-bg-hover);
-  filter: brightness(1.05);
-  color: #fff;
-}
-
-.btn-ghost {
-  background: var(--btn-celeste-bg);
-  color: #ffffff !important;
-  border: 1.5px solid rgba(255, 255, 255, 0.4);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-  box-shadow: var(--btn-celeste-shadow);
-}
-
-.btn-ghost:hover {
-  background: var(--btn-celeste-bg-hover);
-  color: #ffffff !important;
-  filter: brightness(1.05);
-}
-
+.btn-primary,
+.btn-ghost,
 .btn-water {
   background: var(--btn-celeste-bg);
-  color: #fff;
-  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  color: #fff !important;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-bottom-color: rgba(10, 48, 78, 0.55);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
   box-shadow: var(--btn-celeste-shadow);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
+.btn-primary:hover,
+.btn-ghost:hover,
 .btn-water:hover {
   background: var(--btn-celeste-bg-hover);
-  filter: brightness(1.05);
-  color: #fff;
+  color: #fff !important;
+  filter: brightness(1.06);
+  transform: translateY(-2px);
+  box-shadow: var(--btn-celeste-shadow-hover);
+}
+
+.btn-primary:active,
+.btn-ghost:active,
+.btn-water:active {
+  filter: none;
+  color: #fff !important;
+  transform: translateY(3px);
+  box-shadow: var(--btn-celeste-shadow-active);
 }
 
 .btn-aura {
   position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 1.05rem 1.9rem;
   font-size: 1.2rem;
   font-weight: 700;
@@ -363,17 +360,35 @@ a:hover {
   background: var(--btn-celeste-bg);
   color: #fff;
   border: 2px solid rgba(255, 255, 255, 0.55);
+  border-bottom-color: rgba(10, 48, 78, 0.55);
   box-shadow:
     0 0 0 4px rgba(var(--rgb-celeste), 0.28),
     var(--btn-celeste-shadow);
   text-decoration: none;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+  transform: translateY(0);
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    filter 0.15s ease;
   animation: aura-pulse 2.8s ease-in-out infinite;
 }
 
 .btn-aura:hover {
   color: #fff;
-  filter: brightness(1.08);
+  filter: brightness(1.06);
   text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow:
+    0 0 0 4px rgba(var(--rgb-celeste), 0.28),
+    var(--btn-celeste-shadow-hover);
+}
+
+.btn-aura:active {
+  filter: none;
+  transform: translateY(3px);
+  box-shadow: var(--btn-celeste-shadow-active);
+  animation: none;
 }
 
 .btn-aura__mark {
@@ -403,13 +418,23 @@ a:hover {
   50% {
     box-shadow:
       0 0 0 8px rgba(var(--rgb-celeste), 0.18),
-      0 8px 22px rgba(63, 142, 202, 0.45);
+      var(--btn-celeste-shadow-hover);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .btn-aura {
     animation: none;
+  }
+
+  .btn,
+  .btn:hover,
+  .btn:active,
+  .btn-aura,
+  .btn-aura:hover,
+  .btn-aura:active {
+    transition: none;
+    transform: none;
   }
 }
 
@@ -495,58 +520,6 @@ a:hover {
   flex-wrap: wrap;
   align-items: center;
   gap: 0.85rem;
-}
-
-.hero-actions .btn-ghost {
-  background: linear-gradient(
-    180deg,
-    #5eb0e0 0%,
-    #2f7db8 42%,
-    #155f94 100%
-  );
-  color: #fff !important;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  border-bottom-color: rgba(10, 48, 78, 0.55);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.45),
-    inset 0 -2px 0 rgba(10, 48, 78, 0.22),
-    0 4px 0 rgba(10, 48, 78, 0.5),
-    0 10px 22px rgba(0, 0, 0, 0.28);
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
-  transform: translateY(0);
-  transition:
-    transform 0.15s ease,
-    box-shadow 0.15s ease,
-    filter 0.15s ease;
-}
-
-.hero-actions .btn-ghost:hover {
-  filter: brightness(1.06);
-  color: #fff !important;
-  transform: translateY(-2px);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.5),
-    inset 0 -2px 0 rgba(10, 48, 78, 0.24),
-    0 5px 0 rgba(10, 48, 78, 0.5),
-    0 14px 26px rgba(0, 0, 0, 0.32);
-}
-
-.hero-actions .btn-ghost:active {
-  filter: none;
-  color: #fff !important;
-  transform: translateY(3px);
-  box-shadow:
-    inset 0 2px 5px rgba(10, 48, 78, 0.35),
-    0 1px 0 rgba(10, 48, 78, 0.4);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-actions .btn-ghost,
-  .hero-actions .btn-ghost:hover,
-  .hero-actions .btn-ghost:active {
-    transition: none;
-    transform: none;
-  }
 }
 
 .hero-mail-row {
@@ -837,20 +810,6 @@ header.section-head--bar h2 {
   justify-content: center;
   gap: 0.85rem;
   margin: 0.5rem 0 1.75rem;
-}
-
-.aura-cta-row .btn-ghost {
-  background: var(--btn-celeste-bg);
-  color: #ffffff !important;
-  border: 1.5px solid rgba(255, 255, 255, 0.45);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-  box-shadow: var(--btn-celeste-shadow);
-}
-
-.aura-cta-row .btn-ghost:hover {
-  background: var(--btn-celeste-bg-hover);
-  color: #ffffff !important;
-  filter: brightness(1.05);
 }
 
 .aura-gallery {
@@ -1199,35 +1158,6 @@ header.section-head--bar h2 {
   flex-wrap: nowrap;
   gap: 0.45rem;
   align-items: flex-start;
-}
-
-.tile-actions--conv .btn-ghost {
-  background: var(--btn-celeste-bg);
-  color: #ffffff !important;
-  border: 1.5px solid rgba(255, 255, 255, 0.4);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-  box-shadow: var(--btn-celeste-shadow);
-}
-
-.tile-actions--conv .btn-ghost:hover {
-  background: var(--btn-celeste-bg-hover);
-  color: #ffffff !important;
-  filter: brightness(1.05);
-}
-
-/* Ghost buttons dentro de tarjetas: mismo celeste + blanco */
-.card .btn-ghost {
-  background: var(--btn-celeste-bg);
-  color: #ffffff !important;
-  border: 1.5px solid rgba(255, 255, 255, 0.4);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-  box-shadow: var(--btn-celeste-shadow);
-}
-
-.card .btn-ghost:hover {
-  background: var(--btn-celeste-bg-hover);
-  color: #ffffff !important;
-  filter: brightness(1.05);
 }
 
 .conv-name-hint {

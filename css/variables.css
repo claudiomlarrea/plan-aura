@@ -40,10 +40,32 @@
   --color-on-dark: #ffffff;
   --color-on-dark-muted: rgba(255, 255, 255, 0.88);
 
-  /* Botones unificados (celeste marca, un tono más oscuro) */
-  --btn-celeste-bg: linear-gradient(135deg, #3aa0d4 0%, #2f7db8 55%, #1f6a9e 100%);
-  --btn-celeste-bg-hover: linear-gradient(135deg, #48addc 0%, #3a8ec8 55%, #2879b0 100%);
-  --btn-celeste-shadow: 0 4px 14px rgba(31, 106, 158, 0.4);
+  /* Botones 3D unificados (celeste marca) */
+  --btn-celeste-bg: linear-gradient(
+    180deg,
+    #5eb0e0 0%,
+    #2f7db8 42%,
+    #155f94 100%
+  );
+  --btn-celeste-bg-hover: linear-gradient(
+    180deg,
+    #6bbce8 0%,
+    #3a8ec8 42%,
+    #1a6fa8 100%
+  );
+  --btn-celeste-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    inset 0 -2px 0 rgba(10, 48, 78, 0.22),
+    0 4px 0 rgba(10, 48, 78, 0.5),
+    0 10px 22px rgba(0, 0, 0, 0.28);
+  --btn-celeste-shadow-hover:
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -2px 0 rgba(10, 48, 78, 0.24),
+    0 5px 0 rgba(10, 48, 78, 0.5),
+    0 14px 26px rgba(0, 0, 0, 0.32);
+  --btn-celeste-shadow-active:
+    inset 0 2px 5px rgba(10, 48, 78, 0.35),
+    0 1px 0 rgba(10, 48, 78, 0.4);
 
   --color-primary: var(--color-institutional);
   --color-primary-dark: var(--color-institutional-dark);
