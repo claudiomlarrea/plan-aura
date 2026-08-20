@@ -19,15 +19,22 @@
   --color-green-dark: #084c37;
   --rgb-green: 13, 110, 79;
 
-  /* Acento Plan AURA (gota / agua) */
-  --color-water: #1a7fb5;
-  --color-water-mid: #2b9bc9;
-  --color-water-dark: #0e4f72;
+  /* Acento Plan AURA — celeste del manual de marcas / gota del logo */
+  --color-celeste: #3f8eca;
+  --color-celeste-light: #4eb6e8;
+  --color-celeste-mid: #2b8fc9;
+  --color-celeste-dark: #1a6fa8;
+  --rgb-celeste: 63, 142, 202;
+
+  --color-water: var(--color-celeste-mid);
+  --color-water-mid: var(--color-celeste-light);
+  --color-water-dark: var(--color-celeste-dark);
   --color-aura-teal: #0a5c5e;
-  --rgb-water: 26, 127, 181;
+  --rgb-water: 43, 143, 201;
 
   --color-surface: #ffffff;
-  --color-muted: #f4f0f1;
+  --color-muted: #e7f3fa;
+  --color-page: var(--color-celeste);
   --color-text: #1f1418;
   --color-text-soft: #5c4f54;
   --color-on-dark: #ffffff;
