@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap");
-@import "variables.css?v=23";
+@import "variables.css?v=24";
 
 *,
 *::before,
@@ -585,14 +585,7 @@ a:hover {
   scroll-margin-top: calc(var(--header-h) + 3.75rem);
 }
 
-.section:nth-of-type(even) {
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.55) 0%,
-    rgba(231, 243, 250, 0.9) 100%
-  );
-}
-
+.section:nth-of-type(even),
 .section:nth-of-type(odd) {
   background: transparent;
 }
@@ -677,8 +670,43 @@ header.section-head--bar h2 {
 .text-intro {
   max-width: 46rem;
   margin: 0 0 1.5rem;
-  color: var(--color-text-soft);
+  color: #ffffff;
   font-size: 1.05rem;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.28);
+}
+
+/* Párrafos de sección sobre el celeste (fuera de tarjetas) */
+.section-inner > p {
+  color: #ffffff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.28);
+}
+
+.section-inner > p a,
+.text-intro a {
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration-color: rgba(255, 255, 255, 0.8);
+}
+
+.section-inner > p a:hover,
+.text-intro a:hover {
+  color: #e8f6fc;
+}
+
+/* Dentro de tarjetas blancas: texto oscuro para legibilidad */
+.card,
+.card p,
+.card li,
+.card .sala-note,
+.card .text-intro {
+  color: var(--color-text);
+  text-shadow: none;
+}
+
+.card p,
+.card li,
+.card .sala-note {
+  color: var(--color-text);
 }
 
 .grid-2 {
@@ -736,8 +764,7 @@ header.section-head--bar h2 {
 
 /* —— Plan AURA highlight —— */
 .section--aura {
-  background:
-    linear-gradient(180deg, rgba(227, 242, 250, 0.85) 0%, #f7fbfd 55%, #fff 100%);
+  background: transparent;
 }
 
 .aura-banner {
@@ -756,7 +783,8 @@ header.section-head--bar h2 {
   max-width: 46rem;
   margin: 0 auto 1.5rem;
   font-size: 1.12rem;
-  color: var(--color-text-soft);
+  color: #ffffff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.28);
 }
 
 .aura-slogan {
@@ -764,7 +792,8 @@ header.section-head--bar h2 {
   font-family: var(--font-display);
   font-style: italic;
   font-size: clamp(1.15rem, 2.4vw, 1.45rem);
-  color: var(--color-aura-teal);
+  color: #ffffff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.28);
   margin: 0 0 1.75rem;
 }
 
@@ -888,9 +917,10 @@ header.section-head--bar h2 {
   margin: 0 0 1.25rem;
   max-width: 42rem;
   padding: 0.85rem 1rem;
-  border-left: 3px solid var(--color-institutional, #8b2332);
-  background: rgba(var(--rgb-inst, 139, 35, 50), 0.06);
-  color: var(--color-text-soft, #4a5568);
+  border-left: 3px solid rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   font-size: 0.95rem;
   line-height: 1.45;
 }
@@ -971,7 +1001,7 @@ header.section-head--bar h2 {
 /* —— Sala de la Comisión —— */
 
 .section--comision {
-  background: linear-gradient(180deg, #f7f9f8 0%, #fff 55%);
+  background: transparent;
 }
 
 .sala-doors {
@@ -1037,7 +1067,7 @@ header.section-head--bar h2 {
 /* —— Red institucional (Res. 418) —— */
 
 .section--red {
-  background: linear-gradient(180deg, #fff 0%, #f4f8f6 100%);
+  background: transparent;
 }
 
 .red-grid {
@@ -1207,12 +1237,14 @@ header.section-head--bar h2 {
 .conv-contact {
   margin: 2rem 0 0;
   font-size: 0.95rem;
-  color: var(--color-text-soft);
+  color: #ffffff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.28);
 }
 
 .conv-contact a {
-  color: var(--color-institutional);
+  color: #ffffff;
   font-weight: 600;
+  text-decoration-color: rgba(255, 255, 255, 0.8);
 }
 
 /* legacy cronograma/budget kept if referenced elsewhere */
@@ -1694,7 +1726,7 @@ body.gallery-lightbox-open {
 /* —— Visitas (contador + mapa) —— */
 
 .section--visitas {
-  background: linear-gradient(180deg, #f4f8f6 0%, #faf8f8 100%);
+  background: transparent;
 }
 
 .section--visitas .text-intro {
@@ -1704,7 +1736,8 @@ body.gallery-lightbox-open {
 .visitas-total {
   margin: 0 0 0.75rem;
   font-size: 0.98rem;
-  color: var(--color-text);
+  color: #ffffff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.28);
 }
 
 .visitas-stats {
