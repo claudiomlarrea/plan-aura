@@ -40,6 +40,11 @@
   --color-on-dark: #ffffff;
   --color-on-dark-muted: rgba(255, 255, 255, 0.88);
 
+  /* Botones unificados (celeste marca) */
+  --btn-celeste-bg: linear-gradient(135deg, #4eb6e8 0%, #3f8eca 55%, #2b8fc9 100%);
+  --btn-celeste-bg-hover: linear-gradient(135deg, #5fc0ec 0%, #4a9ad4 55%, #3498d0 100%);
+  --btn-celeste-shadow: 0 4px 14px rgba(63, 142, 202, 0.35);
+
   --color-primary: var(--color-institutional);
   --color-primary-dark: var(--color-institutional-dark);
   --color-primary-mid: var(--color-institutional-mid);
