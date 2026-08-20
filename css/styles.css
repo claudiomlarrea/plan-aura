@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap");
-@import "variables.css?v=30";
+@import "variables.css?v=31";
 
 *,
 *::before,
@@ -1937,7 +1937,8 @@ body.gallery-lightbox-open {
   align-items: center;
   gap: 0.45rem 0.75rem;
   font-size: 0.8rem;
-  color: var(--color-text-soft);
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
 }
 
 .visitas-legend__swatches {
