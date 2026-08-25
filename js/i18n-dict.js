@@ -54,6 +54,22 @@ window.I18N_DICT = {
     es: "Principal",
     en: "Main"
   },
+  "nav.group.plan": {
+    es: "El Plan",
+    en: "The Plan"
+  },
+  "nav.group.comunidad": {
+    es: "Comunidad",
+    en: "Community"
+  },
+  "nav.group.recursos": {
+    es: "Recursos",
+    en: "Resources"
+  },
+  "nav.group.difusion": {
+    es: "Difusión",
+    en: "Outreach"
+  },
   "nav.inicio": {
     es: "Inicio",
     en: "Home"

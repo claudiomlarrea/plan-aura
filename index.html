@@ -10,8 +10,8 @@
     <title>Plan AURA | Universidad Católica de Cuyo</title>
     <link rel="canonical" href="https://plan-aura.com.ar/" />
     <link rel="icon" type="image/png" href="assets/logo-aura-slogan-header.png" />
-    <link rel="stylesheet" href="css/variables.css?v=35" />
-    <link rel="stylesheet" href="css/styles.css?v=35" />
+    <link rel="stylesheet" href="css/variables.css?v=36" />
+    <link rel="stylesheet" href="css/styles.css?v=36" />
   </head>
   <body>
     <a class="skip-link" href="#contenido" data-i18n="a11y.skipLink">Ir al contenido</a>
@@ -50,17 +50,74 @@
             <span class="nav-toggle-icon"></span>
           </button>
           <nav class="site-nav" id="site-nav" aria-label="Principal" data-i18n-attr="aria-label:nav.ariaLabel">
-            <ul>
+            <ul class="nav-root">
               <li><a href="#inicio" data-i18n="nav.inicio">Inicio</a></li>
-              <li><a href="#el-plan" data-i18n="nav.elPlan">El Plan</a></li>
-              <li><a href="#plan-aura" data-i18n="nav.planAura">Plan AURA</a></li>
-              <li><a href="#comision" data-i18n="nav.comision">Sala de trabajo</a></li>
-              <li><a href="#equipo" data-i18n="nav.equipo">Equipo coordinador</a></li>
-              <li><a href="#red" data-i18n="nav.red">Red institucional</a></li>
-              <li><a href="#convocatoria" data-i18n="nav.convocatorias">Convocatorias</a></li>
-              <li><a href="#documentos" data-i18n="nav.documentos">Documentos</a></li>
-              <li><a href="#galeria" data-i18n="nav.galeria">Galería de imágenes</a></li>
-              <li><a href="#visitas" data-i18n="nav.visitas">Visitas al Plan AURA</a></li>
+
+              <li class="nav-item has-submenu">
+                <button
+                  type="button"
+                  class="nav-submenu-toggle"
+                  aria-expanded="false"
+                  aria-controls="nav-sub-plan"
+                  data-i18n="nav.group.plan"
+                >
+                  El Plan
+                </button>
+                <ul class="nav-submenu" id="nav-sub-plan">
+                  <li><a href="#el-plan" data-i18n="nav.elPlan">El Plan</a></li>
+                  <li><a href="#plan-aura" data-i18n="nav.planAura">Plan AURA</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item has-submenu">
+                <button
+                  type="button"
+                  class="nav-submenu-toggle"
+                  aria-expanded="false"
+                  aria-controls="nav-sub-comunidad"
+                  data-i18n="nav.group.comunidad"
+                >
+                  Comunidad
+                </button>
+                <ul class="nav-submenu" id="nav-sub-comunidad">
+                  <li><a href="#comision" data-i18n="nav.comision">Sala de trabajo</a></li>
+                  <li><a href="#equipo" data-i18n="nav.equipo">Equipo coordinador</a></li>
+                  <li><a href="#red" data-i18n="nav.red">Red institucional</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item has-submenu">
+                <button
+                  type="button"
+                  class="nav-submenu-toggle"
+                  aria-expanded="false"
+                  aria-controls="nav-sub-recursos"
+                  data-i18n="nav.group.recursos"
+                >
+                  Recursos
+                </button>
+                <ul class="nav-submenu" id="nav-sub-recursos">
+                  <li><a href="#convocatoria" data-i18n="nav.convocatorias">Convocatorias</a></li>
+                  <li><a href="#documentos" data-i18n="nav.documentos">Documentos</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item has-submenu">
+                <button
+                  type="button"
+                  class="nav-submenu-toggle"
+                  aria-expanded="false"
+                  aria-controls="nav-sub-difusion"
+                  data-i18n="nav.group.difusion"
+                >
+                  Difusión
+                </button>
+                <ul class="nav-submenu" id="nav-sub-difusion">
+                  <li><a href="#galeria" data-i18n="nav.galeria">Galería de imágenes</a></li>
+                  <li><a href="#visitas" data-i18n="nav.visitas">Visitas al Plan AURA</a></li>
+                </ul>
+              </li>
+
               <li><a href="#contacto" data-i18n="nav.contacto">Contacto</a></li>
             </ul>
           </nav>
@@ -89,14 +146,9 @@
             regional en San Juan, San Luis y Mendoza.
           </p>
           <div class="hero-actions">
+            <a class="btn btn-ghost" href="#plan-aura" data-i18n="hero.cta.plan">Conocer el Plan</a>
             <a class="btn btn-ghost" href="#convocatoria" data-i18n="hero.cta.convocatorias">Convocatorias</a>
             <a class="btn btn-ghost" href="#galeria" data-i18n="hero.cta.galeria">Galería de imágenes</a>
-            <a class="btn btn-ghost" href="#plan-aura" data-i18n="hero.cta.plan">Conocer el Plan</a>
-            <a class="btn btn-ghost" href="#red" data-i18n="hero.cta.red">Red institucional</a>
-            <a class="btn btn-ghost" href="#equipo" data-i18n="hero.cta.equipo">Equipo coordinador</a>
-            <a class="btn btn-ghost" href="#comision" data-i18n="hero.cta.comision">Sala de trabajo</a>
-            <a class="btn btn-ghost" href="#documentos" data-i18n="hero.cta.documentos">Documentos</a>
-            <a class="btn btn-ghost" href="#visitas" data-i18n="hero.cta.visitas">Visitas al Plan AURA</a>
             <a class="btn btn-ghost" href="#contacto" data-i18n="hero.cta.contacto">Contacto</a>
           </div>
           <div class="hero-mail-row">
@@ -948,29 +1000,41 @@
             <span data-i18n="footer.brand.subtitle">Universidad Católica de Cuyo</span>
           </div>
         </div>
-        <div class="footer-col">
-          <h3 data-i18n="footer.secciones.title">Secciones</h3>
-          <ul class="footer-links">
-            <li><a href="#el-plan" data-i18n="nav.elPlan">El Plan</a></li>
-            <li><a href="#plan-aura" data-i18n="nav.planAura">Plan AURA</a></li>
-            <li><a href="#comision" data-i18n="nav.comision">Sala de trabajo</a></li>
-            <li><a href="#equipo" data-i18n="nav.equipo">Equipo coordinador</a></li>
-            <li><a href="#red" data-i18n="nav.red">Red institucional</a></li>
-            <li><a href="#convocatoria" data-i18n="nav.convocatorias">Convocatorias</a></li>
-            <li><a href="#documentos" data-i18n="nav.documentos">Documentos</a></li>
-            <li><a href="#galeria" data-i18n="nav.galeria">Galería de imágenes</a></li>
-            <li><a href="#visitas" data-i18n="nav.visitas">Visitas al Plan AURA</a></li>
-            <li><a href="#contacto" data-i18n="nav.contacto">Contacto</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h3 data-i18n="footer.red.title">Red UCCuyo</h3>
-          <ul class="footer-links">
-            <li>
-              <a href="https://uccuyo.edu.ar" target="_blank" rel="noopener noreferrer" data-i18n="footer.red.uccuyo">Universidad Católica de Cuyo</a>
-            </li>
-          </ul>
-        </div>
+        <nav class="footer-map" aria-label="Mapa del sitio" data-i18n-attr="aria-label:footer.mapLabel">
+          <div class="footer-col">
+            <h3 data-i18n="nav.group.plan">El Plan</h3>
+            <ul class="footer-links">
+              <li><a href="#el-plan" data-i18n="nav.elPlan">El Plan</a></li>
+              <li><a href="#plan-aura" data-i18n="nav.planAura">Plan AURA</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3 data-i18n="nav.group.comunidad">Comunidad</h3>
+            <ul class="footer-links">
+              <li><a href="#comision" data-i18n="nav.comision">Sala de trabajo</a></li>
+              <li><a href="#equipo" data-i18n="nav.equipo">Equipo coordinador</a></li>
+              <li><a href="#red" data-i18n="nav.red">Red institucional</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3 data-i18n="nav.group.recursos">Recursos</h3>
+            <ul class="footer-links">
+              <li><a href="#convocatoria" data-i18n="nav.convocatorias">Convocatorias</a></li>
+              <li><a href="#documentos" data-i18n="nav.documentos">Documentos</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3 data-i18n="nav.group.difusion">Difusión</h3>
+            <ul class="footer-links">
+              <li><a href="#galeria" data-i18n="nav.galeria">Galería de imágenes</a></li>
+              <li><a href="#visitas" data-i18n="nav.visitas">Visitas al Plan AURA</a></li>
+              <li><a href="#contacto" data-i18n="nav.contacto">Contacto</a></li>
+              <li>
+                <a href="https://uccuyo.edu.ar" target="_blank" rel="noopener noreferrer" data-i18n="footer.red.uccuyo">Universidad Católica de Cuyo</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
         <p class="footer-copy" data-i18n="footer.copy">
           © Universidad Católica de Cuyo · Plan Integral AURA.
           Colores institucionales según manual de marca UCCuyo.
