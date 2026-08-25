@@ -1119,6 +1119,10 @@ window.I18N_DICT = {
     es: "Universidad Católica de Cuyo",
     en: "Universidad Católica de Cuyo"
   },
+  "footer.mapLabel": {
+    es: "Mapa del sitio",
+    en: "Site map"
+  },
   "footer.secciones.title": {
     es: "Secciones",
     en: "Sections"
