@@ -193,7 +193,7 @@ window.I18N_DICT = {
     en: "Integral Plan for Water Conservation and Responsible Use"
   },
   "sec.elPlan.subtitle": {
-    es: "Plan Integral AURA",
+    es: "Plan Integral Plan AURA",
     en: "AURA Integral Plan"
   },
   "sec.elPlan.intro": {
