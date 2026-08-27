@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap");
-@import "variables.css?v=35";
+@import "variables.css?v=37";
 
 *,
 *::before,
@@ -210,10 +210,11 @@ a:hover {
 
 .brand-logo-wrap--wide {
   width: auto;
-  height: 3.4rem;
-  max-width: min(14rem, 42vw);
-  border-radius: 8px;
-  padding: 0.15rem 0.4rem;
+  height: 3.6rem;
+  max-width: min(16rem, 48vw);
+  border-radius: 10px;
+  padding: 0.2rem 0.45rem;
+  background: #fff;
 }
 
 .brand-logo-wrap--wide .brand-logo {
@@ -595,12 +596,12 @@ a:hover {
 
 .hero h1 {
   font-family: var(--font-display);
-  font-size: clamp(2.15rem, 4.5vw, 3.1rem);
+  font-size: clamp(1.85rem, 4.2vw, 2.75rem);
   font-weight: 600;
   line-height: 1.12;
   margin: 0 0 0.75rem;
   color: var(--color-on-dark);
-  max-width: 14ch;
+  max-width: 22ch;
   text-shadow: 0 2px 20px rgba(0, 0, 0, 0.25);
 }
 
@@ -609,6 +610,52 @@ a:hover {
   color: var(--color-on-dark-muted);
   max-width: 40rem;
   margin: 0 0 1.75rem;
+  line-height: 1.55;
+}
+
+.el-plan-fullname {
+  margin: 0 0 0.35rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.4vw, 1.55rem);
+  font-weight: 600;
+  color: var(--color-text);
+  line-height: 1.25;
+}
+
+.el-plan-subtitle {
+  margin: 0 0 1rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-celeste-dark, #1a6fa8);
+}
+
+.aura-heading {
+  text-align: center;
+  max-width: 40rem;
+  margin: 0 auto 0.85rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.6vw, 1.75rem);
+  font-weight: 600;
+  line-height: 1.25;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.28);
+}
+
+.social-links .social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-weight: 700;
+}
+
+.social-icon {
+  flex-shrink: 0;
+}
+
+.gallery-panel-empty {
+  margin: 0 0 0.75rem;
+  color: var(--color-text-soft);
+  font-size: 0.95rem;
 }
 
 .hero-actions {

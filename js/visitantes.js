@@ -27,7 +27,7 @@
     var text =
       window.I18N && window.I18N.t
         ? window.I18N.t("dyn.visitas.widget", { n: count })
-        : "Visitas al Plan AURA: " + count;
+        : "Visualizaciones del Plan: " + count;
     root.hidden = false;
     root.innerHTML = '<a href="#visitas">' + text + "</a>";
   }

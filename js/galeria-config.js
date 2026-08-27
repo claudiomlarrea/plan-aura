@@ -1,8 +1,8 @@
 window.IDA_GALERIA = {
   albums: [
     {
-      id: "plan-aura",
-      title: "Plan AURA · Obras e infraestructura",
+      id: "infraestructura",
+      title: "Infraestructura",
       description:
         "Readecuación de la red de suministro de agua potable, tanques e instalaciones asociadas al Plan Integral AURA en el campus UCCuyo.",
       photos: [
@@ -99,6 +99,27 @@ window.IDA_GALERIA = {
           alt: "Video de obra Plan AURA · montaje de tanques",
         },
       ],
+    },
+    {
+      id: "investigacion-extension",
+      title: "Investigación y Extensión",
+      description:
+        "Actividades de investigación y extensión vinculadas al Plan AURA. Próximamente se incorporarán más imágenes de esta categoría.",
+      photos: [],
+    },
+    {
+      id: "comunidad-educacion-difusion",
+      title: "Comunidad Educación y Difusión",
+      description:
+        "Acciones con la comunidad educativa y de difusión del Plan. Próximamente se incorporarán más imágenes de esta categoría.",
+      photos: [],
+    },
+    {
+      id: "institucional",
+      title: "Institucional",
+      description:
+        "Imágenes institucionales del Plan AURA. Próximamente se incorporarán más imágenes de esta categoría.",
+      photos: [],
     },
   ],
 };

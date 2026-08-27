@@ -146,6 +146,7 @@
     var metaParts = [];
     if (images) metaParts.push(images + (images === 1 ? " imagen" : " imágenes"));
     if (videos) metaParts.push(videos + (videos === 1 ? " video" : " videos"));
+    if (!photos.length) metaParts.push("Próximamente");
 
     var article = document.createElement("article");
     article.className = "gallery-event" + (openByDefault ? " is-open" : "");
@@ -177,6 +178,13 @@
       panel.appendChild(desc);
     }
 
+    if (!photos.length) {
+      var empty = document.createElement("p");
+      empty.className = "gallery-panel-empty";
+      empty.textContent = "Todavía no hay imágenes en esta categoría.";
+      panel.appendChild(empty);
+    }
+
     var grid = document.createElement("div");
     grid.className = "gallery-grid";
     grid.setAttribute("role", "list");
@@ -185,14 +193,14 @@
     toggle.addEventListener("click", function () {
       var open = !article.classList.contains("is-open");
       setOpen(article, toggle, panel, open);
-      if (open) fillGrid(grid, photos);
+      if (open && photos.length) fillGrid(grid, photos);
     });
 
     article.appendChild(toggle);
     article.appendChild(panel);
     root.appendChild(article);
 
-    if (openByDefault) fillGrid(grid, photos);
+    if (openByDefault && photos.length) fillGrid(grid, photos);
   }
 
   albums.forEach(function (album, i) {
