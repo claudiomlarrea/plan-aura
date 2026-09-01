@@ -136,8 +136,8 @@ window.I18N_DICT = {
     en: "Integral Plan for Water Conservation and Responsible Use"
   },
   "hero.lead": {
-    es: "<strong>Coordinadora general del Plan Integral:</strong> María Laura Simonassi<br /><strong>Coordinador Técnico del Plan Integral:</strong> Ing. Luis Jiménez",
-    en: "<strong>General Coordinator of the Integral Plan:</strong> María Laura Simonassi<br /><strong>Technical Coordinator of the Integral Plan:</strong> Eng. Luis Jiménez"
+    es: "<strong>Coordinadora general del Plan Integral:</strong> María Laura Simonassi<br /><strong>Coordinador Técnico:</strong> Ing. Luis Jiménez",
+    en: "<strong>General Coordinator of the Integral Plan:</strong> María Laura Simonassi<br /><strong>Technical Coordinator:</strong> Eng. Luis Jiménez"
   },
   "hero.cta.convocatorias": {
     es: "Convocatorias",
@@ -225,8 +225,8 @@ window.I18N_DICT = {
     en: "Technical Coordination"
   },
   "sec.elPlan.direccion.body": {
-    es: "<strong>Ing. Luis Jiménez</strong><br />Coordinador del Programa Plan AURA — Universidad Católica de Cuyo<br /><a href=\"mailto:luisjimenez@uccuyo.edu.ar\">luisjimenez@uccuyo.edu.ar</a>",
-    en: "<strong>Eng. Luis Jiménez</strong><br />Plan AURA Program Coordinator — Universidad Católica de Cuyo<br /><a href=\"mailto:luisjimenez@uccuyo.edu.ar\">luisjimenez@uccuyo.edu.ar</a>"
+    es: "<strong>Ing. Luis Jiménez</strong><br />Coordinador Técnico — Universidad Católica de Cuyo<br /><a href=\"mailto:luisjimenez@uccuyo.edu.ar\">luisjimenez@uccuyo.edu.ar</a>",
+    en: "<strong>Eng. Luis Jiménez</strong><br />Technical Coordinator — Universidad Católica de Cuyo<br /><a href=\"mailto:luisjimenez@uccuyo.edu.ar\">luisjimenez@uccuyo.edu.ar</a>"
   },
   "sec.elPlan.lineas.title": {
     es: "Líneas de trabajo",
@@ -833,8 +833,8 @@ window.I18N_DICT = {
     en: "October 2027"
   },
   "sec.conv.contact": {
-    es: 'Consultas: <a href="mailto:luisjimenez@uccuyo.edu.ar">luisjimenez@uccuyo.edu.ar</a> (Coordinador del Programa) · <a href="documentos/Convocatoria_Proyectos_AURA.pdf" target="_blank" rel="noopener noreferrer">Bases / instructivo</a> · <a href="documentos/plantillas/Presentacion_proyectos_Convocatoria_AURA.docx" download>Plantilla (DOCX)</a>',
-    en: 'Inquiries: <a href="mailto:luisjimenez@uccuyo.edu.ar">luisjimenez@uccuyo.edu.ar</a> (Program Coordinator) · <a href="documentos/Convocatoria_Proyectos_AURA.pdf" target="_blank" rel="noopener noreferrer">Guidelines</a> · <a href="documentos/plantillas/Presentacion_proyectos_Convocatoria_AURA.docx" download>Template (DOCX)</a>'
+    es: 'Consultas: <a href="mailto:luisjimenez@uccuyo.edu.ar">luisjimenez@uccuyo.edu.ar</a> (Coordinador Técnico) · <a href="documentos/Convocatoria_Proyectos_AURA.pdf" target="_blank" rel="noopener noreferrer">Bases / instructivo</a> · <a href="documentos/plantillas/Presentacion_proyectos_Convocatoria_AURA.docx" download>Plantilla (DOCX)</a>',
+    en: 'Inquiries: <a href="mailto:luisjimenez@uccuyo.edu.ar">luisjimenez@uccuyo.edu.ar</a> (Technical Coordinator) · <a href="documentos/Convocatoria_Proyectos_AURA.pdf" target="_blank" rel="noopener noreferrer">Guidelines</a> · <a href="documentos/plantillas/Presentacion_proyectos_Convocatoria_AURA.docx" download>Template (DOCX)</a>'
   },
 
   "sec.docs.kicker": {
@@ -1181,8 +1181,8 @@ window.I18N_DICT = {
     en: "Universidad Católica de Cuyo · San Juan campus"
   },
   "sec.contacto.plan.director": {
-    es: '<strong>Coordinador del Programa:</strong> Ingeniero Luis Jiménez<br /><a href="mailto:luisjimenez@uccuyo.edu.ar">luisjimenez@uccuyo.edu.ar</a>',
-    en: '<strong>Program Coordinator:</strong> Engineer Luis Jiménez<br /><a href="mailto:luisjimenez@uccuyo.edu.ar">luisjimenez@uccuyo.edu.ar</a>'
+    es: '<strong>Coordinador Técnico:</strong> Ingeniero Luis Jiménez<br /><a href="mailto:luisjimenez@uccuyo.edu.ar">luisjimenez@uccuyo.edu.ar</a>',
+    en: '<strong>Technical Coordinator:</strong> Engineer Luis Jiménez<br /><a href="mailto:luisjimenez@uccuyo.edu.ar">luisjimenez@uccuyo.edu.ar</a>'
   },
   "sec.contacto.enlaces.title": {
     es: "Enlaces institucionales",
