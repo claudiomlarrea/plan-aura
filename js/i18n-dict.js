@@ -574,13 +574,51 @@ window.I18N_DICT = {
     en: "Research and outreach projects · Plan AURA"
   },
   "sec.conv.intro": {
-    es: 'Convocatoria del <strong>Plan Integral AURA</strong> de la Universidad Católica de Cuyo (Resoluciones 418-CS-2024, 767-CS-2025 y 849-CS-2026) a presentar <strong>proyectos de investigación</strong> y <strong>proyectos de extensión</strong>. Son dos modalidades con plantilla/formulario y carpeta Drive distintas. Destinada a docentes, investigadores, equipos de cátedra, estudiantes avanzados y equipos interdisciplinarios de la UCCuyo · Sede San Juan.',
-    en: 'Call from Universidad Católica de Cuyo\'s <strong>AURA Integral Plan</strong> (Resolutions 418-CS-2024, 767-CS-2025, and 849-CS-2026) to submit <strong>research projects</strong> and <strong>outreach projects</strong>. These are two modalities with different templates/forms and Drive folders. Open to faculty, researchers, course teams, advanced students, and interdisciplinary teams at UCCuyo · San Juan campus.'
+    es: 'Convocatoria del <strong>Plan Integral AURA</strong> de la Universidad Católica de Cuyo (Resoluciones 418-CS-2024, 767-CS-2025 y 849-CS-2026) a presentar <strong>proyectos de investigación y extensión</strong> vinculados al ahorro y uso responsable del agua. Hay <strong>una sola plantilla</strong> de presentación para ambas líneas. Destinada a docentes, investigadores, equipos de cátedra, estudiantes avanzados y equipos interdisciplinarios de la UCCuyo · Sede San Juan.',
+    en: 'Call of the <strong>AURA Integral Plan</strong> of Universidad Católica de Cuyo (Resolutions 418-CS-2024, 767-CS-2025 and 849-CS-2026) for <strong>research and outreach projects</strong> linked to water conservation and responsible use. There is <strong>one shared application template</strong> for both lines. Open to faculty, researchers, course teams, advanced students, and interdisciplinary teams at UCCuyo · San Juan campus.'
   },
   "sec.conv.cta.disabled": {
     es: "En construcción",
     en: "Under construction"
   },
+  
+  "sec.conv.proyectos.title": {
+    es: "Presentación de proyectos de investigación y extensión",
+    en: "Research and outreach project submission"
+  },
+  "sec.conv.proyectos.body": {
+    es: "Completá la <strong>plantilla única</strong> de la convocatoria AURA (DOCX). El mismo formulario sirve para proyectos de investigación y de extensión.",
+    en: "Complete the <strong>single AURA call template</strong> (DOCX). The same form is used for research and outreach projects."
+  },
+  "sec.conv.proyectos.step.1": {
+    es: "Descargar y completar la plantilla de presentación (DOCX).",
+    en: "Download and complete the submission template (DOCX)."
+  },
+  "sec.conv.proyectos.step.2": {
+    es: "Aprobación del Consejo Directivo de la Unidad Académica.",
+    en: "Approval by the Academic Unit Board."
+  },
+  "sec.conv.proyectos.step.3": {
+    es: "Cargar el archivo en la carpeta Drive de la convocatoria.",
+    en: "Upload the file to the call Drive folder."
+  },
+  "btn.instructivoConvocatoria": {
+    es: "Instructivo / bases (PDF)",
+    en: "Guidelines (PDF)"
+  },
+  "btn.descargarPlantilla": {
+    es: "Descargar plantilla (DOCX)",
+    en: "Download template (DOCX)"
+  },
+  "btn.cargarDrive": {
+    es: "Cargar en Drive",
+    en: "Upload to Drive"
+  },
+  "btn.verPresentacion": {
+    es: "Ver presentación",
+    en: "View submission info"
+  },
+
   "sec.conv.facts.ariaLabel": {
     es: "Datos de la convocatoria",
     en: "Call for proposals details"
@@ -677,12 +715,12 @@ window.I18N_DICT = {
     en: "Review the full call text, thematic areas, and regulatory framework. Download the guidelines and Superior Council resolutions that underpin Plan AURA."
   },
   "sec.conv.paso2.title": {
-    es: "Elegí la modalidad y prepará",
-    en: "Choose the modality and prepare"
+    es: "Prepará la propuesta",
+    en: "Prepare your proposal"
   },
   "sec.conv.paso2.body": {
-    es: "Armá la propuesta con título, eje temático (a–j), fundamentación, objetivos, equipo, metodología, cronograma, resultados esperados, recursos y vinculación explícita con el Plan AURA.",
-    en: "Prepare your proposal with title, thematic area (a–j), rationale, objectives, team, methodology, timeline, expected outcomes, resources, and explicit linkage to Plan AURA."
+    es: "Armá la propuesta con título, eje temático, fundamentación, objetivos, equipo, metodología, cronograma, resultados esperados, recursos y vinculación explícita con el Plan AURA, usando la plantilla única de la convocatoria.",
+    en: "Build your proposal with title, thematic axis, rationale, objectives, team, methods, schedule, expected results, resources, and an explicit link to Plan AURA, using the single call template."
   },
   "sec.conv.paso2.equipo": {
     es: "Requisitos de equipo:",
@@ -693,8 +731,8 @@ window.I18N_DICT = {
     en: "UCCuyo faculty director + min. 2 students"
   },
   "sec.conv.paso2.list.1": {
-    es: "<strong>Investigación:</strong> Anexo I DOCX + instructivo PDF.",
-    en: "<strong>Research:</strong> Annex I DOCX + PDF guidelines."
+    es: "<strong>Plantilla única (DOCX)</strong> + bases/instructivo (PDF).",
+    en: "<strong>Single template (DOCX)</strong> + call guidelines (PDF)."
   },
   "sec.conv.paso2.list.2": {
     es: "<strong>Extensión:</strong> Google Forms + instructivo PDF.",
@@ -709,16 +747,16 @@ window.I18N_DICT = {
     en: "Submit and upload"
   },
   "sec.conv.paso3.body": {
-    es: "Con la aprobación del Consejo Directivo, cargá en la carpeta Drive que corresponde a tu modalidad. Luego el Comité Evaluador emite dictamen y se eleva al Consejo Superior.",
-    en: "Once approved by the Board, upload to the Drive folder for your modality. The Evaluation Committee then issues its report and the proposal goes to the Superior Council."
+    es: "Con la aprobación del Consejo Directivo, cargá la plantilla completada en la carpeta Drive de la convocatoria. Luego el Comité Evaluador emite dictamen y se eleva al Consejo Superior.",
+    en: "With Board approval, upload the completed template to the call Drive folder. The Evaluation Committee then issues its opinion and the file is elevated to the Superior Council."
   },
   "sec.conv.paso3.circuito": {
     es: "Circuito:",
     en: "Process:"
   },
   "sec.conv.paso3.circuito.code": {
-    es: "UA → Drive (según modalidad) → Comité → Consejos → Consejo Superior",
-    en: "AU → Drive (by modality) → Committee → Councils → Superior Council"
+    es: "UA → Drive → Comité → Consejos → Consejo Superior",
+    en: "Academic unit → Drive → Committee → Councils → Superior Council"
   },
 
   "sec.conv.ejes.title": {
@@ -811,8 +849,8 @@ window.I18N_DICT = {
     en: "October 2027"
   },
   "sec.conv.contact": {
-    es: 'Consultas: <a href="mailto:luisjimenez@uccuyo.edu.ar">luisjimenez@uccuyo.edu.ar</a> (Coordinador del Programa) · <a href="documentos/Instructivo_presentacion_proyectos_investigacion_AURA.pdf" target="_blank" rel="noopener noreferrer">Instructivo investigación</a> · <a href="documentos/Instructivo_presentacion_proyectos_extension_AURA.pdf" target="_blank" rel="noopener noreferrer">Instructivo extensión</a>',
-    en: 'Questions: <a href="mailto:luisjimenez@uccuyo.edu.ar">luisjimenez@uccuyo.edu.ar</a> (Program Coordinator) · <a href="documentos/Instructivo_presentacion_proyectos_investigacion_AURA.pdf" target="_blank" rel="noopener noreferrer">Research guidelines</a> · <a href="documentos/Instructivo_presentacion_proyectos_extension_AURA.pdf" target="_blank" rel="noopener noreferrer">Outreach guidelines</a>'
+    es: 'Consultas: <a href="mailto:luisjimenez@uccuyo.edu.ar">luisjimenez@uccuyo.edu.ar</a> (Coordinador del Programa) · <a href="documentos/Convocatoria_Proyectos_AURA.pdf" target="_blank" rel="noopener noreferrer">Bases / instructivo</a> · <a href="documentos/plantillas/Presentacion_proyectos_Convocatoria_AURA.docx" download>Plantilla (DOCX)</a>',
+    en: 'Inquiries: <a href="mailto:luisjimenez@uccuyo.edu.ar">luisjimenez@uccuyo.edu.ar</a> (Program Coordinator) · <a href="documentos/Convocatoria_Proyectos_AURA.pdf" target="_blank" rel="noopener noreferrer">Guidelines</a> · <a href="documentos/plantillas/Presentacion_proyectos_Convocatoria_AURA.docx" download>Template (DOCX)</a>'
   },
 
   "sec.docs.kicker": {
@@ -1229,8 +1267,8 @@ window.I18N_DICT = {
     en: "Open Google Form · Outreach"
   },
   "btn.verBasesOnline": {
-    es: "Ver bases en línea",
-    en: "View guidelines online"
+    es: "Ver bases (PDF)",
+    en: "View call guidelines (PDF)"
   },
   "btn.descargarBases": {
     es: "Descargar bases (DOCX)",
