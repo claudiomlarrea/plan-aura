@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap");
-@import "variables.css?v=42";
+@import "variables.css?v=43";
 
 *,
 *::before,
@@ -539,35 +539,87 @@ a:hover {
   position: relative;
   overflow: hidden;
   color: var(--color-on-dark);
-  /* Celeste del logo/manual — hex directo para no quedar blanco si falla el import */
-  background: linear-gradient(
-    145deg,
-    #4eb6e8 0%,
-    #3f8eca 42%,
-    #2b8fc9 78%,
-    #1a6fa8 100%
-  );
-  border-bottom: 4px solid #1a6fa8;
+  isolation: isolate;
+  background:
+    radial-gradient(ellipse 90% 80% at 78% 18%, rgba(142, 214, 242, 0.35) 0%, transparent 48%),
+    linear-gradient(165deg, #2b8fc9 0%, #1a6fa8 48%, #0e4e78 100%);
+  border-bottom: 4px solid #155f94;
 }
 
-.hero::before {
+.hero::before,
+.hero::after {
   content: "";
   position: absolute;
-  inset: -30% -20% auto 40%;
-  height: 90%;
-  background: radial-gradient(
-    ellipse,
-    rgba(255, 255, 255, 0.12) 0%,
-    transparent 65%
-  );
   pointer-events: none;
+  z-index: 0;
+}
+
+/* Gota 3D — capa exterior celeste del logo */
+.hero::before {
+  width: min(58vw, 36rem);
+  height: min(78vw, 48rem);
+  left: max(-6rem, -4vw);
+  top: -18%;
+  border-radius: 72% 46% 58% 42% / 48% 62% 38% 52%;
+  transform: rotate(-22deg);
+  background: linear-gradient(
+    168deg,
+    #b7e6f8 0%,
+    #4eb6e8 22%,
+    #3f8eca 52%,
+    #1a6fa8 82%,
+    #0e4e78 100%
+  );
+  box-shadow:
+    inset 18px 22px 36px rgba(255, 255, 255, 0.38),
+    inset -22px -28px 48px rgba(8, 48, 78, 0.42),
+    16px 22px 44px rgba(8, 40, 70, 0.28);
+}
+
+/* Ondas internas más oscuras, como el logo */
+.hero::after {
+  width: min(34vw, 21rem);
+  height: min(52vw, 32rem);
+  left: max(1.5rem, 6vw);
+  top: 8%;
+  border-radius: 68% 42% 62% 38% / 44% 58% 42% 56%;
+  transform: rotate(-18deg);
+  background: linear-gradient(
+    175deg,
+    #2b8fc9 0%,
+    #1a6fa8 40%,
+    #0a5c5e 78%,
+    #073a4a 100%
+  );
+  box-shadow:
+    inset 10px 14px 22px rgba(255, 255, 255, 0.16),
+    inset -14px -18px 28px rgba(0, 20, 36, 0.45);
+  opacity: 0.92;
 }
 
 .hero-inner {
   position: relative;
+  z-index: 1;
   max-width: var(--max);
   margin: 0 auto;
   padding: 3.5rem 1.25rem 4rem;
+}
+
+@media (max-width: 720px) {
+  .hero::before {
+    width: min(88vw, 22rem);
+    height: min(110vw, 28rem);
+    left: -3rem;
+    top: -12%;
+    opacity: 0.88;
+  }
+
+  .hero::after {
+    width: min(52vw, 13rem);
+    height: min(72vw, 18rem);
+    left: 0.5rem;
+    top: 12%;
+  }
 }
 
 .hero-slogan {
