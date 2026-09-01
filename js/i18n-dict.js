@@ -797,24 +797,24 @@ window.I18N_DICT = {
     en: "Evaluation"
   },
   "sec.conv.cronograma.evaluacion.value": {
-    es: "5 – 16 de octubre de 2026",
-    en: "October 5–16, 2026"
+    es: "2 – 13 de noviembre de 2026",
+    en: "November 2–13, 2026"
   },
   "sec.conv.cronograma.elevacion.label": {
     es: "Elevación a Consejo Superior",
     en: "Submission to Superior Council"
   },
   "sec.conv.cronograma.elevacion.value": {
-    es: "30 de octubre de 2026",
-    en: "October 30, 2026"
+    es: "Viernes 27 de noviembre de 2026",
+    en: "Friday, November 27, 2026"
   },
   "sec.conv.cronograma.oficializacion.label": {
     es: "Oficialización del listado",
     en: "Official list publication"
   },
   "sec.conv.cronograma.oficializacion.value": {
-    es: "6 de noviembre de 2026",
-    en: "November 6, 2026"
+    es: "2 de diciembre de 2026",
+    en: "December 2, 2026"
   },
   "sec.conv.cronograma.avance.label": {
     es: "Informe de avance",
