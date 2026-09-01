@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap");
-@import "variables.css?v=43";
+@import "variables.css?v=44";
 
 *,
 *::before,
@@ -546,55 +546,80 @@ a:hover {
   border-bottom: 4px solid #155f94;
 }
 
-.hero::before,
-.hero::after {
-  content: "";
+.hero-rain {
   position: absolute;
-  pointer-events: none;
+  inset: 0;
   z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
 }
 
-/* Gota 3D — capa exterior celeste del logo */
-.hero::before {
-  width: min(58vw, 36rem);
-  height: min(78vw, 48rem);
-  left: max(-6rem, -4vw);
-  top: -18%;
-  border-radius: 72% 46% 58% 42% / 48% 62% 38% 52%;
-  transform: rotate(-22deg);
+.hero-drop {
+  --x: 50%;
+  --s: 1;
+  --d: 5s;
+  --delay: 0s;
+  position: absolute;
+  left: var(--x);
+  top: -10%;
+  width: calc(0.72rem * var(--s));
+  height: calc(1.05rem * var(--s));
+  border-radius: 55% 45% 55% 45% / 42% 42% 58% 58%;
   background: linear-gradient(
     168deg,
-    #b7e6f8 0%,
-    #4eb6e8 22%,
-    #3f8eca 52%,
-    #1a6fa8 82%,
+    #c8eefb 0%,
+    #7fd0f0 18%,
+    #4eb6e8 42%,
+    #2b8fc9 68%,
+    #1a6fa8 88%,
     #0e4e78 100%
   );
   box-shadow:
-    inset 18px 22px 36px rgba(255, 255, 255, 0.38),
-    inset -22px -28px 48px rgba(8, 48, 78, 0.42),
-    16px 22px 44px rgba(8, 40, 70, 0.28);
+    inset 2px 3px 5px rgba(255, 255, 255, 0.55),
+    inset -2px -3px 6px rgba(8, 48, 78, 0.45),
+    1px 2px 4px rgba(8, 40, 70, 0.22);
+  opacity: 0.88;
+  transform: rotate(-12deg);
+  animation: hero-rain-fall var(--d) linear infinite;
+  animation-delay: var(--delay);
 }
 
-/* Ondas internas más oscuras, como el logo */
-.hero::after {
-  width: min(34vw, 21rem);
-  height: min(52vw, 32rem);
-  left: max(1.5rem, 6vw);
-  top: 8%;
-  border-radius: 68% 42% 62% 38% / 44% 58% 42% 56%;
-  transform: rotate(-18deg);
-  background: linear-gradient(
-    175deg,
-    #2b8fc9 0%,
-    #1a6fa8 40%,
-    #0a5c5e 78%,
-    #073a4a 100%
-  );
-  box-shadow:
-    inset 10px 14px 22px rgba(255, 255, 255, 0.16),
-    inset -14px -18px 28px rgba(0, 20, 36, 0.45);
-  opacity: 0.92;
+.hero-drop::after {
+  content: "";
+  position: absolute;
+  left: 22%;
+  top: 28%;
+  width: 38%;
+  height: 42%;
+  border-radius: 55% 45% 60% 40%;
+  background: linear-gradient(175deg, #1a6fa8 0%, #0a5c5e 70%, #073a4a 100%);
+  box-shadow: inset 1px 1px 2px rgba(255, 255, 255, 0.18);
+  opacity: 0.75;
+}
+
+@keyframes hero-rain-fall {
+  0% {
+    top: -12%;
+    opacity: 0;
+  }
+  8% {
+    opacity: 0.9;
+  }
+  92% {
+    opacity: 0.85;
+  }
+  100% {
+    top: 110%;
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-drop {
+    animation: none;
+    opacity: 0.55;
+    top: calc(10% + 55% * var(--s));
+  }
 }
 
 .hero-inner {
@@ -603,23 +628,6 @@ a:hover {
   max-width: var(--max);
   margin: 0 auto;
   padding: 3.5rem 1.25rem 4rem;
-}
-
-@media (max-width: 720px) {
-  .hero::before {
-    width: min(88vw, 22rem);
-    height: min(110vw, 28rem);
-    left: -3rem;
-    top: -12%;
-    opacity: 0.88;
-  }
-
-  .hero::after {
-    width: min(52vw, 13rem);
-    height: min(72vw, 18rem);
-    left: 0.5rem;
-    top: 12%;
-  }
 }
 
 .hero-slogan {
