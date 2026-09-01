@@ -636,8 +636,8 @@ window.I18N_DICT = {
     en: "Submission deadline"
   },
   "sec.conv.facts.cierre.value": {
-    es: "2 de octubre de 2026",
-    en: "October 2, 2026"
+    es: "30 de octubre de 2026",
+    en: "October 30, 2026"
   },
   "sec.conv.facts.duracion.label": {
     es: "Duración de proyectos",
