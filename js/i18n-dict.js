@@ -764,44 +764,48 @@ window.I18N_DICT = {
     en: "Thematic areas"
   },
   "sec.conv.ejes.1": {
-    es: "Estudios sobre consumo y comportamiento hídrico.",
-    en: "Studies on water consumption and behavior."
+    es: "Estudios sobre consumo y comportamiento hídrico (hábitos, percepciones y prácticas institucionales, familiares o comunitarias).",
+    en: "Studies on water consumption and behavior (habits, perceptions, and institutional, household, or community practices)."
   },
   "sec.conv.ejes.2": {
-    es: "Innovación tecnológica (medición, ahorro o reutilización).",
-    en: "Technological innovation (measurement, conservation, or reuse)."
+    es: "Innovación tecnológica aplicada a la medición, ahorro o reutilización del agua.",
+    en: "Technological innovation applied to water measurement, conservation, or reuse."
   },
   "sec.conv.ejes.3": {
-    es: "Impacto económico, social y productivo del recurso en San Juan.",
-    en: "Economic, social, and productive impact of water in San Juan."
+    es: "Impacto económico, social y productivo del recurso hídrico en la provincia de San Juan.",
+    en: "Economic, social, and productive impact of water resources in the province of San Juan."
   },
   "sec.conv.ejes.4": {
-    es: "Investigación aplicada en salud y uso racional del agua.",
-    en: "Applied research on health and rational water use."
+    es: "Investigación aplicada en salud vinculada al uso racional del agua y la sostenibilidad hídrica.",
+    en: "Applied health research linked to rational water use and water sustainability."
   },
   "sec.conv.ejes.5": {
-    es: "Investigación ambiental y territorial hídrica.",
-    en: "Environmental and territorial water research."
+    es: "Investigación ambiental y territorial sobre la situación hídrica regional.",
+    en: "Environmental and territorial research on the regional water situation."
   },
   "sec.conv.ejes.6": {
-    es: "Formación, sensibilización y transferencia comunitaria.",
-    en: "Training, awareness, and community transfer."
+    es: "Programas de formación, sensibilización y transferencia comunitaria sobre uso responsable del agua.",
+    en: "Training, awareness, and community transfer programs on responsible water use."
   },
   "sec.conv.ejes.7": {
-    es: "Prácticas socio-comunitarias e intervenciones territoriales.",
-    en: "Community practices and territorial interventions."
+    es: "Prácticas socio-comunitarias e intervenciones territoriales vinculadas a la gestión sostenible del agua.",
+    en: "Community practices and territorial interventions linked to sustainable water management."
   },
   "sec.conv.ejes.8": {
-    es: "Educación hídrica en todos los niveles.",
-    en: "Water education at all levels."
+    es: "Investigación y medición de la calidad microbiológica, contaminación, efectos sobre la salud y la biodiversidad.",
+    en: "Research and measurement of microbiological quality, pollution, and effects on health and biodiversity."
   },
   "sec.conv.ejes.9": {
-    es: "Legislación, marco normativo y políticas públicas.",
-    en: "Legislation, regulatory framework, and public policy."
+    es: "Educación y uso responsable del recurso hídrico, en sus distintos niveles y modalidades (inicial, primario, secundario, superior y universitario), orientada a la formación de una conciencia y cultura hídrica responsable.",
+    en: "Education and responsible water use across levels and modalities (early childhood, primary, secondary, tertiary, and university), aimed at building a responsible water culture."
   },
   "sec.conv.ejes.10": {
-    es: "Otras temáticas transversales pertinentes al Plan AURA.",
-    en: "Other cross-cutting topics relevant to Plan AURA."
+    es: "Legislación, marco normativo y políticas públicas vinculadas a la gestión, protección y uso responsable del recurso hídrico, en los ámbitos nacional, provincial y municipal.",
+    en: "Legislation, regulatory frameworks, and public policies on the management, protection, and responsible use of water resources at national, provincial, and municipal levels."
+  },
+  "sec.conv.ejes.11": {
+    es: "Otras temáticas transversales vinculadas al uso responsable y sostenible del agua no comprendidas específicamente en los ejes anteriores, que resulten pertinentes a los objetivos del Plan AURA, a criterio del Comité Evaluador.",
+    en: "Other cross-cutting topics on responsible and sustainable water use not specifically covered above, relevant to Plan AURA objectives as determined by the Evaluation Committee."
   },
 
   "sec.conv.cronograma.ariaLabel": {
