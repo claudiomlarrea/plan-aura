@@ -1306,7 +1306,7 @@ header.section-head--bar h2 {
 @media (min-width: 900px) {
   .conv-steps {
     grid-template-columns: 1fr 1fr;
-    align-items: start;
+    align-items: stretch;
   }
 }
 
@@ -1318,7 +1318,15 @@ header.section-head--bar h2 {
 
 .conv-step {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   padding-top: 1.75rem;
+}
+
+.conv-step .tile-actions--conv {
+  margin-top: auto;
+  padding-top: 1rem;
 }
 
 .conv-step-num {

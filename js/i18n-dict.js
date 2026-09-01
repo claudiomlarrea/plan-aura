@@ -722,26 +722,6 @@ window.I18N_DICT = {
     es: "Armá la propuesta con título, eje temático, fundamentación, objetivos, equipo, metodología, cronograma, resultados esperados, recursos y vinculación explícita con el Plan AURA, usando la plantilla única de la convocatoria.",
     en: "Build your proposal with title, thematic axis, rationale, objectives, team, methods, schedule, expected results, resources, and an explicit link to Plan AURA, using the single call template."
   },
-  "sec.conv.paso2.equipo": {
-    es: "Requisitos de equipo:",
-    en: "Team requirements:"
-  },
-  "sec.conv.paso2.equipo.code": {
-    es: "Director/a docente UCCuyo + mín. 2 estudiantes",
-    en: "UCCuyo faculty director + min. 2 students"
-  },
-  "sec.conv.paso2.list.1": {
-    es: "<strong>Plantilla única (DOCX)</strong> + bases/instructivo (PDF).",
-    en: "<strong>Single template (DOCX)</strong> + call guidelines (PDF)."
-  },
-  "sec.conv.paso2.list.2": {
-    es: "<strong>Extensión:</strong> Google Forms + instructivo PDF.",
-    en: "<strong>Outreach:</strong> Google Form + PDF guidelines."
-  },
-  "sec.conv.paso2.list.3": {
-    es: "Aprobación del Consejo Directivo de la Unidad Académica.",
-    en: "Approval by the Academic Unit Board."
-  },
   "sec.conv.paso3.title": {
     es: "Presentar y cargar",
     en: "Submit and upload"
