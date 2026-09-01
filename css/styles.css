@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap");
-@import "variables.css?v=41";
+@import "variables.css?v=42";
 
 *,
 *::before,
@@ -616,10 +616,11 @@ a:hover {
 .el-plan-fullname {
   margin: 0 0 0.35rem;
   font-family: var(--font-display);
-  font-size: clamp(1.25rem, 2.4vw, 1.55rem);
+  font-size: clamp(1.7rem, 3.2vw, 2.35rem);
   font-weight: 600;
-  color: var(--color-text);
+  color: #ffffff;
   line-height: 1.25;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.28);
 }
 
 .el-plan-subtitle {
@@ -753,12 +754,16 @@ a:hover {
 }
 
 header.section-head--bar .section-kicker {
-  color: rgba(255, 255, 255, 0.9);
-  margin: 0 0 0.35rem;
+  color: #ffffff;
+  margin: 0 0 0.45rem;
+  font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+  letter-spacing: 0.1em;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
 }
 
 header.section-head--bar h2 {
   color: #ffffff;
+  font-size: clamp(1.85rem, 3.4vw, 2.65rem);
   text-shadow: 0 2px 14px rgba(0, 0, 0, 0.22);
 }
 
