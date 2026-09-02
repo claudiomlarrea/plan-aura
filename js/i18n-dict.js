@@ -587,8 +587,8 @@ window.I18N_DICT = {
     en: "Research and outreach project submission"
   },
   "sec.conv.proyectos.body": {
-    es: "Completá la <strong>plantilla única</strong> de la convocatoria AURA (DOCX). El mismo formulario sirve para proyectos de investigación y de extensión.",
-    en: "Complete the <strong>single AURA call template</strong> (DOCX). The same form is used for research and outreach projects."
+    es: "Completá la <strong>plantilla única</strong> de la convocatoria AURA (DOCX).",
+    en: "Complete the <strong>single AURA call template</strong> (DOCX)."
   },
   "sec.conv.proyectos.step.1": {
     es: "Descargar y completar la plantilla de presentación (DOCX).",
