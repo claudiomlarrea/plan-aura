@@ -32,6 +32,7 @@
   var REGION_PAGE_SIZE = 8;
   var regionsVisibleLimit = REGION_PAGE_SIZE;
   var lastListData = null;
+  var lastPaintData = null;
 
   var COUNTRY_CENTROIDS = {
     AF: [-65.2, 33.9],
@@ -318,7 +319,11 @@
     var x = Number(n);
     if (!isFinite(x)) return "—";
     try {
-      return x.toLocaleString("es-AR");
+      var loc =
+        window.I18N && typeof window.I18N.getLang === "function" && window.I18N.getLang() === "en"
+          ? "en-US"
+          : "es-AR";
+      return x.toLocaleString(loc);
     } catch (e) {
       return String(x);
     }
@@ -469,7 +474,9 @@
       bar.id = "visitas-map-tools";
       bar.className = "visitas-map-tools";
       bar.innerHTML =
-        '<div class="visitas-map-actions" role="group" aria-label="Enfoque del mapa">' +
+        '<div class="visitas-map-actions" role="group" aria-label="' +
+        tt("dyn.visitas.mapFocus.ariaLabel", "Enfoque del mapa") +
+        '">' +
         '<button type="button" class="visitas-map-btn is-active" data-focus="all">' + tt("dyn.visitas.world", "Mundo") + '</button>' +
         '<button type="button" class="visitas-map-btn" data-focus="ar">' + tt("dyn.visitas.argentina", "Argentina") + '</button>' +
         "</div>" +
@@ -480,6 +487,28 @@
         '<i style="background:#0d6e4f"></i><i style="background:#7a1532"></i>' +
         "</span></div>";
       tools.insertBefore(bar, mapRoot);
+    } else {
+      refreshChromeLabels();
+    }
+  }
+
+  function refreshChromeLabels() {
+    var bar = document.getElementById("visitas-map-tools");
+    if (!bar) return;
+    var group = bar.querySelector(".visitas-map-actions");
+    if (group) {
+      group.setAttribute("aria-label", tt("dyn.visitas.mapFocus.ariaLabel", "Enfoque del mapa"));
+    }
+    var world = bar.querySelector('[data-focus="all"]');
+    var ar = bar.querySelector('[data-focus="ar"]');
+    if (world) world.textContent = tt("dyn.visitas.world", "Mundo");
+    if (ar) ar.textContent = tt("dyn.visitas.argentina", "Argentina");
+    var legend = bar.querySelector(".visitas-legend__label");
+    if (legend) {
+      legend.textContent = tt(
+        "dyn.visitas.legend",
+        "Más visitas → círculo más grande y tono más intenso"
+      );
     }
   }
 
@@ -544,8 +573,9 @@
       escapeHtml(title) +
       "</strong><br>" +
       fmt(count) +
-      " visita" +
-      (count === 1 ? "" : "s") +
+      (count === 1
+        ? tt("dyn.visitas.popup.visitOne", " visita")
+        : tt("dyn.visitas.popup.visitMany", " visitas")) +
       " <span class=\"visitas-popup-pct\">(" +
       pct(count, total) +
       ")</span>"
@@ -900,6 +930,7 @@
       setStatus(tt("dyn.visitas.errorOrigin", "No se pudo obtener el origen de las visitas."));
       return;
     }
+    lastPaintData = data;
     ensureChrome();
     renderStats(data);
     setStatus("");
@@ -914,6 +945,16 @@
           '<p class="visitas-empty">' + tt("dyn.visitas.mapFail", "No se pudo cargar el mapa interactivo. La lista de orígenes sigue disponible.") + '</p>';
       });
   }
+
+  document.addEventListener("oia:langchange", function () {
+    if (!lastPaintData) {
+      refreshChromeLabels();
+      return;
+    }
+    refreshChromeLabels();
+    renderStats(lastPaintData);
+    renderList(lastPaintData, true);
+  });
 
   function registerGeoOnce() {
     try {
@@ -978,4 +1019,13 @@
         setStatus(tt("dyn.visitas.error", "No se pudo cargar el origen de las visitas."));
       }
     );
+
+  document.addEventListener("oia:page", function (ev) {
+    if (ev.detail !== "visitas") return;
+    window.setTimeout(function () {
+      if (!mapApi) return;
+      mapApi.invalidateSize();
+      applyFocus("all");
+    }, 150);
+  });
 })();
