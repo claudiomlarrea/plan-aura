@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Plan Integral AURA de la Universidad Católica de Cuyo: ahorro y uso responsable del agua, investigación, extensión y convocatoria a proyectos."
+      content="Plan Integral de Ahorro y Uso Responsable del Agua (Plan AURA) de la Universidad Católica de Cuyo: investigación, extensión y convocatoria a proyectos."
+      data-i18n-attr="content:meta.description"
     />
-    <title>Plan AURA | Universidad Católica de Cuyo</title>
+    <title data-i18n="meta.title">Plan Integral de Ahorro y Uso Responsable del Agua | UCCuyo</title>
     <link rel="canonical" href="https://plan-aura.com.ar/" />
-    <link rel="icon" type="image/png" href="assets/logo-aura-slogan-header.png" />
-    <link rel="stylesheet" href="css/styles.css?v=22" />
+    <link rel="icon" type="image/png" href="assets/logo-aura-gota-filete.png" />
+    <link rel="stylesheet" href="css/variables.css?v=47" />
+    <link rel="stylesheet" href="css/styles.css?v=47" />
   </head>
   <body>
     <a class="skip-link" href="#contenido" data-i18n="a11y.skipLink">Ir al contenido</a>
@@ -25,16 +27,15 @@
             <span class="brand-logo-wrap brand-logo-wrap--wide">
               <img
                 class="brand-logo"
-                src="assets/logo-aura-slogan-header.png"
-                width="280"
-                height="120"
-                alt="Ahorrar agua hoy para compartir mañana"
+                src="assets/logo-aura-gota-filete.png"
+                width="320"
+                height="160"
+                alt="Plan AURA — logo del agua"
                 data-i18n-attr="alt:a11y.brandLogoAlt"
                 decoding="async"
               />
             </span>
             <span class="brand-text">
-              <span class="brand-kicker" data-i18n="brand.kicker">Universidad Católica de Cuyo</span>
               <span class="brand-title" data-i18n="brand.title">Plan AURA</span>
             </span>
           </a>
@@ -49,17 +50,62 @@
             <span class="nav-toggle-icon"></span>
           </button>
           <nav class="site-nav" id="site-nav" aria-label="Principal" data-i18n-attr="aria-label:nav.ariaLabel">
-            <ul>
+            <ul class="nav-root">
               <li><a href="#inicio" data-i18n="nav.inicio">Inicio</a></li>
-              <li><a href="#el-plan" data-i18n="nav.elPlan">El Plan</a></li>
-              <li><a href="#plan-aura" data-i18n="nav.planAura">Plan AURA</a></li>
-              <li><a href="#comision" data-i18n="nav.comision">Sala de trabajo</a></li>
-              <li><a href="#equipo" data-i18n="nav.equipo">Equipo coordinador</a></li>
-              <li><a href="#red" data-i18n="nav.red">Red institucional</a></li>
+
+              <li class="nav-item has-submenu">
+                <button
+                  type="button"
+                  class="nav-submenu-toggle"
+                  aria-expanded="false"
+                  aria-controls="nav-sub-plan"
+                  data-i18n="nav.group.plan"
+                >
+                  El Plan
+                </button>
+                <ul class="nav-submenu" id="nav-sub-plan">
+                  <li><a href="#el-plan" data-i18n="nav.elPlan">El Plan AURA</a></li>
+                  <li><a href="#equipo" data-i18n="nav.equipo">Equipo coordinador</a></li>
+                  <li><a href="#plan-aura" data-i18n="nav.planAura">Plan Técnico AURA</a></li>
+                  <li><a href="#documentos" data-i18n="nav.marco">Marco normativo</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item has-submenu">
+                <button
+                  type="button"
+                  class="nav-submenu-toggle"
+                  aria-expanded="false"
+                  aria-controls="nav-sub-comunidad"
+                  data-i18n="nav.group.comunidad"
+                >
+                  Comunidad
+                </button>
+                <ul class="nav-submenu" id="nav-sub-comunidad">
+                  <li><a href="#red" data-i18n="nav.red">Red institucional</a></li>
+                </ul>
+              </li>
+
               <li><a href="#convocatoria" data-i18n="nav.convocatorias">Convocatorias</a></li>
-              <li><a href="#documentos" data-i18n="nav.documentos">Documentos</a></li>
-              <li><a href="#galeria" data-i18n="nav.galeria">Galería de imágenes</a></li>
-              <li><a href="#visitas" data-i18n="nav.visitas">Visitas al Plan AURA</a></li>
+
+              <li class="nav-item has-submenu">
+                <button
+                  type="button"
+                  class="nav-submenu-toggle"
+                  aria-expanded="false"
+                  aria-controls="nav-sub-difusion"
+                  data-i18n="nav.group.difusion"
+                >
+                  Difusión
+                </button>
+                <ul class="nav-submenu" id="nav-sub-difusion">
+                  <li><a href="#noticias" data-i18n="nav.noticias">Noticias</a></li>
+                  <li><a href="#publicaciones" data-i18n="nav.publicaciones">Publicaciones</a></li>
+                  <li><a href="#galeria" data-i18n="nav.galeria">Galería de imágenes</a></li>
+                  <li><a href="#visitas" data-i18n="nav.visitas">Visualizaciones del Plan</a></li>
+                </ul>
+              </li>
+
               <li><a href="#contacto" data-i18n="nav.contacto">Contacto</a></li>
             </ul>
           </nav>
@@ -70,38 +116,59 @@
     <main id="contenido">
       <div class="page-panel is-active" data-page="inicio">
       <section class="hero" aria-labelledby="titulo-principal">
+        <div class="hero-rain" aria-hidden="true">
+          <span class="hero-drop" style="--x:4%;--s:.55;--d:5.8s;--delay:-1.2s"></span>
+          <span class="hero-drop" style="--x:9%;--s:.85;--d:4.6s;--delay:-3.1s"></span>
+          <span class="hero-drop" style="--x:14%;--s:.4;--d:6.4s;--delay:-0.4s"></span>
+          <span class="hero-drop" style="--x:19%;--s:.7;--d:5.1s;--delay:-4.8s"></span>
+          <span class="hero-drop" style="--x:24%;--s:.5;--d:7.2s;--delay:-2.0s"></span>
+          <span class="hero-drop" style="--x:29%;--s:.95;--d:4.2s;--delay:-5.5s"></span>
+          <span class="hero-drop" style="--x:34%;--s:.45;--d:6.0s;--delay:-1.7s"></span>
+          <span class="hero-drop" style="--x:39%;--s:.75;--d:5.4s;--delay:-3.9s"></span>
+          <span class="hero-drop" style="--x:44%;--s:.6;--d:4.9s;--delay:-0.8s"></span>
+          <span class="hero-drop" style="--x:49%;--s:.35;--d:7.6s;--delay:-2.6s"></span>
+          <span class="hero-drop" style="--x:54%;--s:.8;--d:5.0s;--delay:-4.2s"></span>
+          <span class="hero-drop" style="--x:59%;--s:.5;--d:6.8s;--delay:-1.0s"></span>
+          <span class="hero-drop" style="--x:64%;--s:.9;--d:4.4s;--delay:-5.9s"></span>
+          <span class="hero-drop" style="--x:69%;--s:.42;--d:6.2s;--delay:-3.4s"></span>
+          <span class="hero-drop" style="--x:74%;--s:.65;--d:5.6s;--delay:-0.2s"></span>
+          <span class="hero-drop" style="--x:79%;--s:.55;--d:7.0s;--delay:-2.9s"></span>
+          <span class="hero-drop" style="--x:84%;--s:.78;--d:4.8s;--delay:-4.5s"></span>
+          <span class="hero-drop" style="--x:89%;--s:.4;--d:6.5s;--delay:-1.5s"></span>
+          <span class="hero-drop" style="--x:94%;--s:.7;--d:5.3s;--delay:-3.7s"></span>
+          <span class="hero-drop" style="--x:7%;--s:.48;--d:5.9s;--delay:-6.1s"></span>
+          <span class="hero-drop" style="--x:17%;--s:.62;--d:4.7s;--delay:-2.3s"></span>
+          <span class="hero-drop" style="--x:27%;--s:.38;--d:7.4s;--delay:-5.0s"></span>
+          <span class="hero-drop" style="--x:37%;--s:.88;--d:4.5s;--delay:-0.6s"></span>
+          <span class="hero-drop" style="--x:47%;--s:.52;--d:6.1s;--delay:-3.0s"></span>
+          <span class="hero-drop" style="--x:57%;--s:.72;--d:5.2s;--delay:-4.9s"></span>
+          <span class="hero-drop" style="--x:67%;--s:.44;--d:6.9s;--delay:-1.9s"></span>
+          <span class="hero-drop" style="--x:77%;--s:.82;--d:4.3s;--delay:-5.7s"></span>
+          <span class="hero-drop" style="--x:87%;--s:.58;--d:5.7s;--delay:-2.4s"></span>
+          <span class="hero-drop" style="--x:12%;--s:.66;--d:6.3s;--delay:-0.9s"></span>
+          <span class="hero-drop" style="--x:22%;--s:.36;--d:7.8s;--delay:-3.6s"></span>
+          <span class="hero-drop" style="--x:42%;--s:.92;--d:4.1s;--delay:-6.4s"></span>
+          <span class="hero-drop" style="--x:62%;--s:.48;--d:5.5s;--delay:-1.3s"></span>
+          <span class="hero-drop" style="--x:82%;--s:.74;--d:4.95s;--delay:-4.0s"></span>
+          <span class="hero-drop" style="--x:96%;--s:.46;--d:6.6s;--delay:-2.7s"></span>
+        </div>
         <div class="hero-inner">
-          <img
-            class="hero-slogan"
-            src="assets/logo-aura-usuario.png"
-            width="1024"
-            height="827"
-            alt="Ahorrar agua hoy para compartir mañana"
-            data-i18n-attr="alt:a11y.heroSloganAlt"
-            decoding="async"
-          />
-          <p class="hero-faculty" data-i18n="hero.faculty">Universidad Católica de Cuyo</p>
-          <h1 id="titulo-principal" data-i18n="hero.title">Plan Integral AURA</h1>
-          <p class="hero-lead" data-i18n="hero.lead">
-            Programa institucional de la Universidad Católica de Cuyo para el
-            ahorro y el uso responsable del agua: investigación, formación y
-            vinculación con el territorio, con enfoque académico, ético y
-            regional en San Juan, San Luis y Mendoza.
+          <h1 id="titulo-principal" data-i18n="hero.title">
+            Plan Integral de Ahorro y Uso Responsable del Agua
+          </h1>
+          <p class="hero-lead" data-i18n-html="hero.lead">
+            <strong>Coordinadora general del Plan Integral:</strong> María Laura Simonassi<br />
+            <strong>Coordinador Técnico:</strong> Ing. Luis Jiménez
           </p>
           <div class="hero-actions">
+            <a class="btn btn-ghost" href="#el-plan" data-i18n="hero.cta.plan">Conocer el Plan</a>
             <a class="btn btn-ghost" href="#convocatoria" data-i18n="hero.cta.convocatorias">Convocatorias</a>
             <a class="btn btn-ghost" href="#galeria" data-i18n="hero.cta.galeria">Galería de imágenes</a>
-            <a class="btn btn-ghost" href="#plan-aura" data-i18n="hero.cta.plan">Conocer el Plan</a>
-            <a class="btn btn-ghost" href="#red" data-i18n="hero.cta.red">Red institucional</a>
-            <a class="btn btn-ghost" href="#equipo" data-i18n="hero.cta.equipo">Equipo coordinador</a>
-            <a class="btn btn-ghost" href="#comision" data-i18n="hero.cta.comision">Sala de trabajo</a>
-            <a class="btn btn-ghost" href="#documentos" data-i18n="hero.cta.documentos">Documentos</a>
-            <a class="btn btn-ghost" href="#visitas" data-i18n="hero.cta.visitas">Visitas al Plan AURA</a>
             <a class="btn btn-ghost" href="#contacto" data-i18n="hero.cta.contacto">Contacto</a>
           </div>
           <div class="hero-mail-row">
             <p class="hero-mail" data-i18n-html="hero.director">
-              Coordinador del Programa: Ing. Luis Jiménez ·
+              Coordinador Técnico:
               <a href="mailto:luisjimenez@uccuyo.edu.ar">luisjimenez@uccuyo.edu.ar</a>
             </p>
             <p id="visitantes-widget" class="visitantes-widget visitantes-widget--hero" aria-live="polite" hidden></p>
@@ -110,20 +177,34 @@
       </section>
       </div>
 
-      <section class="page-panel section" id="el-plan" aria-labelledby="sec-el-plan" data-page="el-plan">
+      <section class="section page-panel" id="el-plan" data-page="el-plan" aria-labelledby="sec-el-plan">
         <div class="section-inner">
           <header class="section-head section-head--bar section-head--green">
             <p class="section-kicker" data-i18n="sec.elPlan.kicker">Identidad</p>
             <h2 id="sec-el-plan" data-i18n="sec.elPlan.title">El Plan AURA</h2>
           </header>
+          <h3 class="el-plan-fullname" data-i18n="sec.elPlan.fullname">
+            Plan Integral de Ahorro y Uso Responsable del Agua
+          </h3>
+          <p class="el-plan-subtitle" data-i18n="sec.elPlan.subtitle">Plan Integral Plan AURA</p>
           <p class="text-intro" data-i18n-html="sec.elPlan.intro">
-            El <strong>Plan Integral de Ahorro y Uso Responsable del Agua (Plan AURA)</strong>
-            depende de la Universidad Católica de Cuyo, conforme a su resolución
-            de conformación. Articula docencia, investigación y extensión en torno
-            a la gestión sostenible del recurso hídrico en contextos áridos, con
-            especial referencia a la provincia de San Juan, e integra a institutos,
-            unidades académicas y niveles educativos de la sede (véase
-            <a href="#red">Red institucional</a>).
+            El Plan AURA depende de la Universidad Católica de Cuyo, conforme a su
+            resolución de conformación N.º&nbsp;418-CS-2024 del Consejo Superior.
+            Articula docencia, investigación y extensión en torno a la gestión
+            sostenible del recurso hídrico en contextos áridos, en la provincia de
+            San Juan, e integra a institutos, unidades académicas y niveles
+            educativos de la sede (véase <a href="#red">Red institucional</a>).
+            Como también en las sedes de San Luis y Mendoza.
+          </p>
+          <p class="tile-actions">
+            <a
+              class="btn btn-primary"
+              href="documentos/Resolucion_418-CS-2024_Plan_AURA.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-i18n="sec.elPlan.ctaResolucion"
+              >Resolución N.º 418-CS-2024</a
+            >
           </p>
           <div class="grid-2">
             <article class="card">
@@ -131,8 +212,11 @@
               <p data-i18n="sec.elPlan.mision.body">
                 Promover el conocimiento científico y aplicado, la formación de
                 capacidades y la transferencia a la comunidad sobre el ahorro y el
-                uso responsable del agua, contribuyendo a una cultura hídrica
-                responsable en la UCCuyo y su área de influencia.
+                uso responsable del agua, impulsando su aplicación concreta en
+                diagnósticos, planes y herramientas de gestión hídrica, y
+                contribuyendo a una cultura hídrica responsable en la UCCuyo y su
+                área de influencia, en respuesta al llamado del papa Francisco en
+                Laudato Si' al cuidado de la casa común.
               </p>
             </article>
             <article class="card">
@@ -140,15 +224,18 @@
               <p data-i18n="sec.elPlan.vision.body">
                 Consolidarse como programa referente de la UCCuyo en la gestión
                 sostenible del recurso hídrico, en articulación con el Plan
-                Estratégico Institucional 2023-2027.
+                Estratégico Institucional 2023-2027, que inspire nuevas prácticas
+                y contribuya a que instituciones, organizaciones y ciudadanos se
+                comprometan activamente con la preservación del recurso hídrico
+                para las generaciones presentes y futuras.
               </p>
             </article>
           </div>
           <article class="card stack-gap-top">
-            <h3 data-i18n="sec.elPlan.direccion.title">Coordinación</h3>
+            <h3 data-i18n="sec.elPlan.direccion.title">Coordinación Técnica</h3>
             <p data-i18n-html="sec.elPlan.direccion.body">
               <strong>Ing. Luis Jiménez</strong><br />
-              Coordinador del Programa Plan AURA — Universidad Católica de Cuyo<br />
+              Coordinador Técnico — Universidad Católica de Cuyo<br />
               <a href="mailto:luisjimenez@uccuyo.edu.ar">luisjimenez@uccuyo.edu.ar</a>
             </p>
           </article>
@@ -162,7 +249,6 @@
             <ul class="pill-list">
               <li data-i18n="sec.elPlan.lineas.1">Ahorro y uso responsable del agua</li>
               <li data-i18n="sec.elPlan.lineas.2">Innovación tecnológica hídrica</li>
-              <li data-i18n="sec.elPlan.lineas.3">Integración curricular AURA</li>
               <li data-i18n="sec.elPlan.lineas.4">Extensión y transferencia comunitaria</li>
               <li data-i18n="sec.elPlan.lineas.5">Investigación en contextos áridos</li>
             </ul>
@@ -170,106 +256,7 @@
         </div>
       </section>
 
-      <section class="page-panel section section--comision" id="comision" aria-labelledby="sec-comision" data-page="comision">
-        <div class="section-inner">
-          <header class="section-head section-head--bar section-head--green">
-            <p class="section-kicker" data-i18n="sec.comision.kicker">Trabajo interno</p>
-            <h2 id="sec-comision" data-i18n="sec.comision.title">Sala de trabajo</h2>
-          </header>
-          <p class="text-intro" data-i18n="sec.comision.intro">
-            Espacio único de comunicación y trabajo del Equipo coordinador del Plan AURA.
-            La idea es concentrar novedades, conversación, documentos y agenda acá,
-            para no dispersar la coordinación entre WhatsApp, correos sueltos y
-            carpetas personales. El acceso a Chat, Drive y Calendar es para
-            integrantes del Equipo (cuentas UCCuyo).
-          </p>
-
-          <div class="sala-doors" role="list">
-            <article class="card sala-door" role="listitem">
-              <h3 data-i18n="sec.comision.novedades.title">Novedades</h3>
-              <p data-i18n="sec.comision.novedades.body">
-                Avisos oficiales del Equipo: plazos, reuniones y decisiones.
-                Canal de lectura; no reemplaza la conversación de trabajo.
-              </p>
-              <p class="tile-actions">
-                <a
-                  class="btn btn-ghost sala-door__pending"
-                  href="mailto:luisjimenez@uccuyo.edu.ar?subject=Comisi%C3%B3n%20AURA%20%C2%B7%20Novedades"
-                  data-i18n="sec.comision.novedades.cta"
-                  >Configurar novedades</a
-                >
-              </p>
-            </article>
-            <article class="card sala-door" role="listitem">
-              <h3 data-i18n="sec.comision.conversacion.title">Conversación</h3>
-              <p data-i18n="sec.comision.conversacion.body">
-                Canal único de mensajería del Equipo (recomendado: Google Chat
-                institucional). Sustituye hilos de WhatsApp y cadenas de correo.
-              </p>
-              <p class="tile-actions">
-                <a
-                  class="btn btn-primary sala-door__pending"
-                  href="mailto:luisjimenez@uccuyo.edu.ar?subject=Comisi%C3%B3n%20AURA%20%C2%B7%20Google%20Chat"
-                  data-i18n="sec.comision.conversacion.cta"
-                  >Pedir acceso / configurar Chat</a
-                >
-              </p>
-            </article>
-            <article class="card sala-door" role="listitem">
-              <h3 data-i18n="sec.comision.documentos.title">Documentos de trabajo</h3>
-              <p data-i18n="sec.comision.documentos.body">
-                Carpeta Drive del Equipo (actas, borradores, cronogramas).
-                Distinta de las carpetas públicas de la convocatoria.
-              </p>
-              <p class="tile-actions">
-                <a
-                  class="btn btn-ghost sala-door__pending"
-                  href="mailto:luisjimenez@uccuyo.edu.ar?subject=Comisi%C3%B3n%20AURA%20%C2%B7%20Drive"
-                  data-i18n="sec.comision.documentos.cta"
-                  >Configurar Drive del Equipo</a
-                >
-              </p>
-            </article>
-            <article class="card sala-door" role="listitem">
-              <h3 data-i18n="sec.comision.agenda.title">Agenda</h3>
-              <p data-i18n="sec.comision.agenda.body">
-                Calendar compartido: reuniones del Equipo, hitos del Plan y
-                fechas de evaluación de la convocatoria.
-              </p>
-              <p class="tile-actions">
-                <a
-                  class="btn btn-ghost sala-door__pending"
-                  href="mailto:luisjimenez@uccuyo.edu.ar?subject=Comisi%C3%B3n%20AURA%20%C2%B7%20Calendar"
-                  data-i18n="sec.comision.agenda.cta"
-                  >Configurar Calendar</a
-                >
-              </p>
-            </article>
-          </div>
-
-          <article class="card stack-gap-top" id="comision-integrantes">
-            <h3 data-i18n="sec.comision.integrantes.title">Integrantes</h3>
-            <p class="sala-note" data-i18n-html="sec.comision.integrantes.note">
-              La nómina oficial del Equipo Coordinador y de Comunicación está
-              establecida por la Resolución N.º&nbsp;620-R-2025. Ver
-              <a href="#equipo">Equipo coordinador y de comunicación</a>.
-            </p>
-            <p class="tile-actions">
-              <a class="btn btn-primary" href="#equipo" data-i18n="sec.comision.integrantes.ctaEquipo"
-                >Ver equipo (Res. 620-R-2025)</a
-              >
-              <a
-                class="btn btn-ghost"
-                href="mailto:luisjimenez@uccuyo.edu.ar?subject=Comisi%C3%B3n%20AURA%20%C2%B7%20Consulta"
-                data-i18n="sec.comision.integrantes.cta"
-                >Consultar a la Dirección del Plan</a
-              >
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section class="page-panel section section--equipo" id="equipo" aria-labelledby="sec-equipo" data-page="equipo">
+      <section class="section section--equipo page-panel" id="equipo" data-page="equipo" aria-labelledby="sec-equipo">
         <div class="section-inner">
           <header class="section-head section-head--bar section-head--water">
             <p class="section-kicker" data-i18n="sec.equipo.kicker">Resolución N.º 620-R-2025</p>
@@ -291,7 +278,7 @@
                 operativa e interdisciplinaria del Plan AURA.
               </p>
               <ul class="check-list equipo-list">
-                <li data-i18n-html="sec.equipo.coord.lead"><strong>Ing. Luis Jiménez</strong> — Coordinador del Programa</li>
+                <li><strong>Ing. Luis Jiménez</strong> — Coordinador Técnico</li>
                 <li>Lucía Mabel Ghilardi</li>
                 <li>José Antonio Carrascosa</li>
                 <li>Mario Céspedes</li>
@@ -328,12 +315,59 @@
               data-i18n="sec.equipo.ctaResolucion"
               >Ver Resolución N.º 620-R-2025 (PDF)</a
             >
-            <a class="btn btn-ghost" href="#documentos" data-i18n="sec.equipo.ctaDocs">Ir a Documentos</a>
+            <a class="btn btn-ghost" href="#documentos" data-i18n="sec.equipo.ctaDocs">Ir a Marco normativo</a>
           </p>
         </div>
       </section>
+      <section class="section section--aura page-panel" id="plan-aura" data-page="plan-aura" aria-labelledby="sec-aura">
+        <div class="section-inner">
+          <header class="section-head section-head--bar section-head--water">
+            <p class="section-kicker" data-i18n="sec.aura.kicker">Programa institucional</p>
+            <h2 id="sec-aura" data-i18n="sec.aura.title">Plan Técnico AURA</h2>
+          </header>
 
-      <section class="page-panel section section--red" id="red" aria-labelledby="sec-red" data-page="red">
+          <h3 class="aura-heading" data-i18n="sec.aura.heading">
+            Convertir la infraestructura en una herramienta de aprendizaje.
+          </h3>
+          <p class="aura-lead" data-i18n="sec.aura.lead">
+            El plan AURA transforma una necesidad operativa en un proyecto educativo
+            con el objetivo de incorporar la cultura de medición y gestión en la
+            institución.
+          </p>
+
+          <div class="aura-metrics" role="list">
+            <div class="aura-metric" role="listitem">
+              <strong data-i18n="sec.aura.metrics.1.value">100.000 L/día</strong>
+              <span data-i18n="sec.aura.metrics.1.label">Capacidad operativa de referencia</span>
+            </div>
+            <div class="aura-metric" role="listitem">
+              <strong data-i18n="sec.aura.metrics.2.value">1.000 m</strong>
+              <span data-i18n="sec.aura.metrics.2.label">Tubería instalada · red sector oeste</span>
+            </div>
+          </div>
+
+          <div class="aura-gallery" aria-label="Obras e infraestructura Plan AURA" data-i18n-attr="aria-label:sec.aura.gallery.ariaLabel">
+            <figure>
+              <img src="assets/img/tanque-elevado-noche.jpg" alt="Tanque elevado del campus con mensaje AURA" data-i18n-attr="alt:sec.aura.gallery.1.alt" loading="lazy" decoding="async" />
+            </figure>
+            <figure>
+              <img src="assets/img/cartel-plan-aura.jpg" alt="Cartel informativo del Plan de Ahorro y Uso Responsable del Agua" data-i18n-attr="alt:sec.aura.gallery.2.alt" loading="lazy" decoding="async" />
+            </figure>
+            <figure>
+              <img src="assets/img/instalacion-tanque.jpg" alt="Instalación de cisterna en obra institucional" data-i18n-attr="alt:sec.aura.gallery.3.alt" loading="lazy" decoding="async" />
+            </figure>
+            <figure>
+              <img src="assets/img/instalacion-tanque-grua.jpg" alt="Montaje de tanque con grúa en el campus" data-i18n-attr="alt:sec.aura.gallery.4.alt" loading="lazy" decoding="async" />
+            </figure>
+          </div>
+
+          <blockquote class="quote-block">
+            <p data-i18n="sec.aura.quote">«Que el Agua no sea signo de separación, sino de encuentro»</p>
+            <cite data-i18n="sec.aura.quote.cite">— Papa Francisco</cite>
+          </blockquote>
+        </div>
+      </section>
+      <section class="section section--red page-panel" id="red" data-page="red" aria-labelledby="sec-red">
         <div class="section-inner">
           <header class="section-head section-head--bar section-head--green">
             <p class="section-kicker" data-i18n="sec.red.kicker">Resolución 418-CS-2024</p>
@@ -398,9 +432,9 @@
               </p>
             </article>
             <article class="card">
-              <h3 data-i18n="sec.red.ies.title">Institutos de Enseñanza Superior</h3>
+              <h3 data-i18n="sec.red.ies.title">Instituto superior de Formación docente</h3>
               <p data-i18n="sec.red.ies.body">
-                Institutos de Enseñanza Superior de la Universidad Católica de
+                Instituto superior de Formación docente de la Universidad Católica de
                 Cuyo: «Santa María» y «San Buenaventura», parte del plan educativo
                 y pedagógico del AURA.
               </p>
@@ -413,131 +447,25 @@
                 educativa.
               </p>
             </article>
-            <article class="card">
-              <h3 data-i18n="sec.red.comunicacion.title">Comunicación y divulgación</h3>
-              <p data-i18n="sec.red.comunicacion.body">
-                Mecanismos de comunicación interna y externa con la comunidad
-                educativa y con actores sociales y económicos de la Provincia.
-              </p>
-              <p class="tile-actions">
-                <a class="btn btn-ghost" href="#comision" data-i18n="sec.red.comunicacion.ctaComision">Sala de trabajo</a>
-                <a
-                  class="btn btn-ghost"
-                  href="documentos/Resolucion_418-CS-2024_Plan_AURA.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-i18n="sec.red.comunicacion.ctaResolucion"
-                  >Ver Resolución 418</a
-                >
-              </p>
-            </article>
           </div>
         </div>
       </section>
 
-      <section class="page-panel section section--aura" id="plan-aura" aria-labelledby="sec-aura" data-page="plan-aura">
-        <div class="section-inner">
-          <header class="section-head section-head--bar section-head--water">
-            <p class="section-kicker" data-i18n="sec.aura.kicker">Programa institucional</p>
-            <h2 id="sec-aura" data-i18n="sec.aura.title">Plan AURA</h2>
-          </header>
-
-          <img
-            class="aura-banner"
-            src="assets/logo-plan-aura-banner-tight.png"
-            width="981"
-            height="330"
-            alt="Plan Integral de Ahorro y Uso Responsable del Agua — Ahorrar agua hoy para compartir mañana"
-            data-i18n-attr="alt:a11y.auraBannerAlt"
-            decoding="async"
-          />
-
-          <p class="aura-slogan" data-i18n="sec.aura.slogan">«Ahorrar agua hoy para compartir mañana»</p>
-
-          <p class="aura-lead" data-i18n-html="sec.aura.lead">
-            El <strong>Plan Integral de Ahorro y Uso Responsable del Agua (Plan AURA)</strong>
-            fue aprobado por la Resolución N.º&nbsp;418-CS-2024 del Consejo Superior.
-            Reconoce el contexto crítico de escasez hídrica de San Juan y asume el
-            compromiso institucional de la UCCuyo de promover una gestión eficiente,
-            responsable y sostenible del recurso en docencia, investigación y extensión.
-          </p>
-
-          <div class="aura-metrics" role="list">
-            <div class="aura-metric" role="listitem">
-              <strong data-i18n="sec.aura.metrics.1.value">100.000 L/día</strong>
-              <span data-i18n="sec.aura.metrics.1.label">Capacidad operativa de referencia</span>
-            </div>
-            <div class="aura-metric" role="listitem">
-              <strong data-i18n="sec.aura.metrics.2.value">1.000 m</strong>
-              <span data-i18n="sec.aura.metrics.2.label">Tubería instalada · red sector oeste</span>
-            </div>
-            <div class="aura-metric" role="listitem">
-              <strong data-i18n="sec.aura.metrics.3.value">2026</strong>
-              <span data-i18n="sec.aura.metrics.3.label">Integración curricular y convocatoria</span>
-            </div>
-          </div>
-
-          <div class="aura-cta-row">
-            <a class="btn-aura" href="#convocatoria">
-              <span class="btn-aura__mark" data-i18n="sec.aura.cta.convocatorias">Convocatorias</span>
-            </a>
-            <a class="btn btn-water" href="documentos/Resolucion_418-CS-2024_Plan_AURA.pdf" target="_blank" rel="noopener noreferrer" data-i18n="sec.aura.cta.resolucion"
-              >Resolución 418-CS-2024</a
-            >
-            <a
-              class="btn btn-ghost"
-              href="documentos/Planificacion_integracion_curricular_AURA_2026.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              data-i18n="sec.aura.cta.planificacion"
-              >Planificación 2026</a
-            >
-          </div>
-
-          <div class="aura-gallery" aria-label="Obras e infraestructura Plan AURA" data-i18n-attr="aria-label:sec.aura.gallery.ariaLabel">
-            <figure>
-              <img src="assets/img/tanque-elevado-noche.jpg" alt="Tanque elevado del campus con mensaje AURA" data-i18n-attr="alt:sec.aura.gallery.1.alt" loading="lazy" decoding="async" />
-            </figure>
-            <figure>
-              <img src="assets/img/cartel-plan-aura.jpg" alt="Cartel informativo del Plan de Ahorro y Uso Responsable del Agua" data-i18n-attr="alt:sec.aura.gallery.2.alt" loading="lazy" decoding="async" />
-            </figure>
-            <figure>
-              <img src="assets/img/instalacion-tanque.jpg" alt="Instalación de cisterna en obra institucional" data-i18n-attr="alt:sec.aura.gallery.3.alt" loading="lazy" decoding="async" />
-            </figure>
-            <figure>
-              <img src="assets/img/instalacion-tanque-grua.jpg" alt="Montaje de tanque con grúa en el campus" data-i18n-attr="alt:sec.aura.gallery.4.alt" loading="lazy" decoding="async" />
-            </figure>
-          </div>
-
-          <blockquote class="quote-block">
-            <p data-i18n="sec.aura.quote">«Que el Agua no sea signo de separación, sino de encuentro»</p>
-            <cite data-i18n="sec.aura.quote.cite">— Papa Francisco</cite>
-          </blockquote>
-        </div>
-      </section>
-
-      <section class="page-panel section section--convocatoria is-wip" id="convocatoria" aria-labelledby="sec-convocatoria" data-page="convocatoria">
+      <section class="section section--convocatoria page-panel" id="convocatoria" data-page="convocatoria" aria-labelledby="sec-convocatoria">
         <div class="section-inner">
           <header class="section-head section-head--bar section-head--water">
             <p class="section-kicker" data-i18n="sec.conv.kicker">Convocatorias 2026</p>
             <h2 id="sec-convocatoria" data-i18n="sec.conv.title">Proyectos de investigación y extensión · Plan AURA</h2>
           </header>
 
-          <p class="conv-wip-badge" data-i18n="sec.conv.badge">En construcción</p>
-          <p class="conv-wip-note" data-i18n="sec.conv.status">
-            La convocatoria a proyectos todavía no está abierta. La sección permanece
-            visible a modo informativo; los formularios, plantillas y cargas en Drive
-            se habilitarán cuando se publique oficialmente.
-          </p>
-
           <p class="text-intro" data-i18n-html="sec.conv.intro">
             Convocatoria del <strong>Plan Integral AURA</strong> de la Universidad
             Católica de Cuyo (Resoluciones 418-CS-2024, 767-CS-2025 y 849-CS-2026)
-            a presentar <strong>proyectos de investigación</strong> y
-            <strong>proyectos de extensión</strong>. Son dos modalidades con
-            plantilla/formulario y carpeta Drive distintas. Destinada a docentes,
-            investigadores, equipos de cátedra, estudiantes avanzados y equipos
-            interdisciplinarios de la UCCuyo · Sede San Juan.
+            a presentar <strong>proyectos de investigación y extensión</strong>
+            vinculados al ahorro y uso responsable del agua. Hay
+            <strong>una sola plantilla</strong> de presentación para ambas líneas.
+            Destinada a docentes, investigadores, equipos de cátedra, estudiantes
+            avanzados y equipos interdisciplinarios de la UCCuyo · Sede San Juan.
           </p>
 
           <ul class="conv-facts" aria-label="Datos de la convocatoria" data-i18n-attr="aria-label:sec.conv.facts.ariaLabel">
@@ -547,7 +475,7 @@
             </li>
             <li>
               <span class="conv-fact-label" data-i18n="sec.conv.facts.cierre.label">Cierre de presentación</span>
-              <span class="conv-fact-value" data-i18n="sec.conv.facts.cierre.value">2 de octubre de 2026</span>
+              <span class="conv-fact-value" data-i18n="sec.conv.facts.cierre.value">30 de octubre de 2026</span>
             </li>
             <li>
               <span class="conv-fact-label" data-i18n="sec.conv.facts.duracion.label">Duración de proyectos</span>
@@ -555,88 +483,51 @@
             </li>
             <li>
               <span class="conv-fact-label" data-i18n="sec.conv.facts.presupuesto.label">Presupuesto total</span>
-              <span class="conv-fact-value" data-i18n="sec.conv.facts.presupuesto.value">$20.000.000</span>
+              <span class="conv-fact-value" data-i18n="sec.conv.facts.presupuesto.value">$10.000.000</span>
             </li>
             <li>
               <span class="conv-fact-label" data-i18n="sec.conv.facts.tope.label">Tope por proyecto</span>
-              <span class="conv-fact-value" data-i18n="sec.conv.facts.tope.value">Hasta $1.000.000</span>
+              <span class="conv-fact-value" data-i18n="sec.conv.facts.tope.value">Hasta $1.000.000 · 10 proyectos</span>
             </li>
           </ul>
 
-          <div class="grid-2 conv-modalidades" id="modalidades">
-            <article class="card" aria-labelledby="mod-investigacion">
-              <h3 id="mod-investigacion" data-i18n="sec.conv.investigacion.title">Proyectos de investigación</h3>
-              <p data-i18n-html="sec.conv.investigacion.body">
-                Se presentan en la plantilla oficial <strong>Anexo I</strong> de la
-                Secretaría de Investigación (DOCX). No usar el formulario de extensión.
+          <div class="conv-modalidades" id="modalidades">
+            <article class="card" aria-labelledby="mod-proyectos">
+              <h3 id="mod-proyectos" data-i18n="sec.conv.proyectos.title">
+                Presentación de proyectos de investigación y extensión
+              </h3>
+              <p data-i18n-html="sec.conv.proyectos.body">
+                Completá la <strong>plantilla única</strong> de la convocatoria AURA
+                (DOCX).
               </p>
               <ul class="conv-mini-list">
-                <li data-i18n="sec.conv.investigacion.step.1">Completar Anexo I (plantilla DOCX).</li>
-                <li data-i18n="sec.conv.investigacion.step.2">Aprobación del Consejo Directivo de la UA.</li>
-                <li data-i18n="sec.conv.investigacion.step.3">Cargar el archivo en la carpeta Drive de investigación.</li>
+                <li data-i18n="sec.conv.proyectos.step.1">Descargar y completar la plantilla de presentación (DOCX).</li>
+                <li data-i18n="sec.conv.proyectos.step.2">Aprobación del Consejo Directivo de la Unidad Académica.</li>
+                <li data-i18n="sec.conv.proyectos.step.3">Cargar el archivo en la carpeta Drive de la convocatoria.</li>
               </ul>
               <p class="tile-actions tile-actions--conv">
                 <a
                   class="btn btn-primary"
-                  href="documentos/Instructivo_presentacion_proyectos_investigacion_AURA.pdf"
+                  href="documentos/Convocatoria_Proyectos_AURA.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  data-i18n="btn.instructivoInvestigacion"
-                  >Instructivo investigación (PDF)</a
+                  data-i18n="btn.instructivoConvocatoria"
+                  >Instructivo / bases (PDF)</a
                 >
                 <a
                   class="btn btn-ghost"
-                  href="documentos/plantillas/Anexo-I-Presentacion-proyectos-investigacion.docx"
+                  href="documentos/plantillas/Presentacion_proyectos_Convocatoria_AURA.docx"
                   download
-                  data-i18n="btn.descargarAnexoI"
-                  >Descargar Anexo I (DOCX)</a
+                  data-i18n="btn.descargarPlantilla"
+                  >Descargar plantilla (DOCX)</a
                 >
                 <a
                   class="btn btn-ghost"
                   href="https://drive.google.com/drive/folders/1u1m-4y44z0pBdu2NJVUTzZF7hJEcmB9O"
                   target="_blank"
                   rel="noopener noreferrer"
-                  data-i18n="btn.cargarDriveInvestigacion"
-                  >Cargar en Drive · Investigación</a
-                >
-              </p>
-            </article>
-
-            <article class="card" aria-labelledby="mod-extension">
-              <h3 id="mod-extension" data-i18n="sec.conv.extension.title">Proyectos de extensión</h3>
-              <p data-i18n-html="sec.conv.extension.body">
-                Se presentan en el <strong>formulario Google Forms</strong> de
-                extensión. No usar la plantilla Anexo I de investigación.
-              </p>
-              <ul class="conv-mini-list">
-                <li data-i18n="sec.conv.extension.step.1">Completar el Google Forms de extensión.</li>
-                <li data-i18n="sec.conv.extension.step.2">Aprobación del Consejo Directivo de la UA.</li>
-                <li data-i18n="sec.conv.extension.step.3">Cargar la documentación en la carpeta Drive de extensión.</li>
-              </ul>
-              <p class="tile-actions tile-actions--conv">
-                <a
-                  class="btn btn-primary"
-                  href="documentos/Instructivo_presentacion_proyectos_extension_AURA.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-i18n="btn.instructivoExtension"
-                  >Instructivo extensión (PDF)</a
-                >
-                <a
-                  class="btn btn-ghost"
-                  href="https://docs.google.com/forms/d/e/1FAIpQLSd8aTV1eH_cDeOiMdw4l-dcoUnuZg4lr8lVg-pj9R_exuJQoA/viewform"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-i18n="btn.abrirFormsExtension"
-                  >Abrir Google Forms · Extensión</a
-                >
-                <a
-                  class="btn btn-ghost"
-                  href="https://drive.google.com/drive/folders/1w5115S0SHPlWEbduuwztcwmVkGg_cc8V"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-i18n="btn.cargarDriveExtension"
-                  >Cargar en Drive · Extensión</a
+                  data-i18n="btn.cargarDrive"
+                  >Cargar en Drive</a
                 >
               </p>
             </article>
@@ -654,18 +545,11 @@
               <p class="tile-actions tile-actions--conv">
                 <a
                   class="btn btn-primary"
-                  href="documentos/Convocatoria_Proyectos_AURA.html"
+                  href="documentos/Convocatoria_Proyectos_AURA.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   data-i18n="btn.verBasesOnline"
-                  >Ver bases en línea</a
-                >
-                <a
-                  class="btn btn-ghost"
-                  href="documentos/Convocatoria_Proyectos_AURA.docx"
-                  download
-                  data-i18n="btn.descargarBases"
-                  >Descargar bases (DOCX)</a
+                  >Ver bases (PDF)</a
                 >
                 <a class="btn btn-ghost" href="#documentos" data-i18n="btn.marcoNormativo">Marco normativo</a>
               </p>
@@ -673,27 +557,15 @@
 
             <article class="conv-step card" aria-labelledby="conv-paso2">
               <p class="conv-step-num" aria-hidden="true">2</p>
-              <h3 id="conv-paso2" data-i18n="sec.conv.paso2.title">Elegí la modalidad y prepará</h3>
+              <h3 id="conv-paso2" data-i18n="sec.conv.paso2.title">Prepará la propuesta</h3>
               <p data-i18n="sec.conv.paso2.body">
-                Armá la propuesta con título, eje temático (a–j), fundamentación,
+                Armá la propuesta con título, eje temático, fundamentación,
                 objetivos, equipo, metodología, cronograma, resultados esperados,
-                recursos y vinculación explícita con el Plan AURA.
+                recursos y vinculación explícita con el Plan AURA, usando la
+                plantilla única de la convocatoria.
               </p>
-              <p class="conv-name-hint">
-                <span data-i18n="sec.conv.paso2.equipo">Requisitos de equipo:</span>
-                <code data-i18n="sec.conv.paso2.equipo.code">Director/a docente UCCuyo + mín. 2 estudiantes</code>
-              </p>
-              <ul class="conv-mini-list">
-                <li data-i18n-html="sec.conv.paso2.list.1">
-                  <strong>Investigación:</strong> Anexo I DOCX + instructivo PDF.
-                </li>
-                <li data-i18n-html="sec.conv.paso2.list.2">
-                  <strong>Extensión:</strong> Google Forms + instructivo PDF.
-                </li>
-                <li data-i18n="sec.conv.paso2.list.3">Aprobación del Consejo Directivo de la Unidad Académica.</li>
-              </ul>
               <p class="tile-actions tile-actions--conv">
-                <a class="btn btn-ghost" href="#modalidades" data-i18n="btn.verModalidades">Ver modalidades</a>
+                <a class="btn btn-ghost" href="#modalidades" data-i18n="btn.verPresentacion">Ver presentación</a>
                 <a class="btn btn-ghost" href="#conv-ejes" data-i18n="btn.verEjes">Ver ejes temáticos</a>
                 <a
                   class="btn btn-ghost"
@@ -708,13 +580,13 @@
               <p class="conv-step-num" aria-hidden="true">3</p>
               <h3 id="conv-paso3" data-i18n="sec.conv.paso3.title">Presentar y cargar</h3>
               <p data-i18n="sec.conv.paso3.body">
-                Con la aprobación del Consejo Directivo, cargá en la carpeta Drive
-                que corresponde a tu modalidad. Luego el Comité Evaluador emite
-                dictamen y se eleva al Consejo Superior.
+                Con la aprobación del Consejo Directivo, cargá la plantilla
+                completada en la carpeta Drive de la convocatoria. Luego el Comité
+                Evaluador emite dictamen y se eleva al Consejo Superior.
               </p>
               <p class="conv-name-hint">
                 <span data-i18n="sec.conv.paso3.circuito">Circuito:</span>
-                <code data-i18n="sec.conv.paso3.circuito.code">UA → Drive (según modalidad) → Comité → Consejos → Consejo Superior</code>
+                <code data-i18n="sec.conv.paso3.circuito.code">UA → Drive → Comité → Consejos → Consejo Superior</code>
               </p>
               <p class="tile-actions tile-actions--conv">
                 <a
@@ -722,16 +594,8 @@
                   href="https://drive.google.com/drive/folders/1u1m-4y44z0pBdu2NJVUTzZF7hJEcmB9O"
                   target="_blank"
                   rel="noopener noreferrer"
-                  data-i18n="btn.driveInvestigacion"
-                  >Drive · Investigación</a
-                >
-                <a
-                  class="btn btn-primary"
-                  href="https://drive.google.com/drive/folders/1w5115S0SHPlWEbduuwztcwmVkGg_cc8V"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-i18n="btn.driveExtension"
-                  >Drive · Extensión</a
+                  data-i18n="btn.cargarDrive"
+                  >Cargar en Drive</a
                 >
               </p>
             </article>
@@ -740,31 +604,32 @@
           <div class="conv-ejes card" id="conv-ejes">
             <h3 data-i18n="sec.conv.ejes.title">Ejes temáticos</h3>
             <ol class="check-list">
-              <li data-i18n="sec.conv.ejes.1">Estudios sobre consumo y comportamiento hídrico.</li>
-              <li data-i18n="sec.conv.ejes.2">Innovación tecnológica (medición, ahorro o reutilización).</li>
-              <li data-i18n="sec.conv.ejes.3">Impacto económico, social y productivo del recurso en San Juan.</li>
-              <li data-i18n="sec.conv.ejes.4">Investigación aplicada en salud y uso racional del agua.</li>
-              <li data-i18n="sec.conv.ejes.5">Investigación ambiental y territorial hídrica.</li>
-              <li data-i18n="sec.conv.ejes.6">Formación, sensibilización y transferencia comunitaria.</li>
-              <li data-i18n="sec.conv.ejes.7">Prácticas socio-comunitarias e intervenciones territoriales.</li>
-              <li data-i18n="sec.conv.ejes.8">Educación hídrica en todos los niveles.</li>
-              <li data-i18n="sec.conv.ejes.9">Legislación, marco normativo y políticas públicas.</li>
-              <li data-i18n="sec.conv.ejes.10">Otras temáticas transversales pertinentes al Plan AURA.</li>
+              <li data-i18n="sec.conv.ejes.1">Estudios sobre consumo y comportamiento hídrico (hábitos, percepciones y prácticas institucionales, familiares o comunitarias).</li>
+              <li data-i18n="sec.conv.ejes.2">Innovación tecnológica aplicada a la medición, ahorro o reutilización del agua.</li>
+              <li data-i18n="sec.conv.ejes.3">Impacto económico, social y productivo del recurso hídrico en la provincia de San Juan.</li>
+              <li data-i18n="sec.conv.ejes.4">Investigación aplicada en salud vinculada al uso racional del agua y la sostenibilidad hídrica.</li>
+              <li data-i18n="sec.conv.ejes.5">Investigación ambiental y territorial sobre la situación hídrica regional.</li>
+              <li data-i18n="sec.conv.ejes.6">Programas de formación, sensibilización y transferencia comunitaria sobre uso responsable del agua.</li>
+              <li data-i18n="sec.conv.ejes.7">Prácticas socio-comunitarias e intervenciones territoriales vinculadas a la gestión sostenible del agua.</li>
+              <li data-i18n="sec.conv.ejes.8">Investigación y medición de la calidad microbiológica, contaminación, efectos sobre la salud y la biodiversidad.</li>
+              <li data-i18n="sec.conv.ejes.9">Educación y uso responsable del recurso hídrico, en sus distintos niveles y modalidades (inicial, primario, secundario, superior y universitario), orientada a la formación de una conciencia y cultura hídrica responsable.</li>
+              <li data-i18n="sec.conv.ejes.10">Legislación, marco normativo y políticas públicas vinculadas a la gestión, protección y uso responsable del recurso hídrico, en los ámbitos nacional, provincial y municipal.</li>
+              <li data-i18n="sec.conv.ejes.11">Otras temáticas transversales vinculadas al uso responsable y sostenible del agua no comprendidas específicamente en los ejes anteriores, que resulten pertinentes a los objetivos del Plan AURA, a criterio del Comité Evaluador.</li>
             </ol>
           </div>
 
           <ul class="conv-facts conv-facts--cronograma" aria-label="Cronograma ampliado" data-i18n-attr="aria-label:sec.conv.cronograma.ariaLabel">
             <li>
               <span class="conv-fact-label" data-i18n="sec.conv.cronograma.evaluacion.label">Evaluación</span>
-              <span class="conv-fact-value" data-i18n="sec.conv.cronograma.evaluacion.value">5 – 16 de octubre de 2026</span>
+              <span class="conv-fact-value" data-i18n="sec.conv.cronograma.evaluacion.value">2 – 13 de noviembre de 2026</span>
             </li>
             <li>
               <span class="conv-fact-label" data-i18n="sec.conv.cronograma.elevacion.label">Elevación a Consejo Superior</span>
-              <span class="conv-fact-value" data-i18n="sec.conv.cronograma.elevacion.value">30 de octubre de 2026</span>
+              <span class="conv-fact-value" data-i18n="sec.conv.cronograma.elevacion.value">Viernes 27 de noviembre de 2026</span>
             </li>
             <li>
               <span class="conv-fact-label" data-i18n="sec.conv.cronograma.oficializacion.label">Oficialización del listado</span>
-              <span class="conv-fact-value" data-i18n="sec.conv.cronograma.oficializacion.value">6 de noviembre de 2026</span>
+              <span class="conv-fact-value" data-i18n="sec.conv.cronograma.oficializacion.value">2 de diciembre de 2026</span>
             </li>
             <li>
               <span class="conv-fact-label" data-i18n="sec.conv.cronograma.avance.label">Informe de avance</span>
@@ -779,50 +644,29 @@
           <p class="conv-contact" data-i18n-html="sec.conv.contact">
             Consultas:
             <a href="mailto:luisjimenez@uccuyo.edu.ar">luisjimenez@uccuyo.edu.ar</a>
-            (Coordinador del Programa) ·
-            <a href="documentos/Instructivo_presentacion_proyectos_investigacion_AURA.pdf" target="_blank" rel="noopener noreferrer"
-              >Instructivo investigación</a
+            (Coordinador Técnico) ·
+            <a href="documentos/Convocatoria_Proyectos_AURA.pdf" target="_blank" rel="noopener noreferrer"
+              >Bases / instructivo</a
             >
             ·
-            <a href="documentos/Instructivo_presentacion_proyectos_extension_AURA.pdf" target="_blank" rel="noopener noreferrer"
-              >Instructivo extensión</a
+            <a href="documentos/plantillas/Presentacion_proyectos_Convocatoria_AURA.docx" download
+              >Plantilla (DOCX)</a
             >
           </p>
         </div>
       </section>
 
-      <section class="page-panel section" id="documentos" aria-labelledby="sec-docs" data-page="documentos">
+      <section class="section page-panel" id="documentos" data-page="documentos" aria-labelledby="sec-docs">
         <div class="section-inner">
           <header class="section-head section-head--bar section-head--red">
-            <p class="section-kicker" data-i18n="sec.docs.kicker">Marco normativo</p>
-            <h2 id="sec-docs" data-i18n="sec.docs.title">Documentos</h2>
+            <p class="section-kicker" data-i18n="sec.docs.kicker">Normativa</p>
+            <h2 id="sec-docs" data-i18n="sec.docs.title">Marco normativo</h2>
           </header>
           <p class="text-intro" data-i18n="sec.docs.intro">
-            Resoluciones del Consejo Superior, instructivos de presentación y
-            plantillas de la convocatoria Plan AURA. Los materiales de presentación
-            de proyectos figuran como en construcción hasta la apertura oficial.
+            Resoluciones del Consejo Superior y del Rectorado que sustentan el
+            Plan Integral AURA.
           </p>
           <div class="doc-grid">
-            <span class="doc-link doc-link--wip" aria-disabled="true">
-              <span class="doc-link__tag" data-i18n="sec.conv.badge">En construcción</span>
-              <span class="doc-link__title" data-i18n="sec.docs.instructivoInvestigacion.title">Instructivo presentación · Investigación</span>
-              <span class="doc-link__meta" data-i18n="sec.docs.instructivoInvestigacion.meta">Anexo I, circuito y carpeta Drive de investigación</span>
-            </span>
-            <span class="doc-link doc-link--wip" aria-disabled="true">
-              <span class="doc-link__tag" data-i18n="sec.conv.badge">En construcción</span>
-              <span class="doc-link__title" data-i18n="sec.docs.instructivoExtension.title">Instructivo presentación · Extensión</span>
-              <span class="doc-link__meta" data-i18n="sec.docs.instructivoExtension.meta">Google Forms, circuito y carpeta Drive de extensión</span>
-            </span>
-            <span class="doc-link doc-link--wip" aria-disabled="true">
-              <span class="doc-link__tag" data-i18n="sec.conv.badge">En construcción</span>
-              <span class="doc-link__title" data-i18n="sec.docs.anexoI.title">Anexo I · Proyectos de investigación</span>
-              <span class="doc-link__meta" data-i18n="sec.docs.anexoI.meta">Formulario oficial para proyectos de investigación</span>
-            </span>
-            <span class="doc-link doc-link--wip" aria-disabled="true">
-              <span class="doc-link__tag" data-i18n="sec.conv.badge">En construcción</span>
-              <span class="doc-link__title" data-i18n="sec.docs.formsExtension.title">Formulario Google Forms · Extensión</span>
-              <span class="doc-link__meta" data-i18n="sec.docs.formsExtension.meta">Presentación obligatoria de proyectos de extensión</span>
-            </span>
             <a class="doc-link" href="documentos/Resolucion_418-CS-2024_Plan_AURA.pdf" target="_blank" rel="noopener noreferrer">
               <span class="doc-link__tag" data-i18n="sec.docs.res418.tag">PDF · Resolución</span>
               <span class="doc-link__title" data-i18n="sec.docs.res418.title">Resolución N.º 418-CS-2024</span>
@@ -850,21 +694,47 @@
               <span class="doc-link__title" data-i18n="sec.docs.res849.title">Resolución N.º 849-CS-2026</span>
               <span class="doc-link__meta" data-i18n="sec.docs.res849.meta">Plan de Integración Curricular AURA — Planificación 2026</span>
             </a>
-            <a class="doc-link" href="documentos/Planificacion_integracion_curricular_AURA_2026.pdf" target="_blank" rel="noopener noreferrer">
-              <span class="doc-link__tag" data-i18n="sec.docs.planificacion.tag">PDF · Planificación</span>
-              <span class="doc-link__title" data-i18n="sec.docs.planificacion.title">Actividades de integración curricular 2026</span>
-              <span class="doc-link__meta" data-i18n="sec.docs.planificacion.meta">Planificación de actividades PLAN AURA — UCCuyo</span>
-            </a>
-            <span class="doc-link doc-link--wip" aria-disabled="true">
-              <span class="doc-link__tag" data-i18n="sec.conv.badge">En construcción</span>
-              <span class="doc-link__title" data-i18n="sec.docs.bases.title">Convocatoria a proyectos AURA</span>
-              <span class="doc-link__meta" data-i18n="sec.docs.bases.meta">Texto de bases de la convocatoria</span>
-            </span>
           </div>
         </div>
       </section>
 
-      <section class="page-panel section section--galeria" id="galeria" aria-labelledby="sec-galeria" data-page="galeria">
+      <section class="section section--noticias page-panel" id="noticias" data-page="noticias" aria-labelledby="sec-noticias">
+        <div class="section-inner">
+          <header class="section-head section-head--bar section-head--green">
+            <p class="section-kicker" data-i18n="sec.noticias.kicker">Difusión</p>
+            <h2 id="sec-noticias" data-i18n="sec.noticias.title">Noticias</h2>
+          </header>
+          <p class="text-intro" data-i18n="sec.noticias.intro">
+            Novedades y comunicados del Plan Integral AURA. El listado se irá
+            completando con las noticias oficiales del Plan.
+          </p>
+          <article class="card">
+            <p data-i18n="sec.noticias.placeholder">
+              Próximamente se publicarán aquí las noticias del Plan AURA.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section--publicaciones page-panel" id="publicaciones" data-page="publicaciones" aria-labelledby="sec-publicaciones">
+        <div class="section-inner">
+          <header class="section-head section-head--bar section-head--water">
+            <p class="section-kicker" data-i18n="sec.publicaciones.kicker">Difusión</p>
+            <h2 id="sec-publicaciones" data-i18n="sec.publicaciones.title">Publicaciones</h2>
+          </header>
+          <p class="text-intro" data-i18n="sec.publicaciones.intro">
+            Publicaciones relacionadas con el Plan AURA (artículos, informes y
+            materiales de divulgación).
+          </p>
+          <article class="card">
+            <p data-i18n="sec.publicaciones.placeholder">
+              Próximamente se incorporarán las publicaciones vinculadas al Plan AURA.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section--galeria page-panel" id="galeria" data-page="galeria" aria-labelledby="sec-galeria">
         <div class="section-inner">
           <header class="section-head section-head--bar section-head--green">
             <p class="section-kicker" data-i18n="sec.galeria.kicker">Archivo visual</p>
@@ -872,17 +742,19 @@
           </header>
           <p class="text-intro" data-i18n="sec.galeria.intro">
             Obras e imágenes del Plan Integral AURA en la Universidad Católica de
-            Cuyo. Tocá una foto para ampliarla.
+            Cuyo, organizadas por categorías (Infraestructura, Investigación y
+            Extensión, Comunidad Educación y Difusión, Institucional). Tocá una
+            foto para ampliarla.
           </p>
           <div class="gallery-events" id="galeria-albums"></div>
         </div>
       </section>
 
-      <section class="page-panel section section--visitas" id="visitas" aria-labelledby="sec-visitas" data-page="visitas">
+      <section class="section section--visitas page-panel" id="visitas" data-page="visitas" aria-labelledby="sec-visitas">
         <div class="section-inner">
           <header class="section-head section-head--bar section-head--green">
             <p class="section-kicker" data-i18n="sec.visitas.kicker">Alcance</p>
-            <h2 id="sec-visitas" data-i18n="sec.visitas.title">Visitas al Plan AURA</h2>
+            <h2 id="sec-visitas" data-i18n="sec.visitas.title">Visualizaciones del Plan</h2>
           </header>
           <p class="text-intro" data-i18n="sec.visitas.intro">
             Estimación del país y, cuando está disponible, de la provincia o
@@ -910,7 +782,7 @@
         </div>
       </section>
 
-      <section class="page-panel section" id="contacto" aria-labelledby="sec-contacto" data-page="contacto">
+      <section class="section page-panel" id="contacto" data-page="contacto" aria-labelledby="sec-contacto">
         <div class="section-inner">
           <header class="section-head section-head--bar section-head--green">
             <p class="section-kicker" data-i18n="sec.contacto.kicker">Comunicación</p>
@@ -923,15 +795,27 @@
                 Universidad Católica de Cuyo · Sede San Juan
               </p>
               <p data-i18n-html="sec.contacto.plan.director">
-                <strong>Coordinador del Programa:</strong> Ingeniero Luis Jiménez<br />
+                <strong>Coordinador Técnico:</strong> Ingeniero Luis Jiménez<br />
                 <a href="mailto:luisjimenez@uccuyo.edu.ar">luisjimenez@uccuyo.edu.ar</a>
               </p>
             </article>
             <article class="card">
               <h3 data-i18n="sec.contacto.enlaces.title">Enlaces institucionales</h3>
-              <ul class="check-list">
+              <ul class="check-list social-links">
                 <li>
                   <a href="https://uccuyo.edu.ar" target="_blank" rel="noopener noreferrer">uccuyo.edu.ar</a>
+                </li>
+                <li>
+                  <a class="social-link" href="https://www.instagram.com/uccuyo/?hl=es" target="_blank" rel="noopener noreferrer">
+                    <svg class="social-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm6.5-.9a1.1 1.1 0 1 0 0 2.2 1.1 1.1 0 0 0 0-2.2zM12 9a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/></svg>
+                    <span>Instagram</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="social-link" href="https://www.linkedin.com/school/universidad-cat-lica-de-cuyo/posts/?feedView=all" target="_blank" rel="noopener noreferrer">
+                    <svg class="social-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3.5A1.97 1.97 0 1 0 5.26 7.44 1.97 1.97 0 0 0 5.25 3.5zM20.44 20h-3.37v-5.6c0-1.34-.02-3.06-1.86-3.06-1.87 0-2.16 1.46-2.16 2.96V20H9.68V8.5h3.24v1.57h.05c.45-.85 1.55-1.75 3.19-1.75 3.41 0 4.04 2.24 4.04 5.16V20z"/></svg>
+                    <span>LinkedIn</span>
+                  </a>
                 </li>
               </ul>
             </article>
@@ -949,29 +833,48 @@
             <span data-i18n="footer.brand.subtitle">Universidad Católica de Cuyo</span>
           </div>
         </div>
-        <div class="footer-col">
-          <h3 data-i18n="footer.secciones.title">Secciones</h3>
-          <ul class="footer-links">
-            <li><a href="#el-plan" data-i18n="nav.elPlan">El Plan</a></li>
-            <li><a href="#plan-aura" data-i18n="nav.planAura">Plan AURA</a></li>
-            <li><a href="#comision" data-i18n="nav.comision">Sala de trabajo</a></li>
-            <li><a href="#equipo" data-i18n="nav.equipo">Equipo coordinador</a></li>
-            <li><a href="#red" data-i18n="nav.red">Red institucional</a></li>
-            <li><a href="#convocatoria" data-i18n="nav.convocatorias">Convocatorias</a></li>
-            <li><a href="#documentos" data-i18n="nav.documentos">Documentos</a></li>
-            <li><a href="#galeria" data-i18n="nav.galeria">Galería de imágenes</a></li>
-            <li><a href="#visitas" data-i18n="nav.visitas">Visitas al Plan AURA</a></li>
-            <li><a href="#contacto" data-i18n="nav.contacto">Contacto</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h3 data-i18n="footer.red.title">Red UCCuyo</h3>
-          <ul class="footer-links">
-            <li>
-              <a href="https://uccuyo.edu.ar" target="_blank" rel="noopener noreferrer" data-i18n="footer.red.uccuyo">Universidad Católica de Cuyo</a>
-            </li>
-          </ul>
-        </div>
+        <nav class="footer-map" aria-label="Mapa del sitio" data-i18n-attr="aria-label:footer.mapLabel">
+          <div class="footer-col">
+            <h3 data-i18n="nav.group.plan">El Plan</h3>
+            <ul class="footer-links">
+              <li><a href="#el-plan" data-i18n="nav.elPlan">El Plan AURA</a></li>
+              <li><a href="#equipo" data-i18n="nav.equipo">Equipo coordinador</a></li>
+              <li><a href="#plan-aura" data-i18n="nav.planAura">Plan Técnico AURA</a></li>
+              <li><a href="#documentos" data-i18n="nav.marco">Marco normativo</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3 data-i18n="nav.group.comunidad">Comunidad</h3>
+            <ul class="footer-links">
+              <li><a href="#red" data-i18n="nav.red">Red institucional</a></li>
+              <li><a href="#convocatoria" data-i18n="nav.convocatorias">Convocatorias</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3 data-i18n="nav.group.difusion">Difusión</h3>
+            <ul class="footer-links">
+              <li><a href="#noticias" data-i18n="nav.noticias">Noticias</a></li>
+              <li><a href="#publicaciones" data-i18n="nav.publicaciones">Publicaciones</a></li>
+              <li><a href="#galeria" data-i18n="nav.galeria">Galería de imágenes</a></li>
+              <li><a href="#visitas" data-i18n="nav.visitas">Visualizaciones del Plan</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3 data-i18n="footer.redes.title">Enlaces</h3>
+            <ul class="footer-links">
+              <li><a href="#contacto" data-i18n="nav.contacto">Contacto</a></li>
+              <li>
+                <a href="https://uccuyo.edu.ar" target="_blank" rel="noopener noreferrer" data-i18n="footer.red.uccuyo">Universidad Católica de Cuyo</a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com/uccuyo/?hl=es" target="_blank" rel="noopener noreferrer">Instagram</a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/school/universidad-cat-lica-de-cuyo/posts/?feedView=all" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
         <p class="footer-copy" data-i18n="footer.copy">
           © Universidad Católica de Cuyo · Plan Integral AURA.
           Colores institucionales según manual de marca UCCuyo.
@@ -979,14 +882,14 @@
       </div>
     </footer>
 
-    <script src="js/i18n-dict.js?v=10" defer></script>
-    <script src="js/i18n.js?v=9" defer></script>
-    <script src="js/main.js?v=2" defer></script>
+    <script src="js/i18n-dict.js?v=20" defer></script>
+    <script src="js/i18n.js?v=7" defer></script>
+    <script src="js/main.js?v=3" defer></script>
     <script src="js/galeria-config.js?v=4" defer></script>
     <script src="js/galeria.js?v=3" defer></script>
     <script src="js/publicaciones-config.js?v=1" defer></script>
     <script src="js/visitantes-config.js?v=1" defer></script>
-    <script src="js/visitantes.js?v=4" defer></script>
+    <script src="js/visitantes.js?v=5" defer></script>
     <script src="js/visitas-mapa.js?v=3" defer></script>
   </body>
 </html>

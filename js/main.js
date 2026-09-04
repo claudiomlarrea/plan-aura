@@ -1,23 +1,28 @@
 (function () {
   var toggle = document.querySelector(".nav-toggle");
   var nav = document.querySelector("#site-nav");
-  var baseTitle = "Plan AURA | Universidad Católica de Cuyo";
+  var baseTitle = "Plan Integral de Ahorro y Uso Responsable del Agua | UCCuyo";
   var aliases = {
-    contenido: "inicio"
+    contenido: "inicio",
+    comision: "equipo",
+    marco: "documentos"
   };
   var pageTitles = {
     inicio: baseTitle,
     "el-plan": "El Plan AURA · Plan AURA",
-    "plan-aura": "Plan AURA · Plan Integral AURA",
-    comision: "Sala de trabajo · Plan AURA",
+    "plan-aura": "Plan Técnico AURA · Plan AURA",
     equipo: "Equipo coordinador · Plan AURA",
     red: "Red institucional · Plan AURA",
     convocatoria: "Convocatorias · Plan AURA",
-    documentos: "Documentos · Plan AURA",
+    documentos: "Marco normativo · Plan AURA",
+    noticias: "Noticias · Plan AURA",
+    publicaciones: "Publicaciones · Plan AURA",
     galeria: "Galería de imágenes · Plan AURA",
-    visitas: "Visitas al Plan AURA · Plan AURA",
+    visitas: "Visualizaciones del Plan · Plan AURA",
     contacto: "Contacto · Plan AURA"
   };
+
+  var dismissHover = function () {};
 
   function pageTitle(id) {
     return pageTitles[id] || baseTitle;
@@ -76,9 +81,21 @@
     document.dispatchEvent(new CustomEvent("oia:page", { detail: id }));
   }
 
+  function cerrarSubmenus(except) {
+    if (!nav) return;
+    nav.querySelectorAll(".has-submenu.is-open").forEach(function (item) {
+      if (except && item === except) return;
+      item.classList.remove("is-open");
+      var btn = item.querySelector(".nav-submenu-toggle");
+      if (btn) btn.setAttribute("aria-expanded", "false");
+    });
+  }
+
   function cerrarMenu() {
+    dismissHover();
     if (nav) nav.classList.remove("is-open");
     if (toggle) toggle.setAttribute("aria-expanded", "false");
+    cerrarSubmenus();
     if (document.activeElement && document.activeElement.blur) {
       document.activeElement.blur();
     }
@@ -114,7 +131,77 @@
   toggle.addEventListener("click", function () {
     var open = nav.classList.toggle("is-open");
     toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    if (!open) cerrarSubmenus();
   });
+
+  nav.querySelectorAll(".nav-submenu-toggle").forEach(function (btn) {
+    btn.addEventListener("click", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var item = btn.closest(".has-submenu");
+      if (!item) return;
+      var willOpen = !item.classList.contains("is-open");
+      cerrarSubmenus(willOpen ? item : null);
+      item.classList.toggle("is-open", willOpen);
+      btn.setAttribute("aria-expanded", willOpen ? "true" : "false");
+    });
+  });
+
+  (function () {
+    var desktopHover = window.matchMedia("(hover: hover) and (pointer: fine)");
+    var closeTimer = null;
+    var activeItem = null;
+
+    function setOpen(item, open) {
+      if (!item) return;
+      item.classList.toggle("is-open", open);
+      var btn = item.querySelector(".nav-submenu-toggle");
+      if (btn) btn.setAttribute("aria-expanded", open ? "true" : "false");
+    }
+
+    function openItem(item) {
+      if (closeTimer) {
+        clearTimeout(closeTimer);
+        closeTimer = null;
+      }
+      if (activeItem && activeItem !== item) setOpen(activeItem, false);
+      activeItem = item;
+      setOpen(item, true);
+    }
+
+    function scheduleClose(item) {
+      if (closeTimer) clearTimeout(closeTimer);
+      closeTimer = setTimeout(function () {
+        if (activeItem === item) {
+          setOpen(item, false);
+          activeItem = null;
+        }
+        closeTimer = null;
+      }, 320);
+    }
+
+    nav.querySelectorAll(".has-submenu").forEach(function (item) {
+      item.addEventListener("mouseenter", function () {
+        if (!desktopHover.matches) return;
+        openItem(item);
+      });
+      item.addEventListener("mouseleave", function () {
+        if (!desktopHover.matches) return;
+        scheduleClose(item);
+      });
+    });
+
+    dismissHover = function () {
+      if (closeTimer) {
+        clearTimeout(closeTimer);
+        closeTimer = null;
+      }
+      if (activeItem) {
+        setOpen(activeItem, false);
+        activeItem = null;
+      }
+    };
+  })();
 
   document.addEventListener("keydown", function (e) {
     if (e.key === "Escape") cerrarMenu();
@@ -122,7 +209,7 @@
 
   document.addEventListener("click", function (e) {
     if (!nav.contains(e.target) && !(toggle && toggle.contains(e.target))) {
-      cerrarMenu();
+      cerrarSubmenus();
     }
   });
 })();
