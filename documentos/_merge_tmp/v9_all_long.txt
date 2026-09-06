@@ -1,0 +1,194 @@
+===P2 LEN=52===
+Secretaría de Extensión y Relaciones Institucionales
+
+===P3 LEN=53===
+Secretaría de Investigación y Vinculación Tecnológica
+
+===P4 LEN=53===
+CONVOCATORIA A PROYECTOS DE INVESTIGACIÓN Y EXTENSIÓN
+
+===P8 LEN=201===
+Título del Proyecto: AURA-HidroIA: sistema inteligente de monitoreo, alerta y explicación del estrés hídrico urbano en San Juan (integración Departamento de Hidráulica–OSSE con inteligencia artificial)
+
+===P10 LEN=104===
+Unidad Académica: Observatorio de Inteligencia Artificial — Universidad Católica de Cuyo (Sede San Juan)
+
+===P11 LEN=101===
+Convocatoria / Año: Plan Integral AURA — Convocatoria a proyectos de investigación y extensión (2026)
+
+===P14 LEN=178===
+Los proyectos presentados deberán enmarcarse en uno o más de los siguientes ejes, en coherencia con la sistematización establecida en el Plan de Integración Curricular AURA 2026:
+
+===P20 LEN=166===
+Indicar los datos del equipo de trabajo, pueden ser de diferentes unidades académicas, es obligatorio incorporar como mínimo dos alumnos de cualquier nivel académico.
+
+===P24 LEN=1559===
+Síntesis del proyecto:
+
+San Juan es una provincia árida con fuerte dependencia del sistema de diques, canales y entregas de agua cruda hacia el servicio urbano. El Departamento de Hidráulica publica series de caudales, cotas y distribución de riego (incluida la entrega a OSSE), mientras OSSE reporta cobertura, infraestructura y un consumo urbano per cápita muy por encima de referencias internacionales. Sin embargo, no existe un sistema universitario abierto que integre de forma reproducible esas fuentes, genere indicadores de estrés hídrico urbano y los traduzca con inteligencia artificial a lenguaje útil para el Plan AURA, la docencia y la comunidad.
+
+El proyecto adopta un diseño de investigación aplicada y desarrollo tecnológico con componente de extensión: inventariar y extraer datos públicos de Hidráulica y OSSE; construir un repositorio y pipeline ETL reproducible; calcular indicadores de oferta–demanda y estrés estacional; implementar el sistema AURA-HidroIA (tablero, alertas y asistente explicativo con IA); y transferir productos al Plan AURA mediante informes, talleres y materiales de sensibilización. La unidad de análisis es el sistema hídrico provincial–urbano de San Juan, y la transferencia se orienta a la comunidad universitaria UCCuyo, al Equipo AURA y a públicos no especializados. Se espera una plataforma operativa (MVP y versión 1.0), base de datos documentada, informe técnico, nota de transferencia, materiales educativos y la formación de al menos dos estudiantes en el ciclo completo de datos–IA–transferencia hídrica.
+
+===P28 LEN=2978===
+Describir la justificación teórica, empírica y contextual del proyecto:
+
+San Juan enfrenta un escenario de escasez hídrica estructural propio de ambientes áridos, con gestión articulada entre el Departamento de Hidráulica (oferta superficial, riego y entregas) y OSSE (potabilización y distribución urbana). La evidencia pública sitúa el consumo urbano en valores del orden de cientos de litros por habitante y día, muy superiores a referencias de la OMS y a parámetros de diseño del sistema, lo que tensiona infraestructura y cultura de uso. A escala internacional, la literatura de smart water y water demand forecasting muestra que la integración de series operativas con modelos de aprendizaje automático mejora la detección de anomalías, la planificación y la comunicación del riesgo hídrico (Donkor et al., 2014; Ghalehkhondabi et al., 2017; Fu et al., 2022; Sit et al., 2020). En regiones áridas, los marcos de early warning y deep learning para sequía y escasez potable subrayan la necesidad de series multi-fuente y de explicabilidad para la decisión.
+
+En Nuevo Cuyo —y particularmente en San Juan— abundan datos administrativos dispersos (tablas web de Hidráulica, indicadores agregados de OSSE), pero escasean productos académicos abiertos que unan oferta cruda y estrés urbano, los automaticen y usen IA explicativa para transferencia educativa y comunitaria. El Plan Integral AURA (Res. 418-CS-2024; 767-CS-2025; 849-CS-2026) exige investigación aplicada, innovación y transferencia sobre ahorro y uso responsable del agua; el Observatorio de Inteligencia Artificial de la UCCuyo aporta capacidades de ingeniería de datos, IA y desarrollo de sistemas para construir un activo institucional y no solo un informe. Conceptual y metodológicamente, el proyecto se sostiene en la gestión integrada de recursos hídricos, el estrés hídrico urbano, la dataficación de la gestión pública y la IA como capa de detección y mediación cognitiva, pilares desarrollados en el marco teórico.
+
+El valor agregado de AURA-HidroIA reside en transformar información hídrica dispersa en un sistema universitario abierto, reproducible y transferible al Plan Integral AURA. A diferencia de estudios puntuales o reportes estáticos, entrega un activo institucional continuo: pipeline de datos, indicadores de estrés hídrico urbano, tablero de consulta y una capa de inteligencia artificial orientada a la explicación y a la alerta temprana. En el plano técnico, integra series de oferta con métricas del servicio urbano y asegura trazabilidad; en el académico, genera una línea de investigación aplicada con formación de estudiantes; en el social e institucional, facilita la comprensión del “camino del agua” —del dique al grifo— y fortalece la cultura de uso responsable del recurso en un territorio árido. Así, el proyecto produce capacidad instalada (software, datos documentados y materiales de extensión) reutilizable por la UCCuyo más allá del horizonte de los doce meses de ejecución.
+
+===P32 LEN=715===
+Justificar la importancia técnica, académica, social e institucional del proyecto:
+
+AURA-HidroIA tiene relevancia técnica porque construye un sistema reproducible de integración de datos hídricos e inteligencia artificial; académica porque forma investigadores y estudiantes del Observatorio de IA y produce conocimiento transferible; social porque contribuye a la cultura de uso responsable del agua en San Juan; e institucional porque se alinea de modo explícito con el PEI 2023–2027, con el Plan Estratégico de la Función I+D y con el Plan Integral AURA (Res. 418-CS-2024, 767-CS-2025 y 849-CS-2026). A continuación se detalla esa correspondencia institucional y el aporte para carreras, estudiantes y comunidad.
+
+===P37 LEN=1886===
+Correspondencia explícita con el PEI (Plan Estratégico Institucional UCCuyo 2023–2027).
+
+AURA-HidroIA se vincula de modo explícito con los siguientes objetivos del PEI. En el Objetivo general 2 — “Fortalecer la integralidad de la Universidad, la vinculación con su entorno y la comunicación interna y externa”— se relacionan el Objetivo 2.1 (actualizar e implementar convenios y alianzas estratégicas), mediante la articulación con el Departamento de Hidráulica y OSSE; el Objetivo 2.5 (implementar dispositivos de acceso a la información institucional), a través del tablero AURA-HidroIA como dispositivo abierto de indicadores y explicaciones; y el Objetivo 2.6 (fomentar la Responsabilidad Social Universitaria), por su aporte a la cultura de cuidado del agua en un territorio árido. En el Objetivo general 5 — “Fortalecer la iniciativa y participación estudiantil y de egresados”— se vincula el Objetivo 5.4 (impulsar la participación de estudiantes y graduados en actividades de investigación), al incorporar estudiantes del Observatorio de IA en el ciclo completo de datos, sistema, IA y transferencia. En el Objetivo general 4 — “Desarrollar una política institucional para la jerarquización y permanencia de los recursos humanos”— se articula el Objetivo 4.5 (diseñar e implementar programas de formación y capacitación permanente), formando capacidades en ingeniería de datos, indicadores hídricos e IA aplicada. En el Objetivo general 6 — “Consolidar la identidad cristiana, humanística y transformadora de la comunidad de la UCCuyo”— se relaciona el Objetivo 6.5 (promoción del Compromiso Ético y Responsabilidad Social), mediante el enfoque de uso responsable del agua y de explicación transparente de la IA. El núcleo del proyecto es vincular universidad, territorio, información y formación; por ello prioriza estos objetivos y no fuerza vinculaciones ajenas a su alcance.
+
+===P41 LEN=1802===
+Correspondencia con el Plan Integral AURA y con el Plan Estratégico de la Función I+D.
+
+Respecto del Plan Integral AURA (Res. 418-CS-2024, 767-CS-2025 y 849-CS-2026), el proyecto contribuye a la generación de conocimiento aplicado, a la innovación tecnológica para el monitoreo del recurso y a la transferencia y sensibilización sobre uso responsable del agua, en línea con la convocatoria de investigación y extensión del Plan.
+
+Respecto del Plan Estratégico de la Función I+D (UCCuyo 2023–2027; Res. 169-CS-2023), AURA-HidroIA se articula con el Eje 1 —fortalecer la formación de recursos humanos para la investigación— a través del Objetivo 1.3 (optimizar la capacitación institucional para elevar calidad y productividad) y del Objetivo 1.4 (fomentar liderazgo en la función de investigación), consolidando una línea del Observatorio de IA en sistemas hídrico-digitales. Con el Eje 2 —garantizar la calidad de los productos de investigación— se vinculan el Objetivo 2.3 (fortalecer la colaboración y capacitación institucional) y el Objetivo 2.5 (asegurar la calidad y uniformidad de la información sobre investigación), mediante codebook, versionado de datos/código y productos transferibles con trazabilidad. Con el Eje 3 —optimizar la asignación de recursos para la investigación— se relacionan el Objetivo 3.1 (integrar la política I+D en la estrategia institucional), el Objetivo 3.3 (fortalecer el apoyo a investigadores en la gestión de proyectos) y el Objetivo 3.4 (establecer y fortalecer alianzas con entidades públicas, privadas y gubernamentales), mediante la articulación con Hidráulica y OSSE. En síntesis, el proyecto opera sobre objetivos medibles de vinculación, participación estudiantil, calidad de productos y alianzas públicas, entregando un sistema institucional reutilizable.
+
+===P44 LEN=681===
+Explicación del aporte institucional: beneficios para carreras, estudiantes o sociedad.
+
+El proyecto mejora prácticas académicas al incorporar un caso real de ingeniería de datos e IA aplicada a un problema provincial prioritario; fortalece procesos formativos del Observatorio de IA con participación efectiva de estudiantes en el ciclo completo de investigación, desarrollo y transferencia; y aporta una herramienta de monitoreo y sensibilización útil para el Plan AURA y para la comunidad universitaria. La sociedad se beneficia de una lectura clara del “camino del agua” —del dique al grifo— y de materiales orientados a la cultura hídrica responsable en un contexto de aridez.
+
+===P49 LEN=347===
+Objetivo general: Diseñar, desarrollar e implementar el sistema AURA-HidroIA para integrar series públicas del Departamento de Hidráulica y de OSSE, calcular indicadores de estrés hídrico urbano en San Juan y generar alertas y explicaciones asistidas por inteligencia artificial, con transferencia al Plan Integral AURA y formación de estudiantes.
+
+===P50 LEN=732===
+Objetivos específicos (hasta 5):
+1. Inventariar, documentar y extraer de forma reproducible series e indicadores públicos de Hidráulica y de OSSE.
+2. Construir un repositorio y un pipeline ETL con control de calidad, versionado y codebook de indicadores de oferta, demanda estimada y estrés estacional.
+3. Desarrollar la plataforma AURA-HidroIA (tablero, exportaciones y módulo de alertas) para usuarios institucionales y educativos.
+4. Implementar una capa de IA para detección de anomalías y generación de explicaciones en lenguaje natural, evaluando su utilidad con referentes AURA.
+5. Transferir resultados mediante informe técnico, nota de política, taller de sensibilización y formación acreditada de al menos dos estudiantes.
+
+===P53 LEN=1070===
+Describir el aporte innovador o la brecha de conocimiento que aborda el proyecto:
+
+AURA-HidroIA aporta un enfoque novedoso respecto de los estudios previos al proponer un sistema universitario abierto que integra la oferta hídrica provincial (Departamento de Hidráulica) con indicadores de estrés del servicio urbano (OSSE) y los traduce mediante inteligencia artificial explicativa, superando así los análisis sectoriales aislados. De este modo, el proyecto aborda un vacío de conocimiento en Nuevo Cuyo: la ausencia de un producto reutilizable capaz de convertir tablas administrativas dispersas en inteligencia hídrica accionable para el Plan AURA. Su innovación es a la vez científica, tecnológica y pedagógica, porque combina ingeniería de datos, indicadores de estrés y una capa de IA (alertas y asistente) en un entregable de software institucional orientado a la docencia y a la extensión. En conjunto, se espera mejorar la anticipación, la enseñanza y la comunicación del Plan AURA, e instalar capacidad permanente en el Observatorio de Inteligencia Artificial.
+
+===P62 LEN=4353===
+Referencias teóricas y antecedentes empíricos relevantes que sustentan el estudio:
+
+La gestión del agua en zonas áridas exige articular disponibilidad física, infraestructura de regulación, potabilización y patrones de consumo (Gleick, 2003; UNESCO WWAP, 2023, 2024; United Nations, 2015). En ese marco, el estrés hídrico urbano no se reduce a un déficit estructural permanente, sino que se entiende como un desacople temporal entre la oferta efectiva y la demanda urbana, mediado por la estacionalidad climática, la operación de diques y redes, y la cultura de uso del recurso. Esta lectura resulta especialmente pertinente para San Juan, donde la escasez relativa convive con ciclos de mayor o menor disponibilidad y con una fuerte dependencia de la información pública para anticipar tensiones entre cuenca, infraestructura y servicio domiciliario.
+
+Sobre esa base conceptual, el proyecto se apoya en la gestión integrada de recursos hídricos (GIRH), en la socio-hidrología urbana y en la literatura de smart water y water demand management (Butler & Memon, 2006; House-Peters & Chang, 2011; Makropoulos & Savić, 2019). La GIRH aporta el principio de articulación entre oferta, demanda, instituciones y territorio; la socio-hidrología urbana permite interpretar cómo las prácticas sociales y las condiciones técnicas co-producen el estrés; y la hydroinformatics / smart water justifica la construcción de sistemas de datos, indicadores y decision support como objetos de investigación aplicada. En conjunto, estos enfoques sostienen la hipótesis de que integrar series operativas dispersas en un sistema universitario abierto puede mejorar la comprensión, la comunicación y la enseñanza del “camino del agua” desde la fuente hasta el consumo.
+
+En el plano de la inteligencia artificial, se distinguen dos capas complementarias. La primera corresponde a modelos de anomalía y predicción sobre series temporales, útiles para detectar desviaciones respecto de comportamientos esperados de oferta, entrega o consumo. La segunda corresponde a la mediación explicativa con recuperación de contexto, orientada a traducir señales técnicas en lenguaje comprensible para públicos no especializados. Esta distinción es clave para AURA-HidroIA: la IA no se plantea como caja negra predictiva aislada, sino como capa de asistencia que acompaña indicadores trazables y fuentes citables, en coherencia con una ética de transparencia y responsabilidad social universitaria.
+
+Los avances recientes en forecasting y gestión hídrica con machine learning y deep learning refuerzan esta orientación (Sit et al., 2020; Xiang et al., 2020; Fu et al., 2022; Zounemat-Kermani et al., 2021; Rahimian Boogar et al., 2025). La literatura muestra que la integración de datos multi-fuente, el uso de ensambles y redes secuenciales, y la preocupación por la explicabilidad mejoran la utilidad operativa y formativa de los sistemas, siempre que se acompañen de control de calidad de datos y de validación con referentes institucionales. En paralelo, los informes globales del agua (UNESCO WWAP, 2023, 2024) subrayan la necesidad de cooperación, datos compartidos y herramientas de gobernanza que acerquen evidencia a la toma de decisiones y a la sensibilización ciudadana, lo que conecta la dimensión científica del proyecto con su componente de extensión.
+
+En el contexto argentino predominan investigaciones centradas en riego, calidad del agua o acceso social, mientras que resulta menos frecuente la ingeniería de sistemas abiertos que vinculen operadores provinciales con capacidades universitarias de IA. Internacionalmente, en cambio, existen dashboards, centros de pronóstico y plataformas de utilities que combinan monitoreo, alerta temprana y comunicación pública; AURA-HidroIA adapta esa lógica a los datos disponibles en San Juan, partiendo de lo público y documentable, y dejando abierta la ampliación mediante acuerdos institucionales. De este modo, el estado del arte no solo justifica la pertinencia teórica del problema, sino también la forma del entregable: un sistema reproducible, transferible al Plan AURA y utilizable en la formación de estudiantes del Observatorio de Inteligencia Artificial. Las citas siguen el estilo APA 7ª edición y una proporción sustancial de las referencias corresponde a los últimos cinco años, conforme se detalla en la bibliografía.
+
+===P66 LEN=6153===
+Diseño del estudio:
+El estudio se organiza como una investigación aplicada de método mixto, con un eje cuantitativo-computacional dominante y un componente evaluativo cualitativo-instrumental orientado a la usabilidad y a la transferencia. El eje cuantitativo comprende la extracción, normalización y análisis de series e indicadores hídricos, la construcción de métricas de oferta–demanda y estrés estacional, y la detección de anomalías o desviaciones respecto de un comportamiento baseline. El componente evaluativo incorpora pruebas de uso del tablero y del asistente de inteligencia artificial con referentes del Plan AURA y del Observatorio de IA, a fin de valorar claridad, utilidad y trazabilidad de las explicaciones. Esta combinación permite no solo producir un sistema técnico reproducible, sino también verificar su pertinencia institucional y formativa en el marco de la convocatoria.
+
+Población y muestra:
+No se trabaja con un muestreo probabilístico de personas, sino con un corpus documental-operativo compuesto por series e indicadores públicos del Departamento de Hidráulica y de Obras Sanitarias Sociedad del Estado (OSSE). La unidad de análisis es el sistema hídrico provincial–urbano de San Juan, entendido como el conjunto de variables de oferta (caudales, cotas, entregas y regulaciones) y de servicio urbano (cobertura, consumos e indicadores operativos publicados). El período de observación abarca las series históricas disponibles en portales y reportes oficiales, más la actualización continua durante los doce meses de ejecución del proyecto. Si se formalizan acuerdos institucionales, el corpus podrá ampliarse a series sectoriales anonimizadas, siempre bajo criterios de confidencialidad y agregación. La “muestra” operativa, por tanto, se define por exhaustividad documental de fuentes públicas y por criterios de calidad (completitud, frecuencia, consistencia de unidades), no por selección de individuos.
+
+Instrumentos y técnicas de recolección de datos:
+La recolección combina técnicas de extracción de datos abiertos, documentación metodológica y, cuando corresponda, solicitud institucional formal. Se utilizarán scripts de captura y parseo de tablas/reportes del Departamento de Hidráulica, descarga y sistematización de indicadores públicos de OSSE, un codebook de variables y una bitácora de metadatos (fuente, fecha de acceso, unidad, frecuencia, transformaciones aplicadas). Complementariamente, se elaborará un protocolo de solicitud de información para eventuales series no públicas, y una rúbrica de evaluación del asistente de IA (claridad, fidelidad a la fuente, utilidad para usuarios AURA y presencia de citas/descargos). Estas herramientas aseguran trazabilidad, replicabilidad y control de calidad desde el inicio del pipeline.
+
+Procedimientos de análisis:
+El análisis se desarrolla en fases sucesivas y documentadas. Primero se realiza un inventario y diagnóstico de calidad de las fuentes (valores faltantes, cambios de formato, discontinuidades). Luego se implementa un pipeline ETL (extracción, transformación y carga) hacia un repositorio versionado, con normalización de unidades y calendarios. Sobre esa base se construyen indicadores de oferta, demanda estimada y estrés estacional, junto con visualizaciones del tablero AURA-HidroIA. En paralelo, se entrenan o calibran procedimientos de detección de anomalías y, cuando la densidad de datos lo permita, baselines predictivos de corto plazo. La capa de IA se implementará con recuperación aumentada de contexto (RAG) sobre metadatos y documentación del propio sistema, de modo que las explicaciones remitan a series e indicadores concretos. Finalmente, se realizará una evaluación con usuarios piloto del Plan AURA para ajustar umbrales, mensajes y materiales de transferencia. Cada fase tendrá responsables del equipo y criterios de aceptación previos al pase a la siguiente.
+
+Validación y fiabilidad:
+La validez del sistema se sostendrá mediante controles técnicos y de contraste institucional. Los scripts serán versionados y revisados; se verificará la consistencia de unidades, frecuencias y claves temporales; y los indicadores se contrastarán, siempre que sea posible, con planillas o reportes oficiales publicados. Para la capa de IA se aplicará supervisión humana de salidas (human-in-the-loop), evitando publicar explicaciones no trazables. La fiabilidad se evaluará por estabilidad de resultados ante re-ejecuciones del pipeline, por reproducción de series clave y por coherencia entre alertas, gráficos y fuentes citadas. En el componente evaluativo, la rúbrica de usabilidad permitirá registrar acuerdos y desacuerdos entre revisores, ajustando el producto antes de la transferencia formal.
+
+Consideraciones éticas:
+El proyecto prioriza datos públicos agregados y evita, por diseño, la identificación de usuarios domiciliarios. Si se accede a datos operativos sensibles mediante convenio, se aplicarán medidas de confidencialidad, anonimización y restricción de acceso al equipo autorizado. Las respuestas del asistente de IA incluirán descargos sobre el carácter asistivo de la herramienta y citarán las fuentes utilizadas, de modo que no se presenten como dictámenes oficiales. Asimismo, se respetarán buenas prácticas de integridad científica: documentación de métodos, reconocimiento de limitaciones y uso responsable de la información en actividades de extensión.
+
+Enfoque, limitaciones previstas y mitigación:
+El enfoque general es mixto, con predominio cuantitativo-computacional y evaluación cualitativa de transferencia. Las principales limitaciones previstas son la dependencia de la disponibilidad y estabilidad de portales públicos, posibles demoras en convenios de datos y la existencia de series incompletas o heterogéneas. Como mitigación, el proyecto adoptará un MVP 100% basado en información pública, parsers tolerantes a cambios de formato, archivado periódico de capturas y transparencia metodológica (codebook, bitácoras y repositorio). De este modo, la factibilidad técnica no queda condicionada de manera exclusiva a acuerdos externos, y los resultados siguen siendo auditables y transferibles al Plan AURA.
+
+===P70 LEN=1579===
+Describir los recursos disponibles, la viabilidad temporal y el plan de trabajo propuesto:
+
+La factibilidad del proyecto se sustenta en recursos ya disponibles en el Observatorio de Inteligencia Artificial: un equipo interdisciplinario con capacidad en datos, software e IA; infraestructura de cómputo del director y del grupo de trabajo; acceso a portales y reportes públicos del Departamento de Hidráulica y de OSSE; y articulación institucional con el Plan Integral AURA. Esta base permite iniciar el desarrollo sin depender exclusivamente de adquisiciones externas ni de convenios previos, aunque el presupuesto solicitado fortalece hosting, transferencia y formación estudiantil.
+
+Se contemplan riesgos operativos y de alcance. Los cambios en portales públicos se mitigarán mediante archivado periódico de capturas y parsers tolerantes a variaciones de formato. La eventual demora o ausencia de un convenio con OSSE no detiene el proyecto, porque el MVP se construye sobre la capa pública documentable. La sobrecarga de alcance se controlará priorizando entregables mínimos viables y criterios de aceptación por fase. En conjunto, estas medidas preservan la viabilidad técnica y temporal del plan.
+
+El cronograma abarca doce meses, con informe de avance a los seis meses e informe final al cierre, conforme a la convocatoria. Las etapas van desde la puesta en marcha y el inventario de fuentes hasta el ETL e indicadores, la capa de IA, la validación con referentes AURA y el cierre con transferencia. El detalle de períodos y responsables se presenta en la tabla siguiente.
+
+===P77 LEN=55===
+11. Impacto esperado y plan de difusión / transferencia
+
+===P79 LEN=1200===
+Impacto académico o científico:
+El proyecto contribuye con un caso reproducible de sistema hídrico-IA en zona árida argentina, forma investigadores jóvenes e habilita insumos para publicaciones, working papers y presentaciones en jornadas científicas e institucionales.
+
+Impacto social o institucional:
+Fortalece el Plan AURA con una herramienta de monitoreo y comunicación, mejora la cultura hídrica universitaria y ofrece evidencia útil para el diálogo con organismos provinciales. Como indicadores de impacto se esperan la plataforma publicada, series e indicadores documentados, al menos un taller de transferencia, al menos dos estudiantes formados, informe técnico con nota AURA y repositorio de código.
+
+Plan de difusión (publicaciones, congresos, jornadas, etc.):
+Se prevé presentación ante AURA y el Instituto del Agua, difusión en canales institucionales de la UCCuyo, eventual working paper o artículo, y materiales abiertos asociados al tablero.
+
+Plan de transferencia (productos, herramientas, informes, tableros, etc.):
+Los productos de transferencia incluyen el sistema AURA-HidroIA, el manual de uso, el dataset documentado, fichas de sensibilización y la capacitación al equipo AURA.
+
+===P88 LEN=213===
+Indicar la necesidad presupuestaria para ejecutar el proyecto: se solicita el tope de la convocatoria ($1.000.000). El detalle consta en la tabla. Eventual contraparte no monetaria: acceso a datos institucionales.
+
+===P90 LEN=94===
+Otras Fuentes de financiamiento: No se contemplan al inicio (contraparte eventual en especie).
+
+===P92 LEN=3286===
+Bibliografía (APA 7ª edición):
+
+Butler, D., & Memon, F. A. (Eds.). (2006). Water demand management. IWA Publishing.
+
+Donkor, E. A., Mazzuchi, T. A., Soyer, R., & Alan Roberson, J. (2014). Urban water demand forecasting: Review of methods and models. Journal of Water Resources Planning and Management, 140(2), 146–159. https://doi.org/10.1061/(ASCE)WR.1943-5452.0000314
+
+Fu, G., Jin, Y., Sun, S., Yuan, Z., & Butler, D. (2022). The role of deep learning in urban water management: A critical review. Water Research, 223, 118973. https://doi.org/10.1016/j.watres.2022.118973
+
+Ghalehkhondabi, I., Ardjmand, E., Young, W. A., & Weckman, G. R. (2017). Water demand forecasting: Review of soft computing methods. Environmental Monitoring and Assessment, 189(7), 313. https://doi.org/10.1007/s10661-017-6030-3
+
+Gleick, P. H. (2003). Water use. Annual Review of Environment and Resources, 28, 275–314. https://doi.org/10.1146/annurev.energy.28.040202.122849
+
+House-Peters, L. A., & Chang, H. (2011). Urban water demand modeling: Review of concepts, methods, and organizing principles. Water Resources Research, 47(5), W05401. https://doi.org/10.1029/2010WR009624
+
+Makropoulos, C., & Savić, D. A. (2019). Urban hydroinformatics: Data, models and decision support for integrated urban water management. Water, 11(9), 1792. https://doi.org/10.3390/w11091792
+
+Rahimian Boogar, A., et al. (2025). Sustainable water allocation under climate change: Deep learning approaches to predict drinking water shortages. Journal of Environmental Management. https://doi.org/10.1016/j.jenvman.2025.125600
+
+Sit, M., Demiray, B. Z., Xiang, Z., Ewing, G., Sermet, Y., & Demir, I. (2020). A comprehensive review of deep learning applications in hydrology and water resources. Water Science and Technology, 82(12), 2635–2670. https://doi.org/10.2166/wst.2020.369
+
+United Nations. (2015). Transforming our world: The 2030 Agenda for Sustainable Development (A/RES/70/1).
+
+UNESCO WWAP. (2023). The United Nations World Water Development Report 2023: Partnerships and cooperation for water. UNESCO.
+
+UNESCO WWAP. (2024). The United Nations World Water Development Report 2024: Water for prosperity and peace. UNESCO.
+
+Xiang, Z., Yan, J., & Demir, I. (2020). A rainfall-runoff model with LSTM-based sequence-to-sequence learning. Water Resources Research, 56(1), e2019WR025326. https://doi.org/10.1029/2019WR025326
+
+Zounemat-Kermani, M., Batelaan, O., Fadaee, M., & Hinkelmann, R. (2021). Ensemble machine learning paradigms in hydrology: A review. Journal of Hydrology, 598, 126266. https://doi.org/10.1016/j.jhydrol.2021.126266
+
+Departamento de Hidráulica de San Juan. (s. f.). Datos y estadísticas / aforos y distribución de riego. https://hidraulica.sanjuan.gob.ar/
+
+Obras Sanitarias Sociedad del Estado (OSSE). (s. f.). Portal institucional de agua y cloaca. https://www.ossesanjuan.com.ar/v4/
+
+Universidad Católica de Cuyo. (2023). Plan Estratégico Institucional 2023–2027.
+
+Universidad Católica de Cuyo. (2023). Plan Estratégico de la Función I+D 2023–2027 (Res. 169-CS-2023).
+
+Universidad Católica de Cuyo. (2024). Resolución N.º 418-CS-2024: Aprobación del Plan Integral AURA.
+
+Universidad Católica de Cuyo. (2025). Resolución N.º 767-CS-2025.
+
+Universidad Católica de Cuyo. (2026). Resolución N.º 849-CS-2026.
+
+===P99 LEN=82===
+Unidad Académica: Observatorio de Inteligencia Artificial — UCCuyo (Sede San Juan)
+
+===P100 LEN=54===
+Firma del Director/a: ________________________________
