@@ -203,12 +203,8 @@
     if (openByDefault && photos.length) fillGrid(grid, photos);
   }
 
-  albums.forEach(function (album, i) {
-    // Solo mostrar categorías con fotos/videos (misma experiencia visual en todas).
-    if (!(album.photos || []).length) return;
-    var openIndex = albums.findIndex(function (a) {
-      return (a.photos || []).length;
-    });
-    renderAlbum(album, i === openIndex);
+  albums.forEach(function (album) {
+    // Todas las secciones arrancan cerradas; el usuario las abre a gusto.
+    renderAlbum(album, false);
   });
 })();

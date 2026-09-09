@@ -1023,12 +1023,8 @@ window.I18N_DICT = {
     en: "Image gallery"
   },
   "sec.galeria.intro": {
-    es: "Obras e imágenes del Plan Integral AURA en la Universidad Católica de Cuyo, organizadas por categorías. Tocá una foto para ampliarla.",
-    en: "Works and images from the AURA Integral Plan at Universidad Católica de Cuyo, organized by category. Tap a photo to enlarge it."
-  },
-  "sec.galeria.drive.cta": {
-    es: "Ver álbum completo en Google Drive",
-    en: "View full album on Google Drive"
+    es: "Obras e imágenes del Plan Integral AURA en la Universidad Católica de Cuyo, organizadas por categorías. Abrí cada sección para ver las fotos.",
+    en: "Works and images from the AURA Integral Plan at Universidad Católica de Cuyo, organized by category. Open each section to view the photos."
   },
   "sec.galeria.empty": {
     es: "Próximamente se publicarán imágenes en esta categoría.",

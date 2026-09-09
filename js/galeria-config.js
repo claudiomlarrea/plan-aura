@@ -1,6 +1,4 @@
 window.IDA_GALERIA = {
-  driveFolder:
-    "https://drive.google.com/drive/folders/14GgQmJnKIA0huNwKWRzO8SHvgHpQr4QY?usp=sharing",
   albums: [
     {
       id: "infraestructura",
