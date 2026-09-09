@@ -727,6 +727,14 @@ a:hover {
   font-size: 0.95rem;
 }
 
+.gallery-drive-actions {
+  margin: 0 0 1.25rem;
+}
+
+.gallery-panel .gallery-drive-actions {
+  margin: 0.35rem 0 1rem;
+}
+
 .hero-actions {
   display: flex;
   flex-wrap: wrap;

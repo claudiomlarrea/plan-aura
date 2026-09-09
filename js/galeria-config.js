@@ -1,4 +1,6 @@
 window.IDA_GALERIA = {
+  driveFolder:
+    "https://drive.google.com/drive/folders/14GgQmJnKIA0huNwKWRzO8SHvgHpQr4QY?usp=sharing",
   albums: [
     {
       id: "infraestructura",
@@ -104,21 +106,21 @@ window.IDA_GALERIA = {
       id: "investigacion-extension",
       title: "Investigación y Extensión",
       description:
-        "Actividades de investigación y extensión vinculadas al Plan AURA. Próximamente se incorporarán más imágenes de esta categoría.",
+        "Actividades de investigación y extensión vinculadas al Plan AURA. Podés consultar y aportar fotos en la carpeta compartida de Drive.",
       photos: [],
     },
     {
       id: "comunidad-educacion-difusion",
       title: "Comunidad Educación y Difusión",
       description:
-        "Acciones con la comunidad educativa y de difusión del Plan. Próximamente se incorporarán más imágenes de esta categoría.",
+        "Acciones con la comunidad educativa y de difusión del Plan. Podés consultar y aportar fotos en la carpeta compartida de Drive.",
       photos: [],
     },
     {
       id: "institucional",
       title: "Institucional",
       description:
-        "Imágenes institucionales del Plan AURA. Próximamente se incorporarán más imágenes de esta categoría.",
+        "Imágenes institucionales del Plan AURA. Podés consultar y aportar fotos en la carpeta compartida de Drive.",
       photos: [],
     },
   ],

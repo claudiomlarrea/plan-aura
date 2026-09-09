@@ -181,8 +181,21 @@
     if (!photos.length) {
       var empty = document.createElement("p");
       empty.className = "gallery-panel-empty";
-      empty.textContent = "Todavía no hay imágenes en esta categoría.";
+      empty.textContent =
+        "Todavía no hay imágenes publicadas en esta categoría en el sitio. Consultá o aportá fotos en la carpeta de Drive.";
       panel.appendChild(empty);
+      if (CFG.driveFolder) {
+        var driveActions = document.createElement("p");
+        driveActions.className = "tile-actions gallery-drive-actions";
+        var driveLink = document.createElement("a");
+        driveLink.className = "btn btn-ghost";
+        driveLink.href = CFG.driveFolder;
+        driveLink.target = "_blank";
+        driveLink.rel = "noopener noreferrer";
+        driveLink.textContent = "Abrir carpeta en Google Drive";
+        driveActions.appendChild(driveLink);
+        panel.appendChild(driveActions);
+      }
     }
 
     var grid = document.createElement("div");
