@@ -351,8 +351,8 @@ window.I18N_DICT = {
     en: "Coordinating and communication team"
   },
   "sec.equipo.intro": {
-    es: "Conforme a la Resolución N.º&nbsp;620-R-2025 (Rectora de la UCCuyo, ad referendum del Consejo Superior, 5 de mayo de 2025), se conforma el <strong>Equipo Coordinador</strong> y el <strong>Equipo de Comunicación</strong> del Plan Integral de Ahorro y Uso Responsable del Agua (Plan AURA) para el ciclo académico 2025.",
-    en: "Pursuant to Resolution No.&nbsp;620-R-2025 (Rector of UCCuyo, ad referendum of the Superior Council, 5 May 2025), the <strong>Coordinating Team</strong> and the <strong>Communication Team</strong> of the AURA Integral Plan are established for the 2025 academic cycle."
+    es: "Conforme a la Resolución N.º&nbsp;620-R-2025 (Rectora de la UCCuyo, ad referendum del Consejo Superior, 5 de mayo de 2025), se conforma el <strong>Equipo Coordinador</strong> y el <strong>Equipo de Comunicación</strong> del Plan Integral de Ahorro y Uso Responsable del Agua (Plan AURA).",
+    en: "Pursuant to Resolution No.&nbsp;620-R-2025 (Rector of UCCuyo, ad referendum of the Superior Council, 5 May 2025), the <strong>Coordinating Team</strong> and the <strong>Communication Team</strong> of the AURA Integral Plan are established.",
   },
   "sec.equipo.photo.alt": {
     es: "Equipo coordinador y de comunicación del Plan AURA frente a los tanques institucionales Punta Negra",
