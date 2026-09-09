@@ -358,10 +358,6 @@ window.I18N_DICT = {
     es: "Equipo coordinador y de comunicación del Plan AURA frente a los tanques institucionales Punta Negra",
     en: "Plan AURA coordinating and communication team in front of the Punta Negra institutional water tanks"
   },
-  "sec.equipo.photo.caption": {
-    es: "Equipo coordinador y de comunicación del Plan AURA · tanques institucionales «Punta Negra»",
-    en: "Plan AURA coordinating and communication team · “Punta Negra” institutional tanks"
-  },
   "sec.equipo.coord.title": {
     es: "Equipo coordinador",
     en: "Coordinating team"

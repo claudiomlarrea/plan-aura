@@ -1265,15 +1265,6 @@ header.section-head--bar h2 {
   height: auto;
 }
 
-.equipo-photo figcaption {
-  margin: 0;
-  padding: 0.7rem 1rem 0.85rem;
-  font-size: 0.92rem;
-  color: var(--color-text-soft);
-  background: rgba(255, 255, 255, 0.72);
-  border-top: 1px solid rgba(var(--rgb-banner-green), 0.08);
-}
-
 .equipo-grid {
   display: grid;
   gap: 1.25rem;
