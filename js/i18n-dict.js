@@ -220,6 +220,14 @@ window.I18N_DICT = {
     es: "Consolidarse como programa referente de la UCCuyo en la gestión sostenible del recurso hídrico, en articulación con el Plan Estratégico Institucional 2023-2027, que inspire nuevas prácticas y contribuya a que instituciones, organizaciones y ciudadanos se comprometan activamente con la preservación del recurso hídrico para las generaciones presentes y futuras.",
     en: "Become a leading UCCuyo program in sustainable water resource management, aligned with the Institutional Strategic Plan 2023–2027, inspiring new practices and helping institutions, organizations, and citizens commit actively to preserving water resources for present and future generations."
   },
+  "sec.elPlan.coordGeneral.title": {
+    es: "Coordinación General del Plan Integral",
+    en: "General Coordination of the Integral Plan"
+  },
+  "sec.elPlan.coordGeneral.body": {
+    es: "<strong>Rectora Lic. María Laura Simonassi</strong>",
+    en: "<strong>Rector Lic. María Laura Simonassi</strong>"
+  },
   "sec.elPlan.direccion.title": {
     es: "Coordinación Técnica",
     en: "Technical Coordination"
@@ -345,6 +353,14 @@ window.I18N_DICT = {
   "sec.equipo.intro": {
     es: "Conforme a la Resolución N.º&nbsp;620-R-2025 (Rectora de la UCCuyo, ad referendum del Consejo Superior, 5 de mayo de 2025), se conforma el <strong>Equipo Coordinador</strong> y el <strong>Equipo de Comunicación</strong> del Plan Integral de Ahorro y Uso Responsable del Agua (Plan AURA) para el ciclo académico 2025.",
     en: "Pursuant to Resolution No.&nbsp;620-R-2025 (Rector of UCCuyo, ad referendum of the Superior Council, 5 May 2025), the <strong>Coordinating Team</strong> and the <strong>Communication Team</strong> of the AURA Integral Plan are established for the 2025 academic cycle."
+  },
+  "sec.equipo.photo.alt": {
+    es: "Equipo coordinador y de comunicación del Plan AURA frente a los tanques institucionales Punta Negra",
+    en: "Plan AURA coordinating and communication team in front of the Punta Negra institutional water tanks"
+  },
+  "sec.equipo.photo.caption": {
+    es: "Equipo coordinador y de comunicación del Plan AURA · tanques institucionales «Punta Negra»",
+    en: "Plan AURA coordinating and communication team · “Punta Negra” institutional tanks"
   },
   "sec.equipo.coord.title": {
     es: "Equipo coordinador",

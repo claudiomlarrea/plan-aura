@@ -1243,6 +1243,29 @@ header.section-head--bar h2 {
   margin-top: 0.65rem;
 }
 
+.equipo-photo {
+  margin: 1.35rem 0 1.5rem;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: rgba(var(--rgb-banner-green), 0.06);
+  box-shadow: 0 10px 28px rgba(6, 74, 56, 0.12);
+}
+
+.equipo-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.equipo-photo figcaption {
+  margin: 0;
+  padding: 0.7rem 1rem 0.85rem;
+  font-size: 0.92rem;
+  color: var(--color-text-soft);
+  background: rgba(255, 255, 255, 0.72);
+  border-top: 1px solid rgba(var(--rgb-banner-green), 0.08);
+}
+
 .equipo-grid {
   display: grid;
   gap: 1.25rem;
