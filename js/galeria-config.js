@@ -100,28 +100,252 @@ window.IDA_GALERIA = {
           poster: "assets/img/video-obra-aura-02-poster.jpg",
           alt: "Video de obra Plan AURA · montaje de tanques",
         },
+        {
+          src: "assets/img/galeria/infraestructura/infraestructura-01.jpg",
+          alt: "Infraestructura del Plan AURA (1)",
+        },
+        {
+          src: "assets/img/galeria/infraestructura/infraestructura-02.jpg",
+          alt: "Infraestructura del Plan AURA (2)",
+        },
+        {
+          src: "assets/img/galeria/infraestructura/infraestructura-03.jpg",
+          alt: "Infraestructura del Plan AURA (3)",
+        },
+        {
+          src: "assets/img/galeria/infraestructura/infraestructura-04.jpg",
+          alt: "Infraestructura del Plan AURA (4)",
+        },
+        {
+          src: "assets/img/galeria/infraestructura/infraestructura-05.jpg",
+          alt: "Infraestructura del Plan AURA (5)",
+        },
+        {
+          src: "assets/img/galeria/infraestructura/infraestructura-06.jpg",
+          alt: "Infraestructura del Plan AURA (6)",
+        },
+        {
+          src: "assets/img/galeria/infraestructura/infraestructura-07.jpg",
+          alt: "Infraestructura del Plan AURA (7)",
+        },
+        {
+          src: "assets/img/galeria/infraestructura/infraestructura-08.jpg",
+          alt: "Infraestructura del Plan AURA (8)",
+        },
+        {
+          src: "assets/img/galeria/infraestructura/infraestructura-09.jpg",
+          alt: "Infraestructura del Plan AURA (9)",
+        },
+        {
+          src: "assets/img/galeria/infraestructura/infraestructura-10.jpg",
+          alt: "Infraestructura del Plan AURA (10)",
+        },
+        {
+          src: "assets/img/galeria/infraestructura/infraestructura-11.jpg",
+          alt: "Infraestructura del Plan AURA (11)",
+        },
+        {
+          src: "assets/img/galeria/infraestructura/infraestructura-12.jpg",
+          alt: "Infraestructura del Plan AURA (12)",
+        },
+        {
+          src: "assets/img/galeria/infraestructura/infraestructura-13.jpg",
+          alt: "Infraestructura del Plan AURA (13)",
+        },
+        {
+          src: "assets/img/galeria/infraestructura/infraestructura-14.jpg",
+          alt: "Infraestructura del Plan AURA (14)",
+        },
+        {
+          src: "assets/img/galeria/infraestructura/infraestructura-15.jpg",
+          alt: "Infraestructura del Plan AURA (15)",
+        },
+        {
+          type: "video",
+          src: "assets/video/galeria/infraestructura-16.mp4",
+          poster: "assets/img/galeria/infraestructura/infraestructura-16-poster.jpg",
+          alt: "Video · Infraestructura del Plan AURA",
+        },
+        {
+          type: "video",
+          src: "assets/video/galeria/infraestructura-17.mp4",
+          poster: "assets/img/galeria/infraestructura/infraestructura-17-poster.jpg",
+          alt: "Video · Infraestructura del Plan AURA",
+        },
       ],
     },
     {
       id: "investigacion-extension",
       title: "Investigación y Extensión",
       description:
-        "Actividades de investigación y extensión vinculadas al Plan AURA. Podés consultar y aportar fotos en la carpeta compartida de Drive.",
-      photos: [],
+        "Actividades de investigación y extensión vinculadas al Plan AURA. Cuando haya nuevas fotos en Drive, se incorporarán a esta categoría.",
+      photos: [
+
+      ],
     },
     {
       id: "comunidad-educacion-difusion",
       title: "Comunidad Educación y Difusión",
       description:
-        "Acciones con la comunidad educativa y de difusión del Plan. Podés consultar y aportar fotos en la carpeta compartida de Drive.",
-      photos: [],
+        "Acciones con la comunidad educativa y de difusión del Plan Integral AURA.",
+      photos: [
+        {
+          src: "assets/img/galeria/comunidad-educacion-difusion/comunidad-educacion-difusion-01.jpg",
+          alt: "Comunidad, educación y difusión del Plan AURA (1)",
+        },
+        {
+          src: "assets/img/galeria/comunidad-educacion-difusion/comunidad-educacion-difusion-02.jpg",
+          alt: "Comunidad, educación y difusión del Plan AURA (2)",
+        },
+        {
+          src: "assets/img/galeria/comunidad-educacion-difusion/comunidad-educacion-difusion-03.jpg",
+          alt: "Comunidad, educación y difusión del Plan AURA (3)",
+        },
+        {
+          src: "assets/img/galeria/comunidad-educacion-difusion/comunidad-educacion-difusion-04.jpg",
+          alt: "Comunidad, educación y difusión del Plan AURA (4)",
+        },
+        {
+          src: "assets/img/galeria/comunidad-educacion-difusion/comunidad-educacion-difusion-05.jpg",
+          alt: "Comunidad, educación y difusión del Plan AURA (5)",
+        },
+        {
+          src: "assets/img/galeria/comunidad-educacion-difusion/comunidad-educacion-difusion-06.jpg",
+          alt: "Comunidad, educación y difusión del Plan AURA (6)",
+        },
+        {
+          src: "assets/img/galeria/comunidad-educacion-difusion/comunidad-educacion-difusion-07.jpg",
+          alt: "Comunidad, educación y difusión del Plan AURA (7)",
+        },
+        {
+          src: "assets/img/galeria/comunidad-educacion-difusion/comunidad-educacion-difusion-08.jpg",
+          alt: "Comunidad, educación y difusión del Plan AURA (8)",
+        },
+        {
+          src: "assets/img/galeria/comunidad-educacion-difusion/comunidad-educacion-difusion-09.jpg",
+          alt: "Comunidad, educación y difusión del Plan AURA (9)",
+        },
+        {
+          src: "assets/img/galeria/comunidad-educacion-difusion/comunidad-educacion-difusion-10.jpg",
+          alt: "Comunidad, educación y difusión del Plan AURA (10)",
+        },
+        {
+          src: "assets/img/galeria/comunidad-educacion-difusion/comunidad-educacion-difusion-11.jpg",
+          alt: "Comunidad, educación y difusión del Plan AURA (11)",
+        },
+        {
+          src: "assets/img/galeria/comunidad-educacion-difusion/comunidad-educacion-difusion-12.jpg",
+          alt: "Comunidad, educación y difusión del Plan AURA (12)",
+        },
+        {
+          src: "assets/img/galeria/comunidad-educacion-difusion/comunidad-educacion-difusion-13.jpg",
+          alt: "Comunidad, educación y difusión del Plan AURA (13)",
+        },
+        {
+          src: "assets/img/galeria/comunidad-educacion-difusion/comunidad-educacion-difusion-14.jpg",
+          alt: "Comunidad, educación y difusión del Plan AURA (14)",
+        },
+        {
+          src: "assets/img/galeria/comunidad-educacion-difusion/comunidad-educacion-difusion-15.jpg",
+          alt: "Comunidad, educación y difusión del Plan AURA (15)",
+        },
+        {
+          src: "assets/img/galeria/comunidad-educacion-difusion/comunidad-educacion-difusion-16.jpg",
+          alt: "Comunidad, educación y difusión del Plan AURA (16)",
+        },
+        {
+          src: "assets/img/galeria/comunidad-educacion-difusion/comunidad-educacion-difusion-17.jpg",
+          alt: "Comunidad, educación y difusión del Plan AURA (17)",
+        },
+        {
+          src: "assets/img/galeria/comunidad-educacion-difusion/comunidad-educacion-difusion-18.jpg",
+          alt: "Comunidad, educación y difusión del Plan AURA (18)",
+        },
+        {
+          src: "assets/img/galeria/comunidad-educacion-difusion/comunidad-educacion-difusion-19.jpg",
+          alt: "Comunidad, educación y difusión del Plan AURA (19)",
+        },
+        {
+          src: "assets/img/galeria/comunidad-educacion-difusion/comunidad-educacion-difusion-20.jpg",
+          alt: "Comunidad, educación y difusión del Plan AURA (20)",
+        },
+        {
+          src: "assets/img/galeria/comunidad-educacion-difusion/comunidad-educacion-difusion-21.jpg",
+          alt: "Comunidad, educación y difusión del Plan AURA (21)",
+        },
+        {
+          src: "assets/img/galeria/comunidad-educacion-difusion/comunidad-educacion-difusion-22.jpg",
+          alt: "Comunidad, educación y difusión del Plan AURA (22)",
+        },
+        {
+          src: "assets/img/galeria/comunidad-educacion-difusion/comunidad-educacion-difusion-23.jpg",
+          alt: "Comunidad, educación y difusión del Plan AURA (23)",
+        },
+        {
+          src: "assets/img/galeria/comunidad-educacion-difusion/comunidad-educacion-difusion-24.jpg",
+          alt: "Comunidad, educación y difusión del Plan AURA (24)",
+        },
+      ],
     },
     {
       id: "institucional",
       title: "Institucional",
       description:
-        "Imágenes institucionales del Plan AURA. Podés consultar y aportar fotos en la carpeta compartida de Drive.",
-      photos: [],
-    },
+        "Imágenes institucionales del Plan AURA y del equipo de trabajo.",
+      photos: [
+        {
+          src: "assets/img/galeria/institucional/institucional-01.jpg",
+          alt: "Actividad institucional del Plan AURA (1)",
+        },
+        {
+          src: "assets/img/galeria/institucional/institucional-02.jpg",
+          alt: "Actividad institucional del Plan AURA (2)",
+        },
+        {
+          src: "assets/img/galeria/institucional/institucional-03.jpg",
+          alt: "Actividad institucional del Plan AURA (3)",
+        },
+        {
+          src: "assets/img/galeria/institucional/institucional-04.jpg",
+          alt: "Actividad institucional del Plan AURA (4)",
+        },
+        {
+          src: "assets/img/galeria/institucional/institucional-05.jpg",
+          alt: "Actividad institucional del Plan AURA (5)",
+        },
+        {
+          src: "assets/img/galeria/institucional/institucional-06.jpg",
+          alt: "Actividad institucional del Plan AURA (6)",
+        },
+        {
+          src: "assets/img/galeria/institucional/institucional-07.jpg",
+          alt: "Actividad institucional del Plan AURA (7)",
+        },
+        {
+          src: "assets/img/galeria/institucional/institucional-08.jpg",
+          alt: "Actividad institucional del Plan AURA (8)",
+        },
+        {
+          src: "assets/img/galeria/institucional/institucional-09.jpg",
+          alt: "Actividad institucional del Plan AURA (9)",
+        },
+        {
+          src: "assets/img/galeria/institucional/institucional-10.jpg",
+          alt: "Actividad institucional del Plan AURA (10)",
+        },
+        {
+          src: "assets/img/galeria/institucional/institucional-11.jpg",
+          alt: "Actividad institucional del Plan AURA (11)",
+        },
+        {
+          src: "assets/img/galeria/institucional/institucional-12.jpg",
+          alt: "Actividad institucional del Plan AURA (12)",
+        },
+        {
+          src: "assets/img/galeria/institucional/institucional-13.jpg",
+          alt: "Actividad institucional del Plan AURA (13)",
+        },
+      ],
+    }
   ],
 };
