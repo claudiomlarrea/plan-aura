@@ -1023,16 +1023,16 @@ window.I18N_DICT = {
     en: "Image gallery"
   },
   "sec.galeria.intro": {
-    es: "Obras e imágenes del Plan Integral AURA en la Universidad Católica de Cuyo, organizadas por categorías (Infraestructura, Investigación y Extensión, Comunidad Educación y Difusión, Institucional). Tocá una foto para ampliarla. El archivo fotográfico completo también está disponible en la carpeta compartida de Google Drive.",
-    en: "Works and images from the AURA Integral Plan at Universidad Católica de Cuyo, organized by category (Infrastructure, Research and Outreach, Community Education and Dissemination, Institutional). Tap a photo to enlarge it. The full photo archive is also available in the shared Google Drive folder."
+    es: "Obras e imágenes del Plan Integral AURA en la Universidad Católica de Cuyo, organizadas por categorías. Tocá una foto para ampliarla.",
+    en: "Works and images from the AURA Integral Plan at Universidad Católica de Cuyo, organized by category. Tap a photo to enlarge it."
   },
   "sec.galeria.drive.cta": {
     es: "Ver álbum completo en Google Drive",
     en: "View full album on Google Drive"
   },
   "sec.galeria.empty": {
-    es: "Todavía no hay imágenes publicadas en esta categoría en el sitio. Consultá o aportá fotos en la carpeta de Drive.",
-    en: "There are no images published in this category on the site yet. Browse or contribute photos in the Drive folder."
+    es: "Próximamente se publicarán imágenes en esta categoría.",
+    en: "Images for this category will be published soon."
   },
   "sec.galeria.album.planAura.title": {
     es: "Plan AURA · Obras e infraestructura",

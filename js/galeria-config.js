@@ -178,7 +178,7 @@ window.IDA_GALERIA = {
       id: "investigacion-extension",
       title: "Investigación y Extensión",
       description:
-        "Actividades de investigación y extensión vinculadas al Plan AURA. Cuando haya nuevas fotos en Drive, se incorporarán a esta categoría.",
+        "Actividades de investigación y extensión vinculadas al Plan AURA.",
       photos: [
 
       ],

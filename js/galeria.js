@@ -181,21 +181,8 @@
     if (!photos.length) {
       var empty = document.createElement("p");
       empty.className = "gallery-panel-empty";
-      empty.textContent =
-        "Todavía no hay imágenes publicadas en esta categoría en el sitio. Consultá o aportá fotos en la carpeta de Drive.";
+      empty.textContent = "Próximamente se publicarán imágenes en esta categoría.";
       panel.appendChild(empty);
-      if (CFG.driveFolder) {
-        var driveActions = document.createElement("p");
-        driveActions.className = "tile-actions gallery-drive-actions";
-        var driveLink = document.createElement("a");
-        driveLink.className = "btn btn-ghost";
-        driveLink.href = CFG.driveFolder;
-        driveLink.target = "_blank";
-        driveLink.rel = "noopener noreferrer";
-        driveLink.textContent = "Abrir carpeta en Google Drive";
-        driveActions.appendChild(driveLink);
-        panel.appendChild(driveActions);
-      }
     }
 
     var grid = document.createElement("div");
@@ -217,6 +204,11 @@
   }
 
   albums.forEach(function (album, i) {
-    renderAlbum(album, i === 0);
+    // Solo mostrar categorías con fotos/videos (misma experiencia visual en todas).
+    if (!(album.photos || []).length) return;
+    var openIndex = albums.findIndex(function (a) {
+      return (a.photos || []).length;
+    });
+    renderAlbum(album, i === openIndex);
   });
 })();
