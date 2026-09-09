@@ -431,6 +431,18 @@ window.I18N_DICT = {
     es: "Sitio del Instituto del Agua",
     en: "Water Institute website"
   },
+  "sec.red.labGraffigna.title": {
+    es: "Laboratorio de Control de Calidad “Dr. Alberto Graffigna”",
+    en: "“Dr. Alberto Graffigna” Quality Control Laboratory"
+  },
+  "sec.red.labGraffigna.body": {
+    es: "Laboratorio participante de la red institucional del Plan AURA: control de calidad y apoyo técnico vinculado a la gestión y el uso responsable del agua.",
+    en: "Laboratory in Plan AURA’s institutional network: quality control and technical support linked to water management and responsible use."
+  },
+  "sec.red.labGraffigna.cta": {
+    es: "Sitio del Laboratorio Graffigna",
+    en: "Graffigna Laboratory website"
+  },
   "sec.red.ids.title": {
     es: "Instituto de Desarrollo Sostenible",
     en: "Sustainable Development Institute"
