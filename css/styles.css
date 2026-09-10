@@ -2518,7 +2518,7 @@ body.gallery-lightbox-open .mesa-ayuda-panel {
 }
 
 /* Hueco a la derecha para que el botón no tape tarjetas ni listas al fondo de la pantalla */
-@media (min-width: 641px) and (max-width: 90rem) {
+@media (max-width: 90rem) {
   .section-inner {
     padding-right: 7.5rem;
   }
