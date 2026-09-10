@@ -12,7 +12,7 @@
     <link rel="canonical" href="https://plan-aura.com.ar/" />
     <link rel="icon" type="image/png" href="assets/logo-aura-gota-filete.png" />
     <link rel="stylesheet" href="css/variables.css?v=51" />
-    <link rel="stylesheet" href="css/styles.css?v=52" />
+    <link rel="stylesheet" href="css/styles.css?v=53" />
   </head>
   <body>
     <a class="skip-link" href="#contenido" data-i18n="a11y.skipLink">Ir al contenido</a>
@@ -463,6 +463,23 @@
             avanzados y equipos interdisciplinarios de la UCCuyo · Sede San Juan.
           </p>
 
+          <article class="card section-block mesa-ayuda-card" id="mesa-ayuda">
+            <h3 data-i18n="bot.card.title">Mesa de ayuda</h3>
+            <p data-i18n="bot.card.body">
+              Consultas frecuentes de la convocatoria: cómo presentar un proyecto,
+              fechas, montos y a quién escribir. El bot responde con lo que dice
+              este sitio; no carga archivos ni envía mails.
+            </p>
+            <p class="tile-actions">
+              <button type="button" class="btn btn-primary" data-mesa-q="presentar" data-i18n="bot.q.presentar">
+                Cómo presentar un proyecto
+              </button>
+              <button type="button" class="btn btn-ghost" data-mesa-q="plazos" data-i18n="bot.q.plazos">
+                Fechas y montos
+              </button>
+            </p>
+          </article>
+
           <ul class="conv-facts" aria-label="Datos de la convocatoria" data-i18n-attr="aria-label:sec.conv.facts.ariaLabel">
             <li>
               <span class="conv-fact-label" data-i18n="sec.conv.facts.apertura.label">Apertura</span>
@@ -875,7 +892,51 @@
       </div>
     </footer>
 
-    <script src="js/i18n-dict.js?v=28" defer></script>
+    <button
+      type="button"
+      class="mesa-ayuda-fab"
+      id="mesa-ayuda-toggle"
+      aria-expanded="false"
+      aria-controls="mesa-ayuda-panel"
+      data-i18n="bot.fab"
+    >
+      Mesa de ayuda
+    </button>
+    <div
+      class="mesa-ayuda-panel"
+      id="mesa-ayuda-panel"
+      hidden
+      role="dialog"
+      aria-labelledby="mesa-ayuda-title"
+    >
+      <header class="mesa-ayuda-panel__head">
+        <h3 id="mesa-ayuda-title" data-i18n="bot.panel.title">Mesa de ayuda</h3>
+        <button
+          type="button"
+          class="mesa-ayuda-panel__close"
+          id="mesa-ayuda-close"
+          data-i18n-attr="aria-label:bot.close"
+          aria-label="Cerrar"
+        >
+          ×
+        </button>
+      </header>
+      <div class="mesa-ayuda-log" id="mesa-ayuda-log" aria-live="polite"></div>
+      <div class="mesa-ayuda-quick" id="mesa-ayuda-quick"></div>
+      <form class="mesa-ayuda-form" id="mesa-ayuda-form">
+        <label class="visually-hidden" for="mesa-ayuda-input" data-i18n="bot.input.label">Pregunta</label>
+        <input
+          id="mesa-ayuda-input"
+          type="text"
+          autocomplete="off"
+          data-i18n-attr="placeholder:bot.input.placeholder"
+          placeholder="Ej.: ¿cómo presento un proyecto?"
+        />
+        <button type="submit" class="btn btn-primary" data-i18n="bot.send">Enviar</button>
+      </form>
+    </div>
+
+    <script src="js/i18n-dict.js?v=29" defer></script>
     <script src="js/i18n.js?v=7" defer></script>
     <script src="js/main.js?v=3" defer></script>
     <script src="js/galeria-config.js?v=8" defer></script>
@@ -884,5 +945,6 @@
     <script src="js/visitantes-config.js?v=1" defer></script>
     <script src="js/visitantes.js?v=5" defer></script>
     <script src="js/visitas-mapa.js?v=3" defer></script>
+    <script src="js/mesa-ayuda.js?v=1" defer></script>
   </body>
 </html>

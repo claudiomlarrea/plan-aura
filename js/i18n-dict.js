@@ -1394,5 +1394,45 @@ window.I18N_DICT = {
   "dyn.visitas.popup.visitMany": {
     es: " visitas",
     en: " visits"
+  },
+  "bot.fab": {
+    es: "Mesa de ayuda",
+    en: "Help desk"
+  },
+  "bot.panel.title": {
+    es: "Mesa de ayuda",
+    en: "Help desk"
+  },
+  "bot.close": {
+    es: "Cerrar",
+    en: "Close"
+  },
+  "bot.send": {
+    es: "Enviar",
+    en: "Send"
+  },
+  "bot.input.label": {
+    es: "Pregunta",
+    en: "Question"
+  },
+  "bot.input.placeholder": {
+    es: "Ej.: ¿cómo presento un proyecto?",
+    en: "E.g.: how do I submit a project?"
+  },
+  "bot.card.title": {
+    es: "Mesa de ayuda",
+    en: "Help desk"
+  },
+  "bot.card.body": {
+    es: "Consultas frecuentes de la convocatoria: cómo presentar un proyecto, fechas, montos y a quién escribir. El bot responde con lo que dice este sitio; no carga archivos ni envía mails.",
+    en: "Frequent questions about the call: how to submit a project, dates, budget, and who to email. The bot answers from this site; it does not upload files or send mail."
+  },
+  "bot.q.presentar": {
+    es: "Cómo presentar un proyecto",
+    en: "How to submit a project"
+  },
+  "bot.q.plazos": {
+    es: "Fechas y montos",
+    en: "Dates and budget"
   }
 };
