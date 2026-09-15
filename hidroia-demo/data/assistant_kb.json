@@ -1,0 +1,41 @@
+{
+  "greeting": "Soy el asistente demo de AURA-HidroIA. Puedo explicar indicadores, alertas y el sentido del sistema para el Plan AURA. Las respuestas usan el dataset de ejemplo y citan la serie consultada.",
+  "fallback": "No tengo una respuesta exacta para esa consulta en el demo. Probá con: estrés hídrico, alertas, origen de los datos, o aporte al Plan AURA.",
+  "entries": [
+    {
+      "id": "estres",
+      "keywords": ["estrés", "estres", "stress", "indicador", "qué es", "que es", "tablero"],
+      "question": "¿Qué es el estrés hídrico urbano en este tablero?",
+      "answer": "En este demo, el estrés hídrico urbano es un índice 0–100 que resume el desacople entre la oferta (caudal proxy Hidráulica) y la demanda urbana estimada (proxy OSSE), mediado por la estacionalidad. Valores altos no significan “falta absoluta de agua”, sino mayor tensión oferta–demanda en ese mes.",
+      "sources": ["serie:estres", "serie:caudal_m3s", "serie:demanda_proxy", "meta.period"]
+    },
+    {
+      "id": "alerta",
+      "keywords": ["alerta", "alertas", "por qué", "porque", "anomalía", "umbrales", "julio", "agosto"],
+      "question": "¿Por qué hay alerta este mes?",
+      "answer": "Las alertas se disparan cuando el caudal cae por debajo del umbral demo (18 m³/s) o cuando el estrés supera 70. En el dataset de ejemplo, julio–agosto concentran caudales bajos y estrés alto: ahí el sistema marca severidad media/alta para anticipar comunicación y seguimiento.",
+      "sources": ["meta.thresholds", "serie:2024-07", "serie:2024-08", "serie:2025-07", "serie:2025-08"]
+    },
+    {
+      "id": "datos",
+      "keywords": ["datos", "fuente", "fuentes", "dónde", "donde", "hidráulica", "osse", "origen"],
+      "question": "¿De dónde salen los datos?",
+      "answer": "En el sistema real se integrarán series públicas del Departamento de Hidráulica y de OSSE. Este demo usa un JSON de ejemplo (24 meses) con caudales, entregas, demanda proxy y estrés, para mostrar el flujo dato → indicador → alerta → explicación sin depender de portales en vivo.",
+      "sources": ["meta.disclaimer", "meta.period", "sample_series.json"]
+    },
+    {
+      "id": "aura",
+      "keywords": ["aura", "plan", "transferencia", "universidad", "sensibilización", "ayuda", "para qué", "para que"],
+      "question": "¿Cómo ayuda esto al Plan AURA?",
+      "answer": "AURA-HidroIA traduce información hídrica dispersa en un tablero comprensible y en explicaciones citables, útiles para investigación, docencia y sensibilización sobre uso responsable del agua. El demo ilustra el producto de transferencia: monitoreo, alerta temprana y mediación cognitiva con IA.",
+      "sources": ["meta.title", "Plan Integral AURA", "Observatorio de IA — UCCuyo"]
+    },
+    {
+      "id": "camino",
+      "keywords": ["camino", "dique", "grifo", "oferta", "demanda", "entrega"],
+      "question": "¿Qué muestra el “camino del agua”?",
+      "answer": "El camino del agua, en el demo, conecta oferta superficial (caudal), entrega estimada al sistema urbano y demanda/estrés. Sirve para que un público no especializado vea cómo se articulan Hidráulica y el servicio urbano en el tiempo.",
+      "sources": ["serie:caudal_m3s", "serie:entrega_hm3", "serie:demanda_proxy"]
+    }
+  ]
+}

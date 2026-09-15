@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AURA-HidroIA — Demo interactivo</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <meta
+      name="description"
+      content="Demo conceptual del sistema AURA-HidroIA: tablero, alertas y asistente IA simulado con datos de ejemplo."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Source+Sans+3:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/demo.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js" defer></script>
+    <script type="module" src="js/app.js"></script>
+  </head>
+  <body>
+    <div class="disclaimer">
+      Demo conceptual con datos de ejemplo — no es un sistema operativo oficial de Hidráulica ni OSSE
+    </div>
+
+    <header class="site-header">
+      <div class="brand">
+        <span class="brand-kicker">Observatorio de IA · Plan Integral AURA · UCCuyo</span>
+        <h1>AURA-HidroIA</h1>
+        <p>
+          Monitoreo, alerta y explicación del estrés hídrico urbano en San Juan
+          (integración Hidráulica–OSSE con inteligencia artificial).
+        </p>
+      </div>
+      <nav class="nav-tabs" aria-label="Secciones del demo">
+        <button type="button" data-panel="tablero" class="active">Tablero</button>
+        <button type="button" data-panel="alertas">Alertas</button>
+        <button type="button" data-panel="asistente">Asistente IA</button>
+      </nav>
+    </header>
+
+    <main>
+      <section id="panel-tablero" class="panel active" aria-label="Tablero">
+        <div class="kpi-grid" id="kpi-grid"></div>
+        <div class="charts">
+          <article class="chart-card">
+            <h2>Oferta y entrega (serie demo)</h2>
+            <div class="chart-wrap">
+              <canvas id="chart-oferta" aria-label="Gráfico de caudal y entrega"></canvas>
+            </div>
+          </article>
+          <article class="chart-card">
+            <h2>Estrés hídrico urbano</h2>
+            <div class="chart-wrap">
+              <canvas id="chart-estres" aria-label="Gráfico de estrés"></canvas>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="panel-alertas" class="panel" aria-label="Alertas">
+        <div class="alerts-layout">
+          <div class="alert-list" id="alert-list"></div>
+          <aside class="legend-card">
+            <h2>Cómo se generan</h2>
+            <ul>
+              <li>Caudal por debajo de <strong>18 m³/s</strong> → alerta de oferta baja.</li>
+              <li>Estrés por encima de <strong>70</strong> → alerta de tensión oferta–demanda.</li>
+              <li>Demanda proxy alta con oferta débil → reforzá el mensaje de uso responsable.</li>
+            </ul>
+            <p style="margin: 0.9rem 0 0; color: var(--ink-soft); font-size: 0.9rem">
+              En el sistema real, umbrales y series se documentarán con codebook y validación institucional.
+            </p>
+          </aside>
+        </div>
+      </section>
+
+      <section id="panel-asistente" class="panel" aria-label="Asistente IA">
+        <div class="assistant">
+          <div class="chat" id="chat">
+            <div class="chat-log" id="chat-log" role="log" aria-live="polite"></div>
+            <div class="quick-asks" id="quick-asks"></div>
+            <form class="chat-form" id="chat-form">
+              <input
+                id="chat-input"
+                type="text"
+                placeholder="Preguntá sobre estrés, alertas, datos o Plan AURA…"
+                autocomplete="off"
+                aria-label="Pregunta al asistente"
+              />
+              <button type="submit">Enviar</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <strong>AURA-HidroIA</strong> · Demo para convocatoria Plan AURA 2026 ·
+      Universidad Católica de Cuyo
+    </footer>
+  </body>
+</html>

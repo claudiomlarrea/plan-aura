@@ -1,0 +1,45 @@
+{
+  "meta": {
+    "title": "AURA-HidroIA — dataset demo",
+    "region": "San Juan (datos de ejemplo)",
+    "period": "2024-01 a 2025-12",
+    "disclaimer": "Series ficticias con patrón realista para demostración. No son datos oficiales de Hidráulica ni OSSE.",
+    "units": {
+      "caudal_m3s": "m³/s",
+      "entrega_hm3": "hm³/mes",
+      "demanda_proxy": "índice 0–100",
+      "estres": "índice 0–100"
+    },
+    "thresholds": {
+      "caudal_bajo_m3s": 18,
+      "estres_alto": 70,
+      "demanda_alta": 78
+    }
+  },
+  "series": [
+    { "mes": "2024-01", "caudal_m3s": 42.1, "entrega_hm3": 18.4, "demanda_proxy": 88, "estres": 62 },
+    { "mes": "2024-02", "caudal_m3s": 38.6, "entrega_hm3": 16.9, "demanda_proxy": 84, "estres": 66 },
+    { "mes": "2024-03", "caudal_m3s": 35.2, "entrega_hm3": 15.8, "demanda_proxy": 76, "estres": 58 },
+    { "mes": "2024-04", "caudal_m3s": 28.4, "entrega_hm3": 13.2, "demanda_proxy": 62, "estres": 48 },
+    { "mes": "2024-05", "caudal_m3s": 22.1, "entrega_hm3": 11.0, "demanda_proxy": 54, "estres": 52 },
+    { "mes": "2024-06", "caudal_m3s": 19.8, "entrega_hm3": 10.2, "demanda_proxy": 48, "estres": 55 },
+    { "mes": "2024-07", "caudal_m3s": 17.2, "entrega_hm3": 9.4, "demanda_proxy": 46, "estres": 72 },
+    { "mes": "2024-08", "caudal_m3s": 16.5, "entrega_hm3": 9.1, "demanda_proxy": 49, "estres": 78 },
+    { "mes": "2024-09", "caudal_m3s": 20.4, "entrega_hm3": 10.8, "demanda_proxy": 58, "estres": 61 },
+    { "mes": "2024-10", "caudal_m3s": 26.8, "entrega_hm3": 12.6, "demanda_proxy": 68, "estres": 54 },
+    { "mes": "2024-11", "caudal_m3s": 33.5, "entrega_hm3": 14.9, "demanda_proxy": 79, "estres": 57 },
+    { "mes": "2024-12", "caudal_m3s": 40.2, "entrega_hm3": 17.5, "demanda_proxy": 86, "estres": 60 },
+    { "mes": "2025-01", "caudal_m3s": 44.0, "entrega_hm3": 19.1, "demanda_proxy": 90, "estres": 58 },
+    { "mes": "2025-02", "caudal_m3s": 39.4, "entrega_hm3": 17.2, "demanda_proxy": 85, "estres": 64 },
+    { "mes": "2025-03", "caudal_m3s": 34.1, "entrega_hm3": 15.4, "demanda_proxy": 74, "estres": 55 },
+    { "mes": "2025-04", "caudal_m3s": 27.6, "entrega_hm3": 12.8, "demanda_proxy": 60, "estres": 47 },
+    { "mes": "2025-05", "caudal_m3s": 21.5, "entrega_hm3": 10.6, "demanda_proxy": 52, "estres": 50 },
+    { "mes": "2025-06", "caudal_m3s": 18.9, "entrega_hm3": 9.8, "demanda_proxy": 47, "estres": 56 },
+    { "mes": "2025-07", "caudal_m3s": 15.8, "entrega_hm3": 8.9, "demanda_proxy": 45, "estres": 81 },
+    { "mes": "2025-08", "caudal_m3s": 14.9, "entrega_hm3": 8.6, "demanda_proxy": 48, "estres": 86 },
+    { "mes": "2025-09", "caudal_m3s": 19.6, "entrega_hm3": 10.4, "demanda_proxy": 56, "estres": 63 },
+    { "mes": "2025-10", "caudal_m3s": 25.2, "entrega_hm3": 12.1, "demanda_proxy": 66, "estres": 53 },
+    { "mes": "2025-11", "caudal_m3s": 31.8, "entrega_hm3": 14.2, "demanda_proxy": 80, "estres": 59 },
+    { "mes": "2025-12", "caudal_m3s": 37.5, "entrega_hm3": 16.4, "demanda_proxy": 84, "estres": 61 }
+  ]
+}

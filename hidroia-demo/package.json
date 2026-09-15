@@ -1,0 +1,18 @@
+{
+  "name": "hidroia-demo",
+  "version": "1.0.0",
+  "description": "Demo estático para jurados de la convocatoria Plan AURA 2026: tablero, alertas y asistente IA simulado con datos de ejemplo.",
+  "main": "index.js",
+  "scripts": {
+    "serve": "npx --yes serve -l 5173 .",
+    "login": "firebase login",
+    "deploy": "firebase deploy --only hosting"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "firebase-tools": "^15.29.0"
+  }
+}
