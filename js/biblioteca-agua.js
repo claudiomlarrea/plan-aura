@@ -312,20 +312,7 @@
         actualizarContador();
         actualizarBotonLimpiar();
         actualizarResumenFiltros();
-        if (status) {
-          if (res.fuentesFallidas && res.fuentesFallidas.length) {
-            status.innerHTML =
-              '<div class="pub-msg pub-msg--hint">' +
-              tt(
-                "dyn.biblio.partial",
-                "Algunas fuentes no respondieron ({sources}). Se muestran resultados de las demás.",
-                { sources: esc(res.fuentesFallidas.join(", ")) }
-              ) +
-              "</div>";
-          } else {
-            status.innerHTML = "";
-          }
-        }
+        if (status) status.innerHTML = "";
         dibujarGrilla();
         ejecutarPendiente();
       })
