@@ -68,6 +68,42 @@
 
 .pub-app {
   margin-top: 0.5rem;
+  padding: 1.35rem 1.35rem 1.5rem;
+  background: #fff;
+  border-radius: var(--radius);
+  border: 1px solid rgba(var(--rgb-water), 0.16);
+  box-shadow: var(--shadow);
+  color: var(--color-text);
+}
+
+.pub-app .pub-panel-intro,
+.pub-app .pub-index-search-label,
+.pub-app .pub-index-control-label,
+.pub-app .pub-index-active,
+.pub-app .pub-status,
+.pub-app .pub-msg {
+  color: var(--color-text);
+  text-shadow: none;
+}
+
+.pub-app .pub-panel-intro {
+  color: var(--color-text-soft);
+}
+
+.pub-app .pub-panel-intro--index a {
+  color: var(--color-celeste-dark);
+  text-decoration-color: rgba(var(--rgb-water), 0.55);
+}
+
+.pub-app .pub-index-badge {
+  color: var(--color-banner-green);
+  background: rgba(var(--rgb-banner-green), 0.1);
+  border: 1px solid rgba(var(--rgb-banner-green), 0.22);
+}
+
+.pub-app .pub-index-count-label,
+.pub-app .pub-index-count-label strong {
+  color: var(--color-text);
 }
 
 .pub-toolbar {

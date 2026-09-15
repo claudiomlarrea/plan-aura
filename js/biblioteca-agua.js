@@ -9,11 +9,11 @@
   var SEARCH_DEBOUNCE_MS = 450;
   var DEFAULT_QUERY = String(
     CFG.AGUA_DEFAULT_QUERY ||
-      'water consumption OR "responsible water use" OR "rational water use" OR "water conservation" OR "water saving" OR "sustainable water use"'
+      '"water consumption" OR "responsible water use" OR "rational water use" OR "water conservation" OR "water saving" OR "sustainable water use"'
   ).trim();
-  var AGUA_CONCEPTS = String(
-    CFG.AGUA_CONCEPT_IDS ||
-      "C110158866|C153823671|C51193700|C2780797713|C96306036|C524765639"
+  var AGUA_OPENALEX_SEARCH = String(
+    CFG.AGUA_OPENALEX_SEARCH ||
+      '"water conservation"|"water saving"|"responsible water use"|"rational water use"|"water consumption"|"water reuse"|"water scarcity"|"water education"'
   ).trim();
 
   var items = [];
@@ -290,7 +290,7 @@
 
     window.PUB_FUENTES_ABIERTAS.buscar({
       scope: "agua-global",
-      conceptId: AGUA_CONCEPTS,
+      aguaSearch: AGUA_OPENALEX_SEARCH,
       defaultQuery: DEFAULT_QUERY,
       mailto: MAILTO,
       appLabel: "Biblioteca del Agua · Plan AURA UCCuyo",

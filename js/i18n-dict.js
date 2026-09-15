@@ -898,8 +898,8 @@ window.I18N_DICT = {
     en: "Water Library"
   },
   "sec.publicaciones.intro": {
-    es: "Índice global de artículos científicos sobre consumo de agua, uso responsable y racional del agua, y los ejes temáticos del Plan AURA. Los resultados se actualizan al consultar las fuentes abiertas.",
-    en: "Global index of scientific articles on water consumption, responsible and rational water use, and Plan AURA thematic axes. Results refresh when open sources are queried."
+    es: "Índice global de artículos científicos en bibliotecas públicas y abiertas del mundo, sobre consumo de agua, uso responsable y racional, ahorro, reutilización, calidad, educación hídrica y los demás ejes del Plan AURA (Res. 418-CS-2024, 767-CS-2025 y 849-CS-2026). Los resultados se actualizan al consultar las fuentes.",
+    en: "Global index of scientific articles from public open libraries worldwide, on water consumption, responsible and rational use, saving, reuse, quality, water education and other Plan AURA axes (Res. 418-CS-2024, 767-CS-2025 and 849-CS-2026). Results refresh when sources are queried."
   },
   "sec.biblio.intro": {
     es: "Resultados globales desde <a href=\"https://openalex.org\" target=\"_blank\" rel=\"noopener noreferrer\">OpenAlex</a>, <a href=\"https://www.crossref.org\" target=\"_blank\" rel=\"noopener noreferrer\">Crossref</a>, <a href=\"https://www.semanticscholar.org\" target=\"_blank\" rel=\"noopener noreferrer\">Semantic Scholar</a> y <a href=\"https://europepmc.org\" target=\"_blank\" rel=\"noopener noreferrer\">Europe PMC</a> (incluye PubMed), con enlaces de acceso abierto vía <a href=\"https://unpaywall.org\" target=\"_blank\" rel=\"noopener noreferrer\">Unpaywall</a>, para trabajos relacionados con el agua y el Plan AURA. Puede haber faltantes, duplicados o registros a revisar.",

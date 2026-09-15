@@ -17,8 +17,9 @@
   var QUERY_IA = "artificial intelligence";
   var QUERY_SD = "sustainable development";
   var QUERY_AGUA =
-    '("water consumption" OR "responsible water use" OR "rational water use" OR "water conservation" OR "water saving" OR "sustainable water use" OR "water reuse" OR "water scarcity" OR "water quality" OR "water education")';
-
+    '"water consumption" OR "responsible water use" OR "rational water use" OR "water conservation" OR "water saving" OR "sustainable water use" OR "water reuse" OR "water scarcity" OR "water education" OR "water quality" OR "household water" OR "water policy" OR "arid region" OR "uso responsable del agua" OR "ahorro de agua"';
+  var OPENALEX_AGUA_SEARCH =
+    '"water conservation"|"water saving"|"responsible water use"|"rational water use"|"water consumption"|"water reuse"|"water scarcity"|"water education"|"water quality"|"household water access"|"water policy"|"arid water"|"water metering"|"water behaviour"|"water behavior"';
   function currentYear() {
     return new Date().getFullYear();
   }
@@ -169,13 +170,17 @@
       parts.push("to_publication_date:" + maxPubDate());
       if (opts.yearFilter === "all") parts.push("from_publication_date:" + MIN_YEAR + "-01-01");
     } else if (opts.scope === "agua-global") {
-      // Conceptos alineados al Plan AURA (conservación, recursos, escasez, calidad, GIRH, gestión)
-      var aguaConcepts =
-        opts.conceptId ||
-        "C110158866|C153823671|C51193700|C2780797713|C96306036|C524765639";
-      parts.push("concepts.id:" + aguaConcepts);
+      // Temas del Plan AURA (Res. 418-CS-2024, 767-CS-2025, 849-CS-2026 y ejes de la convocatoria)
       parts.push("to_publication_date:" + maxPubDate());
-      if (opts.yearFilter === "all") parts.push("from_publication_date:" + MIN_YEAR + "-01-01");
+      if (opts.yearFilter === "all") {
+        parts.push("from_publication_date:" + MIN_YEAR + "-01-01");
+      }
+      parts.push(
+        "default.search:" +
+          (opts.aguaSearch ||
+            OPENALEX_AGUA_SEARCH ||
+            '"water conservation"|"water saving"|"responsible water use"|"water consumption"')
+      );
     } else {
       parts.push("authorships.institutions.lineage:" + opts.institutionId);
     }
@@ -383,7 +388,7 @@
       parts.push('(TITLE:"artificial intelligence" OR ABSTRACT:"artificial intelligence")');
     } else if (opts.scope === "agua-global") {
       parts.push(
-        '(TITLE:"water consumption" OR ABSTRACT:"water consumption" OR TITLE:"responsible water use" OR ABSTRACT:"responsible water use" OR TITLE:"water conservation" OR ABSTRACT:"water conservation" OR TITLE:"rational water use" OR ABSTRACT:"rational water use" OR TITLE:"uso responsable del agua" OR ABSTRACT:"uso responsable del agua" OR TITLE:"ahorro de agua" OR ABSTRACT:"ahorro de agua")'
+        '(TITLE:"water consumption" OR ABSTRACT:"water consumption" OR TITLE:"responsible water use" OR ABSTRACT:"responsible water use" OR TITLE:"water conservation" OR ABSTRACT:"water conservation" OR TITLE:"rational water use" OR ABSTRACT:"rational water use" OR TITLE:"water saving" OR ABSTRACT:"water saving" OR TITLE:"water reuse" OR ABSTRACT:"water reuse" OR TITLE:"water scarcity" OR ABSTRACT:"water scarcity" OR TITLE:"water education" OR ABSTRACT:"water education" OR TITLE:"uso responsable del agua" OR ABSTRACT:"uso responsable del agua" OR TITLE:"ahorro de agua" OR ABSTRACT:"ahorro de agua" OR TITLE:"cultura hidrica" OR ABSTRACT:"cultura hidrica")'
       );
     } else {
       parts.push(
@@ -596,6 +601,7 @@
       iaConceptId: opts.iaConceptId || opts.conceptId || "C154945302",
       conceptId: opts.conceptId || opts.iaConceptId || "C154945302",
       defaultQuery: opts.defaultQuery || "",
+      aguaSearch: opts.aguaSearch || "",
       mailto: opts.mailto || "investigacion@uccuyo.edu.ar",
       appLabel: opts.appLabel || "UCCuyo publicaciones",
       page: opts.page || 1,
