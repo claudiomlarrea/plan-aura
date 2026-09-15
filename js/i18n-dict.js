@@ -147,6 +147,10 @@ window.I18N_DICT = {
     es: "Galería de imágenes",
     en: "Image gallery"
   },
+  "hero.cta.biblioteca": {
+    es: "Biblioteca del Agua",
+    en: "Water Library"
+  },
   "hero.cta.plan": {
     es: "Conocer el Plan",
     en: "Learn about the Plan"
