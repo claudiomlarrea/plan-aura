@@ -115,8 +115,8 @@ window.I18N_DICT = {
     en: "News"
   },
   "nav.publicaciones": {
-    es: "Publicaciones",
-    en: "Publications"
+    es: "Biblioteca del Agua",
+    en: "Water Library"
   },
   "nav.visitas": {
     es: "Visualizaciones del Plan",
@@ -894,17 +894,95 @@ window.I18N_DICT = {
     en: "Outreach"
   },
   "sec.publicaciones.title": {
-    es: "Publicaciones",
-    en: "Publications"
+    es: "Biblioteca del Agua",
+    en: "Water Library"
   },
   "sec.publicaciones.intro": {
-    es: "Publicaciones relacionadas con el Plan AURA (artículos, informes y materiales de divulgación).",
-    en: "Publications related to Plan AURA (articles, reports, and outreach materials)."
+    es: "Índice global de artículos científicos sobre consumo de agua, uso responsable y racional del agua, y los ejes temáticos del Plan AURA. Los resultados se actualizan al consultar las fuentes abiertas.",
+    en: "Global index of scientific articles on water consumption, responsible and rational water use, and Plan AURA thematic axes. Results refresh when open sources are queried."
   },
-  "sec.publicaciones.placeholder": {
-    es: "Próximamente se incorporarán las publicaciones vinculadas al Plan AURA.",
-    en: "Publications linked to Plan AURA will be added here soon."
+  "sec.biblio.intro": {
+    es: "Resultados globales desde <a href=\"https://openalex.org\" target=\"_blank\" rel=\"noopener noreferrer\">OpenAlex</a>, <a href=\"https://www.crossref.org\" target=\"_blank\" rel=\"noopener noreferrer\">Crossref</a>, <a href=\"https://www.semanticscholar.org\" target=\"_blank\" rel=\"noopener noreferrer\">Semantic Scholar</a> y <a href=\"https://europepmc.org\" target=\"_blank\" rel=\"noopener noreferrer\">Europe PMC</a> (incluye PubMed), con enlaces de acceso abierto vía <a href=\"https://unpaywall.org\" target=\"_blank\" rel=\"noopener noreferrer\">Unpaywall</a>, para trabajos relacionados con el agua y el Plan AURA. Puede haber faltantes, duplicados o registros a revisar.",
+    en: "Global results from <a href=\"https://openalex.org\" target=\"_blank\" rel=\"noopener noreferrer\">OpenAlex</a>, <a href=\"https://www.crossref.org\" target=\"_blank\" rel=\"noopener noreferrer\">Crossref</a>, <a href=\"https://www.semanticscholar.org\" target=\"_blank\" rel=\"noopener noreferrer\">Semantic Scholar</a>, and <a href=\"https://europepmc.org\" target=\"_blank\" rel=\"noopener noreferrer\">Europe PMC</a> (including PubMed), with open-access links via <a href=\"https://unpaywall.org\" target=\"_blank\" rel=\"noopener noreferrer\">Unpaywall</a>, for works related to water and Plan AURA. There may be gaps, duplicates, or records to review."
   },
+  "sec.biblio.badge": {
+    es: "Resultados aproximados",
+    en: "Approximate results"
+  },
+  "sec.biblio.count": {
+    es: "{n} trabajos aproximados (referencia OpenAlex)",
+    en: "{n} approximate works (OpenAlex reference)"
+  },
+  "sec.biblio.search.label": {
+    es: "Buscar por título, DOI o autor/a",
+    en: "Search by title, DOI, or author"
+  },
+  "sec.biblio.search.modes": {
+    es: "Tipo de búsqueda",
+    en: "Search type"
+  },
+  "sec.biblio.search.placeholder": {
+    es: "Ej.: water conservation, uso responsable del agua, DOI…",
+    en: "E.g.: water conservation, responsible water use, DOI…"
+  },
+  "sec.biblio.mode.auto": { es: "Auto", en: "Auto" },
+  "sec.biblio.mode.title": { es: "Título", en: "Title" },
+  "sec.biblio.mode.author": { es: "Autor/a", en: "Author" },
+  "sec.biblio.mode.doi": { es: "DOI", en: "DOI" },
+  "sec.biblio.year.label": { es: "Filtrar por año", en: "Filter by year" },
+  "sec.biblio.btnClear": { es: "Limpiar", en: "Clear" },
+  "sec.biblio.btnClearAll": { es: "Limpiar todo", en: "Clear all" },
+  "sec.biblio.size": { es: "Por página", en: "Per page" },
+  "sec.biblio.size.aria": { es: "Cantidad por página", en: "Items per page" },
+  "sec.biblio.sort": { es: "Orden", en: "Sort" },
+  "sec.biblio.sort.aria": { es: "Ordenar publicaciones", en: "Sort publications" },
+  "sec.biblio.sort.dateDesc": { es: "Fecha: más reciente", en: "Date: newest" },
+  "sec.biblio.sort.dateAsc": { es: "Fecha: más antigua", en: "Date: oldest" },
+  "sec.biblio.sort.relevance": {
+    es: "Relevancia (si hay búsqueda)",
+    en: "Relevance (when searching)"
+  },
+  "dyn.biblio.allYears": { es: "Todos los años", en: "All years" },
+  "dyn.biblio.loading": {
+    es: "Cargando en OpenAlex, Crossref, Semantic Scholar y Europe PMC...",
+    en: "Loading from OpenAlex, Crossref, Semantic Scholar, and Europe PMC..."
+  },
+  "dyn.biblio.error": {
+    es: "No se pudo cargar el índice desde las fuentes abiertas. Probá de nuevo en unos minutos.",
+    en: "Could not load the index from open sources. Try again in a few minutes."
+  },
+  "dyn.biblio.errorScript": {
+    es: "No se pudo cargar el buscador de fuentes abiertas.",
+    en: "Could not load the open-sources search module."
+  },
+  "dyn.biblio.partial": {
+    es: "Algunas fuentes no respondieron ({sources}). Se muestran resultados de las demás.",
+    en: "Some sources did not respond ({sources}). Showing results from the others."
+  },
+  "dyn.biblio.empty": {
+    es: "No hay resultados para esa búsqueda.",
+    en: "No results for that search."
+  },
+  "dyn.biblio.openOa": { es: "Leer / descargar (OA)", en: "Read / download (OA)" },
+  "dyn.biblio.viewDoi": { es: "Ver DOI", en: "View DOI" },
+  "dyn.biblio.openLink": { es: "Abrir enlace", en: "Open link" },
+  "dyn.biblio.noLink": { es: "Sin enlace", en: "No link" },
+  "dyn.biblio.chip.articulo": { es: "Artículo", en: "Article" },
+  "dyn.biblio.pager": { es: "Paginación", en: "Pagination" },
+  "dyn.biblio.first": { es: "Primera", en: "First" },
+  "dyn.biblio.prev": { es: "Anterior", en: "Previous" },
+  "dyn.biblio.next": { es: "Siguiente", en: "Next" },
+  "dyn.biblio.last": { es: "Última", en: "Last" },
+  "dyn.biblio.pageOf": {
+    es: "Página {n} de {total} · {count} resultados",
+    en: "Page {n} of {total} · {count} results"
+  },
+  "dyn.biblio.head.tipo": { es: "Tipo", en: "Type" },
+  "dyn.biblio.head.titulo": { es: "Título", en: "Title" },
+  "dyn.biblio.head.ano": { es: "Año", en: "Year" },
+  "dyn.biblio.head.enlace": { es: "Enlace", en: "Link" },
+  "dyn.biblio.activeQuery": { es: "Búsqueda: “{q}”", en: "Search: “{q}”" },
+  "dyn.biblio.activeYear": { es: "Año: {y}", en: "Year: {y}" },
   "sec.docs.instructivoInvestigacion.tag": {
     es: "PDF · Instructivo",
     en: "PDF · Guidelines"

@@ -12,7 +12,8 @@
     <link rel="canonical" href="https://plan-aura.com.ar/" />
     <link rel="icon" type="image/png" href="assets/logo-aura-gota-filete.png" />
     <link rel="stylesheet" href="css/variables.css?v=51" />
-    <link rel="stylesheet" href="css/styles.css?v=57" />
+    <link rel="stylesheet" href="css/styles.css?v=58" />
+    <link rel="stylesheet" href="css/biblioteca-agua.css?v=1" />
   </head>
   <body>
     <a class="skip-link" href="#contenido" data-i18n="a11y.skipLink">Ir al contenido</a>
@@ -100,7 +101,7 @@
                 </button>
                 <ul class="nav-submenu" id="nav-sub-difusion">
                   <li><a href="#noticias" data-i18n="nav.noticias">Noticias</a></li>
-                  <li><a href="#publicaciones" data-i18n="nav.publicaciones">Publicaciones</a></li>
+                  <li><a href="#publicaciones" data-i18n="nav.publicaciones">Biblioteca del Agua</a></li>
                   <li><a href="#galeria" data-i18n="nav.galeria">Galería de imágenes</a></li>
                   <li><a href="#visitas" data-i18n="nav.visitas">Visualizaciones del Plan</a></li>
                 </ul>
@@ -732,17 +733,158 @@
         <div class="section-inner">
           <header class="section-head section-head--bar section-head--water">
             <p class="section-kicker" data-i18n="sec.publicaciones.kicker">Difusión</p>
-            <h2 id="sec-publicaciones" data-i18n="sec.publicaciones.title">Publicaciones</h2>
+            <h2 id="sec-publicaciones" data-i18n="sec.publicaciones.title">Biblioteca del Agua</h2>
           </header>
           <p class="text-intro" data-i18n="sec.publicaciones.intro">
-            Publicaciones relacionadas con el Plan AURA (artículos, informes y
-            materiales de divulgación).
+            Índice global de artículos científicos sobre consumo de agua, uso
+            responsable y racional del agua, y los ejes temáticos del Plan AURA.
+            Los resultados se actualizan al consultar las fuentes abiertas.
           </p>
-          <article class="card">
-            <p data-i18n="sec.publicaciones.placeholder">
-              Próximamente se incorporarán las publicaciones vinculadas al Plan AURA.
+
+          <div class="pub-app pub-panel pub-panel--index" id="pub-panel-biblioteca-agua">
+            <p class="pub-panel-intro pub-panel-intro--index">
+              <span data-i18n="sec.biblio.intro" data-i18n-html
+                >Resultados globales desde
+                <a href="https://openalex.org" target="_blank" rel="noopener noreferrer">OpenAlex</a>,
+                <a href="https://www.crossref.org" target="_blank" rel="noopener noreferrer">Crossref</a>,
+                <a href="https://www.semanticscholar.org" target="_blank" rel="noopener noreferrer">Semantic Scholar</a>
+                y
+                <a href="https://europepmc.org" target="_blank" rel="noopener noreferrer">Europe PMC</a>
+                (incluye PubMed), con enlaces de acceso abierto vía
+                <a href="https://unpaywall.org" target="_blank" rel="noopener noreferrer">Unpaywall</a>,
+                para trabajos relacionados con el agua y el Plan AURA. Puede haber
+                faltantes, duplicados o registros a revisar.</span
+              >
+              <span class="pub-index-badge" data-i18n="sec.biblio.badge">Resultados aproximados</span>
+              <span id="pub-index-count-wrap" hidden>
+                · <span id="pub-index-count-label"><strong id="pub-index-total">0</strong></span>
+              </span>
             </p>
-          </article>
+
+            <div class="pub-index-search">
+              <label class="pub-index-search-label" for="pub-index-q" data-i18n="sec.biblio.search.label"
+                >Buscar por título, DOI o autor/a</label
+              >
+              <div
+                class="pub-index-search-modes"
+                role="radiogroup"
+                aria-label="Tipo de búsqueda"
+                data-i18n-attr="aria-label:sec.biblio.search.modes"
+              >
+                <button
+                  type="button"
+                  class="pub-index-mode pub-index-mode--active"
+                  data-pub-index-mode="auto"
+                  aria-pressed="true"
+                  data-i18n="sec.biblio.mode.auto"
+                >
+                  Auto
+                </button>
+                <button
+                  type="button"
+                  class="pub-index-mode"
+                  data-pub-index-mode="title"
+                  aria-pressed="false"
+                  data-i18n="sec.biblio.mode.title"
+                >
+                  Título
+                </button>
+                <button
+                  type="button"
+                  class="pub-index-mode"
+                  data-pub-index-mode="author"
+                  aria-pressed="false"
+                  data-i18n="sec.biblio.mode.author"
+                >
+                  Autor/a
+                </button>
+                <button
+                  type="button"
+                  class="pub-index-mode"
+                  data-pub-index-mode="doi"
+                  aria-pressed="false"
+                  data-i18n="sec.biblio.mode.doi"
+                >
+                  DOI
+                </button>
+                <div class="pub-index-year pub-index-year--inline">
+                  <label class="pub-index-year-label visually-hidden" for="pub-index-year" data-i18n="sec.biblio.year.label"
+                    >Filtrar por año</label
+                  >
+                  <select
+                    id="pub-index-year"
+                    class="pub-index-year-select"
+                    aria-label="Filtrar publicaciones por año"
+                    title="Filtrar por año"
+                    data-i18n-attr="aria-label:sec.biblio.year.label,title:sec.biblio.year.label"
+                  >
+                    <option value="all" data-i18n="dyn.biblio.allYears">Todos los años</option>
+                  </select>
+                </div>
+              </div>
+              <div class="pub-index-search-row">
+                <input
+                  type="search"
+                  id="pub-index-q"
+                  class="pub-index-search-input"
+                  placeholder="Ej.: water conservation, uso responsable del agua, DOI…"
+                  autocomplete="off"
+                  enterkeyhint="search"
+                  data-i18n-attr="placeholder:sec.biblio.search.placeholder"
+                />
+                <button
+                  type="button"
+                  id="pub-index-q-clear"
+                  class="pub-more-btn pub-index-search-clear"
+                  hidden
+                  data-i18n="sec.biblio.btnClear"
+                >
+                  Limpiar
+                </button>
+                <button
+                  type="button"
+                  id="pub-index-clear-all"
+                  class="pub-more-btn pub-index-search-clear-all"
+                  data-i18n="sec.biblio.btnClearAll"
+                >
+                  Limpiar todo
+                </button>
+              </div>
+              <div class="pub-index-controls">
+                <label class="pub-index-control-label" for="pub-index-size" data-i18n="sec.biblio.size"
+                  >Por página</label
+                >
+                <select
+                  id="pub-index-size"
+                  class="pub-index-control-select"
+                  aria-label="Cantidad por página"
+                  data-i18n-attr="aria-label:sec.biblio.size.aria"
+                >
+                  <option value="15">15</option>
+                  <option value="30">30</option>
+                  <option value="50">50</option>
+                </select>
+                <label class="pub-index-control-label" for="pub-index-sort" data-i18n="sec.biblio.sort"
+                  >Orden</label
+                >
+                <select
+                  id="pub-index-sort"
+                  class="pub-index-control-select"
+                  aria-label="Ordenar publicaciones"
+                  data-i18n-attr="aria-label:sec.biblio.sort.aria"
+                >
+                  <option value="date_desc" data-i18n="sec.biblio.sort.dateDesc">Fecha: más reciente</option>
+                  <option value="date_asc" data-i18n="sec.biblio.sort.dateAsc">Fecha: más antigua</option>
+                  <option value="relevance" data-i18n="sec.biblio.sort.relevance">
+                    Relevancia (si hay búsqueda)
+                  </option>
+                </select>
+              </div>
+              <div id="pub-index-active" class="pub-index-active" aria-live="polite"></div>
+            </div>
+            <div id="pub-index-status" class="pub-status" aria-live="polite"></div>
+            <div class="pub-grid" id="pub-index-grid"></div>
+          </div>
         </div>
       </section>
 
@@ -864,7 +1006,7 @@
             <h3 data-i18n="nav.group.difusion">Difusión</h3>
             <ul class="footer-links">
               <li><a href="#noticias" data-i18n="nav.noticias">Noticias</a></li>
-              <li><a href="#publicaciones" data-i18n="nav.publicaciones">Publicaciones</a></li>
+              <li><a href="#publicaciones" data-i18n="nav.publicaciones">Biblioteca del Agua</a></li>
               <li><a href="#galeria" data-i18n="nav.galeria">Galería de imágenes</a></li>
               <li><a href="#visitas" data-i18n="nav.visitas">Visualizaciones del Plan</a></li>
             </ul>
@@ -936,12 +1078,14 @@
       </form>
     </div>
 
-    <script src="js/i18n-dict.js?v=29" defer></script>
+    <script src="js/i18n-dict.js?v=30" defer></script>
     <script src="js/i18n.js?v=7" defer></script>
-    <script src="js/main.js?v=3" defer></script>
+    <script src="js/main.js?v=4" defer></script>
     <script src="js/galeria-config.js?v=8" defer></script>
     <script src="js/galeria.js?v=6" defer></script>
-    <script src="js/publicaciones-config.js?v=1" defer></script>
+    <script src="js/publicaciones-config.js?v=2" defer></script>
+    <script src="js/publicaciones-fuentes-abiertas.js?v=1" defer></script>
+    <script src="js/biblioteca-agua.js?v=1" defer></script>
     <script src="js/visitantes-config.js?v=1" defer></script>
     <script src="js/visitantes.js?v=5" defer></script>
     <script src="js/visitas-mapa.js?v=3" defer></script>

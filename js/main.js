@@ -5,7 +5,9 @@
   var aliases = {
     contenido: "inicio",
     comision: "equipo",
-    marco: "documentos"
+    marco: "documentos",
+    "biblioteca-del-agua": "publicaciones",
+    biblioteca: "publicaciones"
   };
   var pageTitles = {
     inicio: baseTitle,
@@ -16,7 +18,7 @@
     convocatoria: "Convocatorias · Plan AURA",
     documentos: "Marco normativo · Plan AURA",
     noticias: "Noticias · Plan AURA",
-    publicaciones: "Publicaciones · Plan AURA",
+    publicaciones: "Biblioteca del Agua · Plan AURA",
     galeria: "Galería de imágenes · Plan AURA",
     visitas: "Visualizaciones del Plan · Plan AURA",
     contacto: "Contacto · Plan AURA"
