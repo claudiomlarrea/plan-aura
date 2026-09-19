@@ -119,8 +119,8 @@ window.I18N_DICT = {
     en: "Water Library"
   },
   "nav.visitas": {
-    es: "Visualizaciones del Plan",
-    en: "Plan visualizations"
+    es: "Visitas al Plan AURA",
+    en: "Plan AURA visits"
   },
   "nav.contacto": {
     es: "Contacto",
@@ -1258,8 +1258,8 @@ window.I18N_DICT = {
     en: "Reach"
   },
   "sec.visitas.title": {
-    es: "Visualizaciones del Plan",
-    en: "Plan visualizations"
+    es: "Visitas al Plan AURA",
+    en: "Plan AURA visits"
   },
   "sec.visitas.intro": {
     es: "Estimación del país y, cuando está disponible, de la provincia o región desde donde se consulta el sitio del Plan AURA. Tocá un origen en la lista para enfocarlo en el mapa. El dato es aproximado (geolocalización por IP): no identifica personas ni guarda la dirección IP.",
@@ -1402,8 +1402,8 @@ window.I18N_DICT = {
   },
 
   "dyn.visitas.widget": {
-    es: "Visualizaciones del Plan: {n}",
-    en: "Plan visualizations: {n}"
+    es: "Visitas al Plan AURA: {n}",
+    en: "Plan AURA visits: {n}"
   },
   "dyn.visitas.loading": {
     es: "Cargando origen de visitas…",

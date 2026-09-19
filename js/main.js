@@ -20,7 +20,7 @@
     noticias: "Noticias · Plan AURA",
     publicaciones: "Biblioteca del Agua · Plan AURA",
     galeria: "Galería de imágenes · Plan AURA",
-    visitas: "Visualizaciones del Plan · Plan AURA",
+    visitas: "Visitas al Plan AURA · Plan AURA",
     contacto: "Contacto · Plan AURA"
   };
 
