@@ -23,6 +23,10 @@
   function pintar(data) {
     if (!data || !data.ok || data.aura == null || Array.isArray(data.items)) return;
     lastData = data;
+    window.__VISITAS_WEB_COUNTS = data;
+    try {
+      window.dispatchEvent(new CustomEvent("oia:visitasweb", { detail: data }));
+    } catch (e) {}
     var count = "<strong>" + fmt(data.aura) + "</strong>";
     var text =
       window.I18N && window.I18N.t

@@ -32,6 +32,7 @@
   var REGION_PAGE_SIZE = 8;
   var regionsVisibleLimit = REGION_PAGE_SIZE;
   var lastListData = null;
+  var lastStatsData = null;
 
   var COUNTRY_CENTROIDS = {
     AF: [-65.2, 33.9],
@@ -329,6 +330,25 @@
     return Math.round((1000 * part) / total) / 10 + "%";
   }
 
+  function viewsFromWidget() {
+    var w = document.getElementById("visitantes-widget");
+    if (!w) return 0;
+    var strong = w.querySelector("strong");
+    if (!strong) return 0;
+    return parseInt(String(strong.textContent || "").replace(/[^\d]/g, ""), 10) || 0;
+  }
+
+  function resolveViews(data) {
+    var views = Number(data && data.views) || 0;
+    if (views > 0) return views;
+    var counts = window.__VISITAS_WEB_COUNTS;
+    if (counts && counts[site] != null) {
+      views = Number(counts[site]) || 0;
+      if (views > 0) return views;
+    }
+    return viewsFromWidget();
+  }
+
   function normKey(s) {
     return String(s || "")
       .toLowerCase()
@@ -489,9 +509,11 @@
     if (totalNote) totalNote.hidden = true;
     if (!el) return;
 
+    lastStatsData = data;
     var countries = data.countries || [];
     var regions = data.regions || [];
     var total = Number(data.total) || 0;
+    var views = resolveViews(data);
     if (!countries.length) {
       el.hidden = true;
       el.innerHTML = "";
@@ -506,6 +528,13 @@
 
     el.hidden = false;
     el.innerHTML =
+      (views > 0
+        ? '<div class="visitas-stat visitas-stat--views"><span class="visitas-stat__k">' +
+          tt("dyn.visitas.views", "Visitas") +
+          "</span><strong>" +
+          fmt(views) +
+          "</strong></div>"
+        : "") +
       '<div class="visitas-stat"><span class="visitas-stat__k">' + tt("dyn.visitas.withOrigin", "Con origen") + '</span><strong>' +
       fmt(total) +
       "</strong></div>" +
@@ -979,8 +1008,16 @@
       }
     );
 
+  function refreshViewsCard() {
+    if (lastStatsData) renderStats(lastStatsData);
+  }
+
+  window.addEventListener("oia:visitasweb", refreshViewsCard);
+  window.addEventListener("oia:langchange", refreshViewsCard);
+
   document.addEventListener("oia:page", function (ev) {
     if (ev.detail !== "visitas") return;
+    refreshViewsCard();
     window.setTimeout(function () {
       if (!mapApi) return;
       mapApi.invalidateSize();

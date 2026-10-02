@@ -1971,6 +1971,11 @@ body.gallery-lightbox-open {
   border-radius: var(--radius);
 }
 
+.visitas-stat--views {
+  border-color: rgba(var(--rgb-green), 0.38);
+  background: rgba(255, 255, 255, 0.96);
+}
+
 .visitas-stat--wide {
   grid-column: span 2;
 }

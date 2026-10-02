@@ -1262,8 +1262,8 @@ window.I18N_DICT = {
     en: "Plan AURA visits"
   },
   "sec.visitas.intro": {
-    es: "Estimación del país y, cuando está disponible, de la provincia o región desde donde se consulta el sitio del Plan AURA. Tocá un origen en la lista para enfocarlo en el mapa. El dato es aproximado (geolocalización por IP): no identifica personas ni guarda la dirección IP.",
-    en: "Estimated country and, when available, province or region from which the Plan AURA site is accessed. Tap an origin in the list to focus it on the map. Data is approximate (IP geolocation): it does not identify individuals or store IP addresses."
+    es: "El total de visitas es el mismo que en Inicio. “Con origen” son las que se pudieron ubicar por IP. Tocá un origen en la lista para enfocarlo en el mapa. El dato geográfico es aproximado: no identifica personas ni guarda la dirección IP.",
+    en: "The visit total is the same as on Home. “With origin” are those that could be located by IP. Tap an origin in the list to focus it on the map. Geographic data is approximate: it does not identify individuals or store IP addresses."
   },
   "sec.visitas.note": {
     es: "El origen es una estimación por IP. Redes móviles, VPN y campus universitarios pueden desplazar la ubicación estimada.",
@@ -1444,6 +1444,10 @@ window.I18N_DICT = {
   "dyn.visitas.legend": {
     es: "Más visitas → círculo más grande y tono más intenso",
     en: "More visits → larger circle and stronger tone"
+  },
+  "dyn.visitas.views": {
+    es: "Visitas",
+    en: "Visits"
   },
   "dyn.visitas.withOrigin": {
     es: "Con origen",
