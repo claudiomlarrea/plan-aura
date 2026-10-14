@@ -18,6 +18,7 @@
     convocatoria: "Convocatorias · Plan AURA",
     documentos: "Marco normativo · Plan AURA",
     noticias: "Noticias · Plan AURA",
+    articulos: "Publicaciones · Plan AURA",
     publicaciones: "Biblioteca del Agua · Plan AURA",
     galeria: "Galería de imágenes · Plan AURA",
     visitas: "Visitas al Plan AURA · Plan AURA",

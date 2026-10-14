@@ -114,6 +114,10 @@ window.I18N_DICT = {
     es: "Noticias",
     en: "News"
   },
+  "nav.articulos": {
+    es: "Publicaciones",
+    en: "Publications"
+  },
   "nav.publicaciones": {
     es: "Biblioteca del Agua",
     en: "Water Library"
@@ -892,6 +896,78 @@ window.I18N_DICT = {
   "sec.noticias.placeholder": {
     es: "Próximamente se publicarán aquí las noticias del Plan AURA.",
     en: "Plan AURA news will be published here soon."
+  },
+  "sec.articulos.kicker": {
+    es: "Instituto del Agua",
+    en: "Water Institute"
+  },
+  "sec.articulos.title": {
+    es: "Publicaciones",
+    en: "Publications"
+  },
+  "sec.articulos.intro": {
+    es: "Artículos del Instituto del Agua de la UCCuyo. Cada título abre el PDF en una pestaña nueva.",
+    en: "Articles from the UCCuyo Water Institute. Each title opens the PDF in a new tab."
+  },
+  "sec.articulos.tag": {
+    es: "Artículo · PDF",
+    en: "Article · PDF"
+  },
+  "sec.art.002.title": {
+    es: "El valor del agua para la vida y el valor de mercado",
+    en: "The value of water for life and its market value"
+  },
+  "sec.art.002.meta": {
+    es: "Hacia una integración entre economía, biodiversidad y gestión sustentable de los recursos hídricos. Luis F. Jiménez.",
+    en: "Towards an integration of economics, biodiversity, and sustainable water resource management. Luis F. Jiménez."
+  },
+  "sec.art.003.title": {
+    es: "El agua como bien de uso y bien de cambio",
+    en: "Water as a use good and an exchange good"
+  },
+  "sec.art.003.meta": {
+    es: "El marco conceptual del techo ecológico y el piso social en la gobernanza hídrica del siglo XXI. Luis F. Jiménez.",
+    en: "The conceptual framework of the ecological ceiling and the social floor in 21st-century water governance. Luis F. Jiménez."
+  },
+  "sec.art.004.title": {
+    es: "Valoración total del agua (VTA) en el Valle de Tulum",
+    en: "Total water valuation in the Tulum Valley"
+  },
+  "sec.art.004.meta": {
+    es: "Aplicación metodológica, caso numérico constructivo y contraste con la recuperación de la inversión pública. Luis F. Jiménez.",
+    en: "Methodological application, constructive numerical case, and contrast with public investment recovery. Luis F. Jiménez."
+  },
+  "sec.art.005.title": {
+    es: "Balance hídrico integrado y gobernanza de la escasez en el Valle de Tulum",
+    en: "Integrated water balance and scarcity governance in the Tulum Valley"
+  },
+  "sec.art.005.meta": {
+    es: "Luis F. Jiménez. Instituto del Agua, UCCuyo.",
+    en: "Luis F. Jiménez. Water Institute, UCCuyo."
+  },
+  "sec.art.006.title": {
+    es: "De la cultura de la abundancia a la gestión de la escasez hídrica",
+    en: "From a culture of abundance to the management of water scarcity"
+  },
+  "sec.art.006.meta": {
+    es: "Reflexiones frente a un ciclo nival extraordinario en la cuenca del río San Juan. Luis F. Jiménez.",
+    en: "Reflections in the face of an extraordinary snow cycle in the San Juan River basin. Luis F. Jiménez."
+  },
+  "sec.art.007.title": {
+    es: "Crisis hídrica y planificación del agua en San Juan",
+    en: "Water crisis and water planning in San Juan"
+  },
+  "sec.art.007.meta": {
+    es: "Balance físico, económico y social del Valle de Tulum. Luis F. Jiménez.",
+    en: "Physical, economic and social balance of the Tulum Valley. Luis F. Jiménez."
+  },
+  "sec.art.008.title": {
+    es: "El agua entre el valor de uso y el valor de cambio",
+    en: "Water between use value and exchange value"
+  },
+  "sec.art.008.meta": {
+    es: "Debate institucional, apropiación patrimonial y criterios económicos para la gestión hídrica del Valle de Tulum. Luis F. Jiménez.",
+    en: "Institutional debate, asset appropriation, and economic criteria for water management in the Tulum Valley. Luis F. Jiménez."
   },
   "sec.publicaciones.kicker": {
     es: "Difusión",
