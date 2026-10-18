@@ -7,7 +7,7 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <meta
       name="description"
-      content="Demo conceptual del sistema AURA-HidroIA: tablero, alertas y asistente IA simulado con datos de ejemplo."
+      content="Demo conceptual del sistema AURA-HidroIA: tablero, alertas, reportes semanales y mensuales, y asistente IA simulado con datos de ejemplo."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -36,6 +36,7 @@
       <nav class="nav-tabs" aria-label="Secciones del demo">
         <button type="button" data-panel="tablero" class="active">Tablero</button>
         <button type="button" data-panel="alertas">Alertas</button>
+        <button type="button" data-panel="reportes">Reportes</button>
         <button type="button" data-panel="asistente">Asistente IA</button>
       </nav>
     </header>
@@ -43,6 +44,15 @@
     <main>
       <section id="panel-tablero" class="panel active" aria-label="Tablero">
         <div class="kpi-grid" id="kpi-grid"></div>
+        <section class="emitted" aria-labelledby="sec-emitidos">
+          <h2 id="sec-emitidos">Últimos reportes emitidos</h2>
+          <p class="emitted-intro">
+            Últimos boletines calculados. Para elegir otro tipo o período, abrí
+            <button type="button" class="text-link" data-panel="reportes">Reportes</button>
+            y usá la botonera.
+          </p>
+          <div id="report-emitidos" class="emitted-grid"></div>
+        </section>
         <div class="charts">
           <article class="chart-card">
             <h2>Oferta y entrega (serie demo)</h2>
@@ -76,6 +86,52 @@
         </div>
       </section>
 
+      <section id="panel-reportes" class="panel" aria-label="Reportes periódicos">
+        <form class="emit-console" id="emit-console" aria-labelledby="emit-title">
+          <h2 id="emit-title">Emitir informe</h2>
+          <p class="emit-intro">Elegí el tipo de informe y cuál emitir, y después tocá <strong>Emitir informe</strong>.</p>
+
+          <div class="emit-row">
+            <p class="emit-label" id="emit-label-tipo">1. Tipo de informe</p>
+            <div class="botonera" role="group" aria-labelledby="emit-label-tipo">
+              <button type="button" data-report-tipo="semanal" aria-pressed="false">Semanal</button>
+              <button type="button" data-report-tipo="mensual" class="active" aria-pressed="true">Mensual</button>
+            </div>
+          </div>
+
+          <div class="emit-row">
+            <p class="emit-label" id="emit-label-anio">2. Año</p>
+            <div class="botonera" id="report-anios" role="group" aria-labelledby="emit-label-anio"></div>
+          </div>
+
+          <div class="emit-row">
+            <p class="emit-label" id="emit-label-mes">3. Mes</p>
+            <div class="botonera" id="report-meses" role="group" aria-labelledby="emit-label-mes"></div>
+          </div>
+
+          <div class="emit-row" id="emit-row-semana" hidden>
+            <p class="emit-label" id="emit-label-semana">4. Semana</p>
+            <div class="botonera" id="report-semanas" role="group" aria-labelledby="emit-label-semana"></div>
+          </div>
+
+          <div class="emit-actions">
+            <button type="submit" class="report-btn report-btn--primary" id="report-emit">
+              Emitir informe
+            </button>
+            <button type="button" class="report-btn" id="report-download-json">Descargar JSON</button>
+            <button type="button" class="report-btn" id="report-download-csv">Descargar CSV</button>
+            <button type="button" class="report-btn" id="report-print">Imprimir</button>
+          </div>
+        </form>
+        <p id="report-emit-status" class="report-status" aria-live="polite"></p>
+        <div id="report-mount">
+          <p class="report-placeholder">
+            Todavía no hay un informe emitido. Elegí tipo y período en la botonera y tocá
+            <strong>Emitir informe</strong>.
+          </p>
+        </div>
+      </section>
+
       <section id="panel-asistente" class="panel" aria-label="Asistente IA">
         <div class="assistant">
           <div class="chat" id="chat">
@@ -100,5 +156,42 @@
       <strong>AURA-HidroIA</strong> · Demo para convocatoria Plan AURA 2026 ·
       Universidad Católica de Cuyo
     </footer>
+
+    <button
+      type="button"
+      class="mesa-ayuda-fab"
+      id="mesa-ayuda-toggle"
+      aria-expanded="false"
+      aria-controls="mesa-ayuda-panel"
+    >
+      Mesa de ayuda
+    </button>
+    <div
+      class="mesa-ayuda-panel"
+      id="mesa-ayuda-panel"
+      hidden
+      role="dialog"
+      aria-labelledby="mesa-ayuda-title"
+    >
+      <header class="mesa-ayuda-panel__head">
+        <h3 id="mesa-ayuda-title">Mesa de ayuda</h3>
+        <button type="button" class="mesa-ayuda-panel__close" id="mesa-ayuda-close" aria-label="Cerrar">
+          ×
+        </button>
+      </header>
+      <div class="mesa-ayuda-log" id="mesa-ayuda-log" aria-live="polite"></div>
+      <div class="mesa-ayuda-quick" id="mesa-ayuda-quick"></div>
+      <form class="mesa-ayuda-form" id="mesa-ayuda-form">
+        <label class="visually-hidden" for="mesa-ayuda-input">Pregunta</label>
+        <input
+          id="mesa-ayuda-input"
+          type="text"
+          autocomplete="off"
+          placeholder="Ej.: ¿cómo emito un reporte?"
+        />
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
+    <script src="js/mesa-ayuda.js?v=2" defer></script>
   </body>
 </html>

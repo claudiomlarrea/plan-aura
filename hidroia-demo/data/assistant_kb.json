@@ -1,6 +1,6 @@
 {
   "greeting": "Soy el asistente demo de AURA-HidroIA. Puedo explicar indicadores, alertas y el sentido del sistema para el Plan AURA. Las respuestas usan el dataset de ejemplo y citan la serie consultada.",
-  "fallback": "No tengo una respuesta exacta para esa consulta en el demo. Probá con: estrés hídrico, alertas, origen de los datos, o aporte al Plan AURA.",
+  "fallback": "No tengo una respuesta exacta para esa consulta en el demo. Probá con: estrés hídrico, alertas, reportes semanales o mensuales, origen de los datos, o aporte al Plan AURA.",
   "entries": [
     {
       "id": "estres",
@@ -29,6 +29,13 @@
       "question": "¿Cómo ayuda esto al Plan AURA?",
       "answer": "AURA-HidroIA traduce información hídrica dispersa en un tablero comprensible y en explicaciones citables, útiles para investigación, docencia y sensibilización sobre uso responsable del agua. El demo ilustra el producto de transferencia: monitoreo, alerta temprana y mediación cognitiva con IA.",
       "sources": ["meta.title", "Plan Integral AURA", "Observatorio de IA — UCCuyo"]
+    },
+    {
+      "id": "reportes",
+      "keywords": ["reporte", "reportes", "semanal", "mensual", "promedio", "promedios", "estadística", "estadisticas", "media", "csv", "json"],
+      "question": "¿Qué incluyen los reportes semanales y mensuales?",
+      "answer": "El sistema emite un reporte por semana ISO y por mes calendario: media, mediana, mínimo, máximo, desvío, cuartiles y —en entrega— el volumen acumulado. Compara cada período con el anterior y cuenta los días que cruzan umbrales de caudal, estrés o demanda. Se puede descargar en JSON o CSV. En el demo, los días se desagregan de la serie mensual de ejemplo; no son lecturas oficiales.",
+      "sources": ["reportes semanales y mensuales", "meta.thresholds", "sample_series.json"]
     },
     {
       "id": "camino",

@@ -14,6 +14,10 @@
       "caudal_bajo_m3s": 18,
       "estres_alto": 70,
       "demanda_alta": 78
+    },
+    "reportes": {
+      "semilla": 2026,
+      "granularidad": "diaria_sintetica_desde_mensual"
     }
   },
   "series": [
