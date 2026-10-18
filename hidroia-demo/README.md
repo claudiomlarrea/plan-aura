@@ -1,6 +1,6 @@
 # AURA-HidroIA — Demo interactivo
 
-Demo estático para jurados de la convocatoria Plan AURA 2026: tablero, alertas y asistente IA simulado con datos de ejemplo.
+Demo estático para jurados de la convocatoria Plan AURA 2026: tablero, alertas, reportes semanales/mensuales y asistente IA simulado con datos de ejemplo.
 
 **No es un sistema operativo oficial.** Las series son ficticias (patrón realista).
 
@@ -48,12 +48,35 @@ Emilito: este demo es **sitio estático sin base de datos** → Firebase Hosting
 | `js/app.js` | Orquestación |
 | `js/charts.js` | KPIs + Chart.js |
 | `js/alerts.js` | Umbrales |
+| `js/stats.js` | Desagregación diaria y estadísticas |
+| `js/reports.js` | Reportes semanales y mensuales |
 | `js/assistant.js` | Q&A simulado |
-| `data/sample_series.json` | Series demo |
+| `data/sample_series.json` | Series demo (mensual; días sintéticos en runtime) |
 | `data/assistant_kb.json` | Base de respuestas |
+
+## Reportes semanales y mensuales
+
+La pestaña **Reportes** emite un boletín por **semana ISO** y por **mes calendario**, con:
+
+- media, mediana, mínimo, máximo y día en que ocurrieron
+- desvío estándar, coeficiente de variación y cuartiles (P25–P75)
+- volumen de entrega acumulado (hm³) en el período
+- comparación con el período anterior (absoluta y %)
+- días que cruzan umbrales de caudal bajo, estrés alto o demanda alta
+- descarga **JSON** / **CSV** e **impresión**
+
+Los puntos diarios se generan en el navegador a partir de la serie mensual de `sample_series.json` (interpolación + variación acotada, semilla en `meta.reportes.semilla`). La entrega diaria se reescala para que cada mes sume el hm³ del dataset. No son lecturas oficiales.
+
+Cuando cambie la serie mensual, actualizá `data/sample_series.json`; los reportes se recalcan solos. Probá con:
+
+```bash
+cd hidroia-demo
+npm test
+```
 
 ## Guion rápido para jurados (≈2 min)
 
 1. **Tablero** — KPIs y gráficos oferta/estrés.
 2. **Alertas** — julio–agosto con severidad.
-3. **Asistente IA** — preguntar “¿Por qué hay alerta?” o usar botones.
+3. **Reportes** — mensual de agosto 2025 (estrés) y una semana de invierno; descargar CSV.
+4. **Asistente IA** — preguntar “¿Por qué hay alerta?” o “¿Qué incluyen los reportes?”.

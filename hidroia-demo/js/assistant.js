@@ -54,7 +54,7 @@ export function initAssistant(root, kb) {
   appendMessage(log, "bot", kb.greeting);
 
   quick.innerHTML = kb.entries
-    .slice(0, 4)
+    .slice(0, 5)
     .map((e) => `<button type="button" data-q="${e.question.replace(/"/g, "&quot;")}">${e.question}</button>`)
     .join("");
 

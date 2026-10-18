@@ -1,6 +1,7 @@
 import { renderKpis, renderCharts } from "./charts.js";
 import { computeAlerts, renderAlerts } from "./alerts.js";
 import { initAssistant } from "./assistant.js";
+import { initReports } from "./reports.js";
 
 async function loadJson(path) {
   const res = await fetch(path);
@@ -13,6 +14,7 @@ function setupTabs() {
   const panels = {
     tablero: document.getElementById("panel-tablero"),
     alertas: document.getElementById("panel-alertas"),
+    reportes: document.getElementById("panel-reportes"),
     asistente: document.getElementById("panel-asistente"),
   };
 
@@ -23,6 +25,9 @@ function setupTabs() {
       Object.entries(panels).forEach(([key, el]) => {
         el.classList.toggle("active", key === id);
       });
+      if (id === "reportes") {
+        window.dispatchEvent(new Event("hidroia:reportes"));
+      }
     });
   });
 }
@@ -61,6 +66,7 @@ async function main() {
 
   const alerts = computeAlerts(seriesData);
   renderAlerts(document.getElementById("alert-list"), alerts);
+  initReports(document.getElementById("panel-reportes"), seriesData);
   initAssistant(document.getElementById("panel-asistente"), kb);
 }
 

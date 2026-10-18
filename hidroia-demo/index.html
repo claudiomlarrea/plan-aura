@@ -36,6 +36,7 @@
       <nav class="nav-tabs" aria-label="Secciones del demo">
         <button type="button" data-panel="tablero" class="active">Tablero</button>
         <button type="button" data-panel="alertas">Alertas</button>
+        <button type="button" data-panel="reportes">Reportes</button>
         <button type="button" data-panel="asistente">Asistente IA</button>
       </nav>
     </header>
@@ -74,6 +75,26 @@
             </p>
           </aside>
         </div>
+      </section>
+
+      <section id="panel-reportes" class="panel" aria-label="Reportes periódicos">
+        <div class="report-toolbar">
+          <div class="report-tipos" role="group" aria-label="Frecuencia del reporte">
+            <button type="button" data-report-tipo="semanal" aria-pressed="false">Semanal</button>
+            <button type="button" data-report-tipo="mensual" class="active" aria-pressed="true">Mensual</button>
+          </div>
+          <label class="report-periodo-label">
+            <span>Período</span>
+            <select id="report-periodo"></select>
+          </label>
+          <div class="report-actions">
+            <button type="button" class="report-btn" id="report-download-json">Descargar JSON</button>
+            <button type="button" class="report-btn" id="report-download-csv">Descargar CSV</button>
+            <button type="button" class="report-btn report-btn--primary" id="report-print">Imprimir</button>
+          </div>
+        </div>
+        <p id="report-emit-status" class="report-status" aria-live="polite"></p>
+        <div id="report-mount"></div>
       </section>
 
       <section id="panel-asistente" class="panel" aria-label="Asistente IA">
