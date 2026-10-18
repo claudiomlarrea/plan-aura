@@ -26,16 +26,14 @@ Requisito: cuenta Google + [Firebase CLI](https://firebase.google.com/docs/cli).
 npm install -g firebase-tools
 firebase login
 
-# crear el proyecto en https://console.firebase.google.com
-# (Hosting habilitado). Luego alineá el id en .firebaserc
-
 cd hidroia-demo
-# editá .firebaserc → projects.default = id-real-del-proyecto
-firebase use
+firebase use observatorio-de-ia-uccuyo
 firebase deploy --only hosting
 ```
 
-URL típica: `https://<proyecto>.web.app`
+URL publicada: https://observatorio-de-ia-uccuyo.web.app
+
+El sitio `https://aura-hidroia.web.app` pertenece a **otro** proyecto Firebase; esta cuenta (`claudio17larrea@gmail.com`) no tiene permiso para actualizarlo.
 
 Emilito: este demo es **sitio estático sin base de datos** → Firebase Hosting alcanza. No hace falta Neon/Vergel.
 
