@@ -47,8 +47,9 @@
         <section class="emitted" aria-labelledby="sec-emitidos">
           <h2 id="sec-emitidos">Últimos reportes emitidos</h2>
           <p class="emitted-intro">
-            El sistema calcula un boletín semanal (semana ISO) y uno mensual con promedios y umbrales.
-            Estos son los últimos períodos completos.
+            Últimos boletines calculados. Para elegir otro tipo o período, abrí
+            <button type="button" class="text-link" data-panel="reportes">Reportes</button>
+            y usá la botonera.
           </p>
           <div id="report-emitidos" class="emitted-grid"></div>
         </section>
@@ -86,23 +87,49 @@
       </section>
 
       <section id="panel-reportes" class="panel" aria-label="Reportes periódicos">
-        <div class="report-toolbar">
-          <div class="report-tipos" role="group" aria-label="Frecuencia del reporte">
-            <button type="button" data-report-tipo="semanal" aria-pressed="false">Semanal</button>
-            <button type="button" data-report-tipo="mensual" class="active" aria-pressed="true">Mensual</button>
+        <form class="emit-console" id="emit-console" aria-labelledby="emit-title">
+          <h2 id="emit-title">Emitir informe</h2>
+          <p class="emit-intro">Elegí el tipo de informe y cuál emitir, y después tocá <strong>Emitir informe</strong>.</p>
+
+          <div class="emit-row">
+            <p class="emit-label" id="emit-label-tipo">1. Tipo de informe</p>
+            <div class="botonera" role="group" aria-labelledby="emit-label-tipo">
+              <button type="button" data-report-tipo="semanal" aria-pressed="false">Semanal</button>
+              <button type="button" data-report-tipo="mensual" class="active" aria-pressed="true">Mensual</button>
+            </div>
           </div>
-          <label class="report-periodo-label">
-            <span>Período</span>
-            <select id="report-periodo"></select>
-          </label>
-          <div class="report-actions">
+
+          <div class="emit-row">
+            <p class="emit-label" id="emit-label-anio">2. Año</p>
+            <div class="botonera" id="report-anios" role="group" aria-labelledby="emit-label-anio"></div>
+          </div>
+
+          <div class="emit-row">
+            <p class="emit-label" id="emit-label-mes">3. Mes</p>
+            <div class="botonera" id="report-meses" role="group" aria-labelledby="emit-label-mes"></div>
+          </div>
+
+          <div class="emit-row" id="emit-row-semana" hidden>
+            <p class="emit-label" id="emit-label-semana">4. Semana</p>
+            <div class="botonera" id="report-semanas" role="group" aria-labelledby="emit-label-semana"></div>
+          </div>
+
+          <div class="emit-actions">
+            <button type="submit" class="report-btn report-btn--primary" id="report-emit">
+              Emitir informe
+            </button>
             <button type="button" class="report-btn" id="report-download-json">Descargar JSON</button>
             <button type="button" class="report-btn" id="report-download-csv">Descargar CSV</button>
-            <button type="button" class="report-btn report-btn--primary" id="report-print">Imprimir</button>
+            <button type="button" class="report-btn" id="report-print">Imprimir</button>
           </div>
-        </div>
+        </form>
         <p id="report-emit-status" class="report-status" aria-live="polite"></p>
-        <div id="report-mount"></div>
+        <div id="report-mount">
+          <p class="report-placeholder">
+            Todavía no hay un informe emitido. Elegí tipo y período en la botonera y tocá
+            <strong>Emitir informe</strong>.
+          </p>
+        </div>
       </section>
 
       <section id="panel-asistente" class="panel" aria-label="Asistente IA">

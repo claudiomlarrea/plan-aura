@@ -18,17 +18,27 @@ function setupTabs() {
     asistente: document.getElementById("panel-asistente"),
   };
 
-  buttons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const id = btn.dataset.panel;
-      buttons.forEach((b) => b.classList.toggle("active", b === btn));
-      Object.entries(panels).forEach(([key, el]) => {
-        el.classList.toggle("active", key === id);
-      });
-      if (id === "reportes") {
-        window.dispatchEvent(new Event("hidroia:reportes"));
-      }
+  function showPanel(id) {
+    const btn = document.querySelector('.nav-tabs [data-panel="' + id + '"]');
+    buttons.forEach((b) => b.classList.toggle("active", b === btn));
+    Object.entries(panels).forEach(([key, el]) => {
+      el.classList.toggle("active", key === id);
     });
+    if (id === "reportes") {
+      window.dispatchEvent(new Event("hidroia:reportes"));
+    }
+  }
+
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => showPanel(btn.dataset.panel));
+  });
+
+  document.addEventListener("click", (ev) => {
+    const jump = ev.target.closest("[data-panel]");
+    if (!jump || jump.closest(".nav-tabs")) return;
+    if (!panels[jump.dataset.panel]) return;
+    ev.preventDefault();
+    showPanel(jump.dataset.panel);
   });
 }
 

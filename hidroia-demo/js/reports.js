@@ -49,6 +49,19 @@ export function periodLabel(period) {
   return `${capitalize(MESES[Number(m) - 1])} ${y}`;
 }
 
+function weekButtonLabel(period) {
+  const week = Number(period.key.split("-W")[1]);
+  const desde = period.rows[0].fecha;
+  const hasta = period.rows[period.rows.length - 1].fecha;
+  return `S${week} · ${formatDay(desde)}–${formatDay(hasta)}`;
+}
+
+function boton(attrs, label, active) {
+  const pressed = active ? "true" : "false";
+  const cls = active ? ' class="active"' : "";
+  return `<button type="button"${cls} ${attrs} aria-pressed="${pressed}">${esc(label)}</button>`;
+}
+
 function capitalize(s) {
   return s.charAt(0).toUpperCase() + s.slice(1);
 }
@@ -373,43 +386,28 @@ export function initReports(root, data) {
   const daily = expandDaily(data.series, data.meta.reportes?.semilla ?? 2026);
   const weekly = periodsFromDaily(daily, "semanal");
   const monthly = periodsFromDaily(daily, "mensual");
+  const years = [...new Set(monthly.map((p) => p.key.slice(0, 4)))];
 
   const tipoBtns = root.querySelectorAll("[data-report-tipo]");
-  const select = root.querySelector("#report-periodo");
+  const aniosEl = root.querySelector("#report-anios");
+  const mesesEl = root.querySelector("#report-meses");
+  const semanasEl = root.querySelector("#report-semanas");
+  const semanaRow = root.querySelector("#emit-row-semana");
+  const form = root.querySelector("#emit-console");
   const mount = root.querySelector("#report-mount");
   const emitStatus = root.querySelector("#report-emit-status");
 
+  const latestM = pickLatestPeriod(monthly, 28);
+  const latestW = pickLatestPeriod(weekly, 7);
+
   let tipo = "mensual";
+  let year = latestM.key.slice(0, 4);
+  let monthKey = latestM.key;
+  let periodKey = latestM.key;
   let current = null;
 
-  function optionsFor(t) {
-    const list = t === "semanal" ? weekly : monthly;
-    return list
-      .slice()
-      .reverse()
-      .map((p) => `<option value="${esc(p.key)}">${esc(periodLabel(p))}</option>`)
-      .join("");
-  }
-
-  function emit(key) {
-    const list = tipo === "semanal" ? weekly : monthly;
-    const period = list.find((p) => p.key === key) || list[list.length - 1];
-    current = buildReport(period, data);
-    mount.innerHTML = reportArticle(current);
-    drawReportChart(current);
-    if (emitStatus) {
-      emitStatus.textContent = `Emitido ${current.titulo} (${current.nDias} días).`;
-    }
-    return current;
-  }
-
-  function latestPeriod(list) {
-    const minDays = list === weekly ? 7 : 28;
-    return pickLatestPeriod(list, minDays);
-  }
-
-  function latestKey(list) {
-    return latestPeriod(list).key;
+  function weeksInMonth(ym) {
+    return weekly.filter((p) => p.rows.some((r) => r.mes === ym));
   }
 
   function setTipo(next) {
@@ -421,18 +419,90 @@ export function initReports(root, data) {
     });
   }
 
-  function open(nextTipo, key) {
+  function paintAnios() {
+    aniosEl.innerHTML = years
+      .map((y) => boton(`data-report-year="${esc(y)}"`, y, y === year))
+      .join("");
+  }
+
+  function paintMeses() {
+    const months = monthly.filter((p) => p.key.startsWith(year + "-"));
+    mesesEl.innerHTML = months
+      .map((p) => {
+        const label = capitalize(MESES[Number(p.key.slice(5)) - 1]);
+        return boton(`data-report-mes="${esc(p.key)}"`, label, p.key === monthKey);
+      })
+      .join("");
+  }
+
+  function paintSemanas() {
+    if (tipo !== "semanal") {
+      semanaRow.hidden = true;
+      return;
+    }
+    semanaRow.hidden = false;
+    const weeks = weeksInMonth(monthKey);
+    if (!weeks.length) {
+      periodKey = null;
+      semanasEl.innerHTML = `<p class="emit-empty">No hay semanas en ese mes.</p>`;
+      return;
+    }
+    if (!weeks.some((w) => w.key === periodKey)) {
+      periodKey = (pickLatestPeriod(weeks, 7) || weeks[weeks.length - 1]).key;
+    }
+    semanasEl.innerHTML = weeks
+      .map((p) => boton(`data-report-key="${esc(p.key)}"`, weekButtonLabel(p), p.key === periodKey))
+      .join("");
+  }
+
+  function paintAll() {
+    paintAnios();
+    paintMeses();
+    paintSemanas();
+  }
+
+  function selectedPeriod() {
+    if (tipo === "mensual") return monthly.find((p) => p.key === monthKey) || null;
+    return weekly.find((p) => p.key === periodKey) || null;
+  }
+
+  function emit() {
+    const period = selectedPeriod();
+    if (!period) {
+      emitStatus.textContent = "Elegí el tipo y el período en la botonera para emitir el informe.";
+      return null;
+    }
+    current = buildReport(period, data);
+    mount.innerHTML = reportArticle(current);
+    drawReportChart(current);
+    emitStatus.textContent = `Emitido ${current.titulo} (${current.nDias} días).`;
+    window.dispatchEvent(new Event("hidroia:reportes"));
+    return current;
+  }
+
+  function applyKey(nextTipo, key) {
+    const list = nextTipo === "semanal" ? weekly : monthly;
+    const period = list.find((p) => p.key === key);
+    if (!period) return;
     setTipo(nextTipo);
-    syncSelect(key);
-    const tab = document.querySelector('[data-panel="reportes"]');
+    year = period.rows[0].fecha.slice(0, 4);
+    monthKey = nextTipo === "mensual" ? key : period.rows[0].mes;
+    periodKey = key;
+    paintAll();
+    emit();
+  }
+
+  function open(nextTipo, key) {
+    applyKey(nextTipo, key);
+    const tab = document.querySelector('.nav-tabs [data-panel="reportes"]');
     if (tab) tab.click();
   }
 
   function renderEmitted() {
     const box = document.getElementById("report-emitidos");
     if (!box) return;
-    const lastW = buildReport(latestPeriod(weekly), data);
-    const lastM = buildReport(latestPeriod(monthly), data);
+    const lastW = buildReport(latestW, data);
+    const lastM = buildReport(latestM, data);
     box.innerHTML = emittedCard(lastW) + emittedCard(lastM);
     box.querySelectorAll("[data-open-report]").forEach((btn) => {
       btn.addEventListener("click", () => {
@@ -441,39 +511,69 @@ export function initReports(root, data) {
     });
   }
 
-  function syncSelect(keepKey) {
-    const list = tipo === "semanal" ? weekly : monthly;
-    select.innerHTML = optionsFor(tipo);
-    const next = list.some((p) => p.key === keepKey) ? keepKey : latestKey(list);
-    select.value = next;
-    emit(next);
-  }
-
   tipoBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
       setTipo(btn.getAttribute("data-report-tipo"));
-      syncSelect(select.value);
+      if (tipo === "mensual") periodKey = monthKey;
+      paintAll();
     });
   });
 
-  select.addEventListener("change", () => emit(select.value));
+  aniosEl.addEventListener("click", (ev) => {
+    const btn = ev.target.closest("[data-report-year]");
+    if (!btn) return;
+    year = btn.getAttribute("data-report-year");
+    const months = monthly.filter((p) => p.key.startsWith(year + "-"));
+    if (months.length) monthKey = months[months.length - 1].key;
+    if (tipo === "mensual") periodKey = monthKey;
+    paintAll();
+  });
+
+  mesesEl.addEventListener("click", (ev) => {
+    const btn = ev.target.closest("[data-report-mes]");
+    if (!btn) return;
+    monthKey = btn.getAttribute("data-report-mes");
+    if (tipo === "mensual") periodKey = monthKey;
+    paintAll();
+  });
+
+  semanasEl.addEventListener("click", (ev) => {
+    const btn = ev.target.closest("[data-report-key]");
+    if (!btn) return;
+    periodKey = btn.getAttribute("data-report-key");
+    paintSemanas();
+  });
+
+  form.addEventListener("submit", (ev) => {
+    ev.preventDefault();
+    emit();
+  });
 
   root.querySelector("#report-download-json").addEventListener("click", () => {
-    if (!current) return;
-    const payload = { ...current, observaciones: current.observaciones };
+    if (!current) {
+      emitStatus.textContent = "Primero emití un informe para descargarlo.";
+      return;
+    }
     downloadBlob(
       `aura-hidroia-reporte-${current.id}.json`,
-      JSON.stringify(payload, null, 2),
+      JSON.stringify(current, null, 2),
       "application/json"
     );
   });
 
   root.querySelector("#report-download-csv").addEventListener("click", () => {
-    if (!current) return;
+    if (!current) {
+      emitStatus.textContent = "Primero emití un informe para descargarlo.";
+      return;
+    }
     downloadBlob(`aura-hidroia-reporte-${current.id}.csv`, toCsv(current), "text/csv;charset=utf-8");
   });
 
   root.querySelector("#report-print").addEventListener("click", () => {
+    if (!current) {
+      emitStatus.textContent = "Primero emití un informe para imprimirlo.";
+      return;
+    }
     document.body.classList.add("printing-report");
     window.print();
     window.setTimeout(() => document.body.classList.remove("printing-report"), 400);
@@ -484,7 +584,7 @@ export function initReports(root, data) {
     else if (current) drawReportChart(current);
   });
 
-  syncSelect(latestKey(monthly));
+  paintAll();
   renderEmitted();
 
   return {
@@ -494,7 +594,7 @@ export function initReports(root, data) {
     emit,
     open,
     buildReport,
-    latestMonthly: () => buildReport(latestPeriod(monthly), data),
-    latestWeekly: () => buildReport(latestPeriod(weekly), data),
+    latestMonthly: () => buildReport(latestM, data),
+    latestWeekly: () => buildReport(latestW, data),
   };
 }
