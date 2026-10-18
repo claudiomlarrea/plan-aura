@@ -31,9 +31,12 @@ firebase use observatorio-de-ia-uccuyo
 firebase deploy --only hosting
 ```
 
-URL publicada: https://observatorio-de-ia-uccuyo.web.app
+URLs publicadas (misma app, dos sitios):
 
-El sitio `https://aura-hidroia.web.app` pertenece a **otro** proyecto Firebase; esta cuenta (`claudio17larrea@gmail.com`) no tiene permiso para actualizarlo.
+- https://plan-aura-hidroia.web.app
+- https://observatorio-de-ia-uccuyo.web.app
+
+`https://aura-hidroia.web.app` es un proyecto Firebase de otra cuenta; no se puede actualizar con `claudio17larrea@gmail.com`.
 
 Emilito: este demo es **sitio estático sin base de datos** → Firebase Hosting alcanza. No hace falta Neon/Vergel.
 
