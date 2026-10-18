@@ -203,3 +203,9 @@ export function periodsFromDaily(daily, tipo) {
     prevRows: i > 0 ? grouped.get(keys[i - 1]) : [],
   }));
 }
+
+/** Último período con al menos minDays observaciones (evita semanas ISO recortadas). */
+export function pickLatestPeriod(list, minDays) {
+  if (!list.length) return null;
+  return [...list].reverse().find((p) => p.rows.length >= minDays) || list[list.length - 1];
+}

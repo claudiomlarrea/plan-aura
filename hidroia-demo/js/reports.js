@@ -4,6 +4,7 @@ import {
   VARS,
   expandDaily,
   periodsFromDaily,
+  pickLatestPeriod,
   round,
   parseISODate,
   summarize,
@@ -207,6 +208,26 @@ function alertsHtml(report) {
   return `<ul class="report-alerts">${report.alertas.map((a) => `<li>${esc(a)}</li>`).join("")}</ul>`;
 }
 
+function emittedCard(report) {
+  const caudal = report.variables.caudal_m3s;
+  const estres = report.variables.estres;
+  const entrega = report.variables.entrega_hm3;
+  const flag = report.alertas.length
+    ? `${report.alertas.length} alerta${report.alertas.length > 1 ? "s" : ""} de umbral`
+    : "Sin umbrales superados";
+  return `<article class="emitted-card">
+    <p class="emitted-kicker">Último reporte ${esc(report.tipo)}</p>
+    <h3>${esc(report.titulo)}</h3>
+    <ul class="emitted-stats">
+      <li><strong>${fmt(caudal.media, 1)}</strong> m³/s caudal medio</li>
+      <li><strong>${fmt(estres.media, 0)}</strong> estrés medio</li>
+      <li><strong>${fmt(entrega.suma, 2)}</strong> hm³ entrega</li>
+    </ul>
+    <p class="emitted-flag">${esc(flag)}</p>
+    <button type="button" class="report-btn report-btn--primary" data-open-report="${esc(report.tipo)}" data-open-key="${esc(report.periodo)}">Ver reporte completo</button>
+  </article>`;
+}
+
 function reportArticle(report) {
   return `
     <article class="report-sheet" id="report-sheet" data-report-id="${esc(report.id)}">
@@ -382,10 +403,42 @@ export function initReports(root, data) {
     return current;
   }
 
+  function latestPeriod(list) {
+    const minDays = list === weekly ? 7 : 28;
+    return pickLatestPeriod(list, minDays);
+  }
+
   function latestKey(list) {
-    const minDays = tipo === "semanal" ? 7 : 28;
-    const full = [...list].reverse().find((p) => p.rows.length >= minDays);
-    return (full || list[list.length - 1]).key;
+    return latestPeriod(list).key;
+  }
+
+  function setTipo(next) {
+    tipo = next;
+    tipoBtns.forEach((b) => {
+      const on = b.getAttribute("data-report-tipo") === tipo;
+      b.classList.toggle("active", on);
+      b.setAttribute("aria-pressed", on ? "true" : "false");
+    });
+  }
+
+  function open(nextTipo, key) {
+    setTipo(nextTipo);
+    syncSelect(key);
+    const tab = document.querySelector('[data-panel="reportes"]');
+    if (tab) tab.click();
+  }
+
+  function renderEmitted() {
+    const box = document.getElementById("report-emitidos");
+    if (!box) return;
+    const lastW = buildReport(latestPeriod(weekly), data);
+    const lastM = buildReport(latestPeriod(monthly), data);
+    box.innerHTML = emittedCard(lastW) + emittedCard(lastM);
+    box.querySelectorAll("[data-open-report]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        open(btn.getAttribute("data-open-report"), btn.getAttribute("data-open-key"));
+      });
+    });
   }
 
   function syncSelect(keepKey) {
@@ -398,9 +451,7 @@ export function initReports(root, data) {
 
   tipoBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
-      tipo = btn.getAttribute("data-report-tipo");
-      tipoBtns.forEach((b) => b.classList.toggle("active", b === btn));
-      tipoBtns.forEach((b) => b.setAttribute("aria-pressed", b === btn ? "true" : "false"));
+      setTipo(btn.getAttribute("data-report-tipo"));
       syncSelect(select.value);
     });
   });
@@ -434,14 +485,16 @@ export function initReports(root, data) {
   });
 
   syncSelect(latestKey(monthly));
+  renderEmitted();
 
   return {
     daily,
     weekly,
     monthly,
     emit,
+    open,
     buildReport,
-    latestMonthly: () => buildReport(monthly[monthly.length - 1], data),
-    latestWeekly: () => buildReport(weekly[weekly.length - 1], data),
+    latestMonthly: () => buildReport(latestPeriod(monthly), data),
+    latestWeekly: () => buildReport(latestPeriod(weekly), data),
   };
 }

@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { expandDaily, mean, median, periodsFromDaily, summarize } from "./stats.js";
+import { expandDaily, mean, median, periodsFromDaily, pickLatestPeriod, summarize } from "./stats.js";
 import { buildReport } from "./reports.js";
 
 const root = dirname(fileURLToPath(import.meta.url));
@@ -50,6 +50,11 @@ const semanal = buildReport(lastWeek, data);
 assert(semanal.tipo === "semanal", "tipo semanal");
 assert(semanal.nDias >= 1 && semanal.nDias <= 7, "semana de 1–7 días");
 assert(semanal.variables.caudal_m3s.media != null, "media semanal");
+
+const latestFullWeek = pickLatestPeriod(weekly, 7);
+assert(latestFullWeek.rows.length === 7, "el último reporte semanal emitido usa 7 días");
+const latestFullMonth = pickLatestPeriod(monthly, 28);
+assert(latestFullMonth.rows.length >= 28, "el último reporte mensual emitido cubre el mes");
 
 const firstMonth = buildReport(monthly[0], data);
 assert(

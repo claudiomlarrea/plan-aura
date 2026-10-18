@@ -56,7 +56,7 @@ Emilito: este demo es **sitio estático sin base de datos** → Firebase Hosting
 
 ## Reportes semanales y mensuales
 
-La pestaña **Reportes** emite un boletín por **semana ISO** y por **mes calendario**, con:
+El **tablero** muestra los últimos boletines emitidos (semana ISO completa y mes calendario). La pestaña **Reportes** abre el detalle, con:
 
 - media, mediana, mínimo, máximo y día en que ocurrieron
 - desvío estándar, coeficiente de variación y cuartiles (P25–P75)

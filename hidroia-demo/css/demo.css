@@ -203,6 +203,76 @@ main {
   color: var(--ink-soft);
 }
 
+.emitted {
+  margin: 0 0 1.25rem;
+}
+
+.emitted h2 {
+  margin: 0 0 0.35rem;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--banner-green);
+}
+
+.emitted-intro {
+  margin: 0 0 0.75rem;
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+  max-width: 46rem;
+}
+
+.emitted-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.85rem;
+}
+
+.emitted-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 1rem 1.1rem 1.1rem;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(43, 143, 201, 0.14);
+}
+
+.emitted-kicker {
+  margin: 0;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  color: var(--teal);
+}
+
+.emitted-card h3 {
+  margin: 0.2rem 0 0.65rem;
+  font-family: var(--font-display);
+  font-size: 1.12rem;
+  color: var(--banner-green-dark);
+}
+
+.emitted-stats {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.28rem;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+.emitted-stats strong {
+  color: var(--banner-green-dark);
+  font-variant-numeric: tabular-nums;
+}
+
+.emitted-flag {
+  margin: 0.65rem 0 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--water-dark);
+}
+
 .charts {
   display: grid;
   grid-template-columns: 1.4fr 1fr;
@@ -712,7 +782,8 @@ main {
   }
 
   .charts,
-  .alerts-layout {
+  .alerts-layout,
+  .emitted-grid {
     grid-template-columns: 1fr;
   }
 }

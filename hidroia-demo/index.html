@@ -7,7 +7,7 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <meta
       name="description"
-      content="Demo conceptual del sistema AURA-HidroIA: tablero, alertas y asistente IA simulado con datos de ejemplo."
+      content="Demo conceptual del sistema AURA-HidroIA: tablero, alertas, reportes semanales y mensuales, y asistente IA simulado con datos de ejemplo."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -44,6 +44,14 @@
     <main>
       <section id="panel-tablero" class="panel active" aria-label="Tablero">
         <div class="kpi-grid" id="kpi-grid"></div>
+        <section class="emitted" aria-labelledby="sec-emitidos">
+          <h2 id="sec-emitidos">Últimos reportes emitidos</h2>
+          <p class="emitted-intro">
+            El sistema calcula un boletín semanal (semana ISO) y uno mensual con promedios y umbrales.
+            Estos son los últimos períodos completos.
+          </p>
+          <div id="report-emitidos" class="emitted-grid"></div>
+        </section>
         <div class="charts">
           <article class="chart-card">
             <h2>Oferta y entrega (serie demo)</h2>
