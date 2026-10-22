@@ -183,10 +183,6 @@ window.I18N_DICT = {
     es: "Visitas al Plan AURA",
     en: "Plan AURA visits"
   },
-  "hero.cta.contacto": {
-    es: "Contacto",
-    en: "Contact"
-  },
   "hero.director": {
     es: 'Coordinador Técnico: <a href="mailto:luisjimenez@uccuyo.edu.ar">luisjimenez@uccuyo.edu.ar</a>',
     en: 'Technical Coordinator: <a href="mailto:luisjimenez@uccuyo.edu.ar">luisjimenez@uccuyo.edu.ar</a>'
