@@ -72,7 +72,25 @@
     }
   };
 
+  function cargaCerrada() {
+    return window.PlanAuraConvocatoria && window.PlanAuraConvocatoria.estaCerrada();
+  }
+
   function htmlPresentar() {
+    if (cargaCerrada()) {
+      if (lang() === "en") {
+        return (
+          "<p><strong>The 2026 call is closed</strong></p>" +
+          "<p>The deadline was 30 October 2026 at 24:00 (Argentina). New projects are no longer accepted in Drive. Guidelines and the template remain available for reference.</p>" +
+          "<p><a href=\"" + BASES + "\" target=\"_blank\" rel=\"noopener noreferrer\">Guidelines (PDF)</a> · <a href=\"" + PLANTILLA + "\" download>Template (DOCX)</a>. Questions: <a href=\"mailto:" + MAIL + "\">" + MAIL + "</a>.</p>"
+        );
+      }
+      return (
+        "<p><strong>La convocatoria 2026 está cerrada</strong></p>" +
+        "<p>El plazo venció el 30 de octubre de 2026 a las 24:00 (Argentina). Ya no se reciben proyectos nuevos en Drive. Las bases y la plantilla siguen disponibles para consulta.</p>" +
+        "<p><a href=\"" + BASES + "\" target=\"_blank\" rel=\"noopener noreferrer\">Bases (PDF)</a> · <a href=\"" + PLANTILLA + "\" download>Plantilla (DOCX)</a>. Consultas: <a href=\"mailto:" + MAIL + "\">" + MAIL + "</a>.</p>"
+      );
+    }
     if (lang() === "en") {
       return (
         "<p><strong>How to submit a project</strong></p>" +
@@ -98,12 +116,19 @@
   }
 
   function htmlPlazos() {
+    var cierre = cargaCerrada()
+      ? (lang() === "en"
+        ? "<li>Closes: 30 October 2026 at 24:00 (Argentina) · <strong>closed</strong></li>"
+        : "<li>Cierre: 30 de octubre de 2026 a las 24:00 (Argentina) · <strong>cerrado</strong></li>")
+      : (lang() === "en"
+        ? "<li>Closes: 30 October 2026 at 24:00 (Argentina)</li>"
+        : "<li>Cierre: 30 de octubre de 2026 a las 24:00 (Argentina)</li>");
     if (lang() === "en") {
       return (
         "<p><strong>Dates and budget (2026 call)</strong></p>" +
         "<ul>" +
         "<li>Opens: 15 September 2026</li>" +
-        "<li>Closes: 30 October 2026</li>" +
+        cierre +
         "<li>Duration: 12 months (until Oct. 2027)</li>" +
         "<li>Total budget: $10,000,000 · up to $1,000,000 per project · 10 projects</li>" +
         "</ul>" +
@@ -114,7 +139,7 @@
       "<p><strong>Fechas y montos (convocatoria 2026)</strong></p>" +
       "<ul>" +
       "<li>Apertura: 15 de septiembre de 2026</li>" +
-      "<li>Cierre: 30 de octubre de 2026</li>" +
+      cierre +
       "<li>Duración: 12 meses (hasta oct. 2027)</li>" +
       "<li>Presupuesto total: $10.000.000 · tope $1.000.000 · 10 proyectos</li>" +
       "</ul>" +

@@ -12,7 +12,7 @@
     <link rel="canonical" href="https://plan-aura.com.ar/" />
     <link rel="icon" type="image/png" href="assets/logo-aura-gota-filete.png" />
     <link rel="stylesheet" href="css/variables.css?v=51" />
-    <link rel="stylesheet" href="css/styles.css?v=59" />
+    <link rel="stylesheet" href="css/styles.css?v=60" />
     <link rel="stylesheet" href="css/biblioteca-agua.css?v=2" />
   </head>
   <body>
@@ -449,7 +449,7 @@
         </div>
       </section>
 
-      <section class="section section--convocatoria page-panel" id="convocatoria" data-page="convocatoria" aria-labelledby="sec-convocatoria">
+      <section class="section section--convocatoria page-panel" id="convocatoria" data-page="convocatoria" data-cierre="2026-10-31T00:00:00-03:00" aria-labelledby="sec-convocatoria">
         <div class="section-inner">
           <header class="section-head section-head--bar section-head--water">
             <p class="section-kicker" data-i18n="sec.conv.kicker">Convocatorias 2026</p>
@@ -464,6 +464,12 @@
             <strong>una sola plantilla</strong> de presentación para ambas líneas.
             Destinada a docentes, investigadores, equipos de cátedra, estudiantes
             avanzados y equipos interdisciplinarios de la UCCuyo · Sede San Juan.
+          </p>
+
+          <p class="conv-cierre-note" id="convCierreNote" hidden data-i18n-html="sec.conv.cierre.note">
+            El plazo de presentación cerró el <strong>30 de octubre de 2026 a las 24:00</strong>
+            (Argentina). Ya no se reciben proyectos nuevos. Las bases y la plantilla
+            siguen disponibles para consulta.
           </p>
 
           <article class="card section-block mesa-ayuda-card" id="mesa-ayuda">
@@ -490,7 +496,7 @@
             </li>
             <li>
               <span class="conv-fact-label" data-i18n="sec.conv.facts.cierre.label">Cierre de presentación</span>
-              <span class="conv-fact-value" data-i18n="sec.conv.facts.cierre.value">30 de octubre de 2026</span>
+              <span class="conv-fact-value" id="convCierreValue" data-i18n="sec.conv.facts.cierre.value">30 de octubre de 2026 a las 24:00</span>
             </li>
             <li>
               <span class="conv-fact-label" data-i18n="sec.conv.facts.duracion.label">Duración de proyectos</span>
@@ -518,7 +524,7 @@
               <ul class="conv-mini-list">
                 <li data-i18n="sec.conv.proyectos.step.1">Descargar y completar la plantilla de presentación (DOCX).</li>
                 <li data-i18n="sec.conv.proyectos.step.2">Aprobación del Consejo Directivo de la Unidad Académica.</li>
-                <li data-i18n="sec.conv.proyectos.step.3">Cargar el archivo en la carpeta Drive de la convocatoria.</li>
+                <li id="convProyectosStep3" data-i18n="sec.conv.proyectos.step.3">Cargar el archivo en la carpeta Drive de la convocatoria.</li>
               </ul>
               <p class="tile-actions tile-actions--conv">
                 <a
@@ -541,6 +547,7 @@
                   href="https://drive.google.com/drive/folders/1u1m-4y44z0pBdu2NJVUTzZF7hJEcmB9O"
                   target="_blank"
                   rel="noopener noreferrer"
+                  data-conv-upload="1"
                   data-i18n="btn.cargarDrive"
                   >Cargar en Drive</a
                 >
@@ -594,7 +601,7 @@
             <article class="conv-step card" aria-labelledby="conv-paso3">
               <p class="conv-step-num" aria-hidden="true">3</p>
               <h3 id="conv-paso3" data-i18n="sec.conv.paso3.title">Presentar y cargar</h3>
-              <p data-i18n="sec.conv.paso3.body">
+              <p id="convPaso3Body" data-i18n="sec.conv.paso3.body">
                 Con la aprobación del Consejo Directivo, cargá la plantilla
                 completada en la carpeta Drive de la convocatoria. Luego el Comité
                 Evaluador emite dictamen y se eleva al Consejo Superior.
@@ -609,6 +616,7 @@
                   href="https://drive.google.com/drive/folders/1u1m-4y44z0pBdu2NJVUTzZF7hJEcmB9O"
                   target="_blank"
                   rel="noopener noreferrer"
+                  data-conv-upload="1"
                   data-i18n="btn.cargarDrive"
                   >Cargar en Drive</a
                 >
@@ -1131,7 +1139,7 @@
       </form>
     </div>
 
-    <script src="js/i18n-dict.js?v=37" defer></script>
+    <script src="js/i18n-dict.js?v=38" defer></script>
     <script src="js/i18n.js?v=7" defer></script>
     <script src="js/main.js?v=5" defer></script>
     <script src="js/galeria-config.js?v=8" defer></script>
@@ -1142,6 +1150,7 @@
     <script src="js/visitantes-config.js?v=1" defer></script>
     <script src="js/visitantes.js?v=7" defer></script>
     <script src="js/visitas-mapa.js?v=5" defer></script>
-    <script src="js/mesa-ayuda.js?v=1" defer></script>
+    <script src="js/convocatoria.js?v=1" defer></script>
+    <script src="js/mesa-ayuda.js?v=2" defer></script>
   </body>
 </html>
