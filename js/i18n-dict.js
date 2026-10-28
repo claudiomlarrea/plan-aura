@@ -435,6 +435,18 @@ window.I18N_DICT = {
     es: "Sitio del Instituto del Agua",
     en: "Water Institute website"
   },
+  "sec.red.iicq.title": {
+    es: "Instituto de Investigación de Ciencias Químicas",
+    en: "Institute of Chemical Sciences Research"
+  },
+  "sec.red.iicq.body": {
+    es: "Instituto de la Facultad de Ciencias Químicas y Tecnológicas (IICQ): investigación, formación y transferencia en química, calidad y nanotecnología, en diálogo con el Laboratorio Graffigna y el eje hídrico del Plan AURA.",
+    en: "Institute of the Faculty of Chemical and Technological Sciences (IICQ): research, training, and knowledge transfer in chemistry, quality, and nanotechnology, in dialogue with the Graffigna Laboratory and Plan AURA’s water agenda."
+  },
+  "sec.red.iicq.cta": {
+    es: "Sitio del IICQ",
+    en: "IICQ website"
+  },
   "sec.red.labGraffigna.title": {
     es: "Laboratorio de Control de Calidad “Dr. Alberto Graffigna”",
     en: "“Dr. Alberto Graffigna” Quality Control Laboratory"
