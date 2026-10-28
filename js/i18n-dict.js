@@ -435,18 +435,6 @@ window.I18N_DICT = {
     es: "Sitio del Instituto del Agua",
     en: "Water Institute website"
   },
-  "sec.red.iicq.title": {
-    es: "Instituto de Ciencias Químicas (IICQ)",
-    en: "Institute of Chemical Sciences (IICQ)"
-  },
-  "sec.red.iicq.body": {
-    es: "Investigación, formación y transferencia en química y calidad, junto al eje hídrico del Plan.",
-    en: "Research, training, and knowledge transfer in chemistry and quality, alongside the Plan’s water agenda."
-  },
-  "sec.red.iicq.cta": {
-    es: "Sitio del IICQ",
-    en: "IICQ website"
-  },
   "sec.red.labGraffigna.title": {
     es: "Laboratorio Graffigna",
     en: "Graffigna Laboratory"
