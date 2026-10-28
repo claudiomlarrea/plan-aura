@@ -436,36 +436,36 @@ window.I18N_DICT = {
     en: "Water Institute website"
   },
   "sec.red.iicq.title": {
-    es: "Instituto de Investigación de Ciencias Químicas",
-    en: "Institute of Chemical Sciences Research"
+    es: "Instituto de Ciencias Químicas (IICQ)",
+    en: "Institute of Chemical Sciences (IICQ)"
   },
   "sec.red.iicq.body": {
-    es: "Instituto de la Facultad de Ciencias Químicas y Tecnológicas (IICQ): investigación, formación y transferencia en química, calidad y nanotecnología, en diálogo con el Laboratorio Graffigna y el eje hídrico del Plan AURA.",
-    en: "Institute of the Faculty of Chemical and Technological Sciences (IICQ): research, training, and knowledge transfer in chemistry, quality, and nanotechnology, in dialogue with the Graffigna Laboratory and Plan AURA’s water agenda."
+    es: "Investigación, formación y transferencia en química y calidad, junto al eje hídrico del Plan.",
+    en: "Research, training, and knowledge transfer in chemistry and quality, alongside the Plan’s water agenda."
   },
   "sec.red.iicq.cta": {
     es: "Sitio del IICQ",
     en: "IICQ website"
   },
   "sec.red.labGraffigna.title": {
-    es: "Laboratorio de Control de Calidad “Dr. Alberto Graffigna”",
-    en: "“Dr. Alberto Graffigna” Quality Control Laboratory"
+    es: "Laboratorio Graffigna",
+    en: "Graffigna Laboratory"
   },
   "sec.red.labGraffigna.body": {
-    es: "Laboratorio participante de la red institucional del Plan AURA: control de calidad y apoyo técnico vinculado a la gestión y el uso responsable del agua.",
-    en: "Laboratory in Plan AURA’s institutional network: quality control and technical support linked to water management and responsible use."
+    es: "Control de calidad y apoyo técnico al uso responsable del agua.",
+    en: "Quality control and technical support for responsible water use."
   },
   "sec.red.labGraffigna.cta": {
-    es: "Sitio del Laboratorio Graffigna",
-    en: "Graffigna Laboratory website"
+    es: "Sitio del Laboratorio",
+    en: "Laboratory website"
   },
   "sec.red.ids.title": {
     es: "Instituto de Desarrollo Sostenible",
     en: "Sustainable Development Institute"
   },
   "sec.red.ids.body": {
-    es: "Instituto participante del Plan, junto al Instituto del Agua, en el abordaje educativo, pedagógico, cultural y de investigación.",
-    en: "Plan participant institute, together with the Water Institute, in educational, pedagogical, cultural, and research work."
+    es: "Abordaje educativo, pedagógico y de investigación, junto al Instituto del Agua.",
+    en: "Educational, pedagogical, and research work, together with the Water Institute."
   },
   "sec.red.cpa.title": {
     es: "Comisión de Políticas Ambientales",
@@ -488,16 +488,16 @@ window.I18N_DICT = {
     en: "Higher Institute of Teacher Training"
   },
   "sec.red.ies.body": {
-    es: "Instituto superior de Formación docente de la Universidad Católica de Cuyo: «Santa María» y «San Buenaventura», parte del plan educativo y pedagógico del AURA.",
-    en: "Universidad Católica de Cuyo Higher Institute of Teacher Training: «Santa María» and «San Buenaventura», part of the AURA educational and pedagogical plan."
+    es: "Institutos «Santa María» y «San Buenaventura»: plan educativo del AURA.",
+    en: "«Santa María» and «San Buenaventura» institutes: AURA’s educational plan."
   },
   "sec.red.colegios.title": {
     es: "Colegios UCCuyo",
     en: "UCCuyo schools"
   },
   "sec.red.colegios.body": {
-    es: "Colegios Secundario, Primario y de Nivel Inicial: interpretación, seguimiento, medición y divulgación de resultados en la comunidad educativa.",
-    en: "Secondary, Primary, and Early Childhood schools: interpreting, monitoring, measuring, and sharing results within the educational community."
+    es: "Inicial, primario y secundario: medición y divulgación en la comunidad educativa.",
+    en: "Early childhood, primary, and secondary: measuring and sharing results in the educational community."
   },
   "sec.red.comunicacion.title": {
     es: "Comunicación y divulgación",

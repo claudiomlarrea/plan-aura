@@ -1229,7 +1229,7 @@ header.section-head--bar h2 {
 .red-grid {
   display: grid;
   gap: 0.75rem;
-  align-items: start;
+  align-items: stretch;
   grid-template-columns: 1fr;
 }
 
@@ -1252,6 +1252,10 @@ header.section-head--bar h2 {
 }
 
 .red-grid .card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 11.5rem;
   padding: 0.75rem 0.9rem 0.85rem;
 }
 
@@ -1268,8 +1272,19 @@ header.section-head--bar h2 {
   line-height: 1.4;
 }
 
+.red-grid .card > p:not(.tile-actions) {
+  flex: 1 1 auto;
+}
+
 .red-grid .tile-actions {
-  margin-top: 0.55rem;
+  flex: 0 0 2.2rem;
+  margin-top: auto;
+  display: flex;
+  align-items: flex-end;
+}
+
+.red-grid .card:not(:has(.tile-actions)) {
+  padding-bottom: calc(0.85rem + 2.2rem);
 }
 
 .red-grid .tile-actions .btn {
