@@ -680,7 +680,7 @@
 
     var html = '<div class="visitas-tables">';
     html += "<div><h3>" + tt("dyn.visitas.countries", "Países") + "</h3><ol class=\"visitas-rank\">";
-    countries.slice(0, 12).forEach(function (c, idx) {
+    countries.forEach(function (c, idx) {
       var code = String(c.code || "").toUpperCase();
       var key = resolveListMarkerKey("c:" + code, code);
       var enabled = !!markerIndex[key];
