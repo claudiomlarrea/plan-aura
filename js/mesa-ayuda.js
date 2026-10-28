@@ -56,7 +56,7 @@
         "tope",
         "cuanto dura"
       ],
-      extra: ["octubre", "septiembre", "millones"]
+      extra: ["octubre", "noviembre", "septiembre", "millones"]
     },
     ejes: {
       keywords: ["eje", "ejes", "tematico", "tematicos", "linea", "lineas"],
@@ -81,13 +81,13 @@
       if (lang() === "en") {
         return (
           "<p><strong>The 2026 call is closed</strong></p>" +
-          "<p>The deadline was 30 October 2026 at 24:00 (Argentina). New projects are no longer accepted in Drive. Guidelines and the template remain available for reference.</p>" +
+          "<p>The deadline was 10 November 2026 at 24:00 (Argentina). New projects are no longer accepted in Drive. Guidelines and the template remain available for reference.</p>" +
           "<p><a href=\"" + BASES + "\" target=\"_blank\" rel=\"noopener noreferrer\">Guidelines (PDF)</a> · <a href=\"" + PLANTILLA + "\" download>Template (DOCX)</a>. Questions: <a href=\"mailto:" + MAIL + "\">" + MAIL + "</a>.</p>"
         );
       }
       return (
         "<p><strong>La convocatoria 2026 está cerrada</strong></p>" +
-        "<p>El plazo venció el 30 de octubre de 2026 a las 24:00 (Argentina). Ya no se reciben proyectos nuevos en Drive. Las bases y la plantilla siguen disponibles para consulta.</p>" +
+        "<p>El plazo venció el 10 de noviembre de 2026 a las 24:00 (Argentina). Ya no se reciben proyectos nuevos en Drive. Las bases y la plantilla siguen disponibles para consulta.</p>" +
         "<p><a href=\"" + BASES + "\" target=\"_blank\" rel=\"noopener noreferrer\">Bases (PDF)</a> · <a href=\"" + PLANTILLA + "\" download>Plantilla (DOCX)</a>. Consultas: <a href=\"mailto:" + MAIL + "\">" + MAIL + "</a>.</p>"
       );
     }
@@ -118,11 +118,11 @@
   function htmlPlazos() {
     var cierre = cargaCerrada()
       ? (lang() === "en"
-        ? "<li>Closes: 30 October 2026 at 24:00 (Argentina) · <strong>closed</strong></li>"
-        : "<li>Cierre: 30 de octubre de 2026 a las 24:00 (Argentina) · <strong>cerrado</strong></li>")
+        ? "<li>Closes: 10 November 2026 at 24:00 (Argentina) · <strong>closed</strong></li>"
+        : "<li>Cierre: 10 de noviembre de 2026 a las 24:00 (Argentina) · <strong>cerrado</strong></li>")
       : (lang() === "en"
-        ? "<li>Closes: 30 October 2026 at 24:00 (Argentina)</li>"
-        : "<li>Cierre: 30 de octubre de 2026 a las 24:00 (Argentina)</li>");
+        ? "<li>Closes: 10 November 2026 at 24:00 (Argentina)</li>"
+        : "<li>Cierre: 10 de noviembre de 2026 a las 24:00 (Argentina)</li>");
     if (lang() === "en") {
       return (
         "<p><strong>Dates and budget (2026 call)</strong></p>" +

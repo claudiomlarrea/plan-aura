@@ -1,11 +1,11 @@
 /**
- * Cierra la carga de la convocatoria AURA el 30 de octubre de 2026
+ * Cierra la carga de la convocatoria AURA el 10 de noviembre de 2026
  * a las 24:00 (hora de Argentina).
  */
 (function () {
   "use strict";
 
-  var CIERRE_ISO = "2026-10-31T00:00:00-03:00";
+  var CIERRE_ISO = "2026-11-11T00:00:00-03:00";
   var cierreMs = Date.parse(CIERRE_ISO);
 
   function t(key, fallback) {
@@ -52,7 +52,7 @@
     if (fact) {
       fact.innerHTML = t(
         "sec.conv.facts.cierre.valueCerrado",
-        "Cerrado · 30 de octubre de 2026 a las 24:00"
+        "Cerrado · 10 de noviembre de 2026 a las 24:00"
       );
       fact.setAttribute("data-i18n-html", "sec.conv.facts.cierre.valueCerrado");
     }
@@ -61,7 +61,7 @@
     if (paso3) {
       paso3.innerHTML = t(
         "sec.conv.paso3.bodyCerrado",
-        "El plazo de presentación está <strong>cerrado</strong>. Ya no se reciben proyectos nuevos en Drive. El Comité Evaluador continúa con las propuestas ingresadas hasta el 30 de octubre."
+        "El plazo de presentación está <strong>cerrado</strong>. Ya no se reciben proyectos nuevos en Drive. El Comité Evaluador continúa con las propuestas ingresadas hasta el 10 de noviembre."
       );
       paso3.setAttribute("data-i18n-html", "sec.conv.paso3.bodyCerrado");
     }

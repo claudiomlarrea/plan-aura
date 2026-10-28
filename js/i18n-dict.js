@@ -614,8 +614,8 @@ window.I18N_DICT = {
     en: "Under construction"
   },
   "sec.conv.cierre.note": {
-    es: "El plazo de presentación cerró el <strong>30 de octubre de 2026 a las 24:00</strong> (Argentina). Ya no se reciben proyectos nuevos. Las bases y la plantilla siguen disponibles para consulta.",
-    en: "The submission window closed on <strong>30 October 2026 at 24:00</strong> (Argentina). New projects are no longer accepted. The guidelines and template remain available for reference."
+    es: "El plazo de presentación cerró el <strong>10 de noviembre de 2026 a las 24:00</strong> (Argentina). Ya no se reciben proyectos nuevos. Las bases y la plantilla siguen disponibles para consulta.",
+    en: "The submission window closed on <strong>10 November 2026 at 24:00</strong> (Argentina). New projects are no longer accepted. The guidelines and template remain available for reference."
   },
   
   "sec.conv.proyectos.title": {
@@ -680,12 +680,12 @@ window.I18N_DICT = {
     en: "Submission deadline"
   },
   "sec.conv.facts.cierre.value": {
-    es: "30 de octubre de 2026 a las 24:00",
-    en: "October 30, 2026 at 24:00"
+    es: "10 de noviembre de 2026 a las 24:00",
+    en: "November 10, 2026 at 24:00"
   },
   "sec.conv.facts.cierre.valueCerrado": {
-    es: "Cerrado · 30 de octubre de 2026 a las 24:00",
-    en: "Closed · 30 October 2026 at 24:00"
+    es: "Cerrado · 10 de noviembre de 2026 a las 24:00",
+    en: "Closed · 10 November 2026 at 24:00"
   },
   "sec.conv.facts.duracion.label": {
     es: "Duración de proyectos",
@@ -779,8 +779,8 @@ window.I18N_DICT = {
     en: "With Board approval, upload the completed template to the call Drive folder. The Evaluation Committee then issues its opinion and the file is elevated to the Superior Council."
   },
   "sec.conv.paso3.bodyCerrado": {
-    es: "El plazo de presentación está <strong>cerrado</strong>. Ya no se reciben proyectos nuevos en Drive. El Comité Evaluador continúa con las propuestas ingresadas hasta el 30 de octubre.",
-    en: "The submission window is <strong>closed</strong>. New projects are no longer accepted in Drive. The Evaluation Committee continues with proposals received through 30 October."
+    es: "El plazo de presentación está <strong>cerrado</strong>. Ya no se reciben proyectos nuevos en Drive. El Comité Evaluador continúa con las propuestas ingresadas hasta el 10 de noviembre.",
+    en: "The submission window is <strong>closed</strong>. New projects are no longer accepted in Drive. The Evaluation Committee continues with proposals received through 10 November."
   },
   "sec.conv.paso3.circuito": {
     es: "Circuito:",
@@ -849,8 +849,8 @@ window.I18N_DICT = {
     en: "Evaluation"
   },
   "sec.conv.cronograma.evaluacion.value": {
-    es: "2 – 13 de noviembre de 2026",
-    en: "November 2–13, 2026"
+    es: "11 – 21 de noviembre de 2026",
+    en: "November 11–21, 2026"
   },
   "sec.conv.cronograma.elevacion.label": {
     es: "Elevación a Consejo Superior",
