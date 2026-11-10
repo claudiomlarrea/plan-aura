@@ -542,6 +542,8 @@
       renderAnual();
       return;
     }
+  });
+  document.addEventListener("click", function (event) {
     var dl = event.target.closest("[data-hist-dl]");
     if (!dl) return;
     var kind = dl.getAttribute("data-hist-dl");

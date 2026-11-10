@@ -76,6 +76,7 @@
     mode: {}
   };
   var vistaChart = null;
+  var historiaChart = null;
   var charts = {};
   var scriptLoads = {};
 
@@ -99,6 +100,10 @@
       var action = btn.getAttribute("data-hidro-action");
       if (action === "png" || action === "pdf-charts") {
         btn.disabled = !vistaChart;
+        return;
+      }
+      if (action === "png-historia" || action === "pdf-historia") {
+        btn.disabled = !historiaChart;
         return;
       }
       btn.disabled = !ready;
@@ -291,18 +296,37 @@
     return "<td>" + text + "</td>";
   }
 
-  function renderHoy() {
-    var box = document.getElementById("hidro-dato-dia");
-    if (!box || !state.data) return;
-    var hoy = state.data.dato_del_dia;
-    var cards = '<article><span class="t">' + t("sec.hidro.dec.caudal") + '</span><span class="v">' +
-      formatCaudal(hoy.caudal.m3s) + ' m³/s</span><span class="d">' + formatFechaCorta(hoy.caudal.fecha) + "</span></article>";
-    ["Punta Negra", "Ullum", "Los Caracoles", "Cuesta del Viento"].forEach(function (name) {
-      var key = name === "Punta Negra" ? "punta" : name === "Los Caracoles" ? "caracoles" : name === "Cuesta del Viento" ? "cuesta" : "ullum";
-      cards += '<article data-cota="' + key + '"><span class="t">' + name + '</span><span class="v">' +
-        numOrSd(hoy.embalses[name], 2) + '</span><span class="d">' + formatFechaCorta(hoy.embalses_fecha) + " · m.s.n.m.</span></article>";
-    });
-    box.innerHTML = "<h4>" + t("sec.hidro.dec.today") + "</h4>" + cards;
+  function kpiCard(title, value, detail) {
+    return '<article class="hidro-kpi"><span class="t">' + title + '</span><span class="v">' + value +
+      '</span><span class="d">' + detail + "</span></article>";
+  }
+
+  function renderKpis() {
+    var box = document.getElementById("hidro-kpis");
+    var u = state.ultimos;
+    if (!box || !u) return;
+    var c = u.caudal_km101;
+    var pct = c.anomalia_pct;
+    var arrow = pct > 0 ? "▲" : pct < 0 ? "▼" : "→";
+    var cls = pct > 0 ? "up" : pct < 0 ? "down" : "";
+    var ah = u.anio_hidrologico;
+    var delta = ah && ah.media_a_la_fecha_hm3 != null ? ah.escurrimiento_hm3 - ah.media_a_la_fecha_hm3 : 0;
+    var ahCls = delta > 0 ? "up" : delta < 0 ? "down" : "";
+    var ahArrow = delta > 0 ? "▲" : delta < 0 ? "▼" : "→";
+    var fechaEmb = u.embalses.Ullum ? u.embalses.Ullum.fecha : u.generado;
+    var levels = ["Punta Negra", "Ullum", "Los Caracoles", "Cuesta del Viento"].map(function (name) {
+      var emb = u.embalses[name];
+      return "<div><span>" + name + "</span><strong>" + (emb ? formatCota(emb.cota_msnm) : MISSING) + "</strong></div>";
+    }).join("");
+    box.innerHTML =
+      kpiCard(t("sec.hidro.kpi.caudal"), formatCaudal(c.m3s) + " <small>m³/s</small>", formatFechaCorta(c.fecha)) +
+      kpiCard(t("sec.hidro.kpi.anomaly"), '<span class="' + cls + '">' + arrow + " " + formatFixed(pct, 1) + " %</span>",
+        t("sec.hidro.kpi.vsMean", { mean: formatFixed(c.media_historica_misma_fecha_m3s, 2), n: String(c.n_anios_misma_fecha) })) +
+      kpiCard(t("sec.hidro.kpi.ytd", { year: ah.etiqueta }), formatFixed(ah.escurrimiento_hm3, 1) + " <small>hm³</small>",
+        '<span class="' + ahCls + '">' + ahArrow + " " + t("sec.hidro.kpi.vsYtd", { mean: formatFixed(ah.media_a_la_fecha_hm3, 1) }) + "</span> · " +
+        formatFechaCorta(ah.desde) + "–" + formatFechaCorta(ah.hasta)) +
+      '<article class="hidro-kpi hidro-kpi--levels"><span class="t">' + t("sec.hidro.kpi.levels") +
+      '</span><div class="hidro-kpi-levels">' + levels + '</div><span class="d">' + formatFechaCorta(fechaEmb) + " · m.s.n.m.</span></article>";
   }
 
   function allOpen() {
@@ -444,6 +468,127 @@
       charts[key].destroy();
       delete charts[key];
     });
+  }
+
+  function renderHistoria() {
+    if (!window.Chart || !state.anual || !panelVisible()) return;
+    var canvas = document.getElementById("hidro-chart-historia");
+    if (!canvas) return;
+    if (historiaChart) {
+      historiaChart.destroy();
+      historiaChart = null;
+    }
+    var Q = state.anual.caudal_km101;
+    var rows = Q.anio_hidrologico || [];
+    var trends = (Q.tendencias && Q.tendencias.media_anual_hidrologico) || {};
+    var full = trends.periodo_completo;
+    var recent = trends.desde_2001;
+    var ref = Q.referencia_1910_2022 && Q.referencia_1910_2022.hidrologico;
+    var maxYear = Q.destacados && Q.destacados.anio_hidrologico_mas_caudaloso && Q.destacados.anio_hidrologico_mas_caudaloso.anio;
+    var minYear = Q.destacados && Q.destacados.anio_hidrologico_mas_seco && Q.destacados.anio_hidrologico_mas_seco.anio;
+    var done = [];
+    var ma = rows.map(function (row) {
+      if (!row.completo || row.media_m3s == null) return null;
+      done.push(row.media_m3s);
+      if (done.length < 10) return null;
+      var slice = done.slice(-10);
+      return slice.reduce(function (acc, value) { return acc + value; }, 0) / 10;
+    });
+    var trend = rows.map(function (row) {
+      if (!full || !row.completo) return null;
+      var year = parseInt(String(row.anio).slice(0, 4), 10);
+      if (year < full.desde || year > full.hasta) return null;
+      return full.intercepto + full.pendiente_sen_por_anio * year;
+    });
+    historiaChart = new window.Chart(canvas, {
+      data: {
+        labels: rows.map(function (row) { return String(row.anio); }),
+        datasets: [
+          {
+            type: "bar",
+            label: t("sec.hidro.histChart.mean"),
+            data: rows.map(function (row) { return row.media_m3s; }),
+            backgroundColor: rows.map(function (row) {
+              if (!row.completo) return "rgba(26, 111, 168, 0.18)";
+              if (String(row.anio) === String(maxYear)) return "#0d6e4f";
+              if (String(row.anio) === String(minYear)) return "#7a1532";
+              return "#1a6fa8";
+            }),
+            borderColor: rows.map(function (row) { return row.completo ? "transparent" : "#1a6fa8"; }),
+            borderWidth: 1.5,
+            order: 3
+          },
+          {
+            type: "line",
+            label: t("sec.hidro.histChart.ma"),
+            data: ma,
+            borderColor: "#0a5c5e",
+            pointRadius: 0,
+            borderWidth: 2,
+            spanGaps: false,
+            order: 2
+          },
+          {
+            type: "line",
+            label: t("sec.hidro.histChart.trend"),
+            data: trend,
+            borderColor: "#e69138",
+            pointRadius: 0,
+            borderWidth: 2,
+            spanGaps: false,
+            order: 1
+          },
+          {
+            type: "line",
+            label: ref ? t("sec.hidro.histChart.ref", { periodo: ref.periodo }) : "",
+            data: rows.map(function () { return ref ? ref.media_m3s : null; }),
+            borderColor: "#5c4f54",
+            borderDash: [6, 4],
+            pointRadius: 0,
+            borderWidth: 1.5,
+            order: 0
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        animation: false,
+        plugins: {
+          legend: { position: "bottom", labels: { boxWidth: 12, font: { size: 11 } } },
+          title: { display: true, text: t("sec.hidro.histChart.title"), color: "#1f1418" },
+          tooltip: {
+            callbacks: {
+              label: function (ctx) {
+                var value = ctx.parsed.y;
+                return ctx.dataset.label + ": " + (value == null ? MISSING : formatFixed(value, 1) + " m³/s");
+              }
+            }
+          }
+        },
+        scales: {
+          x: { ticks: { maxRotation: 0, autoSkip: true, maxTicksLimit: 14, color: "#5c4f54" } },
+          y: {
+            min: 0,
+            title: { display: true, text: "m³/s", color: "#1a6fa8" },
+            ticks: { callback: function (value) { return formatFixed(Number(value), 0); } }
+          }
+        }
+      }
+    });
+    var caption = document.getElementById("hidro-historia-caption");
+    if (caption && full && recent) {
+      caption.textContent = t("sec.hidro.histChart.caption", {
+        full: formatFixed(full.pendiente_sen_por_decada, 1),
+        desde: String(full.desde),
+        hasta: String(full.hasta),
+        recent: formatFixed(recent.pendiente_sen_por_decada, 1),
+        recentDesde: String(recent.desde)
+      });
+    }
+    var wrap = document.getElementById("hidro-chart-historia-wrap");
+    if (wrap) wrap.setAttribute("aria-label", t("sec.hidro.histChart.title"));
+    enableActions(true);
   }
 
   function syncChartTabs() {
@@ -597,7 +742,10 @@
       .then(function () {
         if (!panelVisible()) return;
         requestAnimationFrame(function () {
-          requestAnimationFrame(renderVista);
+          requestAnimationFrame(function () {
+          renderHistoria();
+          renderVista();
+        });
         });
       })
       .catch(function () {
@@ -810,14 +958,42 @@
     } else if (action === "xlsx-table") {
       downloadXlsx();
     } else if (action === "png") {
-      downloadChartPng(chartKey);
+      downloadChartPng();
     } else if (action === "pdf-charts") {
       downloadChartsPdf();
+    } else if (action === "png-historia") {
+      downloadHistoria("png");
+    } else if (action === "pdf-historia") {
+      downloadHistoria("pdf");
     }
   }
 
+  function downloadHistoria(kind) {
+    if (!historiaChart) return;
+    historiaChart.resize();
+    var image = composeCanvas(historiaChart.canvas, t("sec.hidro.histChart.export"), sourceLine());
+    if (kind === "png") {
+      image.toBlob(function (blob) {
+        if (blob) saveBlob(blob, "rio-san-juan-serie-historica-" + fileStamp() + ".png");
+      }, "image/png");
+      return;
+    }
+    loadScript(JSPDF_SRC).then(function () {
+      var JsPDF = window.jspdf && window.jspdf.jsPDF;
+      if (!JsPDF) {
+        setStatus(t("sec.hidro.datos.libMissing"));
+        return;
+      }
+      var pdf = new JsPDF({ orientation: "landscape", unit: "pt", format: "a4" });
+      addCanvasPage(pdf, image, true);
+      pdf.save("rio-san-juan-serie-historica-" + fileStamp() + ".pdf");
+    }).catch(function () {
+      setStatus(t("sec.hidro.datos.libMissing"));
+    });
+  }
+
   function bind() {
-    var root = document.getElementById("caudales-embalses");
+    var root = document.getElementById("info-hidrologica");
     if (!root) return;
     root.addEventListener("click", function (event) {
       var actionBtn = event.target.closest("[data-hidro-action]");
@@ -868,7 +1044,7 @@
     state.open[current.desde] = true;
     var link = document.getElementById("hidro-fuente-link");
     if (link && data.fuente_url) link.href = data.fuente_url;
-    renderHoy();
+    renderKpis();
     fillSelector();
     renderDecadas();
     enableActions(true);
@@ -878,15 +1054,24 @@
 
   function loadData() {
     setStatus(t("sec.hidro.datos.loading"));
-    fetch(DATA_URL + "?v=" + Date.now(), { cache: "no-store" })
-      .then(function (res) {
+    var bust = Date.now();
+    function json(url) {
+      return fetch(url + "?v=" + bust, { cache: "no-store" }).then(function (res) {
         if (!res.ok) throw new Error(String(res.status));
         return res.json();
-      })
-      .then(applyData)
-      .catch(function () {
-        setStatus(t("sec.hidro.datos.error"));
       });
+    }
+    Promise.all([
+      json(DATA_URL),
+      json("hidrologia/ultimos_valores.json"),
+      json("hidrologia/datos_anuales.json")
+    ]).then(function (parts) {
+      state.ultimos = parts[1];
+      state.anual = parts[2];
+      applyData(parts[0]);
+    }).catch(function () {
+      setStatus(t("sec.hidro.datos.error"));
+    });
   }
 
   bind();
@@ -894,18 +1079,19 @@
 
   document.addEventListener("oia:page", function (event) {
     if (event.detail !== "info-hidrologica") return;
-    if (vistaChart) {
-      vistaChart.resize();
-      return;
-    }
-    ensureCharts();
+    if (vistaChart) vistaChart.resize();
+    if (historiaChart) historiaChart.resize();
+    if (!vistaChart || !historiaChart) ensureCharts();
   });
 
   window.addEventListener("oia:langchange", function () {
     if (!state.data) return;
-    renderHoy();
+    renderKpis();
     fillSelector();
     renderDecadas();
-    if (panelVisible() && window.Chart) renderVista();
+    if (panelVisible() && window.Chart) {
+      renderHistoria();
+      renderVista();
+    }
   });
 })();

@@ -459,6 +459,34 @@ window.I18N_DICT = {
     es: "Conocer estas nociones ayuda a medir, interpretar y comunicar el uso del agua. El Plan AURA promueve ahorro, uso responsable e investigación aplicada en ese marco. Para profundizar, visitá <a href=\"#articulos\">Publicaciones</a> y la <a href=\"#publicaciones\">Biblioteca del Agua</a>.",
     en: "Knowing these notions helps measure, interpret, and communicate water use. Plan AURA promotes conservation, responsible use, and applied research in that frame. To go further, see <a href=\"#articulos\">Publications</a> and the <a href=\"#publicaciones\">Water Library</a>."
   },
+  "sec.hidro.kpi.caudal": { es: "Caudal Km 101", en: "Flow at Km 101" },
+  "sec.hidro.kpi.anomaly": { es: "Respecto de la media de esa fecha", en: "Against the mean for that date" },
+  "sec.hidro.kpi.vsMean": { es: "Media histórica {mean} m³/s · {n} años", en: "Historical mean {mean} m³/s · {n} years" },
+  "sec.hidro.kpi.ytd": { es: "Escurrimiento {year}", en: "Runoff {year}" },
+  "sec.hidro.kpi.vsYtd": { es: "media a la fecha {mean} hm³", en: "mean to date {mean} hm³" },
+  "sec.hidro.kpi.levels": { es: "Embalses", en: "Reservoirs" },
+  "sec.hidro.kpi.png": { es: "Descargar serie histórica (PNG)", en: "Download historical series (PNG)" },
+  "sec.hidro.kpi.pdf": { es: "Descargar serie histórica (PDF)", en: "Download historical series (PDF)" },
+  "sec.hidro.kpi.downloadNote": {
+    es: "El PNG y el PDF de la serie histórica llevan fondo blanco, título y fuente. El gráfico de década exporta la vista activa: décadas o meses.",
+    en: "The historical PNG and PDF include a white background, a title, and the source. The decade chart exports the active view: decades or months."
+  },
+  "sec.hidro.histChart.title": {
+    es: "Caudal medio de cada año hidrológico",
+    en: "Mean flow of each hydrological year"
+  },
+  "sec.hidro.histChart.mean": { es: "Caudal medio (m³/s)", en: "Mean flow (m³/s)" },
+  "sec.hidro.histChart.ma": { es: "Media móvil de 10 años completos", en: "10-year moving mean of complete years" },
+  "sec.hidro.histChart.trend": { es: "Tendencia 1910–2023", en: "1910–2023 trend" },
+  "sec.hidro.histChart.ref": { es: "Media {periodo}", en: "Mean {periodo}" },
+  "sec.hidro.histChart.export": {
+    es: "Río San Juan · caudal medio por año hidrológico",
+    en: "San Juan River · mean flow by hydrological year"
+  },
+  "sec.hidro.histChart.caption": {
+    es: "Años completos: pendiente de {full} m³/s por década entre {desde} y {hasta}, y de {recent} m³/s por década desde {recentDesde}. Los años incompletos (barra hueca), entre ellos 1909-10 y el año en curso, no entran en la tendencia ni en la media móvil.",
+    en: "Complete years: slope of {full} m³/s per decade from {desde} to {hasta}, and {recent} m³/s per decade since {recentDesde}. Incomplete years (hollow bars), including 1909-10 and the current year, are left out of the trend and the moving mean."
+  },
   "sec.hidro.datos.title": {
     es: "Caudales y embalses por década",
     en: "Flows and reservoirs by decade"

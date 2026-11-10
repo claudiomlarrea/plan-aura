@@ -5,7 +5,8 @@
   "m3s": 67.43,
   "fuente": "DH_planilla_pdf",
   "media_historica_misma_fecha_m3s": 66.503,
-  "n_anios_misma_fecha": 117
+  "n_anios_misma_fecha": 117,
+  "anomalia_pct": 1.4
  },
  "embalses": {
   "Cuesta del Viento": {
@@ -42,5 +43,14 @@
    "nombre": "Departamento de Hidráulica de San Juan – Planilla diaria 'Distribución de Riego' 08:00 h (dic 2014–hoy)",
    "url": "https://hidraulica.sanjuan.gob.ar/irrigacionver2/irrigacion_consulta.php"
   }
- ]
+ ],
+ "anio_hidrologico": {
+  "etiqueta": "2026-27",
+  "desde": "2026-07-01",
+  "hasta": "2026-11-04",
+  "escurrimiento_hm3": 301.7,
+  "dias_con_dato": 115,
+  "media_a_la_fecha_hm3": 460.7,
+  "n_anios_media": 112
+ }
 }

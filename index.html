@@ -12,7 +12,7 @@
     <link rel="canonical" href="https://plan-aura.com.ar/" />
     <link rel="icon" type="image/png" href="assets/logo-aura-gota-filete.png" />
     <link rel="stylesheet" href="css/variables.css?v=51" />
-    <link rel="stylesheet" href="css/styles.css?v=66" />
+    <link rel="stylesheet" href="css/styles.css?v=67" />
     <link rel="stylesheet" href="css/biblioteca-agua.css?v=2" />
   </head>
   <body>
@@ -390,24 +390,23 @@
             importan en un territorio árido.
           </p>
 
+          <div class="hidro-kpis" id="hidro-kpis"></div>
+          <p class="hidro-status" id="hidro-datos-status" role="status"></p>
+
+          <div class="card hidro-historia" id="hidro-historia">
+            <h3 data-i18n="sec.hidro.histChart.title">Caudal medio de cada año hidrológico</h3>
+            <div class="hidro-chart hidro-chart--acum" id="hidro-chart-historia-wrap" role="img">
+              <canvas id="hidro-chart-historia" aria-hidden="true"></canvas>
+            </div>
+            <p class="hidro-note" id="hidro-historia-caption"></p>
+          </div>
+
           <div class="card hidro-datos" id="caudales-embalses">
             <h3 data-i18n="sec.hidro.datos.title">Caudales y embalses por década</h3>
             <p data-i18n="sec.hidro.datos.lead">
               Caudal del río San Juan en Km 101 desde 1910, agrupado por década.
               Cada década se abre en medias mensuales. No se interpola: un mes sin dato publicado queda en s/d.
             </p>
-            <div class="hidro-hoy" id="hidro-dato-dia"></div>
-            <p class="hidro-status" id="hidro-datos-status" role="status"></p>
-
-            <div class="hidro-dl" role="group" aria-labelledby="hidro-dl-datos">
-              <h4 id="hidro-dl-datos" data-i18n="sec.hidro.datos.dl.group">Descargar datos</h4>
-              <div class="hidro-dl__actions">
-                <button type="button" class="btn btn-primary" data-hidro-action="csv-table" disabled data-i18n="sec.hidro.datos.dl.csvTable">Descargar tabla (CSV)</button>
-                <button type="button" class="btn btn-primary" data-hidro-action="xlsx-table" disabled data-i18n="sec.hidro.datos.dl.xlsxTable">Descargar tabla (Excel)</button>
-                <button type="button" class="btn btn-primary" data-hidro-action="json-series" disabled data-i18n="sec.hidro.datos.dl.jsonSeries">Descargar serie completa (JSON)</button>
-                <button type="button" class="btn btn-primary" data-hidro-action="csv-series" disabled data-i18n="sec.hidro.datos.dl.csvSeries">Descargar serie completa (CSV)</button>
-              </div>
-            </div>
 
             <div class="hidro-decadas-bar">
               <label class="hidro-year" for="hidro-decada-select">
@@ -428,12 +427,9 @@
             <div class="hidro-chart hidro-chart--acum" id="hidro-chart-vista-wrap" role="img">
               <canvas id="hidro-chart-vista" aria-hidden="true"></canvas>
             </div>
-            <div class="hidro-dl__actions">
-              <button type="button" class="btn btn-primary" data-hidro-action="png" data-chart="vista" disabled data-i18n="sec.hidro.dec.png">Descargar gráfico (PNG)</button>
-              <button type="button" class="btn btn-primary" data-hidro-action="pdf-charts" disabled data-i18n="sec.hidro.dec.pdf">Descargar gráfico (PDF)</button>
-            </div>
             <p class="hidro-note" data-i18n="sec.hidro.datos.chartsNote">
-              El PNG y el PDF exportan el gráfico que está en pantalla, con fondo blanco, título y fuente.
+              El gráfico de barras es el caudal medio de cada década; el de meses, la década elegida.
+              El PNG y el PDF de esta vista se descargan al final de la sección.
             </p>
 
             <p class="hidro-fuente">
@@ -468,17 +464,6 @@
               No se interpola ni se inventan los días faltantes.
             </p>
 
-            <h4 data-i18n="sec.hidro.hist.downloads">Descargar la serie completa</h4>
-            <div class="hidro-dl__actions">
-              <a class="btn btn-primary" id="hidro-dl-q-csv" href="hidrologia/caudales_diarios.csv" download data-i18n="sec.hidro.hist.dl.qcsv">Caudal diario completo (CSV)</a>
-              <button type="button" class="btn btn-primary" data-hist-dl="xlsx-q" data-i18n="sec.hidro.hist.dl.qxlsx">Caudal diario completo (Excel)</button>
-              <a class="btn btn-primary" id="hidro-dl-e-csv" href="hidrologia/niveles_embalses.csv" download data-i18n="sec.hidro.hist.dl.ecsv">Niveles de embalses (CSV)</a>
-              <button type="button" class="btn btn-primary" data-hist-dl="xlsx-e" data-i18n="sec.hidro.hist.dl.exlsx">Niveles de embalses (Excel)</button>
-              <a class="btn btn-primary" id="hidro-dl-ah-csv" href="hidrologia/caudal_anual_hidrologico.csv" download data-i18n="sec.hidro.hist.dl.ah">Resumen año hidrológico (CSV)</a>
-              <a class="btn btn-primary" id="hidro-dl-ac-csv" href="hidrologia/caudal_anual_calendario.csv" download data-i18n="sec.hidro.hist.dl.ac">Resumen año calendario (CSV)</a>
-              <a class="btn btn-primary" id="hidro-dl-emb-csv" href="hidrologia/embalses_anual.csv" download data-i18n="sec.hidro.hist.dl.emb">Embalses anuales (CSV)</a>
-            </div>
-
             <h4 data-i18n="sec.hidro.hist.anualTitle">Análisis anual del caudal en Km 101</h4>
             <div class="hidro-tabs" role="group" aria-label="Tipo de año">
               <button type="button" data-hist-tab="anio_hidrologico" class="is-on" data-i18n="sec.hidro.hist.tab.hidro">Año hidrológico (jul–jun)</button>
@@ -510,6 +495,28 @@
               <table class="hidro-table" id="hidro-hist-emb-tabla"></table>
             </div>
             <p class="hidro-fuente" id="hidro-hist-fuentes"></p>
+          </div>
+
+          <div class="card hidro-descargas" id="hidro-descargas">
+            <h3 data-i18n="sec.hidro.datos.dl.group">Descargar datos</h3>
+            <div class="hidro-dl__actions">
+              <button type="button" class="btn btn-primary" data-hidro-action="csv-table" disabled data-i18n="sec.hidro.datos.dl.csvTable">Descargar tabla (CSV)</button>
+              <button type="button" class="btn btn-primary" data-hidro-action="xlsx-table" disabled data-i18n="sec.hidro.datos.dl.xlsxTable">Descargar tabla (Excel)</button>
+              <button type="button" class="btn btn-primary" data-hidro-action="json-series" disabled data-i18n="sec.hidro.datos.dl.jsonSeries">Descargar serie completa (JSON)</button>
+              <button type="button" class="btn btn-primary" data-hidro-action="csv-series" disabled data-i18n="sec.hidro.datos.dl.csvSeries">Descargar serie completa (CSV)</button>
+              <a class="btn btn-primary" id="hidro-dl-ah-csv" href="hidrologia/caudal_anual_hidrologico.csv" download data-i18n="sec.hidro.hist.dl.ah">Resumen año hidrológico (CSV)</a>
+              <a class="btn btn-primary" id="hidro-dl-ac-csv" href="hidrologia/caudal_anual_calendario.csv" download data-i18n="sec.hidro.hist.dl.ac">Resumen año calendario (CSV)</a>
+              <a class="btn btn-primary" id="hidro-dl-emb-csv" href="hidrologia/embalses_anual.csv" download data-i18n="sec.hidro.hist.dl.emb">Embalses anuales (CSV)</a>
+              <a class="btn btn-primary" id="hidro-dl-q-csv" href="hidrologia/caudales_diarios.csv" download data-i18n="sec.hidro.hist.dl.qcsv">Caudal diario completo (CSV)</a>
+              <button type="button" class="btn btn-primary" data-hist-dl="xlsx-q" data-i18n="sec.hidro.hist.dl.qxlsx">Caudal diario completo (Excel)</button>
+              <a class="btn btn-primary" id="hidro-dl-e-csv" href="hidrologia/niveles_embalses.csv" download data-i18n="sec.hidro.hist.dl.ecsv">Niveles de embalses (CSV)</a>
+              <button type="button" class="btn btn-primary" data-hist-dl="xlsx-e" data-i18n="sec.hidro.hist.dl.exlsx">Niveles de embalses (Excel)</button>
+              <button type="button" class="btn btn-primary" data-hidro-action="png-historia" disabled data-i18n="sec.hidro.kpi.png">Descargar serie histórica (PNG)</button>
+              <button type="button" class="btn btn-primary" data-hidro-action="pdf-historia" disabled data-i18n="sec.hidro.kpi.pdf">Descargar serie histórica (PDF)</button>
+              <button type="button" class="btn btn-primary" data-hidro-action="png" data-chart="vista" disabled data-i18n="sec.hidro.dec.png">Descargar gráfico de década (PNG)</button>
+              <button type="button" class="btn btn-primary" data-hidro-action="pdf-charts" disabled data-i18n="sec.hidro.dec.pdf">Descargar gráfico de década (PDF)</button>
+            </div>
+            <p class="hidro-note" data-i18n="sec.hidro.kpi.downloadNote">El PNG y el PDF de la serie histórica llevan fondo blanco, título y fuente. El gráfico de década exporta la vista activa: décadas o meses.</p>
           </div>
 
           <div class="grid-2">
@@ -1352,7 +1359,7 @@
       </form>
     </div>
 
-    <script src="js/i18n-dict.js?v=48" defer></script>
+    <script src="js/i18n-dict.js?v=49" defer></script>
     <script src="js/i18n.js?v=7" defer></script>
     <script src="js/main.js?v=5" defer></script>
     <script src="js/galeria-config.js?v=8" defer></script>
@@ -1365,7 +1372,7 @@
     <script src="js/visitas-mapa.js?v=6" defer></script>
     <script src="js/convocatoria.js?v=3" defer></script>
     <script src="js/mesa-ayuda.js?v=4" defer></script>
-    <script src="js/hidrologia.js?v=4" defer></script>
-    <script src="js/hidrologia-historica.js?v=1" defer></script>
+    <script src="js/hidrologia.js?v=5" defer></script>
+    <script src="js/hidrologia-historica.js?v=2" defer></script>
   </body>
 </html>
