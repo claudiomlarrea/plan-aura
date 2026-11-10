@@ -316,7 +316,7 @@
     var fechaEmb = u.embalses.Ullum ? u.embalses.Ullum.fecha : u.generado;
     var levels = ["Punta Negra", "Ullum", "Los Caracoles", "Cuesta del Viento"].map(function (name) {
       var emb = u.embalses[name];
-      return "<div><span>" + name + "</span><strong>" + (emb ? formatCota(emb.cota_msnm) : MISSING) + "</strong></div>";
+      return '<div class="hidro-kpi-level"><span class="hidro-kpi-level__name">' + name + '</span><strong class="hidro-kpi-level__value">' + (emb ? formatCota(emb.cota_msnm) : MISSING) + "</strong></div>";
     }).join("");
     box.innerHTML =
       kpiCard(t("sec.hidro.kpi.caudal"), formatCaudal(c.m3s) + " <small>m³/s</small>", formatFechaCorta(c.fecha)) +
