@@ -460,12 +460,12 @@ window.I18N_DICT = {
     en: "Knowing these notions helps measure, interpret, and communicate water use. Plan AURA promotes conservation, responsible use, and applied research in that frame. To go further, see <a href=\"#articulos\">Publications</a> and the <a href=\"#publicaciones\">Water Library</a>."
   },
   "sec.hidro.datos.title": {
-    es: "Caudales y embalses – datos diarios",
-    en: "Daily flows and reservoir levels"
+    es: "Caudales y embalses por década",
+    en: "Flows and reservoirs by decade"
   },
   "sec.hidro.datos.lead": {
-    es: "Caudal diario del río San Juan en Km 101 y cotas de Punta Negra, Ullum, Los Caracoles y Cuesta del Viento. La tabla y los gráficos se arman con el archivo de datos: para actualizarlos alcanza con reemplazar el JSON.",
-    en: "Daily flow of the San Juan River at Km 101 and water levels at Punta Negra, Ullum, Los Caracoles, and Cuesta del Viento. The table and charts are built from the data file: replacing the JSON updates them."
+    es: "Caudal del río San Juan en Km 101 desde 1910, agrupado por década. Cada década se abre en medias mensuales. No se interpola: un mes sin dato publicado queda en s/d.",
+    en: "Flow of the San Juan River at Km 101 from 1910, grouped by decade. Each decade opens into monthly means. Nothing is interpolated: a month with no published value is shown as s/d."
   },
   "sec.hidro.datos.meta": {
     es: "Último caudal publicado: {caudal} m³/s ({fechaCaudal}) · última lectura de embalses: {fechaEmbalses} · serie actualizada el {generado}. Se muestran {n} días.",
@@ -572,9 +572,43 @@ window.I18N_DICT = {
     en: "Daily series charts"
   },
   "sec.hidro.datos.chartsNote": {
-    es: "Cada gráfico usa la misma serie que la tabla. El PNG y el PDF llevan fondo blanco, título y fuente.",
-    en: "Each chart uses the same series as the table. PNG and PDF exports include a white background, a title, and the source."
+    es: "El PNG y el PDF exportan el gráfico que está en pantalla, con fondo blanco, título y fuente.",
+    en: "The PNG and PDF export the chart on screen, with a white background, a title, and the source."
   },
+  "sec.hidro.dec.today": { es: "Dato del día", en: "Latest reading" },
+  "sec.hidro.dec.caudal": { es: "Caudal Km 101", en: "Flow at Km 101" },
+  "sec.hidro.dec.selector": { es: "Década", en: "Decade" },
+  "sec.hidro.dec.expandAll": { es: "Expandir todo", en: "Expand all" },
+  "sec.hidro.dec.collapseAll": { es: "Contraer todo", en: "Collapse all" },
+  "sec.hidro.dec.ongoing": { es: "en curso, hasta {fecha}", en: "in progress, through {fecha}" },
+  "sec.hidro.dec.mean": { es: "Caudal medio (m³/s)", en: "Mean flow (m³/s)" },
+  "sec.hidro.dec.runoff": { es: "Escurrimiento (hm³)", en: "Runoff (hm³)" },
+  "sec.hidro.dec.runoffYear": { es: "Medio anual (hm³/año)", en: "Mean annual (hm³/year)" },
+  "sec.hidro.dec.max": { es: "Máximo diario", en: "Highest daily" },
+  "sec.hidro.dec.min": { es: "Mínimo diario", en: "Lowest daily" },
+  "sec.hidro.dec.days": { es: "Días con dato", en: "Days with data" },
+  "sec.hidro.dec.annual": { es: "Media anual", en: "Annual mean" },
+  "sec.hidro.dec.flowTab": { es: "Caudal", en: "Flow" },
+  "sec.hidro.dec.levelTab": { es: "Embalses", en: "Reservoirs" },
+  "sec.hidro.dec.daysTip": { es: "{n} de {d} días con dato", en: "{n} of {d} days with data" },
+  "sec.hidro.dec.noteStar": {
+    es: "El asterisco marca un mes incompleto (hay menos días publicados que el mes calendario). s/d = sin dato. No se interpola.",
+    en: "A star marks an incomplete month (fewer published days than the calendar month). s/d = no data. Nothing is interpolated."
+  },
+  "sec.hidro.dec.note1910": {
+    es: "1910-1919 empieza el 01/01/1910, primer día de la serie oficial. No hay dato anterior y no se completa.",
+    en: "1910-1919 starts on 01/01/1910, the first day of the official series. There is no earlier value, and none is filled in."
+  },
+  "sec.hidro.dec.tabDecadas": { es: "Por década", en: "By decade" },
+  "sec.hidro.dec.tabMeses": { es: "Meses de la década", en: "Months of the decade" },
+  "sec.hidro.dec.png": { es: "Descargar gráfico (PNG)", en: "Download chart (PNG)" },
+  "sec.hidro.dec.pdf": { es: "Descargar gráfico (PDF)", en: "Download chart (PDF)" },
+  "sec.hidro.dec.chartDecadas": { es: "Caudal medio por década", en: "Mean flow by decade" },
+  "sec.hidro.dec.chartHm3": { es: "Escurrimiento acumulado (hm³)", en: "Cumulative runoff (hm³)" },
+  "sec.hidro.dec.chartMeses": { es: "Media mensual de {decada}", en: "Monthly mean of {decada}" },
+  "sec.hidro.dec.chartRef": { es: "Media histórica del mes", en: "Historical mean of that month" },
+  "sec.hidro.dec.exportDecadas": { es: "Río San Juan · caudal medio por década", en: "San Juan River · mean flow by decade" },
+  "sec.hidro.dec.exportMeses": { es: "Río San Juan · medias mensuales {decada}", en: "San Juan River · monthly means {decada}" },
   "sec.hidro.datos.chart.caudal": {
     es: "Caudal diario en Km 101",
     en: "Daily flow at Km 101"

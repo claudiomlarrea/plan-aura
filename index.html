@@ -12,7 +12,7 @@
     <link rel="canonical" href="https://plan-aura.com.ar/" />
     <link rel="icon" type="image/png" href="assets/logo-aura-gota-filete.png" />
     <link rel="stylesheet" href="css/variables.css?v=51" />
-    <link rel="stylesheet" href="css/styles.css?v=64" />
+    <link rel="stylesheet" href="css/styles.css?v=65" />
     <link rel="stylesheet" href="css/biblioteca-agua.css?v=2" />
   </head>
   <body>
@@ -391,13 +391,12 @@
           </p>
 
           <div class="card hidro-datos" id="caudales-embalses">
-            <h3 data-i18n="sec.hidro.datos.title">Caudales y embalses – datos diarios</h3>
+            <h3 data-i18n="sec.hidro.datos.title">Caudales y embalses por década</h3>
             <p data-i18n="sec.hidro.datos.lead">
-              Caudal diario del río San Juan en Km 101 y cotas de Punta Negra, Ullum,
-              Los Caracoles y Cuesta del Viento. La tabla y los gráficos se arman
-              con el archivo de datos: para actualizarlos alcanza con reemplazar el JSON.
+              Caudal del río San Juan en Km 101 desde 1910, agrupado por década.
+              Cada década se abre en medias mensuales. No se interpola: un mes sin dato publicado queda en s/d.
             </p>
-            <p class="hidro-meta" id="hidro-datos-meta"></p>
+            <div class="hidro-hoy" id="hidro-dato-dia"></div>
             <p class="hidro-status" id="hidro-datos-status" role="status"></p>
 
             <div class="hidro-dl" role="group" aria-labelledby="hidro-dl-datos">
@@ -410,78 +409,32 @@
               </div>
             </div>
 
-            <div class="hidro-table-wrap">
-              <table class="hidro-table">
-                <caption id="hidro-datos-caption"></caption>
-                <thead>
-                  <tr>
-                    <th scope="col" data-i18n="sec.hidro.datos.col.fecha">Fecha</th>
-                    <th scope="col" data-i18n="sec.hidro.datos.col.caudal">Caudal Km 101 (m³/s)</th>
-                    <th scope="col" data-i18n="sec.hidro.datos.col.punta">Punta Negra (m.s.n.m.)</th>
-                    <th scope="col" data-i18n="sec.hidro.datos.col.ullum">Ullum (m.s.n.m.)</th>
-                    <th scope="col" data-i18n="sec.hidro.datos.col.caracoles">Los Caracoles (m.s.n.m.)</th>
-                    <th scope="col" data-i18n="sec.hidro.datos.col.cuesta">Cuesta del Viento (m.s.n.m.)</th>
-                  </tr>
-                </thead>
-                <tbody id="hidro-datos-body"></tbody>
-              </table>
+            <div class="hidro-decadas-bar">
+              <label class="hidro-year" for="hidro-decada-select">
+                <span data-i18n="sec.hidro.dec.selector">Década</span>
+                <select id="hidro-decada-select"></select>
+              </label>
+              <button type="button" class="btn btn-primary" id="hidro-expand-all" data-i18n="sec.hidro.dec.expandAll">Expandir todo</button>
             </div>
+            <div class="hidro-table-wrap hidro-table-wrap--scroll">
+              <table class="hidro-table hidro-table--decadas" id="hidro-decadas-table"></table>
+            </div>
+            <p class="hidro-note" id="hidro-decadas-nota"></p>
 
-            <div class="hidro-block-head">
-              <h4 id="hidro-charts-title" data-i18n="sec.hidro.datos.chartsTitle">Gráficos de la serie diaria</h4>
-              <button type="button" class="btn btn-primary" data-hidro-action="pdf-charts" disabled data-i18n="sec.hidro.datos.dl.pdfCharts">Descargar gráficos (PDF)</button>
+            <div class="hidro-tabs" id="hidro-chart-tabs" role="group">
+              <button type="button" data-chart-view="decadas" data-i18n="sec.hidro.dec.tabDecadas">Por década</button>
+              <button type="button" data-chart-view="meses" class="is-on" data-i18n="sec.hidro.dec.tabMeses">Meses de la década</button>
+            </div>
+            <div class="hidro-chart hidro-chart--acum" id="hidro-chart-vista-wrap" role="img">
+              <canvas id="hidro-chart-vista" aria-hidden="true"></canvas>
+            </div>
+            <div class="hidro-dl__actions">
+              <button type="button" class="btn btn-primary" data-hidro-action="png" data-chart="vista" disabled data-i18n="sec.hidro.dec.png">Descargar gráfico (PNG)</button>
+              <button type="button" class="btn btn-primary" data-hidro-action="pdf-charts" disabled data-i18n="sec.hidro.dec.pdf">Descargar gráfico (PDF)</button>
             </div>
             <p class="hidro-note" data-i18n="sec.hidro.datos.chartsNote">
-              Cada gráfico usa la misma serie que la tabla. El PNG y el PDF llevan
-              fondo blanco, título y fuente.
+              El PNG y el PDF exportan el gráfico que está en pantalla, con fondo blanco, título y fuente.
             </p>
-            <div class="hidro-chart-grid">
-              <figure class="hidro-chart-card hidro-chart-card--wide">
-                <figcaption>
-                  <h5 data-i18n="sec.hidro.datos.chart.caudal">Caudal diario en Km 101</h5>
-                </figcaption>
-                <div class="hidro-chart" id="hidro-chart-caudal-wrap" role="img">
-                  <canvas id="hidro-chart-caudal" aria-hidden="true"></canvas>
-                </div>
-                <button type="button" class="btn btn-primary" data-hidro-action="png" data-chart="caudal" disabled data-i18n="sec.hidro.datos.dl.pngCaudal">Descargar caudal (PNG)</button>
-              </figure>
-              <figure class="hidro-chart-card">
-                <figcaption>
-                  <h5 data-i18n="sec.hidro.datos.chart.punta">Punta Negra</h5>
-                </figcaption>
-                <div class="hidro-chart" id="hidro-chart-punta-wrap" role="img">
-                  <canvas id="hidro-chart-punta" aria-hidden="true"></canvas>
-                </div>
-                <button type="button" class="btn btn-primary" data-hidro-action="png" data-chart="punta" disabled data-i18n="sec.hidro.datos.dl.pngPunta">Descargar Punta Negra (PNG)</button>
-              </figure>
-              <figure class="hidro-chart-card">
-                <figcaption>
-                  <h5 data-i18n="sec.hidro.datos.chart.ullum">Ullum</h5>
-                </figcaption>
-                <div class="hidro-chart" id="hidro-chart-ullum-wrap" role="img">
-                  <canvas id="hidro-chart-ullum" aria-hidden="true"></canvas>
-                </div>
-                <button type="button" class="btn btn-primary" data-hidro-action="png" data-chart="ullum" disabled data-i18n="sec.hidro.datos.dl.pngUllum">Descargar Ullum (PNG)</button>
-              </figure>
-              <figure class="hidro-chart-card">
-                <figcaption>
-                  <h5 data-i18n="sec.hidro.datos.chart.caracoles">Los Caracoles</h5>
-                </figcaption>
-                <div class="hidro-chart" id="hidro-chart-caracoles-wrap" role="img">
-                  <canvas id="hidro-chart-caracoles" aria-hidden="true"></canvas>
-                </div>
-                <button type="button" class="btn btn-primary" data-hidro-action="png" data-chart="caracoles" disabled data-i18n="sec.hidro.datos.dl.pngCaracoles">Descargar Los Caracoles (PNG)</button>
-              </figure>
-              <figure class="hidro-chart-card">
-                <figcaption>
-                  <h5 data-i18n="sec.hidro.datos.chart.cuesta">Cuesta del Viento</h5>
-                </figcaption>
-                <div class="hidro-chart" id="hidro-chart-cuesta-wrap" role="img">
-                  <canvas id="hidro-chart-cuesta" aria-hidden="true"></canvas>
-                </div>
-                <button type="button" class="btn btn-primary" data-hidro-action="png" data-chart="cuesta" disabled data-i18n="sec.hidro.datos.dl.pngCuesta">Descargar Cuesta del Viento (PNG)</button>
-              </figure>
-            </div>
 
             <div class="hidro-block-head">
               <h4 id="hidro-figura-title" data-i18n="sec.hidro.datos.figuraTitle">Escurrimiento acumulado del año hidrológico</h4>
@@ -1425,7 +1378,7 @@
       </form>
     </div>
 
-    <script src="js/i18n-dict.js?v=46" defer></script>
+    <script src="js/i18n-dict.js?v=47" defer></script>
     <script src="js/i18n.js?v=7" defer></script>
     <script src="js/main.js?v=5" defer></script>
     <script src="js/galeria-config.js?v=8" defer></script>
@@ -1438,7 +1391,7 @@
     <script src="js/visitas-mapa.js?v=6" defer></script>
     <script src="js/convocatoria.js?v=3" defer></script>
     <script src="js/mesa-ayuda.js?v=4" defer></script>
-    <script src="js/hidrologia.js?v=2" defer></script>
+    <script src="js/hidrologia.js?v=3" defer></script>
     <script src="js/hidrologia-historica.js?v=1" defer></script>
   </body>
 </html>

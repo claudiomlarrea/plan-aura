@@ -96,6 +96,124 @@ def write_tabla(q, e, generado):
         json.dump(doc, fh, ensure_ascii=False, indent=2)
         fh.write("\n")
 
+def dias_del_mes(year, month):
+    if month == 12:
+        nxt = dt.date(year + 1, 1, 1)
+    else:
+        nxt = dt.date(year, month + 1, 1)
+    return (nxt - dt.date(year, month, 1)).days
+
+def write_decadas(q, e, generado):
+    """Décadas 1910-1919 … 2020-2029 y medias mensuales. Solo días publicados."""
+    caud = q.dropna(subset=["caudal_m3s"]).drop_duplicates("fecha").copy()
+    caud = caud.set_index("fecha").caudal_m3s.sort_index()
+    niv = e.pivot_table(index="fecha", columns="embalse", values="nivel") if len(e) else pd.DataFrame()
+    hist = {int(m): r(caud[caud.index.month == m].mean(), 2) for m in range(1, 13)}
+    ref = caud[(caud.index >= "1910-01-01") & (caud.index <= "2022-12-31")]
+    ultimo = caud.index.max()
+    ultimo_emb = e.fecha.max() if len(e) else None
+    emb_ult = e[e.fecha == ultimo_emb] if ultimo_emb is not None else e.iloc[0:0]
+    dato = {
+        "caudal": {"fecha": str(ultimo.date()), "m3s": r(float(caud.loc[ultimo]), 3)},
+        "embalses_fecha": str(ultimo_emb.date()) if ultimo_emb is not None else None,
+        "embalses": {},
+    }
+    for emb in EMB:
+        row = emb_ult[emb_ult.embalse == emb]
+        dato["embalses"][emb] = r(float(row.nivel.iloc[0]), 2) if len(row) and pd.notna(row.nivel.iloc[0]) else None
+    decadas = []
+    for start in range(1910, 2030, 10):
+        end = start + 9
+        mask = (caud.index.year >= start) & (caud.index.year <= end)
+        sub = caud[mask]
+        if sub.empty and start > ultimo.year:
+            continue
+        dias = int(sub.shape[0])
+        total_hm3 = float(sub.sum() * 86400 / 1e6) if dias else 0.0
+        en_curso = bool(start <= int(ultimo.year) <= end and ultimo < pd.Timestamp(end, 12, 31))
+        item = {
+            "desde": start,
+            "hasta": end,
+            "en_curso": bool(en_curso),
+            "ultimo_dato": str(sub.index.max().date()) if dias else None,
+            "caudal_medio_m3s": r(sub.mean(), 2) if dias else None,
+            "escurrimiento_hm3": r(total_hm3, 1) if dias else None,
+            "escurrimiento_medio_anual_hm3": r(total_hm3 * 365.25 / dias, 1) if dias else None,
+            "max_m3s": r(sub.max(), 2) if dias else None,
+            "fecha_max": str(sub.idxmax().date()) if dias else None,
+            "min_m3s": r(sub.min(), 2) if dias else None,
+            "fecha_min": str(sub.idxmin().date()) if dias else None,
+            "dias_con_dato": dias,
+            "cotas": {},
+            "anios": [],
+        }
+        if start == 1910:
+            item["nota"] = "La década empieza el 1910-01-01, primer día de la serie oficial. No hay dato anterior y no se interpola."
+        for emb in EMB:
+            if emb not in niv.columns:
+                item["cotas"][emb] = None
+                continue
+            col = niv[emb].dropna()
+            col = col[(col.index.year >= start) & (col.index.year <= end)]
+            item["cotas"][emb] = r(col.mean(), 2) if len(col) else None
+        tiene_embalse = any(item["cotas"][emb] is not None for emb in EMB)
+        for year in range(start, end + 1):
+            ys = sub[sub.index.year == year]
+            ydays = 366 if (year % 4 == 0 and (year % 100 != 0 or year % 400 == 0)) else 365
+            yitem = {
+                "anio": year,
+                "media_anual_m3s": r(ys.mean(), 2) if len(ys) else None,
+                "dias_con_dato": int(len(ys)),
+                "dias_del_anio": ydays,
+                "incompleto": bool(len(ys) and len(ys) < ydays),
+                "meses": [],
+            }
+            if tiene_embalse:
+                yitem["embalses"] = {}
+            for month in range(1, 13):
+                ms = ys[ys.index.month == month]
+                nd = dias_del_mes(year, month)
+                n = int(len(ms))
+                yitem["meses"].append({
+                    "mes": month,
+                    "caudal_medio_m3s": r(ms.mean(), 2) if n else None,
+                    "dias_con_dato": n,
+                    "dias_del_mes": nd,
+                    "incompleto": bool(n and n < nd),
+                })
+                if tiene_embalse:
+                    for emb in EMB:
+                        yitem["embalses"].setdefault(emb, [])
+                        if emb not in niv.columns:
+                            ev = pd.Series(dtype=float)
+                        else:
+                            ev = niv[emb].dropna()
+                            ev = ev[(ev.index.year == year) & (ev.index.month == month)]
+                        en = int(len(ev))
+                        yitem["embalses"][emb].append({
+                            "mes": month,
+                            "media_msnm": r(ev.mean(), 2) if en else None,
+                            "dias_con_dato": en,
+                            "dias_del_mes": nd,
+                            "incompleto": bool(en and en < nd),
+                        })
+            item["anios"].append(yitem)
+        decadas.append(item)
+    doc = {
+        "generado": generado,
+        "fuente": "Departamento de Hidráulica de San Juan",
+        "fuente_url": "https://hidraulica.sanjuan.gob.ar/",
+        "media_1910_2022_m3s": r(ref.mean(), 2),
+        "media_mensual_historica": [hist[m] for m in range(1, 13)],
+        "dato_del_dia": dato,
+        "decadas": decadas,
+    }
+    dest = os.path.join(W, "decadas.json")
+    with open(dest, "w", encoding="utf-8") as fh:
+        json.dump(doc, fh, ensure_ascii=False)
+        fh.write("\n")
+    print("decadas:", len(decadas), "media 1910-2022", doc["media_1910_2022_m3s"], "m3/s")
+
 def main():
     con = sqlite3.connect(os.path.join(B, "caudales.db"))
     q = pd.read_sql("SELECT fecha, caudal_m3s, fuente FROM caudales_diarios ORDER BY fecha", con, parse_dates=["fecha"])
@@ -227,6 +345,7 @@ def main():
     ee["fecha"] = ee.fecha.dt.strftime("%Y-%m-%d")
     write_csv(ee.rename(columns={"nivel": "cota_msnm"}), "niveles_embalses.csv")
     write_tabla(q, e, hasta)
+    write_decadas(q, e, hasta)
     json.dump({
         "generado": hasta,
         "caudal_hasta": str(q.dropna(subset=["caudal_m3s"]).fecha.max().date()),
