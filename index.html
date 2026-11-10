@@ -12,7 +12,7 @@
     <link rel="canonical" href="https://plan-aura.com.ar/" />
     <link rel="icon" type="image/png" href="assets/logo-aura-gota-filete.png" />
     <link rel="stylesheet" href="css/variables.css?v=51" />
-    <link rel="stylesheet" href="css/styles.css?v=63" />
+    <link rel="stylesheet" href="css/styles.css?v=64" />
     <link rel="stylesheet" href="css/biblioteca-agua.css?v=2" />
   </head>
   <body>
@@ -504,8 +504,8 @@
               <figcaption data-i18n="sec.hidro.datos.figura.caption">
                 Figura oficial del Departamento de Hidráulica: escurrimiento acumulado
                 en Km 101 (julio–junio), año 2026-27 frente a 2025-26 y a la media de
-                110 años hidrológicos completos (1910–2022). Cuando la serie anual
-                esté en la carpeta de datos, este gráfico pasa a generarse en vivo.
+                años completos 1910–2022. Toda la serie, desde 1909-10, está en el
+                gráfico de más abajo.
               </figcaption>
             </figure>
 
@@ -513,6 +513,76 @@
               <span data-i18n="sec.hidro.datos.sourceLabel">Fuente:</span>
               <a id="hidro-fuente-link" href="https://hidraulica.sanjuan.gob.ar/" target="_blank" rel="noopener noreferrer">Departamento de Hidráulica de San Juan</a><span data-i18n="sec.hidro.datos.sourceRest">, planilla diaria «Distribución de Riego». s/d = sin dato publicado. Las descargas se generan con estos mismos datos.</span>
             </p>
+          </div>
+
+          <div class="card hidro-historico" id="serie-historica">
+            <h3 data-i18n="sec.hidro.hist.title">Escurrimiento acumulado y análisis anual</h3>
+            <p data-i18n="sec.hidro.hist.lead">
+              Serie oficial del río San Juan en Km 101 desde el año hidrológico 1909-10
+              (julio–junio) hasta hoy, y cotas anuales de los embalses. Un año con menos
+              de 330 días con dato se muestra en gris y no entra en la media ni en las tendencias.
+            </p>
+            <p class="hidro-meta" id="hidro-hist-act"></p>
+            <p class="hidro-status" id="hidro-hist-status" role="status"></p>
+
+            <div class="hidro-block-head">
+              <h4 id="hidro-hist-acum-title" data-i18n="sec.hidro.hist.acumTitle">Escurrimiento acumulado por año hidrológico</h4>
+              <label class="hidro-year" for="hidro-hist-anio">
+                <span data-i18n="sec.hidro.hist.yearLabel">Año hidrológico</span>
+                <select id="hidro-hist-anio"></select>
+              </label>
+            </div>
+            <p class="hidro-note" id="hidro-hist-anio-nota"></p>
+            <div class="hidro-chart hidro-chart--acum" id="hidro-chart-acumulado-wrap" role="img">
+              <canvas id="hidro-chart-acumulado" aria-hidden="true"></canvas>
+            </div>
+            <p class="hidro-note" data-i18n="sec.hidro.hist.acumNote">
+              Volumen acumulado = suma del caudal diario × 86.400 s, solo en los días con dato publicado.
+              No se interpola ni se inventan los días faltantes.
+            </p>
+
+            <h4 data-i18n="sec.hidro.hist.downloads">Descargar la serie completa</h4>
+            <div class="hidro-dl__actions">
+              <a class="btn btn-primary" id="hidro-dl-q-csv" href="hidrologia/caudales_diarios.csv" download data-i18n="sec.hidro.hist.dl.qcsv">Caudal diario completo (CSV)</a>
+              <button type="button" class="btn btn-primary" data-hist-dl="xlsx-q" data-i18n="sec.hidro.hist.dl.qxlsx">Caudal diario completo (Excel)</button>
+              <a class="btn btn-primary" id="hidro-dl-e-csv" href="hidrologia/niveles_embalses.csv" download data-i18n="sec.hidro.hist.dl.ecsv">Niveles de embalses (CSV)</a>
+              <button type="button" class="btn btn-primary" data-hist-dl="xlsx-e" data-i18n="sec.hidro.hist.dl.exlsx">Niveles de embalses (Excel)</button>
+              <a class="btn btn-primary" id="hidro-dl-ah-csv" href="hidrologia/caudal_anual_hidrologico.csv" download data-i18n="sec.hidro.hist.dl.ah">Resumen año hidrológico (CSV)</a>
+              <a class="btn btn-primary" id="hidro-dl-ac-csv" href="hidrologia/caudal_anual_calendario.csv" download data-i18n="sec.hidro.hist.dl.ac">Resumen año calendario (CSV)</a>
+              <a class="btn btn-primary" id="hidro-dl-emb-csv" href="hidrologia/embalses_anual.csv" download data-i18n="sec.hidro.hist.dl.emb">Embalses anuales (CSV)</a>
+            </div>
+
+            <h4 data-i18n="sec.hidro.hist.anualTitle">Análisis anual del caudal en Km 101</h4>
+            <div class="hidro-tabs" role="group" aria-label="Tipo de año">
+              <button type="button" data-hist-tab="anio_hidrologico" class="is-on" data-i18n="sec.hidro.hist.tab.hidro">Año hidrológico (jul–jun)</button>
+              <button type="button" data-hist-tab="anio_calendario" data-i18n="sec.hidro.hist.tab.cal">Año calendario</button>
+            </div>
+            <p class="hidro-tend" id="hidro-hist-tend"></p>
+            <div class="hidro-chart-grid">
+              <div class="hidro-chart-card hidro-chart-card--wide">
+                <div class="hidro-chart hidro-chart--anual"><canvas id="hidro-chart-media" aria-hidden="true"></canvas></div>
+              </div>
+              <div class="hidro-chart-card">
+                <div class="hidro-chart hidro-chart--anual"><canvas id="hidro-chart-maxmin" aria-hidden="true"></canvas></div>
+              </div>
+              <div class="hidro-chart-card">
+                <div class="hidro-chart hidro-chart--anual"><canvas id="hidro-chart-anom" aria-hidden="true"></canvas></div>
+              </div>
+            </div>
+            <div class="hidro-table-wrap hidro-table-wrap--scroll">
+              <table class="hidro-table" id="hidro-hist-tabla"></table>
+            </div>
+            <p class="hidro-note" data-i18n="sec.hidro.hist.tablaNote">
+              En gris: menos de 330 días con dato. Esos años no entran en la media, las anomalías ni las tendencias.
+              La anomalía compara con la media de los años completos 1910–2022. La tendencia es Mann-Kendall con pendiente de Sen.
+            </p>
+
+            <h4 data-i18n="sec.hidro.hist.embTitle">Embalses: cota media, máxima y mínima anual</h4>
+            <div class="hidro-chart-grid" id="hidro-hist-emb"></div>
+            <div class="hidro-table-wrap hidro-table-wrap--scroll">
+              <table class="hidro-table" id="hidro-hist-emb-tabla"></table>
+            </div>
+            <p class="hidro-fuente" id="hidro-hist-fuentes"></p>
           </div>
 
           <div class="grid-2">
@@ -1355,7 +1425,7 @@
       </form>
     </div>
 
-    <script src="js/i18n-dict.js?v=45" defer></script>
+    <script src="js/i18n-dict.js?v=46" defer></script>
     <script src="js/i18n.js?v=7" defer></script>
     <script src="js/main.js?v=5" defer></script>
     <script src="js/galeria-config.js?v=8" defer></script>
@@ -1368,6 +1438,7 @@
     <script src="js/visitas-mapa.js?v=6" defer></script>
     <script src="js/convocatoria.js?v=3" defer></script>
     <script src="js/mesa-ayuda.js?v=4" defer></script>
-    <script src="js/hidrologia.js?v=1" defer></script>
+    <script src="js/hidrologia.js?v=2" defer></script>
+    <script src="js/hidrologia-historica.js?v=1" defer></script>
   </body>
 </html>

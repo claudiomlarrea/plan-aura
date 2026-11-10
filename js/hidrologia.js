@@ -698,7 +698,7 @@
 
   function loadData() {
     setStatus(t("sec.hidro.datos.loading"));
-    fetch(DATA_URL, { cache: "no-cache" })
+    fetch(DATA_URL + "?v=" + Date.now(), { cache: "no-store" })
       .then(function (res) {
         if (!res.ok) throw new Error(String(res.status));
         return res.json();

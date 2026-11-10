@@ -612,8 +612,177 @@ window.I18N_DICT = {
     en: "Daily table and cumulative runoff of the San Juan River at Km 101 for the July–June hydrological year, compared with 2025-26 and the 1910–2022 mean."
   },
   "sec.hidro.datos.figura.caption": {
-    es: "Figura oficial del Departamento de Hidráulica: escurrimiento acumulado en Km 101 (julio–junio), año 2026-27 frente a 2025-26 y a la media de 110 años hidrológicos completos (1910–2022). Cuando la serie anual esté en la carpeta de datos, este gráfico pasa a generarse en vivo.",
-    en: "Official figure from the Hydraulics Department: cumulative runoff at Km 101 (July–June), hydrological year 2026-27 against 2025-26 and the mean of 110 complete hydrological years (1910–2022). When the annual series is in the data folder, this chart will be drawn live."
+    es: "Figura oficial del Departamento de Hidráulica: escurrimiento acumulado en Km 101 (julio–junio), año 2026-27 frente a 2025-26 y a la media de años completos 1910–2022. Toda la serie, desde 1909-10, está en el gráfico de más abajo.",
+    en: "Official figure from the Hydraulics Department: cumulative runoff at Km 101 (July–June), hydrological year 2026-27 against 2025-26 and the mean of complete years 1910–2022. The full series, from 1909-10, is in the chart below."
+  },
+  "sec.hidro.hist.title": {
+    es: "Escurrimiento acumulado y análisis anual",
+    en: "Cumulative runoff and annual analysis"
+  },
+  "sec.hidro.hist.lead": {
+    es: "Serie oficial del río San Juan en Km 101 desde el año hidrológico 1909-10 (julio–junio) hasta hoy, y cotas anuales de los embalses. Un año con menos de 330 días con dato se muestra en gris y no entra en la media ni en las tendencias.",
+    en: "Official San Juan River series at Km 101 from hydrological year 1909-10 (July–June) through today, and annual reservoir levels. A year with fewer than 330 days of data is shown in grey and is left out of the mean and the trends."
+  },
+  "sec.hidro.hist.acumTitle": {
+    es: "Escurrimiento acumulado por año hidrológico",
+    en: "Cumulative runoff by hydrological year"
+  },
+  "sec.hidro.hist.yearLabel": {
+    es: "Año hidrológico",
+    en: "Hydrological year"
+  },
+  "sec.hidro.hist.acumNote": {
+    es: "Volumen acumulado = suma del caudal diario × 86.400 s, solo en los días con dato publicado. No se interpola ni se inventan los días faltantes.",
+    en: "Cumulative volume = sum of daily flow × 86,400 s, only on days with a published value. Missing days are not interpolated or invented."
+  },
+  "sec.hidro.hist.downloads": {
+    es: "Descargar la serie completa",
+    en: "Download the full series"
+  },
+  "sec.hidro.hist.dl.qcsv": {
+    es: "Caudal diario completo (CSV)",
+    en: "Full daily flow (CSV)"
+  },
+  "sec.hidro.hist.dl.qxlsx": {
+    es: "Caudal diario completo (Excel)",
+    en: "Full daily flow (Excel)"
+  },
+  "sec.hidro.hist.dl.ecsv": {
+    es: "Niveles de embalses (CSV)",
+    en: "Reservoir levels (CSV)"
+  },
+  "sec.hidro.hist.dl.exlsx": {
+    es: "Niveles de embalses (Excel)",
+    en: "Reservoir levels (Excel)"
+  },
+  "sec.hidro.hist.dl.ah": {
+    es: "Resumen año hidrológico (CSV)",
+    en: "Hydrological-year summary (CSV)"
+  },
+  "sec.hidro.hist.dl.ac": {
+    es: "Resumen año calendario (CSV)",
+    en: "Calendar-year summary (CSV)"
+  },
+  "sec.hidro.hist.dl.emb": {
+    es: "Embalses anuales (CSV)",
+    en: "Annual reservoir levels (CSV)"
+  },
+  "sec.hidro.hist.anualTitle": {
+    es: "Análisis anual del caudal en Km 101",
+    en: "Annual analysis of flow at Km 101"
+  },
+  "sec.hidro.hist.tab.hidro": {
+    es: "Año hidrológico (jul–jun)",
+    en: "Hydrological year (Jul–Jun)"
+  },
+  "sec.hidro.hist.tab.cal": {
+    es: "Año calendario",
+    en: "Calendar year"
+  },
+  "sec.hidro.hist.tablaNote": {
+    es: "En gris: menos de 330 días con dato. Esos años no entran en la media, las anomalías ni las tendencias. La anomalía compara con la media de los años completos 1910–2022. La tendencia es Mann-Kendall con pendiente de Sen.",
+    en: "In grey: fewer than 330 days with data. Those years are excluded from the mean, the anomalies, and the trends. The anomaly is against the mean of complete years 1910–2022. The trend is Mann-Kendall with Sen’s slope."
+  },
+  "sec.hidro.hist.embTitle": {
+    es: "Embalses: cota media, máxima y mínima anual",
+    en: "Reservoirs: annual mean, maximum and minimum level"
+  },
+  "sec.hidro.hist.loading": {
+    es: "Cargando la serie histórica…",
+    en: "Loading the historical series…"
+  },
+  "sec.hidro.hist.error": {
+    es: "No se pudo cargar la serie histórica.",
+    en: "The historical series could not be loaded."
+  },
+  "sec.hidro.hist.incomplete": {
+    es: "incompleto",
+    en: "incomplete"
+  },
+  "sec.hidro.hist.updated": {
+    es: "Datos oficiales del Departamento de Hidráulica de San Juan · serie hasta el {fecha}.",
+    en: "Official data from the San Juan Hydraulics Department · series through {fecha}."
+  },
+  "sec.hidro.hist.note1909": {
+    es: "1909-10 es un año parcial: la serie oficial empieza el 1 de enero de 1910. No hay dato de julio a diciembre de 1909 y no se completa. Por eso la curva arranca en enero y el año queda fuera de la media y de las tendencias.",
+    en: "1909-10 is a partial year: the official series starts on 1 January 1910. There is no published value for July–December 1909, and none is filled in. The curve therefore starts in January, and the year is excluded from the mean and the trends."
+  },
+  "sec.hidro.hist.noteIncomplete": {
+    es: "Año incompleto: {n} días con dato (umbral 330). No entra en la media ni en las tendencias. Del {inicio} al {fin}.",
+    en: "Incomplete year: {n} days with data (threshold 330). Excluded from the mean and the trends. From {inicio} to {fin}."
+  },
+  "sec.hidro.hist.noteComplete": {
+    es: "{n} días con dato, del {inicio} al {fin}. Se compara con la media, el máximo y el mínimo de los años completos {periodo}.",
+    en: "{n} days with data, from {inicio} to {fin}. Compared with the mean, the maximum and the minimum of the complete years {periodo}."
+  },
+  "sec.hidro.hist.legend.mean": {
+    es: "Media {n} años completos {periodo}",
+    en: "Mean of {n} complete years {periodo}"
+  },
+  "sec.hidro.hist.legend.max": {
+    es: "{anio} · año de mayor derrame",
+    en: "{anio} · highest-runoff year"
+  },
+  "sec.hidro.hist.legend.min": {
+    es: "{anio} · año de menor derrame",
+    en: "{anio} · lowest-runoff year"
+  },
+  "sec.hidro.hist.legend.selected": {
+    es: "{anio} · {n} días{extra}",
+    en: "{anio} · {n} days{extra}"
+  },
+  "sec.hidro.hist.axis.hm3": {
+    es: "hm³ acumulados",
+    en: "cumulative hm³"
+  },
+  "sec.hidro.hist.axis.m3s": {
+    es: "m³/s",
+    en: "m³/s"
+  },
+  "sec.hidro.hist.chart.media": {
+    es: "Caudal medio anual (gris = año incompleto)",
+    en: "Annual mean flow (grey = incomplete year)"
+  },
+  "sec.hidro.hist.chart.maxmin": {
+    es: "Caudal máximo y mínimo diario de cada año",
+    en: "Highest and lowest daily flow of each year"
+  },
+  "sec.hidro.hist.chart.anom": {
+    es: "Anomalía respecto de la media {periodo}",
+    en: "Anomaly against the mean {periodo}"
+  },
+  "sec.hidro.hist.trend": {
+    es: "Tendencia del caudal medio anual (Mann-Kendall + Sen, solo años completos): {detalle}. Media de referencia {periodo}: {media} m³/s ({derrame} hm³/año).",
+    en: "Trend of annual mean flow (Mann-Kendall + Sen, complete years only): {detalle}. Reference mean {periodo}: {media} m³/s ({derrame} hm³/year)."
+  },
+  "sec.hidro.hist.col.year": { es: "Año", en: "Year" },
+  "sec.hidro.hist.col.days": { es: "Días", en: "Days" },
+  "sec.hidro.hist.col.mean": { es: "Media (m³/s)", en: "Mean (m³/s)" },
+  "sec.hidro.hist.col.max": { es: "Máx. (m³/s)", en: "Max (m³/s)" },
+  "sec.hidro.hist.col.maxDate": { es: "Fecha máx.", en: "Date of max" },
+  "sec.hidro.hist.col.min": { es: "Mín. (m³/s)", en: "Min (m³/s)" },
+  "sec.hidro.hist.col.minDate": { es: "Fecha mín.", en: "Date of min" },
+  "sec.hidro.hist.col.runoff": { es: "Derrame (hm³)", en: "Runoff (hm³)" },
+  "sec.hidro.hist.col.anom": { es: "Anomalía", en: "Anomaly" },
+  "sec.hidro.hist.col.reservoir": { es: "Embalse", en: "Reservoir" },
+  "sec.hidro.hist.col.levelMean": { es: "Media", en: "Mean" },
+  "sec.hidro.hist.col.levelMax": { es: "Máx.", en: "Max" },
+  "sec.hidro.hist.col.levelMin": { es: "Mín.", en: "Min" },
+  "sec.hidro.hist.xlsxBusy": {
+    es: "Armando el Excel…",
+    en: "Building the Excel file…"
+  },
+  "sec.hidro.hist.libMissing": {
+    es: "No se pudo cargar la librería para el Excel.",
+    en: "The Excel library could not be loaded."
+  },
+  "sec.hidro.hist.sources": {
+    es: "Fuentes:",
+    en: "Sources:"
+  },
+  "sec.hidro.hist.processing": {
+    es: "Procesamiento: Plan AURA · UCCuyo. Los días sin dato publicado no están en los CSV.",
+    en: "Processing: Plan AURA · UCCuyo. Days without a published value are absent from the CSV files."
   },
   "sec.hidro.datos.sourceLabel": {
     es: "Fuente:",

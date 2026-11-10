@@ -1,0 +1,65 @@
+name: Hidrología diaria
+
+on:
+  schedule:
+    # 17:00 UTC = 14:00 en San Juan (UTC−3, sin horario de verano)
+    - cron: "0 17 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: hidrologia-diaria
+  cancel-in-progress: false
+
+jobs:
+  actualizar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Dependencias
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y poppler-utils sqlite3
+          python -m pip install -r tools/hidrologia/requirements.txt
+
+      - name: Firma de la serie publicada
+        run: |
+          sqlite3 tools/hidrologia/caudales.db "
+            SELECT fecha, printf('%.5f', caudal_m3s) FROM caudales_diarios ORDER BY fecha;
+            SELECT fecha, embalse, printf('%.3f', ifnull(nivel, -1))
+              FROM niveles_embalses ORDER BY fecha, embalse;
+          " | sha256sum > /tmp/hidro-antes.sha
+
+      - name: Bajar planillas oficiales y regenerar JSON/CSV
+        run: bash tools/hidrologia/actualizar_todo.sh
+
+      - name: Publicar solo si la serie cambió
+        run: |
+          set -euo pipefail
+          sqlite3 tools/hidrologia/caudales.db "
+            SELECT fecha, printf('%.5f', caudal_m3s) FROM caudales_diarios ORDER BY fecha;
+            SELECT fecha, embalse, printf('%.3f', ifnull(nivel, -1))
+              FROM niveles_embalses ORDER BY fecha, embalse;
+          " | sha256sum > /tmp/hidro-despues.sha
+          if cmp -s /tmp/hidro-antes.sha /tmp/hidro-despues.sha; then
+            git checkout -- tools/hidrologia/caudales.db data/hidrologia hidrologia || true
+            echo "Sin datos nuevos. No se commitea nada y no se interpola."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/hidrologia/tabla_hidrologica.json hidrologia tools/hidrologia/caudales.db
+          if git diff --cached --quiet; then
+            echo "La firma cambió pero el diff publicado está vacío."
+            exit 0
+          fi
+          git commit -m "Actualizar series hidrológicas oficiales"
+          git push

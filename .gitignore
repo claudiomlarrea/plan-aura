@@ -1,3 +1,8 @@
 
 # Raw Drive download (optimized copies live under assets/img/galeria)
 assets/img/drive-galeria/
+
+# Descargas crudas de Hidráulica (la serie publicada sale de caudales.db)
+tools/hidrologia/raw/
+tools/hidrologia/export/
+tools/hidrologia/**/__pycache__/
