@@ -275,7 +275,31 @@ def main():
            "fuentes": FUENTES}
     # media histórica del mismo día del año
     md = s[(s.index.month == lq.fecha.month) & (s.index.day == lq.fecha.day)]
-    ult["caudal_km101"]["media_historica_misma_fecha_m3s"] = r(md.mean()); ult["caudal_km101"]["n_anios_misma_fecha"] = int(md.count())
+    media_dia = float(md.mean()) if len(md) else None
+    ult["caudal_km101"]["media_historica_misma_fecha_m3s"] = r(media_dia)
+    ult["caudal_km101"]["n_anios_misma_fecha"] = int(md.count())
+    if media_dia:
+        ult["caudal_km101"]["anomalia_pct"] = round((float(lq.caudal_m3s) / media_dia - 1) * 100, 1)
+    inicio_ah = pd.Timestamp(lq.fecha.year if lq.fecha.month >= 7 else lq.fecha.year - 1, 7, 1)
+    ytd = s[(s.index >= inicio_ah) & (s.index <= lq.fecha)]
+    dia = int((lq.fecha - inicio_ah).days)
+    ref_ah = hid[hid.completo & (hid.anio.map(lambda a: int(str(a)[:4])) <= 2021)].anio
+    acc = []
+    for etiqueta in ref_ah:
+        st = pd.Timestamp(int(str(etiqueta)[:4]), 7, 1)
+        en = st + pd.Timedelta(days=dia)
+        part = s[(s.index >= st) & (s.index <= en)]
+        if len(part):
+            acc.append(float(part.sum() * 86400 / 1e6))
+    ult["anio_hidrologico"] = {
+        "etiqueta": hy(lq.fecha),
+        "desde": str(inicio_ah.date()),
+        "hasta": str(lq.fecha.date()),
+        "escurrimiento_hm3": r(float(ytd.sum() * 86400 / 1e6), 1),
+        "dias_con_dato": int(len(ytd)),
+        "media_a_la_fecha_hm3": r(sum(acc) / len(acc), 1) if acc else None,
+        "n_anios_media": int(len(acc)),
+    }
     json.dump(ult, open(os.path.join(W, "ultimos_valores.json"), "w"), ensure_ascii=False, indent=1)
     # serie diaria reciente (400 días)
     fin = max(s.index.max(), e.fecha.max()); ini = fin - pd.Timedelta(days=400)
