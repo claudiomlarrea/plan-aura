@@ -2890,3 +2890,146 @@ body.gallery-lightbox-open .mesa-ayuda-panel {
 .hidro-historico .hidro-chart-grid {
   margin-bottom: 0.8rem;
 }
+
+.hidro-hoy {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr));
+  gap: 0.55rem;
+  margin: 0 0 1rem;
+}
+
+.hidro-hoy article {
+  background: #f3f8fc;
+  border: 1px solid rgba(26, 111, 168, 0.22);
+  border-top: 3px solid #1a6fa8;
+  border-radius: 8px;
+  padding: 0.5rem 0.7rem;
+}
+
+.hidro-hoy .t {
+  display: block;
+  color: var(--color-text-soft);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.hidro-hoy .v {
+  display: block;
+  color: #1a6fa8;
+  font-size: 1.2rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.hidro-hoy .d {
+  display: block;
+  color: var(--color-text-soft);
+  font-size: 0.78rem;
+}
+
+.hidro-hoy article[data-cota="punta"] { border-top-color: #e69138; }
+.hidro-hoy article[data-cota="punta"] .v { color: #e69138; }
+.hidro-hoy article[data-cota="ullum"] { border-top-color: #0a5c5e; }
+.hidro-hoy article[data-cota="ullum"] .v { color: #0a5c5e; }
+.hidro-hoy article[data-cota="caracoles"] { border-top-color: #0d6e4f; }
+.hidro-hoy article[data-cota="caracoles"] .v { color: #0d6e4f; }
+.hidro-hoy article[data-cota="cuesta"] { border-top-color: #7a1532; }
+.hidro-hoy article[data-cota="cuesta"] .v { color: #7a1532; }
+
+.hidro-decadas-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  margin: 0.2rem 0 0.7rem;
+  max-width: 100%;
+}
+
+.hidro-decadas-bar .hidro-year {
+  flex: 1 1 12rem;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.hidro-decadas-bar .hidro-year select {
+  flex: 1 1 auto;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.hidro-table--decadas {
+  min-width: 68rem;
+}
+
+.hidro-exp {
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  font-weight: 700;
+  color: #1a6fa8;
+  cursor: pointer;
+  text-align: left;
+}
+
+.hidro-decada-sum.is-current td,
+.hidro-decada-sum.is-current th {
+  box-shadow: inset 3px 0 0 #1a6fa8;
+}
+
+.hidro-month-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 0.15rem 0 0.35rem;
+}
+
+.hidro-month {
+  width: 100%;
+  min-width: 54rem;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.hidro-month th,
+.hidro-month td {
+  padding: 0.32rem 0.45rem;
+  border-bottom: 1px solid rgba(26, 111, 168, 0.14);
+  text-align: right;
+  white-space: nowrap;
+  background: #fff;
+  color: var(--color-text);
+}
+
+.hidro-month th {
+  background: #1a6fa8;
+  color: #fff;
+  font-weight: 700;
+}
+
+.hidro-month th:first-child,
+.hidro-month td:first-child {
+  text-align: left;
+  position: sticky;
+  left: 0;
+}
+
+.hidro-month td:first-child {
+  background: #f4f9fc;
+  font-weight: 700;
+}
+
+.hidro-star {
+  cursor: help;
+  border-bottom: 1px dotted #7a1532;
+}
+
+.hidro-detail-tabs {
+  margin: 0.2rem 0 0.45rem;
+}
+
+.hidro-detail-tabs button {
+  font-size: 0.82rem;
+}
