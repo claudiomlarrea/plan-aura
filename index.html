@@ -87,6 +87,25 @@
                 </ul>
               </li>
 
+              <li class="nav-item has-submenu">
+                <button
+                  type="button"
+                  class="nav-submenu-toggle"
+                  aria-expanded="false"
+                  aria-controls="nav-sub-recursos"
+                  data-i18n="nav.group.recursos"
+                >
+                  Recursos
+                </button>
+                <ul class="nav-submenu" id="nav-sub-recursos">
+                  <li>
+                    <a href="#info-hidrologica" data-i18n="nav.infoHidrologica"
+                      >Información hidrológica básica</a
+                    >
+                  </li>
+                </ul>
+              </li>
+
               <li><a href="#convocatoria" data-i18n="nav.convocatorias">Convocatorias</a></li>
 
               <li class="nav-item has-submenu">
@@ -353,6 +372,73 @@
           </blockquote>
         </div>
       </section>
+
+      <section
+        class="section section--hidro page-panel"
+        id="info-hidrologica"
+        data-page="info-hidrologica"
+        aria-labelledby="sec-hidro"
+      >
+        <div class="section-inner">
+          <header class="section-head section-head--bar section-head--water">
+            <p class="section-kicker" data-i18n="sec.hidro.kicker">Formación</p>
+            <h2 id="sec-hidro" data-i18n="sec.hidro.title">Información hidrológica básica</h2>
+          </header>
+          <p class="text-intro" data-i18n="sec.hidro.intro">
+            Ideas clave para comprender el agua en San Juan y el sentido del Plan AURA:
+            de dónde viene el recurso, cómo circula y por qué el ahorro y el uso responsable
+            importan en un territorio árido.
+          </p>
+          <div class="grid-2">
+            <article class="card">
+              <h3 data-i18n="sec.hidro.ciclo.title">Ciclo hidrológico</h3>
+              <p data-i18n="sec.hidro.ciclo.body">
+                El agua circula entre atmósfera, superficie y subsuelo: precipita, escurre,
+                se infiltra, se evapora y vuelve a la atmósfera. En zonas áridas ese ciclo
+                es frágil: poca lluvia, alta evaporación y fuerte dependencia de lo que
+                llega desde la cordillera.
+              </p>
+            </article>
+            <article class="card">
+              <h3 data-i18n="sec.hidro.nival.title">Régimen nival</h3>
+              <p data-i18n="sec.hidro.nival.body">
+                El río San Juan tiene régimen predominantemente nival: su caudal depende
+                sobre todo de la nieve acumulada en los Andes y del deshielo. Por eso hay
+                años más abundantes y años de escasez, según el ciclo nival.
+              </p>
+            </article>
+            <article class="card">
+              <h3 data-i18n="sec.hidro.fuentes.title">Agua superficial y subterránea</h3>
+              <p data-i18n="sec.hidro.fuentes.body">
+                En el Valle de Tulum conviven el agua superficial (río, embalses y canales)
+                y el agua subterránea del acuífero. Parte del caudal se infiltra y recarga
+                el acuífero; su nivel sube o baja según ciclos húmedos o secos y según el
+                uso que se haga del recurso.
+              </p>
+            </article>
+            <article class="card">
+              <h3 data-i18n="sec.hidro.estres.title">Oferta, demanda y estrés hídrico</h3>
+              <p data-i18n="sec.hidro.estres.body">
+                La oferta es el agua disponible (caudal y reservas). La demanda es lo que
+                requieren hogares, riego, industria y servicios. El estrés hídrico describe
+                la tensión entre ambas: un valor alto no siempre significa «no hay agua»,
+                sino mayor desacople entre lo disponible y lo que se necesita.
+              </p>
+            </article>
+          </div>
+          <article class="card stack-gap-top">
+            <h3 data-i18n="sec.hidro.aura.title">Por qué importa para el Plan AURA</h3>
+            <p data-i18n-html="sec.hidro.aura.body">
+              Conocer estas nociones ayuda a medir, interpretar y comunicar el uso del
+              agua. El Plan AURA promueve ahorro, uso responsable e investigación aplicada
+              en ese marco. Para profundizar, visitá
+              <a href="#articulos">Publicaciones</a> y la
+              <a href="#publicaciones">Biblioteca del Agua</a>.
+            </p>
+          </article>
+        </div>
+      </section>
+
       <section class="section section--red page-panel" id="red" data-page="red" aria-labelledby="sec-red">
         <div class="section-inner">
           <header class="section-head section-head--bar section-head--green">
@@ -1057,6 +1143,16 @@
             </ul>
           </div>
           <div class="footer-col">
+            <h3 data-i18n="nav.group.recursos">Recursos</h3>
+            <ul class="footer-links">
+              <li>
+                <a href="#info-hidrologica" data-i18n="nav.infoHidrologica"
+                  >Información hidrológica básica</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="footer-col">
             <h3 data-i18n="nav.group.difusion">Difusión</h3>
             <ul class="footer-links">
               <li><a href="#noticias" data-i18n="nav.noticias">Noticias</a></li>
@@ -1133,7 +1229,7 @@
       </form>
     </div>
 
-    <script src="js/i18n-dict.js?v=43" defer></script>
+    <script src="js/i18n-dict.js?v=44" defer></script>
     <script src="js/i18n.js?v=7" defer></script>
     <script src="js/main.js?v=5" defer></script>
     <script src="js/galeria-config.js?v=8" defer></script>

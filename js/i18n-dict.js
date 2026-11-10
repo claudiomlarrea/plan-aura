@@ -102,6 +102,10 @@ window.I18N_DICT = {
     es: "Convocatorias",
     en: "Calls for proposals"
   },
+  "nav.infoHidrologica": {
+    es: "Información hidrológica básica",
+    en: "Basic hydrological information"
+  },
   "nav.documentos": {
     es: "Marco normativo",
     en: "Regulatory framework"
@@ -401,6 +405,59 @@ window.I18N_DICT = {
   "sec.docs.res620.meta": {
     es: "Equipo Coordinador y de Comunicación del Plan AURA",
     en: "Plan AURA Coordinating and Communication Team"
+  },
+
+  "sec.hidro.kicker": {
+    es: "Formación",
+    en: "Learning"
+  },
+  "sec.hidro.title": {
+    es: "Información hidrológica básica",
+    en: "Basic hydrological information"
+  },
+  "sec.hidro.intro": {
+    es: "Ideas clave para comprender el agua en San Juan y el sentido del Plan AURA: de dónde viene el recurso, cómo circula y por qué el ahorro y el uso responsable importan en un territorio árido.",
+    en: "Key ideas to understand water in San Juan and the purpose of Plan AURA: where the resource comes from, how it circulates, and why conservation and responsible use matter in an arid territory."
+  },
+  "sec.hidro.ciclo.title": {
+    es: "Ciclo hidrológico",
+    en: "Hydrological cycle"
+  },
+  "sec.hidro.ciclo.body": {
+    es: "El agua circula entre atmósfera, superficie y subsuelo: precipita, escurre, se infiltra, se evapora y vuelve a la atmósfera. En zonas áridas ese ciclo es frágil: poca lluvia, alta evaporación y fuerte dependencia de lo que llega desde la cordillera.",
+    en: "Water moves between atmosphere, surface, and subsurface: it precipitates, runs off, infiltrates, evaporates, and returns to the atmosphere. In arid zones that cycle is fragile: little rainfall, high evaporation, and strong dependence on what arrives from the Andes."
+  },
+  "sec.hidro.nival.title": {
+    es: "Régimen nival",
+    en: "Snowmelt regime"
+  },
+  "sec.hidro.nival.body": {
+    es: "El río San Juan tiene régimen predominantemente nival: su caudal depende sobre todo de la nieve acumulada en los Andes y del deshielo. Por eso hay años más abundantes y años de escasez, según el ciclo nival.",
+    en: "The San Juan River has a predominantly nival regime: its flow depends mainly on Andean snowpack and snowmelt. That is why there are wetter years and scarcer years, according to the snow cycle."
+  },
+  "sec.hidro.fuentes.title": {
+    es: "Agua superficial y subterránea",
+    en: "Surface and groundwater"
+  },
+  "sec.hidro.fuentes.body": {
+    es: "En el Valle de Tulum conviven el agua superficial (río, embalses y canales) y el agua subterránea del acuífero. Parte del caudal se infiltra y recarga el acuífero; su nivel sube o baja según ciclos húmedos o secos y según el uso que se haga del recurso.",
+    en: "In the Tulum Valley, surface water (river, reservoirs, and canals) and aquifer groundwater coexist. Part of the flow infiltrates and recharges the aquifer; its level rises or falls with wet or dry cycles and with how the resource is used."
+  },
+  "sec.hidro.estres.title": {
+    es: "Oferta, demanda y estrés hídrico",
+    en: "Supply, demand, and water stress"
+  },
+  "sec.hidro.estres.body": {
+    es: "La oferta es el agua disponible (caudal y reservas). La demanda es lo que requieren hogares, riego, industria y servicios. El estrés hídrico describe la tensión entre ambas: un valor alto no siempre significa «no hay agua», sino mayor desacople entre lo disponible y lo que se necesita.",
+    en: "Supply is the water available (flow and reserves). Demand is what households, irrigation, industry, and services require. Water stress describes the tension between them: a high value does not always mean “there is no water,” but a greater mismatch between what is available and what is needed."
+  },
+  "sec.hidro.aura.title": {
+    es: "Por qué importa para el Plan AURA",
+    en: "Why it matters for Plan AURA"
+  },
+  "sec.hidro.aura.body": {
+    es: "Conocer estas nociones ayuda a medir, interpretar y comunicar el uso del agua. El Plan AURA promueve ahorro, uso responsable e investigación aplicada en ese marco. Para profundizar, visitá <a href=\"#articulos\">Publicaciones</a> y la <a href=\"#publicaciones\">Biblioteca del Agua</a>.",
+    en: "Knowing these notions helps measure, interpret, and communicate water use. Plan AURA promotes conservation, responsible use, and applied research in that frame. To go further, see <a href=\"#articulos\">Publications</a> and the <a href=\"#publicaciones\">Water Library</a>."
   },
 
   "sec.red.kicker": {
