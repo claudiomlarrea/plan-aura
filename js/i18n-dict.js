@@ -535,14 +535,6 @@ window.I18N_DICT = {
     es: "Descargar Cuesta del Viento (PNG)",
     en: "Download Cuesta del Viento (PNG)"
   },
-  "sec.hidro.datos.dl.pngFigura": {
-    es: "Descargar figura (PNG)",
-    en: "Download figure (PNG)"
-  },
-  "sec.hidro.datos.dl.pdfFigura": {
-    es: "Descargar figura (PDF)",
-    en: "Download figure (PDF)"
-  },
   "sec.hidro.datos.col.fecha": {
     es: "Fecha",
     en: "Date"
@@ -636,18 +628,6 @@ window.I18N_DICT = {
   "sec.hidro.datos.yCota": {
     es: "m.s.n.m.",
     en: "m a.s.l."
-  },
-  "sec.hidro.datos.figuraTitle": {
-    es: "Escurrimiento acumulado del año hidrológico",
-    en: "Cumulative runoff for the hydrological year"
-  },
-  "sec.hidro.datos.figura.alt": {
-    es: "Tabla diaria y escurrimiento acumulado del río San Juan en Km 101, año hidrológico julio–junio, comparado con 2025-26 y la media 1910–2022.",
-    en: "Daily table and cumulative runoff of the San Juan River at Km 101 for the July–June hydrological year, compared with 2025-26 and the 1910–2022 mean."
-  },
-  "sec.hidro.datos.figura.caption": {
-    es: "Figura oficial del Departamento de Hidráulica: escurrimiento acumulado en Km 101 (julio–junio), año 2026-27 frente a 2025-26 y a la media de años completos 1910–2022. Toda la serie, desde 1909-10, está en el gráfico de más abajo.",
-    en: "Official figure from the Hydraulics Department: cumulative runoff at Km 101 (July–June), hydrological year 2026-27 against 2025-26 and the mean of complete years 1910–2022. The full series, from 1909-10, is in the chart below."
   },
   "sec.hidro.hist.title": {
     es: "Escurrimiento acumulado y análisis anual",
@@ -845,10 +825,6 @@ window.I18N_DICT = {
   "sec.hidro.datos.exportTitle.cuesta": {
     es: "Embalse Cuesta del Viento · cota diaria",
     en: "Cuesta del Viento reservoir · daily water level"
-  },
-  "sec.hidro.datos.exportTitle.figura": {
-    es: "Río San Juan · escurrimiento acumulado del año hidrológico (Km 101)",
-    en: "San Juan River · cumulative runoff for the hydrological year (Km 101)"
   },
   "sec.hidro.datos.exportSource": {
     es: "Fuente: Departamento de Hidráulica de San Juan, planilla diaria Distribución de Riego (hidraulica.sanjuan.gob.ar). Serie al {generado}. Plan AURA · UCCuyo.",
