@@ -2588,8 +2588,7 @@ body.gallery-lightbox-open .mesa-ayuda-panel {
 .hidro-datos .hidro-meta,
 .hidro-datos .hidro-note,
 .hidro-datos .hidro-fuente,
-.hidro-datos .hidro-status,
-.hidro-datos .hidro-figura figcaption {
+.hidro-datos .hidro-status {
   color: var(--color-text-soft);
   font-size: 0.95rem;
 }
@@ -2777,27 +2776,6 @@ body.gallery-lightbox-open .mesa-ayuda-panel {
 
 .hidro-chart-card--wide .hidro-chart {
   height: 280px;
-}
-
-.hidro-figura {
-  margin: 0.35rem 0 1rem;
-  min-width: 0;
-  max-width: 100%;
-}
-
-.hidro-figura img {
-  display: block;
-  width: 100%;
-  height: auto;
-  background: #fff;
-  border: 1px solid rgba(var(--rgb-water), 0.22);
-  border-radius: 8px;
-}
-
-.hidro-figura figcaption {
-  margin-top: 0.5rem;
-  color: var(--color-text-soft);
-  font-size: 0.9rem;
 }
 
 .hidro-fuente a {

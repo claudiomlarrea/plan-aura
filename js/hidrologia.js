@@ -6,7 +6,6 @@
 (function () {
   var DATA_URL = "hidrologia/decadas.json";
   var FULL_CSV = "hidrologia/caudales_diarios.csv";
-  var FIGURA_SRC = "assets/hidrologia/pantallazo.png";
   var MISSING = "s/d";
   var CHART_SRC = "https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js";
   var JSPDF_SRC = "https://cdn.jsdelivr.net/npm/jspdf@2.5.2/dist/jspdf.umd.min.js";
@@ -98,10 +97,6 @@
   function enableActions(ready) {
     document.querySelectorAll("[data-hidro-action]").forEach(function (btn) {
       var action = btn.getAttribute("data-hidro-action");
-      if (action === "pdf-figura") {
-        btn.disabled = false;
-        return;
-      }
       if (action === "png" || action === "pdf-charts") {
         btn.disabled = !vistaChart;
         return;
@@ -706,39 +701,6 @@
       });
   }
 
-  function loadImage(src) {
-    return new Promise(function (resolve, reject) {
-      var img = new Image();
-      img.onload = function () { resolve(img); };
-      img.onerror = reject;
-      img.src = src;
-    });
-  }
-
-  function downloadFiguraPdf() {
-    Promise.all([loadScript(JSPDF_SRC), loadImage(FIGURA_SRC)])
-      .then(function (results) {
-        var JsPDF = window.jspdf && window.jspdf.jsPDF;
-        var img = results[1];
-        if (!JsPDF) {
-          setStatus(t("sec.hidro.datos.libMissing"));
-          return;
-        }
-        var scratch = document.createElement("canvas");
-        scratch.width = img.naturalWidth;
-        scratch.height = img.naturalHeight;
-        scratch.getContext("2d").drawImage(img, 0, 0);
-        var composed = composeCanvas(scratch, t("sec.hidro.datos.exportTitle.figura"), sourceLine());
-        var pdf = new JsPDF({ orientation: "landscape", unit: "pt", format: "a4" });
-        addCanvasPage(pdf, composed, true);
-        pdf.save("rio-san-juan-km101-escurrimiento-" + fileStamp() + ".pdf");
-      })
-      .catch(function (err) {
-        console.error(err);
-        setStatus(t("sec.hidro.datos.libMissing"));
-      });
-  }
-
   function monthValue(month) {
     return month && month.dias_con_dato && month.caudal_medio_m3s != null ? month.caudal_medio_m3s : MISSING;
   }
@@ -824,7 +786,7 @@
   }
 
   function onAction(action, chartKey) {
-    if (!state.data && action !== "pdf-figura") return;
+    if (!state.data) return;
     setStatus("");
     if (action === "csv-table") {
       saveText(monthlyCsv(), "rio-san-juan-mensual-" + fileStamp() + ".csv", "text/csv;charset=utf-8");
@@ -851,8 +813,6 @@
       downloadChartPng(chartKey);
     } else if (action === "pdf-charts") {
       downloadChartsPdf();
-    } else if (action === "pdf-figura") {
-      downloadFiguraPdf();
     }
   }
 
