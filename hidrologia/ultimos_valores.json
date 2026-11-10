@@ -1,0 +1,46 @@
+{
+ "generado": "2026-11-05",
+ "caudal_km101": {
+  "fecha": "2026-11-04",
+  "m3s": 67.43,
+  "fuente": "DH_planilla_pdf",
+  "media_historica_misma_fecha_m3s": 66.503,
+  "n_anios_misma_fecha": 117
+ },
+ "embalses": {
+  "Cuesta del Viento": {
+   "fecha": "2026-11-05",
+   "cota_msnm": 1523.54,
+   "volumen_hm3": 121.52,
+   "volumen_disponible_hm3": 83.06
+  },
+  "Los Caracoles": {
+   "fecha": "2026-11-05",
+   "cota_msnm": 1082.41,
+   "volumen_hm3": 254.53,
+   "volumen_disponible_hm3": 13.88
+  },
+  "Punta Negra": {
+   "fecha": "2026-11-05",
+   "cota_msnm": 924.37,
+   "volumen_hm3": 228.47,
+   "volumen_disponible_hm3": 32.82
+  },
+  "Ullum": {
+   "fecha": "2026-11-05",
+   "cota_msnm": 759.1,
+   "volumen_hm3": 137.29,
+   "volumen_disponible_hm3": -13.22
+  }
+ },
+ "fuentes": [
+  {
+   "nombre": "Departamento de Hidráulica de San Juan – Base de datos DH, estación Km 101 (1910–jun 2022)",
+   "url": "https://hidraulica.sanjuan.gob.ar/datos%20y%20estadisticas/chart2.php"
+  },
+  {
+   "nombre": "Departamento de Hidráulica de San Juan – Planilla diaria 'Distribución de Riego' 08:00 h (dic 2014–hoy)",
+   "url": "https://hidraulica.sanjuan.gob.ar/irrigacionver2/irrigacion_consulta.php"
+  }
+ ]
+}
