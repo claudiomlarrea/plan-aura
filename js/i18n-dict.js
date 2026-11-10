@@ -459,6 +459,198 @@ window.I18N_DICT = {
     es: "Conocer estas nociones ayuda a medir, interpretar y comunicar el uso del agua. El Plan AURA promueve ahorro, uso responsable e investigación aplicada en ese marco. Para profundizar, visitá <a href=\"#articulos\">Publicaciones</a> y la <a href=\"#publicaciones\">Biblioteca del Agua</a>.",
     en: "Knowing these notions helps measure, interpret, and communicate water use. Plan AURA promotes conservation, responsible use, and applied research in that frame. To go further, see <a href=\"#articulos\">Publications</a> and the <a href=\"#publicaciones\">Water Library</a>."
   },
+  "sec.hidro.datos.title": {
+    es: "Caudales y embalses – datos diarios",
+    en: "Daily flows and reservoir levels"
+  },
+  "sec.hidro.datos.lead": {
+    es: "Caudal diario del río San Juan en Km 101 y cotas de Punta Negra, Ullum, Los Caracoles y Cuesta del Viento. La tabla y los gráficos se arman con el archivo de datos: para actualizarlos alcanza con reemplazar el JSON.",
+    en: "Daily flow of the San Juan River at Km 101 and water levels at Punta Negra, Ullum, Los Caracoles, and Cuesta del Viento. The table and charts are built from the data file: replacing the JSON updates them."
+  },
+  "sec.hidro.datos.meta": {
+    es: "Último caudal publicado: {caudal} m³/s ({fechaCaudal}) · última lectura de embalses: {fechaEmbalses} · serie actualizada el {generado}. Se muestran {n} días.",
+    en: "Latest published flow: {caudal} m³/s ({fechaCaudal}) · latest reservoir reading: {fechaEmbalses} · series updated on {generado}. Showing {n} days."
+  },
+  "sec.hidro.datos.tableCaption": {
+    es: "Últimos {n} días publicados, del más reciente al más antiguo.",
+    en: "Latest {n} published days, newest first."
+  },
+  "sec.hidro.datos.loading": {
+    es: "Cargando datos diarios…",
+    en: "Loading daily data…"
+  },
+  "sec.hidro.datos.error": {
+    es: "No se pudieron cargar los datos diarios.",
+    en: "The daily data could not be loaded."
+  },
+  "sec.hidro.datos.chartError": {
+    es: "No se pudieron dibujar los gráficos. La tabla y las descargas de datos siguen disponibles.",
+    en: "The charts could not be drawn. The table and data downloads are still available."
+  },
+  "sec.hidro.datos.libMissing": {
+    es: "No se pudo cargar la librería para esta descarga. Probá de nuevo en unos segundos.",
+    en: "The library for this download could not be loaded. Try again in a few seconds."
+  },
+  "sec.hidro.datos.dl.group": {
+    es: "Descargar datos",
+    en: "Download data"
+  },
+  "sec.hidro.datos.dl.csvTable": {
+    es: "Descargar tabla (CSV)",
+    en: "Download table (CSV)"
+  },
+  "sec.hidro.datos.dl.xlsxTable": {
+    es: "Descargar tabla (Excel)",
+    en: "Download table (Excel)"
+  },
+  "sec.hidro.datos.dl.jsonSeries": {
+    es: "Descargar serie completa (JSON)",
+    en: "Download full series (JSON)"
+  },
+  "sec.hidro.datos.dl.csvSeries": {
+    es: "Descargar serie completa (CSV)",
+    en: "Download full series (CSV)"
+  },
+  "sec.hidro.datos.dl.pdfCharts": {
+    es: "Descargar gráficos (PDF)",
+    en: "Download charts (PDF)"
+  },
+  "sec.hidro.datos.dl.pngCaudal": {
+    es: "Descargar caudal (PNG)",
+    en: "Download flow (PNG)"
+  },
+  "sec.hidro.datos.dl.pngPunta": {
+    es: "Descargar Punta Negra (PNG)",
+    en: "Download Punta Negra (PNG)"
+  },
+  "sec.hidro.datos.dl.pngUllum": {
+    es: "Descargar Ullum (PNG)",
+    en: "Download Ullum (PNG)"
+  },
+  "sec.hidro.datos.dl.pngCaracoles": {
+    es: "Descargar Los Caracoles (PNG)",
+    en: "Download Los Caracoles (PNG)"
+  },
+  "sec.hidro.datos.dl.pngCuesta": {
+    es: "Descargar Cuesta del Viento (PNG)",
+    en: "Download Cuesta del Viento (PNG)"
+  },
+  "sec.hidro.datos.dl.pngFigura": {
+    es: "Descargar figura (PNG)",
+    en: "Download figure (PNG)"
+  },
+  "sec.hidro.datos.dl.pdfFigura": {
+    es: "Descargar figura (PDF)",
+    en: "Download figure (PDF)"
+  },
+  "sec.hidro.datos.col.fecha": {
+    es: "Fecha",
+    en: "Date"
+  },
+  "sec.hidro.datos.col.caudal": {
+    es: "Caudal Km 101 (m³/s)",
+    en: "Flow at Km 101 (m³/s)"
+  },
+  "sec.hidro.datos.col.punta": {
+    es: "Punta Negra (m.s.n.m.)",
+    en: "Punta Negra (m a.s.l.)"
+  },
+  "sec.hidro.datos.col.ullum": {
+    es: "Ullum (m.s.n.m.)",
+    en: "Ullum (m a.s.l.)"
+  },
+  "sec.hidro.datos.col.caracoles": {
+    es: "Los Caracoles (m.s.n.m.)",
+    en: "Los Caracoles (m a.s.l.)"
+  },
+  "sec.hidro.datos.col.cuesta": {
+    es: "Cuesta del Viento (m.s.n.m.)",
+    en: "Cuesta del Viento (m a.s.l.)"
+  },
+  "sec.hidro.datos.chartsTitle": {
+    es: "Gráficos de la serie diaria",
+    en: "Daily series charts"
+  },
+  "sec.hidro.datos.chartsNote": {
+    es: "Cada gráfico usa la misma serie que la tabla. El PNG y el PDF llevan fondo blanco, título y fuente.",
+    en: "Each chart uses the same series as the table. PNG and PDF exports include a white background, a title, and the source."
+  },
+  "sec.hidro.datos.chart.caudal": {
+    es: "Caudal diario en Km 101",
+    en: "Daily flow at Km 101"
+  },
+  "sec.hidro.datos.chart.punta": {
+    es: "Punta Negra",
+    en: "Punta Negra"
+  },
+  "sec.hidro.datos.chart.ullum": {
+    es: "Ullum",
+    en: "Ullum"
+  },
+  "sec.hidro.datos.chart.caracoles": {
+    es: "Los Caracoles",
+    en: "Los Caracoles"
+  },
+  "sec.hidro.datos.chart.cuesta": {
+    es: "Cuesta del Viento",
+    en: "Cuesta del Viento"
+  },
+  "sec.hidro.datos.yCaudal": {
+    es: "m³/s",
+    en: "m³/s"
+  },
+  "sec.hidro.datos.yCota": {
+    es: "m.s.n.m.",
+    en: "m a.s.l."
+  },
+  "sec.hidro.datos.figuraTitle": {
+    es: "Escurrimiento acumulado del año hidrológico",
+    en: "Cumulative runoff for the hydrological year"
+  },
+  "sec.hidro.datos.figura.alt": {
+    es: "Tabla diaria y escurrimiento acumulado del río San Juan en Km 101, año hidrológico julio–junio, comparado con 2025-26 y la media 1910–2022.",
+    en: "Daily table and cumulative runoff of the San Juan River at Km 101 for the July–June hydrological year, compared with 2025-26 and the 1910–2022 mean."
+  },
+  "sec.hidro.datos.figura.caption": {
+    es: "Figura oficial del Departamento de Hidráulica: escurrimiento acumulado en Km 101 (julio–junio), año 2026-27 frente a 2025-26 y a la media de 110 años hidrológicos completos (1910–2022). Cuando la serie anual esté en la carpeta de datos, este gráfico pasa a generarse en vivo.",
+    en: "Official figure from the Hydraulics Department: cumulative runoff at Km 101 (July–June), hydrological year 2026-27 against 2025-26 and the mean of 110 complete hydrological years (1910–2022). When the annual series is in the data folder, this chart will be drawn live."
+  },
+  "sec.hidro.datos.sourceLabel": {
+    es: "Fuente:",
+    en: "Source:"
+  },
+  "sec.hidro.datos.sourceRest": {
+    es: ", planilla diaria «Distribución de Riego». s/d = sin dato publicado. Las descargas se generan con estos mismos datos.",
+    en: ", daily sheet “Distribución de Riego”. s/d = no published value. Downloads are generated from this same data."
+  },
+  "sec.hidro.datos.exportTitle.caudal": {
+    es: "Río San Juan · caudal diario en Km 101",
+    en: "San Juan River · daily flow at Km 101"
+  },
+  "sec.hidro.datos.exportTitle.punta": {
+    es: "Embalse Punta Negra · cota diaria",
+    en: "Punta Negra reservoir · daily water level"
+  },
+  "sec.hidro.datos.exportTitle.ullum": {
+    es: "Embalse Ullum · cota diaria",
+    en: "Ullum reservoir · daily water level"
+  },
+  "sec.hidro.datos.exportTitle.caracoles": {
+    es: "Embalse Los Caracoles · cota diaria",
+    en: "Los Caracoles reservoir · daily water level"
+  },
+  "sec.hidro.datos.exportTitle.cuesta": {
+    es: "Embalse Cuesta del Viento · cota diaria",
+    en: "Cuesta del Viento reservoir · daily water level"
+  },
+  "sec.hidro.datos.exportTitle.figura": {
+    es: "Río San Juan · escurrimiento acumulado del año hidrológico (Km 101)",
+    en: "San Juan River · cumulative runoff for the hydrological year (Km 101)"
+  },
+  "sec.hidro.datos.exportSource": {
+    es: "Fuente: Departamento de Hidráulica de San Juan, planilla diaria Distribución de Riego (hidraulica.sanjuan.gob.ar). Serie al {generado}. Plan AURA · UCCuyo.",
+    en: "Source: San Juan Hydraulics Department, daily irrigation sheet (hidraulica.sanjuan.gob.ar). Series as of {generado}. Plan AURA · UCCuyo."
+  },
 
   "sec.red.kicker": {
     es: "Resolución 418-CS-2024",
