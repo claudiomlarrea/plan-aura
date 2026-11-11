@@ -1665,6 +1665,14 @@ window.I18N_DICT = {
     es: "Debate institucional, apropiación patrimonial y criterios económicos para la gestión hídrica del Valle de Tulum. Luis F. Jiménez.",
     en: "Institutional debate, asset appropriation, and economic criteria for water management in the Tulum Valley. Luis F. Jiménez."
   },
+  "sec.art.009.title": {
+    es: "Análisis económico del agua de riego en la provincia de San Juan",
+    en: "Economic analysis of irrigation water in the province of San Juan"
+  },
+  "sec.art.009.meta": {
+    es: "Criterios de evaluación de la productividad del agua de riego influenciada por la contaminación del agua y la salinización de los suelos. Luis F. Jiménez. Proyecto IA-1-1-13 · versión editorial 2026.",
+    en: "Evaluation criteria for irrigation-water productivity under water contamination and soil salinization. Luis F. Jiménez. Project IA-1-1-13 · editorial version 2026."
+  },
   "sec.publicaciones.kicker": {
     es: "Difusión",
     en: "Outreach"
