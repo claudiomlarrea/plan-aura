@@ -4,8 +4,8 @@ window.I18N_DICT = {
     en: "Integral Plan for Water Conservation and Responsible Use | UCCuyo"
   },
   "meta.description": {
-    es: "Plan Integral de Ahorro y Uso Responsable del Agua (Plan AURA) de la Universidad Católica de Cuyo: investigación, extensión y convocatoria a proyectos.",
-    en: "Integral Plan for Water Conservation and Responsible Use (Plan AURA) of Universidad Católica de Cuyo: research, outreach, and call for projects."
+    es: "Plan Integral de Ahorro y Uso Responsable del Agua (Plan AURA) de la Universidad Católica de Cuyo: investigación, extensión y uso responsable del recurso hídrico.",
+    en: "Integral Plan for Water Conservation and Responsible Use (Plan AURA) of Universidad Católica de Cuyo: research, outreach and responsible water use."
   },
 
   "a11y.skipLink": {

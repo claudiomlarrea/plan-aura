@@ -4,11 +4,6 @@
  */
 (function () {
   var MAIL = "luisjimenez@uccuyo.edu.ar";
-  var BASES = "documentos/Convocatoria_Proyectos_AURA.pdf";
-  var PLANTILLA =
-    "documentos/plantillas/Presentacion_proyectos_Convocatoria_AURA.docx";
-  var DRIVE =
-    "https://drive.google.com/drive/folders/1u1m-4y44z0pBdu2NJVUTzZF7hJEcmB9O";
 
   function t(key, fallback) {
     if (window.I18N && typeof window.I18N.t === "function") return window.I18N.t(key);
@@ -196,89 +191,45 @@
     return t(entry[0], entry[1]);
   }
 
-  function cargaCerrada() {
-    return window.PlanAuraConvocatoria && window.PlanAuraConvocatoria.estaCerrada();
-  }
-
   function htmlPresentar() {
-    if (cargaCerrada()) {
-      if (lang() === "en") {
-        return (
-          "<p><strong>The 2026 call is closed</strong></p>" +
-          "<p>The deadline was 10 November 2026 at 24:00 (Argentina). New projects are no longer accepted in Drive. Guidelines and the template remain available for reference.</p>" +
-          "<p><a href=\"" + BASES + "\" target=\"_blank\" rel=\"noopener noreferrer\">Guidelines (PDF)</a> · <a href=\"" + PLANTILLA + "\" download>Template (DOCX)</a>. Questions: <a href=\"mailto:" + MAIL + "\">" + MAIL + "</a>.</p>"
-        );
-      }
-      return (
-        "<p><strong>La convocatoria 2026 está cerrada</strong></p>" +
-        "<p>El plazo venció el 10 de noviembre de 2026 a las 24:00 (Argentina). Ya no se reciben proyectos nuevos en Drive. Las bases y la plantilla siguen disponibles para consulta.</p>" +
-        "<p><a href=\"" + BASES + "\" target=\"_blank\" rel=\"noopener noreferrer\">Bases (PDF)</a> · <a href=\"" + PLANTILLA + "\" download>Plantilla (DOCX)</a>. Consultas: <a href=\"mailto:" + MAIL + "\">" + MAIL + "</a>.</p>"
-      );
-    }
     if (lang() === "en") {
       return (
-        "<p><strong>How to submit a project</strong></p>" +
-        "<ol>" +
-        "<li>Read the <a href=\"" + BASES + "\" target=\"_blank\" rel=\"noopener noreferrer\">call guidelines (PDF)</a>.</li>" +
-        "<li>Download and complete the <a href=\"" + PLANTILLA + "\" download>single template (DOCX)</a>.</li>" +
-        "<li>Get approval from your Academic Unit’s Directing Council.</li>" +
-        "<li>Upload the file to the <a href=\"" + DRIVE + "\" target=\"_blank\" rel=\"noopener noreferrer\">call Drive folder</a>.</li>" +
-        "</ol>" +
-        "<p>Circuit: UA → Drive → Committee → Councils → Superior Council. Questions: <a href=\"mailto:" + MAIL + "\">" + MAIL + "</a>.</p>"
+        "<p>The Plan AURA <strong>call for projects is not published</strong> on this site. For other questions write to <a href=\"mailto:" +
+        MAIL +
+        "\">" +
+        MAIL +
+        "</a>.</p>"
       );
     }
     return (
-      "<p><strong>Cómo presentar un proyecto</strong></p>" +
-      "<ol>" +
-      "<li>Leé las <a href=\"" + BASES + "\" target=\"_blank\" rel=\"noopener noreferrer\">bases / instructivo (PDF)</a>.</li>" +
-      "<li>Descargá y completá la <a href=\"" + PLANTILLA + "\" download>plantilla única (DOCX)</a>.</li>" +
-      "<li>Aprobación del Consejo Directivo de tu Unidad Académica.</li>" +
-      "<li>Cargá el archivo en la <a href=\"" + DRIVE + "\" target=\"_blank\" rel=\"noopener noreferrer\">carpeta Drive de la convocatoria</a>.</li>" +
-      "</ol>" +
-      "<p>Circuito: UA → Drive → Comité → Consejos → Consejo Superior. Consultas: <a href=\"mailto:" + MAIL + "\">" + MAIL + "</a>.</p>"
+      "<p>La <strong>convocatoria de proyectos del Plan AURA no está publicada</strong> en este sitio. Para otras consultas escribí a <a href=\"mailto:" +
+      MAIL +
+      "\">" +
+      MAIL +
+      "</a>.</p>"
     );
   }
 
   function htmlPlazos() {
-    var cierre = cargaCerrada()
-      ? (lang() === "en"
-        ? "<li>Closes: 10 November 2026 at 24:00 (Argentina) · <strong>closed</strong></li>"
-        : "<li>Cierre: 10 de noviembre de 2026 a las 24:00 (Argentina) · <strong>cerrado</strong></li>")
-      : (lang() === "en"
-        ? "<li>Closes: 10 November 2026 at 24:00 (Argentina)</li>"
-        : "<li>Cierre: 10 de noviembre de 2026 a las 24:00 (Argentina)</li>");
-    if (lang() === "en") {
-      return (
-        "<p><strong>Dates and budget (2026 call)</strong></p>" +
-        "<ul>" +
-        "<li>Opens: 15 September 2026</li>" +
-        cierre +
-        "<li>Duration: 12 months (until Oct. 2027)</li>" +
-        "<li>Total budget: $10,000,000 · up to $1,000,000 per project · 10 projects</li>" +
-        "</ul>" +
-        "<p>Source: <a href=\"#convocatoria\">Convocatorias</a> on this site.</p>"
-      );
-    }
-    return (
-      "<p><strong>Fechas y montos (convocatoria 2026)</strong></p>" +
-      "<ul>" +
-      "<li>Apertura: 15 de septiembre de 2026</li>" +
-      cierre +
-      "<li>Duración: 12 meses (hasta oct. 2027)</li>" +
-      "<li>Presupuesto total: $10.000.000 · tope $1.000.000 · 10 proyectos</li>" +
-      "</ul>" +
-      "<p>Fuente: sección <a href=\"#convocatoria\">Convocatorias</a> de este sitio.</p>"
-    );
+    return htmlPresentar();
   }
 
   function htmlEjes() {
     if (lang() === "en") {
       return (
-        "<p>There are 11 thematic axes (consumption, technology, productive impact, health, territory, training, community practice, water quality, education, legislation, and other AURA-related topics). See the full list on <a href=\"#conv-ejes\">thematic axes</a>.</p>"
+        "<p>Thematic axes of the call are not published on this site. See <a href=\"#el-plan\">El Plan AURA</a> or write to <a href=\"mailto:" +
+        MAIL +
+        "\">" +
+        MAIL +
+        "</a>.</p>"
       );
     }
     return (
-      "<p>Hay <strong>11 ejes temáticos</strong> (consumo, tecnología, impacto productivo, salud, territorio, formación, prácticas comunitarias, calidad del agua, educación, legislación y otros pertinentes a AURA). La lista completa está en <a href=\"#conv-ejes\">Ejes temáticos</a>.</p>"
+      "<p>Los ejes temáticos de la convocatoria no están publicados en este sitio. Ver <a href=\"#el-plan\">El Plan AURA</a> o escribir a <a href=\"mailto:" +
+      MAIL +
+      "\">" +
+      MAIL +
+      "</a>.</p>"
     );
   }
 
@@ -440,11 +391,11 @@
   function htmlFallback() {
     if (lang() === "en") {
       return (
-        "<p>I can help with <strong>hydrology</strong> (basic info, data lab, reservoirs, downloads), the Plan, or the call. Try the quick buttons or open <a href=\"#info-hidrologica\">Basic hydrological information</a>. Write to <a href=\"mailto:" + MAIL + "\">" + MAIL + "</a> if needed.</p>"
+        "<p>I can help with <strong>hydrology</strong> (basic info, data lab, reservoirs, downloads) and the Plan. Try the quick buttons or open <a href=\"#info-hidrologica\">Basic hydrological information</a>. Write to <a href=\"mailto:" + MAIL + "\">" + MAIL + "</a> if needed.</p>"
       );
     }
     return (
-      "<p>Puedo ayudarte con <strong>hidrología</strong> (información básica, laboratorio, embalses, descargas), el Plan o la convocatoria. Probá los botones o abrí <a href=\"#info-hidrologica\">Información hidrológica básica</a>. Consultas: <a href=\"mailto:" + MAIL + "\">" + MAIL + "</a>.</p>"
+      "<p>Puedo ayudarte con <strong>hidrología</strong> (información básica, laboratorio, embalses, descargas) y el Plan. Probá los botones o abrí <a href=\"#info-hidrologica\">Información hidrológica básica</a>. Consultas: <a href=\"mailto:" + MAIL + "\">" + MAIL + "</a>.</p>"
     );
   }
 

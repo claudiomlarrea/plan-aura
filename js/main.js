@@ -7,7 +7,8 @@
     comision: "equipo",
     marco: "documentos",
     "biblioteca-del-agua": "publicaciones",
-    biblioteca: "publicaciones"
+    biblioteca: "publicaciones",
+    convocatoria: "el-plan"
   };
   var pageTitles = {
     inicio: baseTitle,
@@ -15,7 +16,6 @@
     "plan-aura": "Plan Técnico AURA · Plan AURA",
     equipo: "Equipo coordinador · Plan AURA",
     red: "Red institucional · Plan AURA",
-    convocatoria: "Convocatorias · Plan AURA",
     documentos: "Marco normativo · Plan AURA",
     noticias: "Noticias · Plan AURA",
     articulos: "Publicaciones · Plan AURA",
