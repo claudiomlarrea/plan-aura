@@ -464,6 +464,10 @@ window.I18N_DICT = {
     es: "Última lectura del año · vol. {vol} · disp. {disp}",
     en: "Last reading of the year · vol. {vol} · avail. {disp}"
   },
+  "sec.emb.lastCota": {
+    es: "Última cota publicada del año: {cota} · {fecha}",
+    en: "Last published level of the year: {cota} · {fecha}"
+  },
   "sec.emb.spark": {
     es: "Cota diaria {year}",
     en: "Daily level {year}"
@@ -508,6 +512,10 @@ window.I18N_DICT = {
   "sec.lab.meta.n": {
     es: "Registros diarios con dato: {n}",
     en: "Daily records with data: {n}"
+  },
+  "sec.datos.asof": {
+    es: "Último caudal Km 101: {caudal} · última cota de embalses: {embalses}.",
+    en: "Latest Km 101 flow: {caudal} · latest reservoir level: {embalses}."
   },
   "sec.lab.meta.updated": {
     es: "Última actualización del dataset: {fecha}",

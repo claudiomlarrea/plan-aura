@@ -1126,11 +1126,28 @@
     var link = document.getElementById("hidro-fuente-link");
     if (link && data.fuente_url) link.href = data.fuente_url;
     renderKpis();
+    renderAsof();
     fillSelector();
     renderDecadas();
     enableActions(true);
     setStatus("");
     ensureCharts();
+  }
+
+  function renderAsof() {
+    var el = document.getElementById("hidro-asof");
+    var u = state.ultimos;
+    if (!el || !u) return;
+    var embFecha = "";
+    Object.keys(u.embalses || {}).forEach(function (name) {
+      var fecha = u.embalses[name] && u.embalses[name].fecha;
+      if (fecha && (!embFecha || fecha > embFecha)) embFecha = fecha;
+    });
+    var caudalFecha = u.caudal_km101 && u.caudal_km101.fecha;
+    el.textContent = t("sec.datos.asof", {
+      caudal: caudalFecha ? formatFechaCorta(caudalFecha) : MISSING,
+      embalses: embFecha ? formatFechaCorta(embFecha) : MISSING
+    });
   }
 
   function loadData() {
@@ -1168,6 +1185,7 @@
   window.addEventListener("oia:langchange", function () {
     if (!state.data) return;
     renderKpis();
+    renderAsof();
     fillSelector();
     renderDecadas();
     if (panelVisible() && window.Chart) {

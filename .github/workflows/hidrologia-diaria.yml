@@ -2,8 +2,9 @@ name: Hidrología diaria
 
 on:
   schedule:
-    # 17:00 UTC = 14:00 en San Juan (UTC−3, sin horario de verano)
-    - cron: "0 17 * * *"
+    # Cada hora de 08:00 a 19:00 en San Juan (UTC−3, sin horario de verano) = 11:00–22:00 UTC.
+    # Si la planilla no cambió, el job no hace commit.
+    - cron: "0 11-22 * * *"
   workflow_dispatch:
 
 permissions:
