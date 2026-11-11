@@ -107,8 +107,8 @@ window.I18N_DICT = {
     en: "Basic hydrological information"
   },
   "nav.datosHidrologicos": {
-    es: "Datos e indicadores hidrológicos",
-    en: "Hydrological data and indicators"
+    es: "Laboratorio de datos hídricos",
+    en: "Water data lab"
   },
   "nav.documentos": {
     es: "Marco normativo",
@@ -412,8 +412,8 @@ window.I18N_DICT = {
   },
 
   "sec.hidro.cta.lab": {
-    es: "Ir a Datos e indicadores hidrológicos",
-    en: "Go to Hydrological data and indicators"
+    es: "Ir al Laboratorio de datos hídricos",
+    en: "Go to the Water data lab"
   },
 
   "sec.lab.kicker": {
@@ -421,8 +421,8 @@ window.I18N_DICT = {
     en: "Research"
   },
   "sec.lab.title": {
-    es: "Datos e indicadores hidrológicos",
-    en: "Hydrological data and indicators"
+    es: "Laboratorio de datos hídricos",
+    en: "Water data lab"
   },
   "sec.lab.intro": {
     es: 'Laboratorio para extraer la serie diaria de caudal en Km 101 (desde 1910), calcular estadísticas de un período y comparar otro tramo. Los días sin dato publicado no se interpolan. <a href="#info-hidrologica">Información hidrológica básica</a>.',
