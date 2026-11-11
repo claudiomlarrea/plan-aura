@@ -2561,8 +2561,10 @@ body.gallery-lightbox-open .mesa-ayuda-panel {
   }
 }
 
-/* Hueco a la derecha para que el botón no tape tarjetas ni listas al fondo de la pantalla */
-@media (max-width: 90rem) {
+/* Hueco a la derecha para que el botón no tape tarjetas ni listas al fondo de la pantalla.
+   En el teléfono el botón queda debajo del contenido (padding inferior de la sección):
+   7,5 rem aquí dejarían los gráficos en una columna de ~200 px. */
+@media (min-width: 641px) and (max-width: 90rem) {
   .section-inner {
     padding-right: 7.5rem;
   }
@@ -2812,6 +2814,62 @@ body.gallery-lightbox-open .mesa-ayuda-panel {
 
 .hidro-chart--anual {
   height: 280px;
+}
+
+.hidro-chart-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.65rem 1rem;
+  margin: 0.55rem 0 0.35rem;
+}
+
+.hidro-chart-toolbar .hidro-tabs {
+  margin: 0;
+}
+
+.hidro-decada-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex: 1 1 16rem;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.hidro-decada-nav select {
+  flex: 1 1 auto;
+  min-width: 0;
+  width: 100%;
+  max-width: 22rem;
+  font: inherit;
+  font-weight: 700;
+  color: #1a6fa8;
+  background: #fff;
+  border: 1px solid rgba(26, 111, 168, 0.45);
+  border-radius: 8px;
+  padding: 0.42rem 0.55rem;
+}
+
+.hidro-decada-nav button {
+  flex: 0 0 auto;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 8px;
+  border: 1px solid #1a6fa8;
+  background: #1a6fa8;
+  color: #fff;
+  font: inherit;
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.hidro-decada-nav button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
 }
 
 .hidro-tabs {

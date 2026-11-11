@@ -621,6 +621,12 @@ window.I18N_DICT = {
   },
   "sec.hidro.dec.tabDecadas": { es: "Por década", en: "By decade" },
   "sec.hidro.dec.tabMeses": { es: "Meses de la década", en: "Months of the decade" },
+  "sec.hidro.dec.hint": {
+    es: "Elegí una década en el selector o tocá una barra.",
+    en: "Choose a decade in the selector or tap a bar."
+  },
+  "sec.hidro.dec.prev": { es: "Década anterior", en: "Previous decade" },
+  "sec.hidro.dec.next": { es: "Década siguiente", en: "Next decade" },
   "sec.hidro.dec.png": { es: "Descargar gráfico (PNG)", en: "Download chart (PNG)" },
   "sec.hidro.dec.pdf": { es: "Descargar gráfico (PDF)", en: "Download chart (PDF)" },
   "sec.hidro.dec.chartDecadas": { es: "Caudal medio por década", en: "Mean flow by decade" },
@@ -793,6 +799,9 @@ window.I18N_DICT = {
     es: "Anomalía respecto de la media {periodo}",
     en: "Anomaly against the mean {periodo}"
   },
+  "sec.hidro.hist.trendDown": { es: "decreciente", en: "decreasing" },
+  "sec.hidro.hist.trendUp": { es: "creciente", en: "increasing" },
+  "sec.hidro.hist.trendNone": { es: "sin tendencia significativa", en: "no significant trend" },
   "sec.hidro.hist.trend": {
     es: "Tendencia del caudal medio anual (Mann-Kendall + Sen, solo años completos): {detalle}. Media de referencia {periodo}: {media} m³/s ({derrame} hm³/año).",
     en: "Trend of annual mean flow (Mann-Kendall + Sen, complete years only): {detalle}. Reference mean {periodo}: {media} m³/s ({derrame} hm³/year)."

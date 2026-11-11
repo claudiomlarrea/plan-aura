@@ -14,7 +14,7 @@
   };
   var COL = {
     "Punta Negra": "#e69138",
-    Ullum: "#1a6fa8",
+    Ullum: "#0a5c5e",
     "Los Caracoles": "#0d6e4f",
     "Cuesta del Viento": "#7a1532"
   };
@@ -39,6 +39,11 @@
   function setStatus(message) {
     var el = document.getElementById("hidro-hist-status");
     if (el) el.textContent = message || "";
+  }
+
+  function tip(ctx, unit, digits) {
+    var value = ctx.parsed.y;
+    return ctx.dataset.label + ": " + (value == null ? "s/d" : nf(value, digits) + unit);
   }
 
   function nf(value, digits) {
@@ -272,7 +277,12 @@
     var ref = Q.referencia_1910_2022[refKey];
     var detalle = Object.keys(trends).map(function (name) {
       var v = trends[name];
-      return v.desde + "–" + v.hasta + ": " + nf(v.pendiente_sen_por_decada, 2) + " m³/s (" + v.tendencia + ", p=" + nf(v.p, 3) + ")";
+      var word = v.tendencia === "decreciente"
+        ? t("sec.hidro.hist.trendDown")
+        : v.tendencia === "creciente"
+          ? t("sec.hidro.hist.trendUp")
+          : t("sec.hidro.hist.trendNone");
+      return v.desde + "–" + v.hasta + ": " + nf(v.pendiente_sen_por_decada, 2) + " m³/s (" + word + ", p=" + nf(v.p, 3) + ")";
     }).join(" · ");
     var tend = document.getElementById("hidro-hist-tend");
     if (tend) {
@@ -290,14 +300,16 @@
       type: "bar",
       label: t("sec.hidro.hist.chart.media"),
       data: rows.map(function (row) { return row.media_m3s; }),
-      backgroundColor: completo.map(function (ok) { return ok ? "#6fa8dc" : "#d5dde6"; })
+      backgroundColor: completo.map(function (ok) { return ok ? "#1a6fa8" : "rgba(26, 111, 168, 0.18)"; }),
+      borderColor: completo.map(function (ok) { return ok ? "transparent" : "#1a6fa8"; }),
+      borderWidth: 1.5
     }];
     if (trends.periodo_completo) {
       mediaSets.push({
         type: "line",
         label: trends.periodo_completo.desde + "–" + trends.periodo_completo.hasta,
         data: trendLine(rows, trends.periodo_completo),
-        borderColor: "#7a1532",
+        borderColor: "#e69138",
         pointRadius: 0,
         borderWidth: 2,
         spanGaps: true
@@ -308,7 +320,7 @@
         type: "line",
         label: trends.desde_1991.desde + "–" + trends.desde_1991.hasta,
         data: trendLine(rows, trends.desde_1991),
-        borderColor: "#e69138",
+        borderColor: "#0a5c5e",
         pointRadius: 0,
         borderWidth: 2,
         borderDash: [5, 3],
@@ -325,9 +337,10 @@
         animation: false,
         plugins: {
           legend: { position: "bottom", labels: { boxWidth: 12, font: { size: 11 } } },
-          title: { display: true, text: t("sec.hidro.hist.chart.media") }
+          title: { display: true, text: t("sec.hidro.hist.chart.media") },
+          tooltip: { callbacks: { label: function (ctx) { return tip(ctx, " m³/s", 1); } } }
         },
-        scales: { x: commonX }
+        scales: { x: commonX, y: { title: { display: true, text: "m³/s" }, min: 0 } }
       }
     });
     charts.maxmin = new window.Chart(document.getElementById("hidro-chart-maxmin"), {
@@ -335,16 +348,47 @@
       data: {
         labels: labels,
         datasets: [
-          { label: t("sec.hidro.hist.col.max"), data: rows.map(function (row) { return row.max_m3s; }), borderColor: "#1a6fa8", pointRadius: 0, borderWidth: 1.4 },
-          { label: t("sec.hidro.hist.col.min"), data: rows.map(function (row) { return row.min_m3s; }), borderColor: "#7a1532", pointRadius: 0, borderWidth: 1.4 }
+          {
+            label: t("sec.hidro.hist.col.max"),
+            data: rows.map(function (row) { return row.max_m3s; }),
+            borderColor: "#1a6fa8",
+            pointRadius: rows.map(function (row) { return row.completo ? 0 : 4; }),
+            pointBackgroundColor: "#ffffff",
+            pointBorderColor: "#1a6fa8",
+            pointBorderWidth: 2,
+            borderWidth: 1.4,
+            spanGaps: false
+          },
+          {
+            label: t("sec.hidro.hist.col.min"),
+            data: rows.map(function (row) { return row.min_m3s; }),
+            borderColor: "#7a1532",
+            pointRadius: rows.map(function (row) { return row.completo ? 0 : 4; }),
+            pointBackgroundColor: "#ffffff",
+            pointBorderColor: "#7a1532",
+            pointBorderWidth: 2,
+            borderWidth: 1.4,
+            spanGaps: false
+          }
         ]
       },
       options: {
         responsive: true,
         maintainAspectRatio: false,
         animation: false,
-        plugins: { title: { display: true, text: t("sec.hidro.hist.chart.maxmin") }, legend: { position: "bottom" } },
-        scales: { x: commonX, y: { type: "logarithmic" } }
+        plugins: {
+          title: { display: true, text: t("sec.hidro.hist.chart.maxmin") },
+          legend: { position: "bottom" },
+          tooltip: {
+            callbacks: {
+              label: function (ctx) {
+                var row = rows[ctx.dataIndex];
+                return tip(ctx, " m³/s", 1) + (row && !row.completo ? " *" : "");
+              }
+            }
+          }
+        },
+        scales: { x: commonX, y: { type: "logarithmic", title: { display: true, text: "m³/s" } } }
       }
     });
     charts.anom = new window.Chart(document.getElementById("hidro-chart-anom"), {
@@ -365,9 +409,10 @@
         animation: false,
         plugins: {
           legend: { display: false },
-          title: { display: true, text: t("sec.hidro.hist.chart.anom", { periodo: ref.periodo }) }
+          title: { display: true, text: t("sec.hidro.hist.chart.anom", { periodo: ref.periodo }) },
+          tooltip: { callbacks: { label: function (ctx) { return tip(ctx, " %", 1); } } }
         },
-        scales: { x: commonX }
+        scales: { x: commonX, y: { title: { display: true, text: "%" } } }
       }
     });
     var table = document.getElementById("hidro-hist-tabla");
@@ -425,7 +470,11 @@
             animation: false,
             plugins: {
               legend: { position: "bottom", labels: { boxWidth: 10, font: { size: 10 } } },
-              title: { display: true, text: name + " · " + fd(emb.desde) + "–" + fd(emb.hasta) }
+              title: { display: true, text: name + " · " + fd(emb.desde) + "–" + fd(emb.hasta) },
+              tooltip: { callbacks: { label: function (ctx) { return tip(ctx, " m.s.n.m.", 2); } } }
+            },
+            scales: {
+              y: { title: { display: true, text: "m.s.n.m." } }
             }
           }
         }));
