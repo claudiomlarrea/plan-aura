@@ -12,7 +12,7 @@
     <link rel="canonical" href="https://plan-aura.com.ar/" />
     <link rel="icon" type="image/png" href="assets/logo-aura-gota-filete.png" />
     <link rel="stylesheet" href="css/variables.css?v=51" />
-    <link rel="stylesheet" href="css/styles.css?v=68" />
+    <link rel="stylesheet" href="css/styles.css?v=69" />
     <link rel="stylesheet" href="css/biblioteca-agua.css?v=2" />
   </head>
   <body>
@@ -420,10 +420,19 @@
             </div>
             <p class="hidro-note" id="hidro-decadas-nota"></p>
 
-            <div class="hidro-tabs" id="hidro-chart-tabs" role="group">
-              <button type="button" data-chart-view="decadas" data-i18n="sec.hidro.dec.tabDecadas">Por década</button>
-              <button type="button" data-chart-view="meses" class="is-on" data-i18n="sec.hidro.dec.tabMeses">Meses de la década</button>
+            <div class="hidro-chart-toolbar">
+              <div class="hidro-tabs" id="hidro-chart-tabs" role="group">
+                <button type="button" data-chart-view="decadas" data-i18n="sec.hidro.dec.tabDecadas">Por década</button>
+                <button type="button" data-chart-view="meses" class="is-on" data-i18n="sec.hidro.dec.tabMeses">Meses de la década</button>
+              </div>
+              <div class="hidro-decada-nav">
+                <button type="button" id="hidro-decada-prev" data-i18n-attr="aria-label:sec.hidro.dec.prev" aria-label="Década anterior">‹</button>
+                <label class="visually-hidden" for="hidro-chart-decada-select" data-i18n="sec.hidro.dec.selector">Década</label>
+                <select id="hidro-chart-decada-select"></select>
+                <button type="button" id="hidro-decada-next" data-i18n-attr="aria-label:sec.hidro.dec.next" aria-label="Década siguiente">›</button>
+              </div>
             </div>
+            <p class="hidro-note" data-i18n="sec.hidro.dec.hint">Elegí una década en el selector o tocá una barra.</p>
             <div class="hidro-chart hidro-chart--acum" id="hidro-chart-vista-wrap" role="img">
               <canvas id="hidro-chart-vista" aria-hidden="true"></canvas>
             </div>
@@ -1359,7 +1368,7 @@
       </form>
     </div>
 
-    <script src="js/i18n-dict.js?v=49" defer></script>
+    <script src="js/i18n-dict.js?v=50" defer></script>
     <script src="js/i18n.js?v=7" defer></script>
     <script src="js/main.js?v=5" defer></script>
     <script src="js/galeria-config.js?v=8" defer></script>
@@ -1372,7 +1381,7 @@
     <script src="js/visitas-mapa.js?v=6" defer></script>
     <script src="js/convocatoria.js?v=3" defer></script>
     <script src="js/mesa-ayuda.js?v=4" defer></script>
-    <script src="js/hidrologia.js?v=6" defer></script>
-    <script src="js/hidrologia-historica.js?v=2" defer></script>
+    <script src="js/hidrologia.js?v=7" defer></script>
+    <script src="js/hidrologia-historica.js?v=3" defer></script>
   </body>
 </html>

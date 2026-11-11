@@ -340,13 +340,25 @@
   }
 
   function fillSelector() {
-    var select = document.getElementById("hidro-decada-select");
-    if (!select) return;
     var html = state.data.decadas.map(function (dec) {
       return '<option value="' + dec.desde + '">' + decadeLabel(dec, true) + "</option>";
     }).join("");
-    select.innerHTML = html;
-    select.value = String(state.selected);
+    ["hidro-decada-select", "hidro-chart-decada-select"].forEach(function (id) {
+      var select = document.getElementById(id);
+      if (!select) return;
+      select.innerHTML = html;
+      select.value = String(state.selected);
+    });
+    var list = state.data.decadas;
+    var idx = -1;
+    var i;
+    for (i = 0; i < list.length; i += 1) {
+      if (list[i].desde === state.selected) idx = i;
+    }
+    var prev = document.getElementById("hidro-decada-prev");
+    var next = document.getElementById("hidro-decada-next");
+    if (prev) prev.disabled = idx <= 0;
+    if (next) next.disabled = idx < 0 || idx >= list.length - 1;
   }
 
   function yearRows(dec, mode) {
@@ -427,8 +439,10 @@
     var nota = document.getElementById("hidro-decadas-nota");
     if (nota) nota.textContent = t("sec.hidro.dec.note1910") + " " + t("sec.hidro.dec.noteStar");
     renderExpandButton();
-    var select = document.getElementById("hidro-decada-select");
-    if (select && select.value !== String(state.selected)) select.value = String(state.selected);
+    ["hidro-decada-select", "hidro-chart-decada-select"].forEach(function (id) {
+      var select = document.getElementById(id);
+      if (select && select.value !== String(state.selected)) select.value = String(state.selected);
+    });
     table.querySelectorAll("[data-mode]").forEach(function (btn) {
       btn.classList.toggle("is-on", btn.getAttribute("data-mode") === (state.mode[Number(btn.getAttribute("data-decada"))] || "caudal"));
     });
@@ -611,7 +625,9 @@
       if (wrap) wrap.setAttribute("aria-label", t("sec.hidro.dec.chartDecadas"));
       vistaChart = new window.Chart(canvas, {
         data: {
-          labels: state.data.decadas.map(function (item) { return item.desde + "–" + item.hasta; }),
+          labels: state.data.decadas.map(function (item) {
+            return item.desde + "–" + item.hasta + (item.en_curso ? "*" : "");
+          }),
           datasets: [
             {
               type: "bar",
@@ -642,11 +658,23 @@
           animation: false,
           onClick: function (_evt, elements) {
             if (!elements.length) return;
-            selectDecade(state.data.decadas[elements[0].index].desde, { open: true, view: "meses", scroll: true });
+            var start = state.data.decadas[elements[0].index].desde;
+            setTimeout(function () {
+              selectDecade(start, { open: true, view: "meses" });
+            }, 0);
           },
           plugins: {
             legend: { position: "bottom" },
-            title: { display: true, text: t("sec.hidro.dec.chartDecadas"), color: "#1f1418" }
+            title: { display: true, text: t("sec.hidro.dec.chartDecadas"), color: "#1f1418" },
+            tooltip: {
+              callbacks: {
+                label: function (ctx) {
+                  var digits = ctx.dataset.yAxisID === "y1" ? 1 : 2;
+                  var value = ctx.parsed.y;
+                  return ctx.dataset.label + ": " + (value == null ? MISSING : formatFixed(value, digits));
+                }
+              }
+            }
           },
           scales: {
             x: { ticks: { maxRotation: 0, color: "#5c4f54" } },
@@ -670,13 +698,24 @@
       var labels = [];
       var values = [];
       var refLine = [];
+      var incomplete = [];
       var names = monthNames();
+      var flat = [];
       dec.anios.forEach(function (year) {
         year.meses.forEach(function (month) {
-          labels.push(names[month.mes - 1] + " " + String(year.anio).slice(2));
-          values.push(month.dias_con_dato ? month.caudal_medio_m3s : null);
-          refLine.push(state.data.media_mensual_historica[month.mes - 1]);
+          flat.push({ year: year.anio, month: month });
         });
+      });
+      var last = -1;
+      var fi;
+      for (fi = 0; fi < flat.length; fi += 1) {
+        if (flat[fi].month.dias_con_dato) last = fi;
+      }
+      flat.slice(0, last + 1).forEach(function (item) {
+        labels.push(names[item.month.mes - 1] + " " + String(item.year).slice(2) + (item.month.incompleto ? "*" : ""));
+        values.push(item.month.dias_con_dato ? item.month.caudal_medio_m3s : null);
+        refLine.push(state.data.media_mensual_historica[item.month.mes - 1]);
+        incomplete.push(!!item.month.incompleto);
       });
       if (wrap) wrap.setAttribute("aria-label", t("sec.hidro.dec.chartMeses", { decada: decadeLabel(dec, false) }));
       vistaChart = new window.Chart(canvas, {
@@ -692,8 +731,12 @@
               fill: false,
               spanGaps: false,
               borderWidth: 2,
-              pointRadius: 0,
-              tension: 0.15
+              pointRadius: incomplete.map(function (mark) { return mark ? 3.5 : 2; }),
+              pointHoverRadius: 4,
+              pointBackgroundColor: incomplete.map(function (mark) { return mark ? "#ffffff" : "#1a6fa8"; }),
+              pointBorderColor: "#1a6fa8",
+              pointBorderWidth: 1.5,
+              tension: 0
             },
             {
               label: t("sec.hidro.dec.chartRef"),
@@ -702,7 +745,8 @@
               borderDash: [5, 4],
               borderWidth: 1.5,
               pointRadius: 0,
-              fill: false
+              fill: false,
+              spanGaps: true
             }
           ]
         },
@@ -1024,6 +1068,20 @@
         renderVista();
         return;
       }
+      if (event.target.id === "hidro-decada-prev" || event.target.id === "hidro-decada-next") {
+        if (event.target.disabled) return;
+        var list = state.data.decadas;
+        var idx = -1;
+        var di;
+        for (di = 0; di < list.length; di += 1) {
+          if (list[di].desde === state.selected) idx = di;
+        }
+        var step = event.target.id === "hidro-decada-prev" ? -1 : 1;
+        var neighbor = list[idx + step];
+        if (!neighbor) return;
+        selectDecade(neighbor.desde, { open: true, view: state.chartView });
+        return;
+      }
       if (event.target.id === "hidro-expand-all") {
         var open = !allOpen();
         state.data.decadas.forEach(function (dec) { state.open[dec.desde] = open; });
@@ -1031,8 +1089,12 @@
       }
     });
     root.addEventListener("change", function (event) {
-      if (event.target.id !== "hidro-decada-select") return;
-      selectDecade(Number(event.target.value), { open: true, view: "meses", scroll: true });
+      if (event.target.id !== "hidro-decada-select" && event.target.id !== "hidro-chart-decada-select") return;
+      selectDecade(Number(event.target.value), {
+        open: true,
+        view: "meses",
+        scroll: event.target.id === "hidro-decada-select"
+      });
     });
   }
 
