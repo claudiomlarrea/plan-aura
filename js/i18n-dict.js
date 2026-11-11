@@ -2063,16 +2063,48 @@ window.I18N_DICT = {
     en: "Question"
   },
   "bot.input.placeholder": {
-    es: "Ej.: ¿cómo presento un proyecto?",
-    en: "E.g.: how do I submit a project?"
+    es: "Ej.: ¿qué es el estrés hídrico?",
+    en: "E.g.: what is water stress?"
   },
   "bot.card.title": {
     es: "Mesa de ayuda",
     en: "Help desk"
   },
   "bot.card.body": {
-    es: "Consultas frecuentes de la convocatoria: cómo presentar un proyecto, fechas, montos y a quién escribir. El bot responde con lo que dice este sitio; no carga archivos ni envía mails.",
-    en: "Frequent questions about the call: how to submit a project, dates, budget, and who to email. The bot answers from this site; it does not upload files or send mail."
+    es: "Consultas frecuentes: caudal Km 101, embalses, descargas, estrés hídrico y la sección hidrológica. El bot responde con lo que dice este sitio; no carga archivos ni envía mails.",
+    en: "Frequent questions: Km 101 flow, reservoirs, downloads, water stress, and the hydrology section. The bot answers from this site; it does not upload files or send mail."
+  },
+  "bot.q.hidro": {
+    es: "Información hidrológica básica",
+    en: "Basic hydrological information"
+  },
+  "bot.q.caudal": {
+    es: "Caudal Km 101",
+    en: "Flow at Km 101"
+  },
+  "bot.q.embalses": {
+    es: "Embalses",
+    en: "Reservoirs"
+  },
+  "bot.q.descargas": {
+    es: "Descargar datos",
+    en: "Download data"
+  },
+  "bot.q.estres": {
+    es: "Qué es estrés hídrico",
+    en: "What is water stress"
+  },
+  "bot.q.ciclo": {
+    es: "Ciclo hidrológico",
+    en: "Hydrological cycle"
+  },
+  "bot.q.nival": {
+    es: "Régimen nival",
+    en: "Snowmelt regime"
+  },
+  "bot.q.fuentes": {
+    es: "Agua superficial y subterránea",
+    en: "Surface and groundwater"
   },
   "bot.q.presentar": {
     es: "Cómo presentar un proyecto",
@@ -2081,5 +2113,17 @@ window.I18N_DICT = {
   "bot.q.plazos": {
     es: "Fechas y montos",
     en: "Dates and budget"
+  },
+  "bot.q.plan": {
+    es: "Qué es el Plan AURA",
+    en: "What is Plan AURA"
+  },
+  "bot.q.contacto": {
+    es: "Contacto",
+    en: "Contact"
+  },
+  "bot.q.ejes": {
+    es: "Ejes temáticos",
+    en: "Thematic axes"
   }
 };

@@ -30,6 +30,88 @@
   }
 
   var ANSWERS = {
+    estres: {
+      keywords: [
+        "estres hidrico",
+        "que es el estres",
+        "que es estres",
+        "que significa estres",
+        "oferta y demanda"
+      ],
+      extra: ["estres", "oferta", "demanda"]
+    },
+    ciclo: {
+      keywords: [
+        "ciclo hidrologico",
+        "ciclo del agua",
+        "que es el ciclo"
+      ],
+      extra: ["ciclo", "precipita", "evapora", "infiltra"]
+    },
+    nival: {
+      keywords: [
+        "regimen nival",
+        "ciclo nival",
+        "deshielo",
+        "nieve en los andes",
+        "rio san juan"
+      ],
+      extra: ["nival", "nieve", "andes", "deshielo"]
+    },
+    fuentes: {
+      keywords: [
+        "agua superficial",
+        "agua subterranea",
+        "acuifero",
+        "valle de tulum"
+      ],
+      extra: ["superficial", "subterranea", "embalse", "canal"]
+    },
+    hidro: {
+      keywords: [
+        "informacion hidrologica",
+        "hidrologica basica",
+        "seccion hidrologica",
+        "hidrologia"
+      ],
+      extra: ["hidrologica", "hidrologico"]
+    },
+    caudal: {
+      keywords: [
+        "caudal",
+        "km 101",
+        "km101",
+        "escurrimiento",
+        "serie historica",
+        "anio hidrologico"
+      ],
+      extra: ["rio san juan", "media", "tendencia"]
+    },
+    embalses: {
+      keywords: [
+        "embalse",
+        "embalses",
+        "punta negra",
+        "ullum",
+        "caracoles",
+        "cuesta del viento",
+        "cota"
+      ],
+      extra: ["nivel", "niveles"]
+    },
+    descargas: {
+      keywords: [
+        "descargar",
+        "descargas",
+        "csv",
+        "excel",
+        "xlsx",
+        "json",
+        "png",
+        "pdf de la serie"
+      ],
+      extra: ["tabla", "serie"]
+    },
     presentar: {
       keywords: [
         "presentar un proyecto",
@@ -71,6 +153,35 @@
       extra: ["luis", "jimenez"]
     }
   };
+
+  var QUICK_IDS = [
+    "hidro",
+    "caudal",
+    "embalses",
+    "estres",
+    "descargas",
+    "presentar"
+  ];
+
+  function labelFor(id) {
+    var map = {
+      hidro: ["bot.q.hidro", "Información hidrológica básica"],
+      caudal: ["bot.q.caudal", "Caudal Km 101"],
+      embalses: ["bot.q.embalses", "Embalses"],
+      estres: ["bot.q.estres", "Qué es estrés hídrico"],
+      ciclo: ["bot.q.ciclo", "Ciclo hidrológico"],
+      nival: ["bot.q.nival", "Régimen nival"],
+      fuentes: ["bot.q.fuentes", "Agua superficial y subterránea"],
+      descargas: ["bot.q.descargas", "Descargar datos"],
+      presentar: ["bot.q.presentar", "Cómo presentar un proyecto"],
+      plazos: ["bot.q.plazos", "Fechas y montos"],
+      ejes: ["bot.q.ejes", "Ejes temáticos"],
+      plan: ["bot.q.plan", "Qué es el Plan AURA"],
+      contacto: ["bot.q.contacto", "Contacto"]
+    };
+    var entry = map[id] || map.hidro;
+    return t(entry[0], entry[1]);
+  }
 
   function cargaCerrada() {
     return window.PlanAuraConvocatoria && window.PlanAuraConvocatoria.estaCerrada();
@@ -180,27 +291,157 @@
     );
   }
 
-  function htmlFallback() {
+  function htmlHidro() {
     if (lang() === "en") {
       return (
-        "<p>I can help with submitting a project, dates, axes or contact. If it is not on <a href=\"https://plan-aura.com.ar/\">plan-aura.com.ar</a>, write to <a href=\"mailto:" + MAIL + "\">" + MAIL + "</a>.</p>"
+        "<p><strong>Basic hydrological information</strong></p>" +
+        "<p>This section shows daily flow at Km 101, reservoir levels, decade tables and charts, cumulative runoff by hydrological year, and short explainers (cycle, snowmelt regime, water stress). Source: San Juan Department of Hydraulics.</p>" +
+        "<p>Open it: <a href=\"#info-hidrologica\">Basic hydrological information</a>.</p>"
       );
     }
     return (
-      "<p>Puedo ayudarte a <strong>presentar un proyecto</strong>, con fechas, ejes o contacto. Si no está en <a href=\"https://plan-aura.com.ar/\">plan-aura.com.ar</a>, escribí a <a href=\"mailto:" + MAIL + "\">" + MAIL + "</a>.</p>"
+      "<p><strong>Información hidrológica básica</strong></p>" +
+      "<p>En esa sección ves el caudal diario en Km 101, cotas de embalses, tablas y gráficos por década, escurrimiento acumulado por año hidrológico, y nociones básicas (ciclo, régimen nival, estrés hídrico). Fuente: Departamento de Hidráulica de San Juan.</p>" +
+      "<p>Abrila acá: <a href=\"#info-hidrologica\">Información hidrológica básica</a>.</p>"
+    );
+  }
+
+  function htmlCaudal() {
+    if (lang() === "en") {
+      return (
+        "<p><strong>Flow at Km 101</strong></p>" +
+        "<p>The San Juan River series at Km 101 runs from hydrological year 1909–10 (July–June) to today. The section shows the latest reading, decade means, monthly detail, annual analysis and trends. Missing published days stay as s/d; they are not interpolated.</p>" +
+        "<p>See <a href=\"#info-hidrologica\">the hydrology section</a> and <a href=\"#serie-historica\">historical series</a>.</p>"
+      );
+    }
+    return (
+      "<p><strong>Caudal Km 101</strong></p>" +
+      "<p>La serie del río San Juan en Km 101 va desde el año hidrológico 1909-10 (julio–junio) hasta hoy. En la sección ves el dato del día, medias por década, detalle mensual, análisis anual y tendencias. Los días sin dato publicado quedan como s/d; no se interpolan.</p>" +
+      "<p>Miralo en <a href=\"#info-hidrologica\">Información hidrológica básica</a> y en <a href=\"#serie-historica\">serie histórica</a>.</p>"
+    );
+  }
+
+  function htmlEmbalses() {
+    if (lang() === "en") {
+      return (
+        "<p><strong>Reservoirs</strong></p>" +
+        "<p>The section reports levels (m a.s.l.) for Punta Negra, Ullum, Los Caracoles and Cuesta del Viento, plus annual mean/max/min. Data come from the Hydraulics daily irrigation sheet.</p>" +
+        "<p>Open <a href=\"#caudales-embalses\">flows and reservoirs</a>.</p>"
+      );
+    }
+    return (
+      "<p><strong>Embalses</strong></p>" +
+      "<p>La sección muestra cotas (m s.n.m.) de Punta Negra, Ullum, Los Caracoles y Cuesta del Viento, y resúmenes anuales (media, máxima y mínima). Los datos salen de la planilla diaria de riego de Hidráulica.</p>" +
+      "<p>Abrí <a href=\"#caudales-embalses\">caudales y embalses</a>.</p>"
+    );
+  }
+
+  function htmlDescargas() {
+    if (lang() === "en") {
+      return (
+        "<p><strong>Download data</strong></p>" +
+        "<p>At the end of the hydrology section you can download CSV/Excel/JSON series, annual summaries, reservoir levels, and PNG/PDF charts. Files use the same published data shown on the page.</p>" +
+        "<p>Go to <a href=\"#hidro-descargas\">Download data</a>.</p>"
+      );
+    }
+    return (
+      "<p><strong>Descargar datos</strong></p>" +
+      "<p>Al final de la sección hidrológica podés bajar series en CSV/Excel/JSON, resúmenes anuales, niveles de embalses y gráficos PNG/PDF. Los archivos usan los mismos datos publicados que ves en la página.</p>" +
+      "<p>Andá a <a href=\"#hidro-descargas\">Descargar datos</a>.</p>"
+    );
+  }
+
+  function htmlCiclo() {
+    if (lang() === "en") {
+      return (
+        "<p><strong>Hydrological cycle</strong></p>" +
+        "<p>Water moves between atmosphere, surface, and subsurface: it precipitates, runs off, infiltrates, evaporates, and returns to the atmosphere. In arid zones that cycle is fragile: little rainfall, high evaporation, and strong dependence on what arrives from the Andes.</p>" +
+        "<p>More in <a href=\"#info-hidrologica\">Basic hydrological information</a>.</p>"
+      );
+    }
+    return (
+      "<p><strong>Ciclo hidrológico</strong></p>" +
+      "<p>El agua circula entre atmósfera, superficie y subsuelo: precipita, escurre, se infiltra, se evapora y vuelve a la atmósfera. En zonas áridas ese ciclo es frágil: poca lluvia, alta evaporación y fuerte dependencia de lo que llega desde la cordillera.</p>" +
+      "<p>Más en <a href=\"#info-hidrologica\">Información hidrológica básica</a>.</p>"
+    );
+  }
+
+  function htmlNival() {
+    if (lang() === "en") {
+      return (
+        "<p><strong>Snowmelt regime</strong></p>" +
+        "<p>The San Juan River has a predominantly nival regime: its flow depends mainly on Andean snowpack and snowmelt. That is why there are wetter years and scarcer years, according to the snow cycle.</p>" +
+        "<p>More in <a href=\"#info-hidrologica\">Basic hydrological information</a>.</p>"
+      );
+    }
+    return (
+      "<p><strong>Régimen nival</strong></p>" +
+      "<p>El río San Juan tiene régimen predominantemente nival: su caudal depende sobre todo de la nieve acumulada en los Andes y del deshielo. Por eso hay años más abundantes y años de escasez, según el ciclo nival.</p>" +
+      "<p>Más en <a href=\"#info-hidrologica\">Información hidrológica básica</a>.</p>"
+    );
+  }
+
+  function htmlFuentes() {
+    if (lang() === "en") {
+      return (
+        "<p><strong>Surface and groundwater</strong></p>" +
+        "<p>In the Tulum Valley, surface water (river, reservoirs, and canals) and aquifer groundwater coexist. Part of the flow infiltrates and recharges the aquifer; its level rises or falls with wet or dry cycles and with how the resource is used.</p>" +
+        "<p>More in <a href=\"#info-hidrologica\">Basic hydrological information</a>.</p>"
+      );
+    }
+    return (
+      "<p><strong>Agua superficial y subterránea</strong></p>" +
+      "<p>En el Valle de Tulum conviven el agua superficial (río, embalses y canales) y el agua subterránea del acuífero. Parte del caudal se infiltra y recarga el acuífero; su nivel sube o baja según ciclos húmedos o secos y según el uso que se haga del recurso.</p>" +
+      "<p>Más en <a href=\"#info-hidrologica\">Información hidrológica básica</a>.</p>"
+    );
+  }
+
+  function htmlEstres() {
+    if (lang() === "en") {
+      return (
+        "<p><strong>What is water stress?</strong></p>" +
+        "<p>Supply is the water available (flow and reserves). Demand is what households, irrigation, industry, and services require. Water stress describes the tension between them: a high value does not always mean “there is no water,” but a greater mismatch between what is available and what is needed.</p>" +
+        "<p>More in <a href=\"#info-hidrologica\">Basic hydrological information</a>.</p>"
+      );
+    }
+    return (
+      "<p><strong>Qué es el estrés hídrico</strong></p>" +
+      "<p>La oferta es el agua disponible (caudal y reservas). La demanda es lo que requieren hogares, riego, industria y servicios. El estrés hídrico describe la tensión entre ambas: un valor alto no siempre significa «no hay agua», sino mayor desacople entre lo disponible y lo que se necesita.</p>" +
+      "<p>Más en <a href=\"#info-hidrologica\">Información hidrológica básica</a>.</p>"
+    );
+  }
+
+  function htmlFallback() {
+    if (lang() === "en") {
+      return (
+        "<p>I can help with <strong>hydrology</strong> (Km 101 flow, reservoirs, downloads, water stress), the Plan, or the call. Try the quick buttons or open <a href=\"#info-hidrologica\">Basic hydrological information</a>. Write to <a href=\"mailto:" + MAIL + "\">" + MAIL + "</a> if needed.</p>"
+      );
+    }
+    return (
+      "<p>Puedo ayudarte con <strong>hidrología</strong> (caudal Km 101, embalses, descargas, estrés hídrico), el Plan o la convocatoria. Probá los botones o abrí <a href=\"#info-hidrologica\">Información hidrológica básica</a>. Consultas: <a href=\"mailto:" + MAIL + "\">" + MAIL + "</a>.</p>"
     );
   }
 
   function htmlGreeting() {
     if (lang() === "en") {
-      return "<p>This is the <strong>Mesa de ayuda</strong> of Plan AURA. The most frequent question is how to submit a research or outreach project.</p>";
+      return (
+        "<p>This is the <strong>Help desk</strong> of Plan AURA. Ask about flow, reservoirs, water stress or how to use the hydrology section.</p>"
+      );
     }
     return (
-      "<p>Soy la <strong>Mesa de ayuda</strong> del Plan AURA. La consulta más frecuente: cómo presentar un proyecto de investigación o extensión.</p>"
+      "<p>Soy la <strong>Mesa de ayuda</strong> del Plan AURA. Preguntame por caudal, embalses, estrés hídrico o cómo usar la sección de <strong>información hidrológica básica</strong>.</p>"
     );
   }
 
   function renderFor(id) {
+    if (id === "hidro") return htmlHidro();
+    if (id === "caudal") return htmlCaudal();
+    if (id === "embalses") return htmlEmbalses();
+    if (id === "descargas") return htmlDescargas();
+    if (id === "estres") return htmlEstres();
+    if (id === "ciclo") return htmlCiclo();
+    if (id === "nival") return htmlNival();
+    if (id === "fuentes") return htmlFuentes();
     if (id === "presentar") return htmlPresentar();
     if (id === "plazos") return htmlPlazos();
     if (id === "ejes") return htmlEjes();
@@ -277,24 +518,22 @@
     }
 
     function paintQuick() {
-      quick.innerHTML =
-        '<button type="button" data-mesa-q="presentar">' +
-        t("bot.q.presentar", "Cómo presentar un proyecto") +
-        "</button>" +
-        '<button type="button" data-mesa-q="plazos">' +
-        t("bot.q.plazos", "Fechas y montos") +
-        "</button>";
+      quick.innerHTML = QUICK_IDS.map(function (id) {
+        return (
+          '<button type="button" data-mesa-q="' +
+          id +
+          '">' +
+          labelFor(id) +
+          "</button>"
+        );
+      }).join("");
     }
 
     function ask(text, idHint) {
       var q = String(text || "").trim();
       var id = idHint || matchId(q);
       if (!q && !id) return;
-      var label = q;
-      if (!label) {
-        if (id === "plazos") label = t("bot.q.plazos", "Fechas y montos");
-        else label = t("bot.q.presentar", "Cómo presentar un proyecto");
-      }
+      var label = q || labelFor(id);
       setOpen(true);
       appendMessage(log, "user", label, false);
       var html = renderFor(id);

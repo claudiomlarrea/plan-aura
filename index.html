@@ -694,16 +694,25 @@
           <article class="card section-block mesa-ayuda-card" id="mesa-ayuda">
             <h3 data-i18n="bot.card.title">Mesa de ayuda</h3>
             <p data-i18n="bot.card.body">
-              Consultas frecuentes de la convocatoria: cómo presentar un proyecto,
-              fechas, montos y a quién escribir. El bot responde con lo que dice
-              este sitio; no carga archivos ni envía mails.
+              Consultas frecuentes: información hidrológica básica (ciclo, régimen
+              nival, estrés hídrico) y la convocatoria. El bot responde con lo que
+              dice este sitio; no carga archivos ni envía mails.
             </p>
             <p class="tile-actions">
-              <button type="button" class="btn btn-primary" data-mesa-q="presentar" data-i18n="bot.q.presentar">
-                Cómo presentar un proyecto
+              <button type="button" class="btn btn-primary" data-mesa-q="hidro" data-i18n="bot.q.hidro">
+                Información hidrológica básica
               </button>
-              <button type="button" class="btn btn-ghost" data-mesa-q="plazos" data-i18n="bot.q.plazos">
-                Fechas y montos
+              <button type="button" class="btn btn-ghost" data-mesa-q="caudal" data-i18n="bot.q.caudal">
+                Caudal Km 101
+              </button>
+              <button type="button" class="btn btn-ghost" data-mesa-q="embalses" data-i18n="bot.q.embalses">
+                Embalses
+              </button>
+              <button type="button" class="btn btn-ghost" data-mesa-q="estres" data-i18n="bot.q.estres">
+                Qué es estrés hídrico
+              </button>
+              <button type="button" class="btn btn-ghost" data-mesa-q="descargas" data-i18n="bot.q.descargas">
+                Descargar datos
               </button>
             </p>
           </article>
@@ -1362,7 +1371,7 @@
           type="text"
           autocomplete="off"
           data-i18n-attr="placeholder:bot.input.placeholder"
-          placeholder="Ej.: ¿cómo presento un proyecto?"
+          placeholder="Ej.: ¿qué es el estrés hídrico?"
         />
         <button type="submit" class="btn btn-primary" data-i18n="bot.send">Enviar</button>
       </form>
@@ -1380,7 +1389,7 @@
     <script src="js/visitantes.js?v=7" defer></script>
     <script src="js/visitas-mapa.js?v=6" defer></script>
     <script src="js/convocatoria.js?v=3" defer></script>
-    <script src="js/mesa-ayuda.js?v=4" defer></script>
+    <script src="js/mesa-ayuda.js?v=5" defer></script>
     <script src="js/hidrologia.js?v=7" defer></script>
     <script src="js/hidrologia-historica.js?v=3" defer></script>
   </body>
