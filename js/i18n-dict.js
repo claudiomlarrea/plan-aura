@@ -1681,6 +1681,30 @@ window.I18N_DICT = {
     es: "Alternativa al suministro desde el Pacífico para mejorar la calidad del agua de Iglesia, Jáchal y Huaco. Versión ampliada: balances de masa, costos e impacto socioeconómico. Luis F. Jiménez. Octubre 2026.",
     en: "An alternative to Pacific supply to improve water quality in Iglesia, Jáchal and Huaco. Expanded version: mass balances, costs and socioeconomic impact. Luis F. Jiménez. October 2026."
   },
+  "sec.art.011.title": {
+    es: "Fideicomiso Agroalimentario de San Juan (FASJ)",
+    en: "San Juan Agri-Food Trust (FASJ)"
+  },
+  "sec.art.011.meta": {
+    es: "Proyecto estratégico: transformación de la renta minera en soberanía, accesibilidad y seguridad alimentaria provincial. Luis F. Jiménez. Octubre 2026.",
+    en: "Strategic project: turning mining rents into provincial food sovereignty, access and security. Luis F. Jiménez. October 2026."
+  },
+  "sec.art.012.title": {
+    es: "Desarrollo agroalimentario del norte sanjuanino",
+    en: "Agri-food development in northern San Juan"
+  },
+  "sec.art.012.meta": {
+    es: "Estrategia integral de desarrollo agroalimentario, seguridad hidroagrícola y logística proteica para el corredor minero Jáchal–Iglesia–Calingasta. Luis F. Jiménez. Octubre 2026.",
+    en: "Integrated strategy for agri-food development, hydro-agricultural security and protein logistics along the Jáchal–Iglesia–Calingasta mining corridor. Luis F. Jiménez. October 2026."
+  },
+  "sec.art.013.title": {
+    es: "Seguridad alimentaria, balance hídrico y dinámica demográfica en San Juan (2026–2056)",
+    en: "Food security, water balance and demographic dynamics in San Juan (2026–2056)"
+  },
+  "sec.art.013.meta": {
+    es: "Informe técnico extendido. Luis F. Jiménez. Instituto del Agua, UCCuyo.",
+    en: "Extended technical report. Luis F. Jiménez. Water Institute, UCCuyo."
+  },
   "sec.publicaciones.kicker": {
     es: "Difusión",
     en: "Outreach"
