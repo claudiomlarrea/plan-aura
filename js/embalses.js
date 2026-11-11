@@ -5,6 +5,7 @@
 (function () {
   var ANUAL_URL = "hidrologia/embalses_anual.csv";
   var DIARIO_URL = "hidrologia/niveles_embalses.csv";
+  var MANIFEST_URL = "hidrologia/manifest.json";
   var CHART_SRC = "https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js";
 
   var EMBALSES = [
@@ -44,7 +45,8 @@
     years: [],
     year: null,
     metric: "media",
-    charts: {}
+    charts: {},
+    manifest: null
   };
 
   function t(key, vars) {
@@ -73,11 +75,33 @@
   }
 
   function fmt(n, digits) {
-    if (n == null || !Number.isFinite(n)) return "—";
-    return n.toLocaleString(lang() === "en" ? "en-US" : "es-AR", {
+    if (n == null || !Number.isFinite(n)) return "s/d";
+    return n.toLocaleString("es-AR", {
       minimumFractionDigits: digits,
       maximumFractionDigits: digits
     });
+  }
+
+  function fechaCorta(iso) {
+    if (!iso) return "s/d";
+    var p = String(iso).slice(0, 10).split("-");
+    if (p.length !== 3 || p[0].length !== 4) return "s/d";
+    return p[2] + "/" + p[1] + "/" + p[0];
+  }
+
+  function pad2(n) {
+    return n < 10 ? "0" + n : String(n);
+  }
+
+  function addDays(iso, n) {
+    var p = String(iso).split("-");
+    var d = new Date(Date.UTC(Number(p[0]), Number(p[1]) - 1, Number(p[2])));
+    d.setUTCDate(d.getUTCDate() + n);
+    return d.getUTCFullYear() + "-" + pad2(d.getUTCMonth() + 1) + "-" + pad2(d.getUTCDate());
+  }
+
+  function bustUrl(url) {
+    return url + (url.indexOf("?") >= 0 ? "&" : "?") + "v=" + Date.now();
   }
 
   function loadChart() {
@@ -258,14 +282,8 @@
       var daily = dailyForYear(emb.name, state.year);
       var last = daily.length ? daily[daily.length - 1] : null;
       var dias = row && row.dias != null ? row.dias : daily.length;
-      var vol =
-        last && last.volumen != null
-          ? fmt(last.volumen, 1) + " hm³"
-          : "—";
-      var disp =
-        last && last.disponible != null
-          ? fmt(last.disponible, 1) + " hm³"
-          : "—";
+      var vol = fmt(last && last.volumen, 1) + " hm³";
+      var disp = fmt(last && last.disponible, 1) + " hm³";
       return (
         '<article class="card emb-card" data-embalse="' +
         emb.id +
@@ -279,11 +297,17 @@
         '<p class="emb-cota" style="color:' +
         emb.color +
         '">' +
-        (cota == null ? "—" : fmt(cota, 2) + " <small>m s.n.m.</small>") +
+        (cota == null ? "s/d" : fmt(cota, 2) + " <small>m s.n.m.</small>") +
         "</p>" +
         '<p class="emb-meta">' +
         t("sec.emb.metric." + state.metric) +
-        (fecha ? " · " + fecha : "") +
+        (fecha ? " · " + fechaCorta(fecha) : "") +
+        "</p>" +
+        '<p class="emb-meta">' +
+        t("sec.emb.lastCota", {
+          cota: last ? fmt(last.cota, 2) + " m s.n.m." : "s/d",
+          fecha: last ? fechaCorta(last.fecha) : "s/d"
+        }) +
         "</p>" +
         '<p class="emb-meta">' +
         t("sec.emb.days", { n: String(dias || 0) }) +
@@ -311,12 +335,18 @@
         state.charts[emb.id] = null;
       }
       if (!daily.length) return;
-      var step = daily.length > 180 ? Math.ceil(daily.length / 120) : 1;
+      var byDate = {};
+      daily.forEach(function (row) {
+        byDate[row.fecha] = row.cota;
+      });
       var labels = [];
       var data = [];
-      for (var i = 0; i < daily.length; i += step) {
-        labels.push(daily[i].fecha.slice(5));
-        data.push(daily[i].cota);
+      var cursor = daily[0].fecha;
+      var end = daily[daily.length - 1].fecha;
+      while (cursor <= end) {
+        labels.push(cursor.slice(5));
+        data.push(Object.prototype.hasOwnProperty.call(byDate, cursor) ? byDate[cursor] : null);
+        cursor = addDays(cursor, 1);
       }
       state.charts[emb.id] = new window.Chart(canvas.getContext("2d"), {
         type: "line",
@@ -330,7 +360,8 @@
               fill: true,
               pointRadius: 0,
               borderWidth: 1.5,
-              tension: 0.2
+              tension: 0,
+              spanGaps: false
             }
           ]
         },
@@ -368,11 +399,35 @@
     el.classList.toggle("is-error", !!isError);
   }
 
+  function latestEmbalseFecha() {
+    var latest = "";
+    Object.keys(state.diario).forEach(function (name) {
+      var rows = state.diario[name];
+      if (!rows || !rows.length) return;
+      var fecha = rows[rows.length - 1].fecha;
+      if (!latest || fecha > latest) latest = fecha;
+    });
+    return latest;
+  }
+
+  function renderAsof() {
+    var el = $("emb-asof");
+    if (!el) return;
+    var manifest = state.manifest || {};
+    var caudal = manifest.caudal_hasta || "";
+    var embalses = manifest.embalses_hasta || latestEmbalseFecha();
+    el.textContent = t("sec.datos.asof", {
+      caudal: fechaCorta(caudal),
+      embalses: fechaCorta(embalses)
+    });
+  }
+
   function render() {
     var note = $("emb-year-note");
     if (note) {
-      note.textContent = t("sec.emb.yearNote", { year: state.year || "—" });
+      note.textContent = t("sec.emb.yearNote", { year: state.year || "s/d" });
     }
+    renderAsof();
     renderCards();
     renderSparklines();
   }
@@ -409,14 +464,21 @@
     bind();
     setStatus(t("sec.emb.status.loading"), false);
     Promise.all([
-      fetch(ANUAL_URL).then(function (r) {
+      fetch(bustUrl(ANUAL_URL), { cache: "no-store" }).then(function (r) {
         if (!r.ok) throw new Error("anual");
         return r.text();
       }),
-      fetch(DIARIO_URL).then(function (r) {
+      fetch(bustUrl(DIARIO_URL), { cache: "no-store" }).then(function (r) {
         if (!r.ok) throw new Error("diario");
         return r.text();
       }),
+      fetch(bustUrl(MANIFEST_URL), { cache: "no-store" })
+        .then(function (r) {
+          return r.ok ? r.json() : null;
+        })
+        .catch(function () {
+          return null;
+        }),
       loadChart().catch(function () {
         return null;
       })
@@ -424,6 +486,7 @@
       .then(function (parts) {
         state.anual = parseAnual(parts[0]);
         state.diario = parseDiario(parts[1]);
+        state.manifest = parts[2];
         fillYearSelect();
         fillMetricSelect();
         setStatus("", false);

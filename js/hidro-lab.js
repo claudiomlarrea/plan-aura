@@ -78,11 +78,39 @@
   }
 
   function fmt(n, digits) {
-    if (n == null || !Number.isFinite(n)) return "—";
-    return n.toLocaleString(lang() === "en" ? "en-US" : "es-AR", {
+    if (n == null || !Number.isFinite(n)) return "s/d";
+    return n.toLocaleString("es-AR", {
       minimumFractionDigits: digits,
       maximumFractionDigits: digits
     });
+  }
+
+  function fechaCorta(iso) {
+    if (!iso) return "s/d";
+    var p = String(iso).slice(0, 10).split("-");
+    if (p.length !== 3 || p[0].length !== 4) return "s/d";
+    return p[2] + "/" + p[1] + "/" + p[0];
+  }
+
+  function pad2(n) {
+    return n < 10 ? "0" + n : String(n);
+  }
+
+  function addDays(iso, n) {
+    var p = String(iso).split("-");
+    var d = new Date(Date.UTC(Number(p[0]), Number(p[1]) - 1, Number(p[2])));
+    d.setUTCDate(d.getUTCDate() + n);
+    return d.getUTCFullYear() + "-" + pad2(d.getUTCMonth() + 1) + "-" + pad2(d.getUTCDate());
+  }
+
+  function addMonths(ym, n) {
+    var p = String(ym).split("-");
+    var d = new Date(Date.UTC(Number(p[0]), Number(p[1]) - 1 + n, 1));
+    return d.getUTCFullYear() + "-" + pad2(d.getUTCMonth() + 1);
+  }
+
+  function bustUrl(url) {
+    return url + (url.indexOf("?") >= 0 ? "&" : "?") + "v=" + Date.now();
   }
 
   function quantile(sorted, q) {
@@ -148,8 +176,8 @@
       p90: quantile(sorted, 0.9),
       min: min.m3s,
       max: max.m3s,
-      fechaMin: min.fecha,
-      fechaMax: max.fecha,
+      fechaMin: fechaCorta(min.fecha),
+      fechaMax: fechaCorta(max.fecha),
       derrame: (sum * SEC_IN_DAY) / 1e6
     };
   }
@@ -162,11 +190,39 @@
       map[key].sum += r.m3s;
       map[key].n += 1;
     });
-    return Object.keys(map)
-      .sort()
-      .map(function (key) {
-        return { label: key, m3s: map[key].sum / map[key].n };
+    var keys = Object.keys(map).sort();
+    if (!keys.length) return [];
+    var out = [];
+    var cursor = keys[0];
+    var end = keys[keys.length - 1];
+    while (cursor <= end) {
+      if (map[cursor]) {
+        out.push({ label: cursor, m3s: map[cursor].sum / map[cursor].n });
+      } else {
+        out.push({ label: cursor, m3s: null });
+      }
+      cursor = addMonths(cursor, 1);
+    }
+    return out;
+  }
+
+  function pointsWithGaps(rows) {
+    if (!rows.length) return [];
+    var byDate = {};
+    rows.forEach(function (r) {
+      byDate[r.fecha] = r.m3s;
+    });
+    var out = [];
+    var cursor = rows[0].fecha;
+    var end = rows[rows.length - 1].fecha;
+    while (cursor <= end) {
+      out.push({
+        label: cursor,
+        m3s: Object.prototype.hasOwnProperty.call(byDate, cursor) ? byDate[cursor] : null
       });
+      cursor = addDays(cursor, 1);
+    }
+    return out;
   }
 
   function renderStats(targetId, stats, title) {
@@ -219,14 +275,14 @@
       "</dt><dd>" +
       fmt(stats.min, 3) +
       " · " +
-      (stats.fechaMin || "—") +
+      (stats.fechaMin || "s/d") +
       "</dd></div>" +
       "<div><dt>" +
       t("sec.lab.stats.max") +
       "</dt><dd>" +
       fmt(stats.max, 3) +
       " · " +
-      (stats.fechaMax || "—") +
+      (stats.fechaMax || "s/d") +
       "</dd></div>" +
       "<div><dt>" +
       t("sec.lab.stats.runoff") +
@@ -240,11 +296,7 @@
     var canvas = $("lab-chart");
     if (!canvas || !window.Chart) return;
     var useMonthly = rows.length > 400;
-    var points = useMonthly
-      ? aggregateMonthly(rows)
-      : rows.map(function (r) {
-          return { label: r.fecha, m3s: r.m3s };
-        });
+    var points = useMonthly ? aggregateMonthly(rows) : pointsWithGaps(rows);
     var label = useMonthly
       ? t("sec.lab.chart.monthly")
       : t("sec.lab.chart.daily");
@@ -268,7 +320,8 @@
             fill: true,
             pointRadius: points.length > 120 ? 0 : 2,
             borderWidth: 1.5,
-            tension: 0.15
+            tension: 0,
+            spanGaps: false
           }
         ]
       },
@@ -302,7 +355,7 @@
   }
 
   function citationText(from, to, n) {
-    var generated = manifest && manifest.generado ? manifest.generado : "—";
+    var generated = manifest && manifest.generado ? fechaCorta(manifest.generado) : "s/d";
     if (lang() === "en") {
       return (
         "San Juan River flow at Km 101 (m³/s), daily series " +
@@ -400,11 +453,16 @@
     if (!meta || !series || !series.length) return;
     var first = series[0].fecha;
     var last = series[series.length - 1].fecha;
-    var gen = manifest && manifest.generado ? manifest.generado : "—";
+    var caudal = manifest && manifest.caudal_hasta ? manifest.caudal_hasta : last;
+    var embalses = manifest && manifest.embalses_hasta ? manifest.embalses_hasta : "";
+    var gen = manifest && manifest.generado ? fechaCorta(manifest.generado) : "s/d";
     meta.innerHTML =
       "<ul>" +
       "<li>" +
-      t("sec.lab.meta.period", { from: first, to: last }) +
+      t("sec.datos.asof", { caudal: fechaCorta(caudal), embalses: fechaCorta(embalses) }) +
+      "</li>" +
+      "<li>" +
+      t("sec.lab.meta.period", { from: fechaCorta(first), to: fechaCorta(last) }) +
       "</li>" +
       "<li>" +
       t("sec.lab.meta.n", { n: String(series.length) }) +
@@ -416,6 +474,10 @@
       t("sec.lab.meta.rule") +
       "</li>" +
       "</ul>";
+    document.querySelectorAll("#datos-hidrologicos a[href^='hidrologia/']").forEach(function (a) {
+      var href = a.getAttribute("href").split("?")[0];
+      a.href = href + "?v=" + encodeURIComponent(caudal || gen);
+    });
     $("lab-from").min = first;
     $("lab-from").max = last;
     $("lab-to").min = first;
@@ -464,11 +526,11 @@
     bind();
     setStatus(t("sec.lab.status.loading"), false);
     Promise.all([
-      fetch(CSV_URL).then(function (r) {
+      fetch(bustUrl(CSV_URL), { cache: "no-store" }).then(function (r) {
         if (!r.ok) throw new Error("csv");
         return r.text();
       }),
-      fetch(MANIFEST_URL)
+      fetch(bustUrl(MANIFEST_URL), { cache: "no-store" })
         .then(function (r) {
           return r.ok ? r.json() : null;
         })
