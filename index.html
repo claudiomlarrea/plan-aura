@@ -12,7 +12,7 @@
     <link rel="canonical" href="https://plan-aura.com.ar/" />
     <link rel="icon" type="image/png" href="assets/logo-aura-gota-filete.png" />
     <link rel="stylesheet" href="css/variables.css?v=51" />
-    <link rel="stylesheet" href="css/styles.css?v=71" />
+    <link rel="stylesheet" href="css/styles.css?v=72" />
     <link rel="stylesheet" href="css/biblioteca-agua.css?v=2" />
   </head>
   <body>
@@ -101,6 +101,11 @@
                   <li>
                     <a href="#info-hidrologica" data-i18n="nav.infoHidrologica"
                       >Información hidrológica básica</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#datos-hidrologicos" data-i18n="nav.datosHidrologicos"
+                      >Datos e indicadores hidrológicos</a
                     >
                   </li>
                 </ul>
@@ -575,6 +580,130 @@
               <a href="#publicaciones">Biblioteca del Agua</a>.
             </p>
           </article>
+          <p class="tile-actions stack-gap-top">
+            <a class="btn btn-primary" href="#datos-hidrologicos" data-i18n="sec.hidro.cta.lab"
+              >Ir a Datos e indicadores hidrológicos</a
+            >
+          </p>
+        </div>
+      </section>
+
+      <section
+        class="section section--lab page-panel"
+        id="datos-hidrologicos"
+        data-page="datos-hidrologicos"
+        aria-labelledby="sec-lab"
+      >
+        <div class="section-inner">
+          <header class="section-head section-head--bar section-head--water">
+            <p class="section-kicker" data-i18n="sec.lab.kicker">Investigación</p>
+            <h2 id="sec-lab" data-i18n="sec.lab.title">Datos e indicadores hidrológicos</h2>
+          </header>
+          <p class="text-intro" data-i18n-html="sec.lab.intro">
+            Laboratorio para extraer la serie diaria de caudal en Km 101 (desde 1910),
+            calcular estadísticas de un período y comparar otro tramo. Los días sin dato
+            publicado no se interpolan.
+            <a href="#info-hidrologica">Información hidrológica básica</a>.
+          </p>
+
+          <div class="card lab-meta-card">
+            <h3 data-i18n="sec.lab.meta.title">Serie disponible</h3>
+            <div id="lab-meta" class="lab-meta"></div>
+            <p class="hidro-status" id="lab-status" role="status"></p>
+          </div>
+
+          <form class="card lab-form" id="lab-form">
+            <h3 data-i18n="sec.lab.form.title">Período de análisis</h3>
+            <p class="lab-lead" data-i18n="sec.lab.form.lead">
+              Elegí fechas inclusive. El período B es opcional y sirve para comparar.
+            </p>
+            <div class="lab-grid">
+              <fieldset class="lab-fieldset">
+                <legend data-i18n="sec.lab.period.a">Período A</legend>
+                <label class="lab-field">
+                  <span data-i18n="sec.lab.from">Desde</span>
+                  <input type="date" id="lab-from" required />
+                </label>
+                <label class="lab-field">
+                  <span data-i18n="sec.lab.to">Hasta</span>
+                  <input type="date" id="lab-to" required />
+                </label>
+              </fieldset>
+              <fieldset class="lab-fieldset">
+                <legend data-i18n="sec.lab.period.b">Período B (opcional)</legend>
+                <label class="lab-field">
+                  <span data-i18n="sec.lab.from">Desde</span>
+                  <input type="date" id="lab-from-b" />
+                </label>
+                <label class="lab-field">
+                  <span data-i18n="sec.lab.to">Hasta</span>
+                  <input type="date" id="lab-to-b" />
+                </label>
+              </fieldset>
+            </div>
+            <p class="tile-actions">
+              <button type="submit" class="btn btn-primary" data-i18n="sec.lab.apply">
+                Calcular indicadores
+              </button>
+              <button
+                type="button"
+                class="btn btn-ghost"
+                id="lab-dl-range"
+                disabled
+                data-i18n="sec.lab.dl.range"
+              >
+                Descargar recorte (CSV)
+              </button>
+            </p>
+          </form>
+
+          <div class="lab-results">
+            <div class="card" id="lab-stats-a"></div>
+            <div class="card" id="lab-stats-b" hidden></div>
+          </div>
+
+          <div class="card lab-chart-card">
+            <h3 data-i18n="sec.lab.chart.title">Serie del período A</h3>
+            <p class="hidro-note" id="lab-chart-note"></p>
+            <div class="hidro-chart hidro-chart--acum" role="img">
+              <canvas id="lab-chart" aria-hidden="true"></canvas>
+            </div>
+          </div>
+
+          <div class="card lab-cite-card">
+            <h3 data-i18n="sec.lab.cite.title">Cita sugerida</h3>
+            <p class="lab-cite" id="lab-cite"></p>
+            <p class="tile-actions">
+              <button type="button" class="btn btn-ghost" id="lab-cite-copy" data-i18n="sec.lab.cite.copy">
+                Copiar cita
+              </button>
+            </p>
+          </div>
+
+          <div class="card lab-packs">
+            <h3 data-i18n="sec.lab.packs.title">Paquetes completos</h3>
+            <p class="lab-lead" data-i18n="sec.lab.packs.lead">
+              Descargas de la serie completa publicada por el Plan AURA a partir de datos
+              del Departamento de Hidráulica de San Juan.
+            </p>
+            <div class="hidro-dl__actions lab-packs__actions">
+              <a class="btn btn-primary" href="hidrologia/caudales_diarios.csv" download data-i18n="sec.lab.packs.daily"
+                >Caudal diario completo (CSV)</a
+              >
+              <a class="btn btn-primary" href="hidrologia/caudal_anual_hidrologico.csv" download data-i18n="sec.lab.packs.ah"
+                >Resumen año hidrológico (CSV)</a
+              >
+              <a class="btn btn-primary" href="hidrologia/caudal_anual_calendario.csv" download data-i18n="sec.lab.packs.ac"
+                >Resumen año calendario (CSV)</a
+              >
+              <a class="btn btn-primary" href="hidrologia/niveles_embalses.csv" download data-i18n="sec.lab.packs.emb"
+                >Niveles de embalses (CSV)</a
+              >
+              <a class="btn btn-primary" href="hidrologia/manifest.json" download data-i18n="sec.lab.packs.manifest"
+                >Manifest (JSON)</a
+              >
+            </div>
+          </div>
         </div>
       </section>
 
@@ -1298,6 +1427,11 @@
                   >Información hidrológica básica</a
                 >
               </li>
+              <li>
+                <a href="#datos-hidrologicos" data-i18n="nav.datosHidrologicos"
+                  >Datos e indicadores hidrológicos</a
+                >
+              </li>
             </ul>
           </div>
           <div class="footer-col">
@@ -1377,7 +1511,7 @@
       </form>
     </div>
 
-    <script src="js/i18n-dict.js?v=50" defer></script>
+    <script src="js/i18n-dict.js?v=51" defer></script>
     <script src="js/i18n.js?v=7" defer></script>
     <script src="js/main.js?v=5" defer></script>
     <script src="js/galeria-config.js?v=8" defer></script>
@@ -1392,5 +1526,6 @@
     <script src="js/mesa-ayuda.js?v=5" defer></script>
     <script src="js/hidrologia.js?v=9" defer></script>
     <script src="js/hidrologia-historica.js?v=3" defer></script>
+    <script src="js/hidro-lab.js?v=1" defer></script>
   </body>
 </html>

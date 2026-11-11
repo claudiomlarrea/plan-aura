@@ -106,6 +106,10 @@ window.I18N_DICT = {
     es: "Información hidrológica básica",
     en: "Basic hydrological information"
   },
+  "nav.datosHidrologicos": {
+    es: "Datos e indicadores hidrológicos",
+    en: "Hydrological data and indicators"
+  },
   "nav.documentos": {
     es: "Marco normativo",
     en: "Regulatory framework"
@@ -405,6 +409,188 @@ window.I18N_DICT = {
   "sec.docs.res620.meta": {
     es: "Equipo Coordinador y de Comunicación del Plan AURA",
     en: "Plan AURA Coordinating and Communication Team"
+  },
+
+  "sec.hidro.cta.lab": {
+    es: "Ir a Datos e indicadores hidrológicos",
+    en: "Go to Hydrological data and indicators"
+  },
+
+  "sec.lab.kicker": {
+    es: "Investigación",
+    en: "Research"
+  },
+  "sec.lab.title": {
+    es: "Datos e indicadores hidrológicos",
+    en: "Hydrological data and indicators"
+  },
+  "sec.lab.intro": {
+    es: 'Laboratorio para extraer la serie diaria de caudal en Km 101 (desde 1910), calcular estadísticas de un período y comparar otro tramo. Los días sin dato publicado no se interpolan. <a href="#info-hidrologica">Información hidrológica básica</a>.',
+    en: 'Lab to extract the daily flow series at Km 101 (from 1910), compute period statistics, and compare another span. Unpublished days are not interpolated. <a href="#info-hidrologica">Basic hydrological information</a>.'
+  },
+  "sec.lab.meta.title": {
+    es: "Serie disponible",
+    en: "Available series"
+  },
+  "sec.lab.meta.period": {
+    es: "Período publicado: {from} → {to}",
+    en: "Published period: {from} → {to}"
+  },
+  "sec.lab.meta.n": {
+    es: "Registros diarios con dato: {n}",
+    en: "Daily records with data: {n}"
+  },
+  "sec.lab.meta.updated": {
+    es: "Última actualización del dataset: {fecha}",
+    en: "Dataset last updated: {fecha}"
+  },
+  "sec.lab.meta.rule": {
+    es: "Estación Km 101 · unidad m³/s · sin interpolación · fuente Departamento de Hidráulica de San Juan",
+    en: "Station Km 101 · unit m³/s · no interpolation · source San Juan Department of Hydraulics"
+  },
+  "sec.lab.form.title": {
+    es: "Período de análisis",
+    en: "Analysis period"
+  },
+  "sec.lab.form.lead": {
+    es: "Elegí fechas inclusive. El período B es opcional y sirve para comparar.",
+    en: "Choose inclusive dates. Period B is optional and used for comparison."
+  },
+  "sec.lab.period.a": {
+    es: "Período A",
+    en: "Period A"
+  },
+  "sec.lab.period.b": {
+    es: "Período B (opcional)",
+    en: "Period B (optional)"
+  },
+  "sec.lab.from": {
+    es: "Desde",
+    en: "From"
+  },
+  "sec.lab.to": {
+    es: "Hasta",
+    en: "To"
+  },
+  "sec.lab.apply": {
+    es: "Calcular indicadores",
+    en: "Compute indicators"
+  },
+  "sec.lab.dl.range": {
+    es: "Descargar recorte (CSV)",
+    en: "Download subset (CSV)"
+  },
+  "sec.lab.stats.empty": {
+    es: "No hay días con dato en ese rango.",
+    en: "No days with data in that range."
+  },
+  "sec.lab.stats.n": {
+    es: "Días con dato / días del rango",
+    en: "Days with data / days in range"
+  },
+  "sec.lab.stats.coverage": {
+    es: "Cobertura",
+    en: "Coverage"
+  },
+  "sec.lab.stats.mean": {
+    es: "Media",
+    en: "Mean"
+  },
+  "sec.lab.stats.median": {
+    es: "Mediana",
+    en: "Median"
+  },
+  "sec.lab.stats.p10": {
+    es: "P10",
+    en: "P10"
+  },
+  "sec.lab.stats.p90": {
+    es: "P90",
+    en: "P90"
+  },
+  "sec.lab.stats.min": {
+    es: "Mínimo",
+    en: "Minimum"
+  },
+  "sec.lab.stats.max": {
+    es: "Máximo",
+    en: "Maximum"
+  },
+  "sec.lab.stats.runoff": {
+    es: "Escurrimiento acumulado",
+    en: "Cumulative runoff"
+  },
+  "sec.lab.chart.title": {
+    es: "Serie del período A",
+    en: "Period A series"
+  },
+  "sec.lab.chart.daily": {
+    es: "Caudal diario (m³/s)",
+    en: "Daily flow (m³/s)"
+  },
+  "sec.lab.chart.monthly": {
+    es: "Media mensual del período A (m³/s)",
+    en: "Monthly mean of period A (m³/s)"
+  },
+  "sec.lab.cite.title": {
+    es: "Cita sugerida",
+    en: "Suggested citation"
+  },
+  "sec.lab.cite.copy": {
+    es: "Copiar cita",
+    en: "Copy citation"
+  },
+  "sec.lab.cite.copied": {
+    es: "Cita copiada al portapapeles.",
+    en: "Citation copied to the clipboard."
+  },
+  "sec.lab.packs.title": {
+    es: "Paquetes completos",
+    en: "Full packages"
+  },
+  "sec.lab.packs.lead": {
+    es: "Descargas de la serie completa publicada por el Plan AURA a partir de datos del Departamento de Hidráulica de San Juan.",
+    en: "Downloads of the full series published by Plan AURA from San Juan Department of Hydraulics data."
+  },
+  "sec.lab.packs.daily": {
+    es: "Caudal diario completo (CSV)",
+    en: "Full daily flow (CSV)"
+  },
+  "sec.lab.packs.ah": {
+    es: "Resumen año hidrológico (CSV)",
+    en: "Hydrological-year summary (CSV)"
+  },
+  "sec.lab.packs.ac": {
+    es: "Resumen año calendario (CSV)",
+    en: "Calendar-year summary (CSV)"
+  },
+  "sec.lab.packs.emb": {
+    es: "Niveles de embalses (CSV)",
+    en: "Reservoir levels (CSV)"
+  },
+  "sec.lab.packs.manifest": {
+    es: "Manifest (JSON)",
+    en: "Manifest (JSON)"
+  },
+  "sec.lab.status.loading": {
+    es: "Cargando serie diaria…",
+    en: "Loading daily series…"
+  },
+  "sec.lab.status.error": {
+    es: "No se pudo cargar la serie. Probá recargar la página.",
+    en: "Could not load the series. Try reloading the page."
+  },
+  "sec.lab.status.ok": {
+    es: "Período A: {n} días con dato entre {from} y {to}.",
+    en: "Period A: {n} days with data between {from} and {to}."
+  },
+  "sec.lab.error.range": {
+    es: "Revisá el período A: la fecha desde debe ser anterior o igual a hasta.",
+    en: "Check period A: the start date must be on or before the end date."
+  },
+  "sec.lab.error.rangeB": {
+    es: "Revisá el período B: la fecha desde debe ser anterior o igual a hasta.",
+    en: "Check period B: the start date must be on or before the end date."
   },
 
   "sec.hidro.kicker": {

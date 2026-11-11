@@ -3364,3 +3364,174 @@ body.gallery-lightbox-open .mesa-ayuda-panel {
     gap: 0.75rem;
   }
 }
+
+/* Laboratorio de datos e indicadores hidrológicos */
+.section--lab .lab-lead,
+.section--lab .lab-meta,
+.section--lab .lab-cite {
+  color: var(--color-text-soft);
+  font-size: 0.95rem;
+}
+
+.lab-meta ul {
+  margin: 0.35rem 0 0;
+  padding-left: 1.1rem;
+}
+
+.lab-meta li + li {
+  margin-top: 0.25rem;
+}
+
+.lab-form {
+  margin-top: 1rem;
+}
+
+.lab-grid {
+  display: grid;
+  gap: 1rem;
+  margin: 0.85rem 0 1rem;
+}
+
+@media (min-width: 800px) {
+  .lab-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.lab-fieldset {
+  margin: 0;
+  padding: 0.85rem 0.9rem;
+  border: 1px solid rgba(26, 111, 168, 0.22);
+  border-radius: 10px;
+  background: #f7fbfe;
+  min-width: 0;
+}
+
+.lab-fieldset legend {
+  padding: 0 0.35rem;
+  font-weight: 700;
+  color: var(--color-institutional-dark);
+}
+
+.lab-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-top: 0.65rem;
+  font-weight: 600;
+  color: var(--color-institutional-dark);
+}
+
+.lab-field input[type="date"] {
+  font: inherit;
+  font-weight: 600;
+  color: var(--color-text);
+  padding: 0.45rem 0.55rem;
+  border-radius: 8px;
+  border: 1px solid rgba(26, 111, 168, 0.4);
+  background: #fff;
+  max-width: 100%;
+}
+
+.lab-results {
+  display: grid;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+@media (min-width: 900px) {
+  .lab-results.has-compare {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.lab-stats {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.55rem 1rem;
+  margin: 0.5rem 0 0;
+}
+
+@media (min-width: 560px) {
+  .lab-stats {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.lab-stats > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.55rem 0.65rem;
+  border-radius: 8px;
+  background: #f4f9fc;
+  border: 1px solid rgba(26, 111, 168, 0.12);
+  min-width: 0;
+}
+
+.lab-stats dt {
+  color: var(--color-text-soft);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.lab-stats dd {
+  margin: 0;
+  color: #1a6fa8;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+
+.lab-empty {
+  margin: 0;
+  color: var(--color-text-soft);
+}
+
+.lab-chart-card,
+.lab-cite-card,
+.lab-packs,
+.lab-meta-card {
+  margin-top: 1rem;
+}
+
+.lab-cite {
+  margin: 0.35rem 0 0;
+  padding: 0.75rem 0.85rem;
+  border-radius: 8px;
+  background: #fff8e8;
+  border: 1px solid #f1dfb0;
+  color: var(--color-text);
+  line-height: 1.45;
+}
+
+.lab-packs__actions {
+  margin-top: 0.75rem;
+}
+
+#lab-status.is-error {
+  color: #7a1532;
+  font-weight: 700;
+}
+
+@media (max-width: 700px) {
+  .section--lab {
+    padding-left: 0.85rem;
+    padding-right: 0.85rem;
+  }
+
+  .section--lab .card {
+    padding: 0.95rem 0.85rem;
+  }
+
+  .lab-packs__actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .lab-packs__actions .btn {
+    width: 100%;
+    text-align: center;
+    white-space: normal;
+  }
+}
