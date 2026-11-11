@@ -110,6 +110,10 @@ window.I18N_DICT = {
     es: "Laboratorio de datos hídricos",
     en: "Water data lab"
   },
+  "nav.embalsesCotas": {
+    es: "Embalses y cotas",
+    en: "Reservoirs and levels"
+  },
   "nav.documentos": {
     es: "Marco normativo",
     en: "Regulatory framework"
@@ -414,6 +418,71 @@ window.I18N_DICT = {
   "sec.hidro.cta.lab": {
     es: "Ir al Laboratorio de datos hídricos",
     en: "Go to the Water data lab"
+  },
+
+  "sec.emb.kicker": {
+    es: "Monitoreo",
+    en: "Monitoring"
+  },
+  "sec.emb.title": {
+    es: "Embalses y cotas",
+    en: "Reservoirs and levels"
+  },
+  "sec.emb.intro": {
+    es: 'Niveles de los principales embalses del sistema del río San Juan. Elegí un año para ver la cota media, máxima o mínima, el esquema de llenado y la evolución diaria. Serie disponible desde 2014–2015 (según embalse), sin interpolación. <a href="#datos-hidrologicos">Laboratorio de datos hídricos</a>.',
+    en: 'Levels of the main reservoirs in the San Juan River system. Choose a year to see mean, maximum or minimum elevation, a fill schematic, and the daily series. Available from 2014–2015 (by reservoir), with no interpolation. <a href="#datos-hidrologicos">Water data lab</a>.'
+  },
+  "sec.emb.year": {
+    es: "Año",
+    en: "Year"
+  },
+  "sec.emb.metricLabel": {
+    es: "Indicador",
+    en: "Indicator"
+  },
+  "sec.emb.metric.media": {
+    es: "Cota media anual",
+    en: "Annual mean level"
+  },
+  "sec.emb.metric.max": {
+    es: "Cota máxima",
+    en: "Maximum level"
+  },
+  "sec.emb.metric.min": {
+    es: "Cota mínima",
+    en: "Minimum level"
+  },
+  "sec.emb.yearNote": {
+    es: "Mostrando el año {year}. El esquema usa la escala operativa del embalse; no es un mapa topográfico.",
+    en: "Showing year {year}. The schematic uses the reservoir’s operational scale; it is not a topographic map."
+  },
+  "sec.emb.days": {
+    es: "{n} días con dato en el año",
+    en: "{n} days with data in the year"
+  },
+  "sec.emb.lastVol": {
+    es: "Última lectura del año · vol. {vol} · disp. {disp}",
+    en: "Last reading of the year · vol. {vol} · avail. {disp}"
+  },
+  "sec.emb.spark": {
+    es: "Cota diaria {year}",
+    en: "Daily level {year}"
+  },
+  "sec.emb.source": {
+    es: "Fuente:",
+    en: "Source:"
+  },
+  "sec.emb.dl": {
+    es: "Descargar cotas (CSV)",
+    en: "Download levels (CSV)"
+  },
+  "sec.emb.status.loading": {
+    es: "Cargando cotas de embalses…",
+    en: "Loading reservoir levels…"
+  },
+  "sec.emb.status.error": {
+    es: "No se pudieron cargar las cotas. Probá recargar la página.",
+    en: "Could not load reservoir levels. Try reloading the page."
   },
 
   "sec.lab.kicker": {

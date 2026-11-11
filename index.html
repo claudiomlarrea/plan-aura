@@ -12,7 +12,7 @@
     <link rel="canonical" href="https://plan-aura.com.ar/" />
     <link rel="icon" type="image/png" href="assets/logo-aura-gota-filete.png" />
     <link rel="stylesheet" href="css/variables.css?v=51" />
-    <link rel="stylesheet" href="css/styles.css?v=72" />
+    <link rel="stylesheet" href="css/styles.css?v=73" />
     <link rel="stylesheet" href="css/biblioteca-agua.css?v=2" />
   </head>
   <body>
@@ -106,6 +106,11 @@
                   <li>
                     <a href="#datos-hidrologicos" data-i18n="nav.datosHidrologicos"
                       >Laboratorio de datos hídricos</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#embalses-cotas" data-i18n="nav.embalsesCotas"
+                      >Embalses y cotas</a
                     >
                   </li>
                 </ul>
@@ -704,6 +709,54 @@
               >
             </div>
           </div>
+        </div>
+      </section>
+
+      <section
+        class="section section--emb page-panel"
+        id="embalses-cotas"
+        data-page="embalses-cotas"
+        aria-labelledby="sec-emb"
+      >
+        <div class="section-inner">
+          <header class="section-head section-head--bar section-head--water">
+            <p class="section-kicker" data-i18n="sec.emb.kicker">Monitoreo</p>
+            <h2 id="sec-emb" data-i18n="sec.emb.title">Embalses y cotas</h2>
+          </header>
+          <p class="text-intro" data-i18n-html="sec.emb.intro">
+            Niveles de los principales embalses del sistema del río San Juan.
+            Elegí un año para ver la cota media, máxima o mínima, el esquema de
+            llenado y la evolución diaria. Serie disponible desde 2014–2015
+            (según embalse), sin interpolación.
+            <a href="#datos-hidrologicos">Laboratorio de datos hídricos</a>.
+          </p>
+
+          <div class="card emb-controls">
+            <div class="emb-controls__row">
+              <label class="hidro-year" for="emb-year">
+                <span data-i18n="sec.emb.year">Año</span>
+                <select id="emb-year"></select>
+              </label>
+              <label class="hidro-year" for="emb-metric">
+                <span data-i18n="sec.emb.metricLabel">Indicador</span>
+                <select id="emb-metric">
+                  <option value="media">Cota media anual</option>
+                  <option value="max">Cota máxima</option>
+                  <option value="min">Cota mínima</option>
+                </select>
+              </label>
+            </div>
+            <p class="hidro-note" id="emb-year-note"></p>
+            <p class="hidro-status" id="emb-status" role="status"></p>
+          </div>
+
+          <div class="emb-grid" id="emb-grid"></div>
+
+          <p class="hidro-fuente stack-gap-top">
+            <span data-i18n="sec.emb.source">Fuente:</span>
+            Departamento de Hidráulica de San Juan · planilla diaria «Distribución de Riego».
+            <a href="hidrologia/niveles_embalses.csv" download data-i18n="sec.emb.dl">Descargar cotas (CSV)</a>
+          </p>
         </div>
       </section>
 
@@ -1432,6 +1485,11 @@
                   >Laboratorio de datos hídricos</a
                 >
               </li>
+              <li>
+                <a href="#embalses-cotas" data-i18n="nav.embalsesCotas"
+                  >Embalses y cotas</a
+                >
+              </li>
             </ul>
           </div>
           <div class="footer-col">
@@ -1511,7 +1569,7 @@
       </form>
     </div>
 
-    <script src="js/i18n-dict.js?v=52" defer></script>
+    <script src="js/i18n-dict.js?v=53" defer></script>
     <script src="js/i18n.js?v=7" defer></script>
     <script src="js/main.js?v=5" defer></script>
     <script src="js/galeria-config.js?v=8" defer></script>
@@ -1527,5 +1585,6 @@
     <script src="js/hidrologia.js?v=9" defer></script>
     <script src="js/hidrologia-historica.js?v=3" defer></script>
     <script src="js/hidro-lab.js?v=1" defer></script>
+    <script src="js/embalses.js?v=1" defer></script>
   </body>
 </html>

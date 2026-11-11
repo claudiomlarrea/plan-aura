@@ -3535,3 +3535,101 @@ body.gallery-lightbox-open .mesa-ayuda-panel {
     white-space: normal;
   }
 }
+
+/* Embalses y cotas */
+.emb-controls {
+  margin-bottom: 1rem;
+}
+
+.emb-controls__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem 1.25rem;
+  align-items: flex-end;
+}
+
+.emb-controls .hidro-year {
+  flex: 1 1 12rem;
+  min-width: 0;
+}
+
+.emb-controls .hidro-year select {
+  width: 100%;
+  max-width: none;
+}
+
+.emb-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 800px) {
+  .emb-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.emb-card h3 {
+  margin-bottom: 0.65rem;
+}
+
+.emb-visual {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 0.75rem;
+  align-items: center;
+}
+
+@media (max-width: 520px) {
+  .emb-visual {
+    grid-template-columns: 1fr;
+  }
+}
+
+.emb-svg {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  display: block;
+}
+
+.emb-cota {
+  margin: 0 0 0.35rem;
+  font-size: clamp(1.35rem, 2.4vw, 1.7rem);
+  font-weight: 700;
+  line-height: 1.15;
+  font-variant-numeric: tabular-nums;
+}
+
+.emb-cota small {
+  font-size: 0.55em;
+  font-weight: 700;
+}
+
+.emb-meta {
+  margin: 0.2rem 0 0;
+  color: var(--color-text-soft);
+  font-size: 0.86rem;
+}
+
+.emb-spark {
+  margin-top: 0.85rem;
+  height: 140px;
+}
+
+#emb-status.is-error {
+  color: #7a1532;
+  font-weight: 700;
+}
+
+@media (max-width: 700px) {
+  .section--emb {
+    padding-left: 0.85rem;
+    padding-right: 0.85rem;
+  }
+
+  .section--emb .card {
+    padding: 0.95rem 0.85rem;
+  }
+}
