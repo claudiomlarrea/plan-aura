@@ -681,13 +681,15 @@ a:hover {
   font-weight: 600;
 }
 
-.hero-mail a {
+.hero-mail a,
+.hero-lead a {
   color: var(--color-on-dark);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
-.hero-mail a:hover {
+.hero-mail a:hover,
+.hero-lead a:hover {
   color: #fff;
 }
 

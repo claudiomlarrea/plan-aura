@@ -152,8 +152,8 @@ window.I18N_DICT = {
     en: "Integral Plan for Water Conservation and Responsible Use"
   },
   "hero.lead": {
-    es: "<strong>Coordinadora general del Plan Integral:</strong> María Laura Simonassi<br /><strong>Coordinador Técnico:</strong> Ing. Luis Jiménez",
-    en: "<strong>General Coordinator of the Integral Plan:</strong> María Laura Simonassi<br /><strong>Technical Coordinator:</strong> Eng. Luis Jiménez"
+    es: "<strong>Coordinadora general del Plan Integral:</strong> María Laura Simonassi<br /><strong>Coordinador Técnico:</strong> Ing. Luis Jiménez · <a href=\"mailto:luisjimenez@uccuyo.edu.ar\">luisjimenez@uccuyo.edu.ar</a>",
+    en: "<strong>General Coordinator of the Integral Plan:</strong> María Laura Simonassi<br /><strong>Technical Coordinator:</strong> Eng. Luis Jiménez · <a href=\"mailto:luisjimenez@uccuyo.edu.ar\">luisjimenez@uccuyo.edu.ar</a>"
   },
   "hero.cta.convocatorias": {
     es: "Convocatorias",
@@ -195,11 +195,6 @@ window.I18N_DICT = {
     es: "Visitas al Plan AURA",
     en: "Plan AURA visits"
   },
-  "hero.director": {
-    es: 'Coordinador Técnico: <a href="mailto:luisjimenez@uccuyo.edu.ar">luisjimenez@uccuyo.edu.ar</a>',
-    en: 'Technical Coordinator: <a href="mailto:luisjimenez@uccuyo.edu.ar">luisjimenez@uccuyo.edu.ar</a>'
-  },
-
   "sec.elPlan.kicker": {
     es: "Identidad",
     en: "Identity"
