@@ -3161,10 +3161,206 @@ body.gallery-lightbox-open .mesa-ayuda-panel {
   border-bottom: 1px dotted #7a1532;
 }
 
+.hidro-detail {
+  min-width: 0;
+  max-width: 100%;
+}
+
 .hidro-detail-tabs {
-  margin: 0.2rem 0 0.45rem;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.35rem;
+  margin: 0.2rem 0 0.55rem;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  padding-bottom: 0.15rem;
 }
 
 .hidro-detail-tabs button {
+  flex: 0 0 auto;
   font-size: 0.82rem;
+}
+
+/* Móvil: Recursos / Información hidrológica básica */
+@media (max-width: 700px) {
+  .section--hidro {
+    padding-left: 0.85rem;
+    padding-right: 0.85rem;
+  }
+
+  .section--hidro .card {
+    padding: 0.95rem 0.85rem;
+  }
+
+  .section--hidro .text-intro,
+  .section--hidro .hidro-note,
+  .section--hidro .hidro-fuente,
+  .section--hidro .hidro-meta,
+  .section--hidro .hidro-tend {
+    font-size: 0.9rem;
+    overflow-wrap: anywhere;
+  }
+
+  .section--hidro h3,
+  .section--hidro h4 {
+    overflow-wrap: anywhere;
+    line-height: 1.25;
+  }
+
+  .hidro-kpis {
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+  }
+
+  .hidro-kpi {
+    padding: 0.75rem 0.8rem 0.7rem;
+  }
+
+  .hidro-kpi .v {
+    white-space: normal;
+    font-size: 1.28rem;
+    overflow-wrap: anywhere;
+  }
+
+  .hidro-kpi-level {
+    gap: 0.5rem;
+  }
+
+  .hidro-kpi-level__name {
+    white-space: normal;
+  }
+
+  .hidro-decadas-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hidro-decadas-bar .btn {
+    width: 100%;
+  }
+
+  .hidro-year {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .hidro-year select,
+  .hidro-decadas-bar .hidro-year select,
+  .hidro-decada-nav select {
+    width: 100%;
+    max-width: none;
+  }
+
+  .hidro-block-head {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hidro-chart-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hidro-chart-toolbar .hidro-tabs,
+  .hidro-tabs {
+    width: 100%;
+  }
+
+  .hidro-tabs button {
+    flex: 1 1 auto;
+    text-align: center;
+    white-space: normal;
+    line-height: 1.2;
+    padding: 0.45rem 0.65rem;
+  }
+
+  .hidro-decada-nav {
+    width: 100%;
+    flex: 1 1 auto;
+  }
+
+  .hidro-table {
+    min-width: 36rem;
+    font-size: 0.84rem;
+  }
+
+  .hidro-table--decadas {
+    min-width: 52rem;
+  }
+
+  .hidro-table th,
+  .hidro-table td {
+    padding: 0.38rem 0.5rem;
+  }
+
+  .hidro-table-wrap--scroll {
+    max-height: 22rem;
+  }
+
+  .hidro-table-wrap,
+  .hidro-month-scroll {
+    overscroll-behavior-x: contain;
+  }
+
+  .hidro-decada-detail td {
+    padding: 0.45rem 0.3rem;
+    white-space: normal;
+  }
+
+  .hidro-detail {
+    position: sticky;
+    left: 0;
+    width: calc(100vw - 3.2rem);
+    max-width: calc(100vw - 3.2rem);
+    box-sizing: border-box;
+  }
+
+  .hidro-detail-tabs {
+    flex-wrap: wrap;
+    overflow: visible;
+  }
+
+  .hidro-detail-tabs button {
+    flex: 1 1 8rem;
+  }
+
+  .hidro-month {
+    min-width: 40rem;
+    font-size: 0.78rem;
+  }
+
+  .hidro-month-scroll {
+    max-width: 100%;
+  }
+
+  .hidro-chart,
+  .hidro-chart--acum {
+    height: 240px;
+  }
+
+  .hidro-chart--anual,
+  .hidro-chart-card--wide .hidro-chart {
+    height: 220px;
+  }
+
+  .hidro-dl__actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.45rem;
+  }
+
+  .hidro-dl__actions .btn,
+  .section--hidro .hidro-datos .btn {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    white-space: normal;
+    line-height: 1.25;
+  }
+
+  .section--hidro .grid-2 {
+    gap: 0.75rem;
+  }
 }
