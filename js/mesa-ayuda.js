@@ -91,13 +91,25 @@
       keywords: [
         "embalse",
         "embalses",
+        "embalses y cotas",
         "punta negra",
         "ullum",
         "caracoles",
         "cuesta del viento",
         "cota"
       ],
-      extra: ["nivel", "niveles"]
+      extra: ["nivel", "niveles", "esquema"]
+    },
+    laboratorio: {
+      keywords: [
+        "laboratorio",
+        "laboratorio de datos",
+        "datos hidricos",
+        "indicadores hidrologicos",
+        "recorte",
+        "comparar periodos"
+      ],
+      extra: ["estadistica", "estadisticas", "periodo a", "periodo b"]
     },
     descargas: {
       keywords: [
@@ -110,7 +122,7 @@
         "png",
         "pdf de la serie"
       ],
-      extra: ["tabla", "serie"]
+      extra: ["tabla", "serie", "manifest"]
     },
     presentar: {
       keywords: [
@@ -156,18 +168,19 @@
 
   var QUICK_IDS = [
     "hidro",
-    "caudal",
+    "laboratorio",
     "embalses",
+    "caudal",
     "estres",
-    "descargas",
-    "presentar"
+    "descargas"
   ];
 
   function labelFor(id) {
     var map = {
       hidro: ["bot.q.hidro", "Información hidrológica básica"],
+      laboratorio: ["bot.q.laboratorio", "Laboratorio de datos hídricos"],
       caudal: ["bot.q.caudal", "Caudal Km 101"],
-      embalses: ["bot.q.embalses", "Embalses"],
+      embalses: ["bot.q.embalses", "Embalses y cotas"],
       estres: ["bot.q.estres", "Qué es estrés hídrico"],
       ciclo: ["bot.q.ciclo", "Ciclo hidrológico"],
       nival: ["bot.q.nival", "Régimen nival"],
@@ -324,15 +337,30 @@
   function htmlEmbalses() {
     if (lang() === "en") {
       return (
-        "<p><strong>Reservoirs</strong></p>" +
-        "<p>The section reports levels (m a.s.l.) for Punta Negra, Ullum, Los Caracoles and Cuesta del Viento, plus annual mean/max/min. Data come from the Hydraulics daily irrigation sheet.</p>" +
-        "<p>Open <a href=\"#caudales-embalses\">flows and reservoirs</a>.</p>"
+        "<p><strong>Reservoirs and levels</strong></p>" +
+        "<p>Choose a year to see mean, max or min elevation for Punta Negra, Ullum, Los Caracoles and Cuesta del Viento, with a fill schematic and the daily series. Data start around 2014–2015.</p>" +
+        "<p>Open <a href=\"#embalses-cotas\">Reservoirs and levels</a>.</p>"
       );
     }
     return (
-      "<p><strong>Embalses</strong></p>" +
-      "<p>La sección muestra cotas (m s.n.m.) de Punta Negra, Ullum, Los Caracoles y Cuesta del Viento, y resúmenes anuales (media, máxima y mínima). Los datos salen de la planilla diaria de riego de Hidráulica.</p>" +
-      "<p>Abrí <a href=\"#caudales-embalses\">caudales y embalses</a>.</p>"
+      "<p><strong>Embalses y cotas</strong></p>" +
+      "<p>Elegí un año para ver la cota media, máxima o mínima de Punta Negra, Ullum, Los Caracoles y Cuesta del Viento, con un esquema de llenado y la serie diaria. La serie arranca hacia 2014–2015.</p>" +
+      "<p>Abrí <a href=\"#embalses-cotas\">Embalses y cotas</a>.</p>"
+    );
+  }
+
+  function htmlLaboratorio() {
+    if (lang() === "en") {
+      return (
+        "<p><strong>Water data lab</strong></p>" +
+        "<p>Extract the daily Km 101 series from 1910, compute statistics for a period, optionally compare a second span, download the CSV subset and copy a citation. Unpublished days are not interpolated.</p>" +
+        "<p>Open <a href=\"#datos-hidrologicos\">Water data lab</a>.</p>"
+      );
+    }
+    return (
+      "<p><strong>Laboratorio de datos hídricos</strong></p>" +
+      "<p>Extraé la serie diaria de Km 101 desde 1910, calculá estadísticas de un período, compará otro tramo si hace falta, descargá el recorte CSV y copiá una cita. Los días sin dato no se interpolan.</p>" +
+      "<p>Abrí <a href=\"#datos-hidrologicos\">Laboratorio de datos hídricos</a>.</p>"
     );
   }
 
@@ -340,14 +368,12 @@
     if (lang() === "en") {
       return (
         "<p><strong>Download data</strong></p>" +
-        "<p>At the end of the hydrology section you can download CSV/Excel/JSON series, annual summaries, reservoir levels, and PNG/PDF charts. Files use the same published data shown on the page.</p>" +
-        "<p>Go to <a href=\"#hidro-descargas\">Download data</a>.</p>"
+        "<p>Use the <a href=\"#datos-hidrologicos\">Water data lab</a> for a date-range CSV, or the package links there and in <a href=\"#hidro-descargas\">Download data</a> for the full daily series, annual summaries, reservoir levels and charts.</p>"
       );
     }
     return (
       "<p><strong>Descargar datos</strong></p>" +
-      "<p>Al final de la sección hidrológica podés bajar series en CSV/Excel/JSON, resúmenes anuales, niveles de embalses y gráficos PNG/PDF. Los archivos usan los mismos datos publicados que ves en la página.</p>" +
-      "<p>Andá a <a href=\"#hidro-descargas\">Descargar datos</a>.</p>"
+      "<p>Usá el <a href=\"#datos-hidrologicos\">Laboratorio de datos hídricos</a> para un CSV por rango de fechas, o los paquetes de ahí y de <a href=\"#hidro-descargas\">Descargar datos</a> para la serie diaria completa, resúmenes anuales, cotas y gráficos.</p>"
     );
   }
 
@@ -414,27 +440,28 @@
   function htmlFallback() {
     if (lang() === "en") {
       return (
-        "<p>I can help with <strong>hydrology</strong> (Km 101 flow, reservoirs, downloads, water stress), the Plan, or the call. Try the quick buttons or open <a href=\"#info-hidrologica\">Basic hydrological information</a>. Write to <a href=\"mailto:" + MAIL + "\">" + MAIL + "</a> if needed.</p>"
+        "<p>I can help with <strong>hydrology</strong> (basic info, data lab, reservoirs, downloads), the Plan, or the call. Try the quick buttons or open <a href=\"#info-hidrologica\">Basic hydrological information</a>. Write to <a href=\"mailto:" + MAIL + "\">" + MAIL + "</a> if needed.</p>"
       );
     }
     return (
-      "<p>Puedo ayudarte con <strong>hidrología</strong> (caudal Km 101, embalses, descargas, estrés hídrico), el Plan o la convocatoria. Probá los botones o abrí <a href=\"#info-hidrologica\">Información hidrológica básica</a>. Consultas: <a href=\"mailto:" + MAIL + "\">" + MAIL + "</a>.</p>"
+      "<p>Puedo ayudarte con <strong>hidrología</strong> (información básica, laboratorio, embalses, descargas), el Plan o la convocatoria. Probá los botones o abrí <a href=\"#info-hidrologica\">Información hidrológica básica</a>. Consultas: <a href=\"mailto:" + MAIL + "\">" + MAIL + "</a>.</p>"
     );
   }
 
   function htmlGreeting() {
     if (lang() === "en") {
       return (
-        "<p>This is the <strong>Help desk</strong> of Plan AURA. Ask about flow, reservoirs, water stress or how to use the hydrology section.</p>"
+        "<p>This is the <strong>Help desk</strong> of Plan AURA. Ask about the data lab, reservoirs and levels, flow at Km 101 or water stress.</p>"
       );
     }
     return (
-      "<p>Soy la <strong>Mesa de ayuda</strong> del Plan AURA. Preguntame por caudal, embalses, estrés hídrico o cómo usar la sección de <strong>información hidrológica básica</strong>.</p>"
+      "<p>Soy la <strong>Mesa de ayuda</strong> del Plan AURA. Preguntame por el <strong>laboratorio de datos hídricos</strong>, <strong>embalses y cotas</strong>, caudal Km 101 o estrés hídrico.</p>"
     );
   }
 
   function renderFor(id) {
     if (id === "hidro") return htmlHidro();
+    if (id === "laboratorio") return htmlLaboratorio();
     if (id === "caudal") return htmlCaudal();
     if (id === "embalses") return htmlEmbalses();
     if (id === "descargas") return htmlDescargas();

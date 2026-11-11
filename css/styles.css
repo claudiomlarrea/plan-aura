@@ -2544,12 +2544,54 @@ body.gallery-lightbox-open .mesa-ayuda-panel {
     left: 0.5rem;
     width: auto;
     bottom: 4.2rem;
-    max-height: calc(100vh - 5.8rem);
+    max-height: min(78vh, calc(100dvh - 5.5rem));
   }
 
   .mesa-ayuda-fab {
     font-size: 0.8rem;
     padding: 0.5rem 0.8rem;
+    right: max(0.65rem, env(safe-area-inset-right, 0px));
+    bottom: max(0.65rem, env(safe-area-inset-bottom, 0px));
+  }
+
+  .mesa-ayuda-log {
+    max-height: 42vh;
+  }
+
+  .mesa-ayuda-quick {
+    gap: 0.35rem;
+    max-height: 7.5rem;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .mesa-ayuda-quick button {
+    flex: 1 1 calc(50% - 0.35rem);
+    text-align: center;
+    white-space: normal;
+    line-height: 1.2;
+    padding: 0.42rem 0.55rem;
+    border-radius: 10px;
+  }
+
+  .mesa-ayuda-form {
+    flex-wrap: wrap;
+  }
+
+  .mesa-ayuda-form .btn {
+    width: 100%;
+  }
+
+  .mesa-ayuda-card .tile-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.45rem;
+  }
+
+  .mesa-ayuda-card .tile-actions .btn {
+    width: 100%;
+    text-align: center;
+    white-space: normal;
   }
 
   .site-footer {
@@ -3524,6 +3566,31 @@ body.gallery-lightbox-open .mesa-ayuda-panel {
     padding: 0.95rem 0.85rem;
   }
 
+  .lab-fieldset {
+    padding: 0.75rem 0.7rem;
+  }
+
+  .lab-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .lab-cite {
+    font-size: 0.88rem;
+    overflow-wrap: anywhere;
+  }
+
+  .section--lab .tile-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.45rem;
+  }
+
+  .section--lab .tile-actions .btn {
+    width: 100%;
+    text-align: center;
+    white-space: normal;
+  }
+
   .lab-packs__actions {
     display: grid;
     grid-template-columns: 1fr;
@@ -3631,5 +3698,44 @@ body.gallery-lightbox-open .mesa-ayuda-panel {
 
   .section--emb .card {
     padding: 0.95rem 0.85rem;
+  }
+
+  .emb-controls__row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .emb-controls .hidro-year {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+
+  .emb-visual {
+    grid-template-columns: 1fr;
+    gap: 0.55rem;
+  }
+
+  .emb-svg {
+    max-height: 11rem;
+    margin: 0 auto;
+  }
+
+  .emb-cota {
+    font-size: 1.35rem;
+    overflow-wrap: anywhere;
+  }
+
+  .emb-meta {
+    font-size: 0.84rem;
+    overflow-wrap: anywhere;
+  }
+
+  .emb-spark {
+    height: 120px;
+  }
+
+  .section--emb .hidro-fuente {
+    font-size: 0.88rem;
+    overflow-wrap: anywhere;
   }
 }

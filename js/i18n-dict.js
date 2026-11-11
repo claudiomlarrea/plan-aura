@@ -2318,28 +2318,32 @@ window.I18N_DICT = {
     en: "Question"
   },
   "bot.input.placeholder": {
-    es: "Ej.: ¿qué es el estrés hídrico?",
-    en: "E.g.: what is water stress?"
+    es: "Ej.: ¿cómo uso el laboratorio de datos?",
+    en: "E.g.: how do I use the water data lab?"
   },
   "bot.card.title": {
     es: "Mesa de ayuda",
     en: "Help desk"
   },
   "bot.card.body": {
-    es: "Consultas frecuentes: caudal Km 101, embalses, descargas, estrés hídrico y la sección hidrológica. El bot responde con lo que dice este sitio; no carga archivos ni envía mails.",
-    en: "Frequent questions: Km 101 flow, reservoirs, downloads, water stress, and the hydrology section. The bot answers from this site; it does not upload files or send mail."
+    es: "Consultas frecuentes: información hidrológica, laboratorio de datos, embalses y cotas, caudal y descargas. El bot responde con lo que dice este sitio; no carga archivos ni envía mails.",
+    en: "Frequent questions: hydrological information, water data lab, reservoirs and levels, flow and downloads. The bot answers from this site; it does not upload files or send mail."
   },
   "bot.q.hidro": {
     es: "Información hidrológica básica",
     en: "Basic hydrological information"
+  },
+  "bot.q.laboratorio": {
+    es: "Laboratorio de datos hídricos",
+    en: "Water data lab"
   },
   "bot.q.caudal": {
     es: "Caudal Km 101",
     en: "Flow at Km 101"
   },
   "bot.q.embalses": {
-    es: "Embalses",
-    en: "Reservoirs"
+    es: "Embalses y cotas",
+    en: "Reservoirs and levels"
   },
   "bot.q.descargas": {
     es: "Descargar datos",
