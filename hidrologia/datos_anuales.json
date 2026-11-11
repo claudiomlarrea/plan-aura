@@ -1,5 +1,5 @@
 {
- "generado": "2026-11-05",
+ "generado": "2026-11-10",
  "zona_horaria": "America/Argentina/San_Juan",
  "criterio_completo": ">= 330 días con dato",
  "fuentes": [
@@ -1423,14 +1423,14 @@
    },
    {
     "anio": 2026,
-    "dias_con_dato": 257,
+    "dias_con_dato": 258,
     "completo": false,
-    "media_m3s": 25.702,
-    "max_m3s": 74.07,
-    "fecha_max": "2026-11-02",
+    "media_m3s": 25.964,
+    "max_m3s": 93.47,
+    "fecha_max": "2026-11-09",
     "min_m3s": 16.062,
     "fecha_min": "2026-04-16",
-    "derrame_hm3": 570.7,
+    "derrame_hm3": 578.8,
     "anomalia_media_pct": null
    }
   ],
@@ -2841,14 +2841,14 @@
    },
    {
     "anio": "2026-27",
-    "dias_con_dato": 115,
+    "dias_con_dato": 116,
     "completo": false,
-    "media_m3s": 30.369,
-    "max_m3s": 74.07,
-    "fecha_max": "2026-11-02",
+    "media_m3s": 30.913,
+    "max_m3s": 93.47,
+    "fecha_max": "2026-11-09",
     "min_m3s": 18.929,
     "fecha_min": "2026-07-05",
-    "derrame_hm3": 301.7,
+    "derrame_hm3": 309.8,
     "anomalia_media_pct": null
    }
   ],
@@ -3151,17 +3151,17 @@
     "anio": 2021,
     "media_m3s": 17.732
    },
-   "registros_diarios": 42452,
+   "registros_diarios": 42453,
    "desde": "1910-01-01",
-   "hasta": "2026-11-04"
+   "hasta": "2026-11-09"
   }
  },
  "embalses": {
   "Punta Negra": {
    "unidad": "m.s.n.m.",
-   "registros": 3883,
+   "registros": 3884,
    "desde": "2015-12-23",
-   "hasta": "2026-11-05",
+   "hasta": "2026-11-10",
    "anio_calendario": [
     {
      "anio": 2015,
@@ -3275,7 +3275,7 @@
     },
     {
      "anio": 2026,
-     "dias_con_dato": 299,
+     "dias_con_dato": 300,
      "completo": false,
      "media_msnm": 923.61,
      "max_msnm": 926.9,
@@ -3410,9 +3410,9 @@
     },
     {
      "anio": "2026-27",
-     "dias_con_dato": 124,
+     "dias_con_dato": 125,
      "completo": false,
-     "media_msnm": 923.37,
+     "media_msnm": 923.38,
      "max_msnm": 926.9,
      "fecha_max": "2026-08-24",
      "min_msnm": 920.19,
@@ -3435,9 +3435,9 @@
   },
   "Ullum": {
    "unidad": "m.s.n.m.",
-   "registros": 4263,
+   "registros": 4264,
    "desde": "2014-12-01",
-   "hasta": "2026-11-05",
+   "hasta": "2026-11-10",
    "anio_calendario": [
     {
      "anio": 2014,
@@ -3561,9 +3561,9 @@
     },
     {
      "anio": 2026,
-     "dias_con_dato": 299,
+     "dias_con_dato": 300,
      "completo": false,
-     "media_msnm": 755.9,
+     "media_msnm": 755.91,
      "max_msnm": 762.24,
      "fecha_max": "2026-09-07",
      "min_msnm": 751.03,
@@ -3706,7 +3706,7 @@
     },
     {
      "anio": "2026-27",
-     "dias_con_dato": 124,
+     "dias_con_dato": 125,
      "completo": false,
      "media_msnm": 759.68,
      "max_msnm": 762.24,
@@ -3731,9 +3731,9 @@
   },
   "Los Caracoles": {
    "unidad": "m.s.n.m.",
-   "registros": 4252,
+   "registros": 4253,
    "desde": "2014-12-01",
-   "hasta": "2026-11-05",
+   "hasta": "2026-11-10",
    "anio_calendario": [
     {
      "anio": 2014,
@@ -3857,7 +3857,7 @@
     },
     {
      "anio": 2026,
-     "dias_con_dato": 297,
+     "dias_con_dato": 298,
      "completo": false,
      "media_msnm": 1083.91,
      "max_msnm": 1087.4,
@@ -4002,9 +4002,9 @@
     },
     {
      "anio": "2026-27",
-     "dias_con_dato": 124,
+     "dias_con_dato": 125,
      "completo": false,
-     "media_msnm": 1083.07,
+     "media_msnm": 1083.09,
      "max_msnm": 1086.58,
      "fecha_max": "2026-08-03",
      "min_msnm": 1080.54,
@@ -4027,9 +4027,9 @@
   },
   "Cuesta del Viento": {
    "unidad": "m.s.n.m.",
-   "registros": 4059,
+   "registros": 4060,
    "desde": "2014-12-01",
-   "hasta": "2026-11-05",
+   "hasta": "2026-11-10",
    "anio_calendario": [
     {
      "anio": 2014,
@@ -4153,7 +4153,7 @@
     },
     {
      "anio": 2026,
-     "dias_con_dato": 262,
+     "dias_con_dato": 263,
      "completo": false,
      "media_msnm": 1522.69,
      "max_msnm": 1524.1,
@@ -4298,7 +4298,7 @@
     },
     {
      "anio": "2026-27",
-     "dias_con_dato": 112,
+     "dias_con_dato": 113,
      "completo": false,
      "media_msnm": 1523.59,
      "max_msnm": 1524.1,

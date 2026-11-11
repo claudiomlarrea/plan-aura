@@ -10,7 +10,7 @@ Punta Negra;anio_calendario;2022;363;True;916,56;926,53;2022-08-20;907,25;2022-0
 Punta Negra;anio_calendario;2023;363;True;921,99;925,13;2023-12-18;919,93;2023-04-22
 Punta Negra;anio_calendario;2024;353;True;922,34;924,75;2024-04-08;920,13;2024-10-12
 Punta Negra;anio_calendario;2025;361;True;927,39;935,71;2025-08-30;921,18;2025-01-11
-Punta Negra;anio_calendario;2026;299;False;923,61;926,9;2026-08-24;920,19;2026-07-13
+Punta Negra;anio_calendario;2026;300;False;923,61;926,9;2026-08-24;920,19;2026-07-13
 Punta Negra;anio_hidrologico;2015-16;191;False;898,82;922,85;2016-06-26;879,53;2016-01-04
 Punta Negra;anio_hidrologico;2016-17;336;True;934,39;949,3;2017-06-10;919,8;2016-10-28
 Punta Negra;anio_hidrologico;2017-18;344;True;939,65;949,4;2017-09-04;929,3;2018-05-12
@@ -22,7 +22,7 @@ Punta Negra;anio_hidrologico;2022-23;365;True;921,44;926,53;2022-08-20;919,52;20
 Punta Negra;anio_hidrologico;2023-24;354;True;923,02;925,13;2023-12-18;920,2;2023-08-13
 Punta Negra;anio_hidrologico;2024-25;360;True;923,09;931,9;2025-06-29;920,13;2024-10-12
 Punta Negra;anio_hidrologico;2025-26;357;True;926,97;935,71;2025-08-30;922,08;2026-06-29
-Punta Negra;anio_hidrologico;2026-27;124;False;923,37;926,9;2026-08-24;920,19;2026-07-13
+Punta Negra;anio_hidrologico;2026-27;125;False;923,38;926,9;2026-08-24;920,19;2026-07-13
 Ullum;anio_calendario;2014;30;False;750,53;752,32;2014-12-26;749,04;2014-12-04
 Ullum;anio_calendario;2015;354;True;754,6;757,2;2015-11-23;750,46;2015-03-10
 Ullum;anio_calendario;2016;357;True;755,96;764,15;2016-12-31;744,6;2016-06-04
@@ -35,7 +35,7 @@ Ullum;anio_calendario;2022;363;True;750,23;753,55;2022-02-07;746,61;2022-10-20
 Ullum;anio_calendario;2023;363;True;752,37;755,05;2023-11-11;748,68;2023-02-17
 Ullum;anio_calendario;2024;357;True;752,75;754,34;2024-06-13;748,54;2024-10-08
 Ullum;anio_calendario;2025;361;True;757,84;764,02;2025-08-11;749,92;2025-05-30
-Ullum;anio_calendario;2026;299;False;755,9;762,24;2026-09-07;751,03;2026-05-04
+Ullum;anio_calendario;2026;300;False;755,91;762,24;2026-09-07;751,03;2026-05-04
 Ullum;anio_hidrologico;2014-15;204;False;753,31;756,77;2015-05-23;749,04;2014-12-04
 Ullum;anio_hidrologico;2015-16;362;True;754,55;758,39;2016-02-25;744,6;2016-06-04
 Ullum;anio_hidrologico;2016-17;336;True;761,68;766,67;2017-06-24;747,72;2016-07-01
@@ -48,7 +48,7 @@ Ullum;anio_hidrologico;2022-23;365;True;750,32;753,99;2023-04-22;746,61;2022-10-
 Ullum;anio_hidrologico;2023-24;355;True;753,64;755,05;2023-11-11;751,08;2023-07-09
 Ullum;anio_hidrologico;2024-25;363;True;753,23;757,6;2025-03-05;748,54;2024-10-08
 Ullum;anio_hidrologico;2025-26;357;True;757,14;764,02;2025-08-11;751,03;2026-05-04
-Ullum;anio_hidrologico;2026-27;124;False;759,68;762,24;2026-09-07;755,67;2026-07-01
+Ullum;anio_hidrologico;2026-27;125;False;759,68;762,24;2026-09-07;755,67;2026-07-01
 Los Caracoles;anio_calendario;2014;30;False;1067,13;1074,97;2014-12-01;1057,71;2014-12-31
 Los Caracoles;anio_calendario;2015;354;True;1045,2;1074,0;2015-12-31;1022,87;2015-05-23
 Los Caracoles;anio_calendario;2016;357;True;1090,78;1109,77;2016-12-24;1074,88;2016-01-01
@@ -61,7 +61,7 @@ Los Caracoles;anio_calendario;2022;363;True;1030,43;1034,43;2022-05-15;1025,53;2
 Los Caracoles;anio_calendario;2023;363;True;1042,45;1069,05;2023-08-12;1026,05;2023-04-23
 Los Caracoles;anio_calendario;2024;357;True;1066,61;1089,95;2024-12-31;1044,6;2024-02-05
 Los Caracoles;anio_calendario;2025;354;True;1089,2;1097,95;2025-06-02;1082,89;2025-08-30
-Los Caracoles;anio_calendario;2026;297;False;1083,91;1087,4;2026-01-02;1080,54;2026-10-24
+Los Caracoles;anio_calendario;2026;298;False;1083,91;1087,4;2026-01-02;1080,54;2026-10-24
 Los Caracoles;anio_hidrologico;2014-15;204;False;1042,02;1074,97;2014-12-01;1022,87;2015-05-23
 Los Caracoles;anio_hidrologico;2015-16;362;True;1069,32;1094,98;2016-06-30;1032,42;2015-10-31
 Los Caracoles;anio_hidrologico;2016-17;336;True;1100,98;1110,05;2017-02-11;1084,92;2016-09-09
@@ -74,7 +74,7 @@ Los Caracoles;anio_hidrologico;2022-23;365;True;1032,03;1057,0;2023-06-30;1025,5
 Los Caracoles;anio_hidrologico;2023-24;355;True;1050,55;1069,05;2023-08-12;1031,1;2023-11-23
 Los Caracoles;anio_hidrologico;2024-25;360;True;1087,01;1097,95;2025-06-02;1065,7;2024-07-01
 Los Caracoles;anio_hidrologico;2025-26;351;True;1085,16;1092,8;2025-07-01;1080,7;2026-04-12
-Los Caracoles;anio_hidrologico;2026-27;124;False;1083,07;1086,58;2026-08-03;1080,54;2026-10-24
+Los Caracoles;anio_hidrologico;2026-27;125;False;1083,09;1086,58;2026-08-03;1080,54;2026-10-24
 Cuesta del Viento;anio_calendario;2014;30;False;1523,6;1523,6;2014-12-01;1523,6;2014-12-01
 Cuesta del Viento;anio_calendario;2015;354;True;1523,6;1523,6;2015-01-01;1523,6;2015-01-01
 Cuesta del Viento;anio_calendario;2016;357;True;1523,6;1523,6;2016-01-01;1523,6;2016-01-01
@@ -87,7 +87,7 @@ Cuesta del Viento;anio_calendario;2022;306;False;1522,18;1523,92;2022-12-03;1520
 Cuesta del Viento;anio_calendario;2023;311;False;1523,3;1525,54;2023-09-19;1520,28;2023-12-31
 Cuesta del Viento;anio_calendario;2024;326;False;1520,11;1522,59;2024-09-21;1517,32;2024-04-13
 Cuesta del Viento;anio_calendario;2025;333;True;1522,97;1526,69;2025-12-07;1519,84;2025-01-11
-Cuesta del Viento;anio_calendario;2026;262;False;1522,69;1524,1;2026-07-30;1520,67;2026-03-20
+Cuesta del Viento;anio_calendario;2026;263;False;1522,69;1524,1;2026-07-30;1520,67;2026-03-20
 Cuesta del Viento;anio_hidrologico;2014-15;204;False;1523,6;1523,6;2014-12-01;1523,6;2014-12-01
 Cuesta del Viento;anio_hidrologico;2015-16;362;True;1523,6;1523,6;2015-07-01;1523,6;2015-07-01
 Cuesta del Viento;anio_hidrologico;2016-17;336;True;1525,01;1528,79;2017-04-06;1523,6;2016-07-01
@@ -100,4 +100,4 @@ Cuesta del Viento;anio_hidrologico;2022-23;276;False;1522,96;1524,19;2023-06-30;
 Cuesta del Viento;anio_hidrologico;2023-24;312;False;1521,46;1525,54;2023-09-19;1517,32;2024-04-13
 Cuesta del Viento;anio_hidrologico;2024-25;344;True;1521,24;1523,9;2025-06-27;1519,81;2024-12-25
 Cuesta del Viento;anio_hidrologico;2025-26;317;False;1523,42;1526,69;2025-12-07;1520,67;2026-03-20
-Cuesta del Viento;anio_hidrologico;2026-27;112;False;1523,59;1524,1;2026-07-30;1523,23;2026-07-12
+Cuesta del Viento;anio_hidrologico;2026-27;113;False;1523,59;1524,1;2026-07-30;1523,23;2026-07-12

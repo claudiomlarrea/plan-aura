@@ -1,0 +1,34 @@
+name: Pages tras hidrología
+
+# Respaldo: si el push del workflow diario no dispara Pages, este job sí puede
+# pedirlo. workflow_run corre al terminar "Hidrología diaria" (cron o dispatch).
+on:
+  workflow_run:
+    workflows: ["Hidrología diaria"]
+    types: [completed]
+
+permissions:
+  contents: read
+  pages: write
+  actions: read
+
+jobs:
+  desplegar:
+    if: github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pedir Pages solo si hubo un commit nuevo
+        run: |
+          set -euo pipefail
+          before="${{ github.event.workflow_run.head_sha }}"
+          after=$(gh api "repos/${{ github.repository }}/commits/main" --jq .sha)
+          if [ "$before" = "$after" ]; then
+            echo "La serie no cambió. No se pide otro build."
+            exit 0
+          fi
+          gh api --method POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "/repos/${{ github.repository }}/pages/builds"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
