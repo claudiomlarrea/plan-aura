@@ -5,8 +5,28 @@
     "caudal": "m3/s",
     "cotas": "m.s.n.m."
   },
-  "generado": "2026-11-05",
+  "generado": "2026-11-10",
   "filas": [
+    {
+      "fecha": "2026-11-10",
+      "Punta Negra": 924.3,
+      "Ullum": 758.84,
+      "Los Caracoles": 1084.71,
+      "Cuesta del Viento": 1523.69
+    },
+    {
+      "fecha": "2026-11-09",
+      "caudal_km101_m3s": 93.47
+    },
+    {
+      "fecha": "2026-11-08"
+    },
+    {
+      "fecha": "2026-11-07"
+    },
+    {
+      "fecha": "2026-11-06"
+    },
     {
       "fecha": "2026-11-05",
       "Punta Negra": 924.37,
@@ -128,45 +148,6 @@
       "Ullum": 760.8,
       "Los Caracoles": 1080.7,
       "Cuesta del Viento": 1523.59
-    },
-    {
-      "fecha": "2026-10-20",
-      "Punta Negra": 922.12,
-      "Ullum": 760.79,
-      "Los Caracoles": 1080.58,
-      "Cuesta del Viento": 1523.63
-    },
-    {
-      "fecha": "2026-10-19",
-      "caudal_km101_m3s": 40.01,
-      "Punta Negra": 922.06,
-      "Ullum": 760.81,
-      "Los Caracoles": 1080.67,
-      "Cuesta del Viento": 1523.72
-    },
-    {
-      "fecha": "2026-10-18",
-      "caudal_km101_m3s": 40.69,
-      "Punta Negra": 922.09,
-      "Ullum": 760.81,
-      "Los Caracoles": 1080.7,
-      "Cuesta del Viento": 1523.7
-    },
-    {
-      "fecha": "2026-10-17",
-      "caudal_km101_m3s": 38.93,
-      "Punta Negra": 922.11,
-      "Ullum": 760.81,
-      "Los Caracoles": 1080.82,
-      "Cuesta del Viento": 1523.68
-    },
-    {
-      "fecha": "2026-10-16",
-      "caudal_km101_m3s": 37.83,
-      "Punta Negra": 922.33,
-      "Ullum": 760.74,
-      "Los Caracoles": 1080.9,
-      "Cuesta del Viento": 1523.71
     }
   ]
 }

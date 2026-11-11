@@ -2,13 +2,15 @@ name: Hidrología diaria
 
 on:
   schedule:
-    # Cada hora de 08:00 a 19:00 en San Juan (UTC−3, sin horario de verano) = 11:00–22:00 UTC.
+    # Minuto 15, no el minuto 0: GitHub descarta crones en el pico de cada hora.
+    # 11:15–22:15 UTC = 08:15 a 19:15 en San Juan (UTC−3, sin horario de verano).
     # Si la planilla no cambió, el job no hace commit.
-    - cron: "0 11-22 * * *"
+    - cron: "15 11-22 * * *"
   workflow_dispatch:
 
 permissions:
   contents: write
+  pages: write
 
 concurrency:
   group: hidrologia-diaria
@@ -43,8 +45,10 @@ jobs:
         run: bash tools/hidrologia/actualizar_todo.sh
 
       - name: Publicar solo si la serie cambió
+        id: publicar
         run: |
           set -euo pipefail
+          echo "pushed=false" >> "$GITHUB_OUTPUT"
           sqlite3 tools/hidrologia/caudales.db "
             SELECT fecha, printf('%.5f', caudal_m3s) FROM caudales_diarios ORDER BY fecha;
             SELECT fecha, embalse, printf('%.3f', ifnull(nivel, -1))
@@ -64,3 +68,17 @@ jobs:
           fi
           git commit -m "Actualizar series hidrológicas oficiales"
           git push
+          echo "pushed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Pedir el deploy de GitHub Pages
+        if: steps.publicar.outputs.pushed == 'true'
+        run: |
+          set -euo pipefail
+          # Un push hecho con GITHUB_TOKEN no dispara pages-build-deployment.
+          # Este sitio publica desde la rama (Pages legacy): el build se pide por la API.
+          gh api --method POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "/repos/${{ github.repository }}/pages/builds"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
