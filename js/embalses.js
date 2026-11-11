@@ -361,7 +361,7 @@
               pointRadius: 0,
               borderWidth: 1.5,
               tension: 0,
-              spanGaps: false
+              spanGaps: true
             }
           ]
         },
