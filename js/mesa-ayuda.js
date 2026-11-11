@@ -308,13 +308,13 @@
     if (lang() === "en") {
       return (
         "<p><strong>Basic hydrological information</strong></p>" +
-        "<p>This section shows daily flow at Km 101, reservoir levels, decade tables and charts, cumulative runoff by hydrological year, and short explainers (cycle, snowmelt regime, water stress). Source: San Juan Department of Hydraulics.</p>" +
+        "<p>This section shows daily flow at Km 101, reservoir levels, decade tables and charts, annual analysis and trends, and short explainers (cycle, snowmelt regime, water stress). Source: San Juan Department of Hydraulics.</p>" +
         "<p>Open it: <a href=\"#info-hidrologica\">Basic hydrological information</a>.</p>"
       );
     }
     return (
       "<p><strong>Información hidrológica básica</strong></p>" +
-      "<p>En esa sección ves el caudal diario en Km 101, cotas de embalses, tablas y gráficos por década, escurrimiento acumulado por año hidrológico, y nociones básicas (ciclo, régimen nival, estrés hídrico). Fuente: Departamento de Hidráulica de San Juan.</p>" +
+      "<p>En esa sección ves el caudal diario en Km 101, cotas de embalses, tablas y gráficos por década, análisis anual y tendencias, y nociones básicas (ciclo, régimen nival, estrés hídrico). Fuente: Departamento de Hidráulica de San Juan.</p>" +
       "<p>Abrila acá: <a href=\"#info-hidrologica\">Información hidrológica básica</a>.</p>"
     );
   }

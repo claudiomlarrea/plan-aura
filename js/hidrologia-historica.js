@@ -1,25 +1,21 @@
 /**
- * Serie histórica y análisis anual (#serie-historica).
- * Lee hidrologia/*.json generado por tools/hidrologia/scripts/analisis_anual.py.
- * No completa días faltantes: el gráfico solo une los días publicados.
+ * Análisis anual (#serie-historica).
+ * Lee hidrologia/datos_anuales.json (tools/hidrologia/scripts/analisis_anual.py).
+ * No acumula caudales diarios ni interpola días faltantes.
  */
 (function () {
   var BASE = "hidrologia/";
   var bust = Date.now();
   var CHART_SRC = "https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js";
   var XLSX_SRC = "https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js";
-  var MES = {
-    es: ["Jul", "Ago", "Sep", "Oct", "Nov", "Dic", "Ene", "Feb", "Mar", "Abr", "May", "Jun"],
-    en: ["Jul", "Aug", "Sep", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr", "May", "Jun"]
-  };
   var COL = {
     "Punta Negra": "#e69138",
     Ullum: "#0a5c5e",
     "Los Caracoles": "#0d6e4f",
     "Cuesta del Viento": "#7a1532"
   };
-  var state = { acum: null, anual: null, tipo: "anio_hidrologico" };
-  var charts = { acum: null, media: null, maxmin: null, anom: null, emb: [] };
+  var state = { anual: null, tipo: "anio_hidrologico" };
+  var charts = { media: null, maxmin: null, anom: null, emb: [] };
   var scriptLoads = {};
 
   function t(key, vars) {
@@ -101,158 +97,6 @@
   function destroyEmb() {
     charts.emb.forEach(function (chart) { chart.destroy(); });
     charts.emb = [];
-  }
-
-  function yearById(anio) {
-    var list = state.acum.anios;
-    for (var i = 0; i < list.length; i += 1) {
-      if (list[i].anio === anio) return list[i];
-    }
-    return list[list.length - 1];
-  }
-
-  function fillYears() {
-    var select = document.getElementById("hidro-hist-anio");
-    if (!select || select.options.length) return;
-    state.acum.anios.forEach(function (item) {
-      var opt = document.createElement("option");
-      opt.value = item.anio;
-      opt.textContent = item.completo ? item.anio : item.anio + " · " + t("sec.hidro.hist.incomplete");
-      select.appendChild(opt);
-    });
-    select.value = state.acum.anio_actual;
-  }
-
-  function refreshYearLabels() {
-    var select = document.getElementById("hidro-hist-anio");
-    if (!select) return;
-    var current = select.value;
-    Array.prototype.forEach.call(select.options, function (opt) {
-      var item = yearById(opt.value);
-      opt.textContent = item.completo ? item.anio : item.anio + " · " + t("sec.hidro.hist.incomplete");
-    });
-    select.value = current;
-  }
-
-  function yearNote(item) {
-    if (item.anio === "1909-10") return t("sec.hidro.hist.note1909");
-    if (!item.completo) {
-      return t("sec.hidro.hist.noteIncomplete", {
-        n: String(item.dias),
-        inicio: fd(item.inicio),
-        fin: fd(item.fin)
-      });
-    }
-    return t("sec.hidro.hist.noteComplete", {
-      n: String(item.dias),
-      inicio: fd(item.inicio),
-      fin: fd(item.fin),
-      periodo: state.acum.periodo_media
-    });
-  }
-
-  function line(item, color, width, dash) {
-    return {
-      label: item.label,
-      data: item.curva.map(function (p) { return { x: p[0], y: p[1] }; }),
-      borderColor: color,
-      backgroundColor: "transparent",
-      borderWidth: width,
-      borderDash: dash || [],
-      pointRadius: 0,
-      tension: 0.15,
-      spanGaps: false
-    };
-  }
-
-  function renderAcum() {
-    if (!window.Chart || !panelVisible() || !state.acum) return;
-    var select = document.getElementById("hidro-hist-anio");
-    var item = yearById(select ? select.value : state.acum.anio_actual);
-    var nota = document.getElementById("hidro-hist-anio-nota");
-    if (nota) nota.textContent = yearNote(item);
-    var wrap = document.getElementById("hidro-chart-acumulado-wrap");
-    if (wrap) wrap.setAttribute("aria-label", item.anio);
-    var datasets = [
-      line({
-        label: t("sec.hidro.hist.legend.selected", {
-          anio: item.anio,
-          n: String(item.dias),
-          extra: item.completo ? "" : " · " + t("sec.hidro.hist.incomplete")
-        }),
-        curva: item.curva
-      }, "#1a6fa8", 2.6)
-    ];
-    datasets.push(line({
-      label: t("sec.hidro.hist.legend.mean", {
-        n: String(state.acum.n_completos),
-        periodo: state.acum.periodo_media
-      }),
-      curva: state.acum.media_completos
-    }, "#5c4f54", 1.6, [6, 4]));
-    if (item.anio !== state.acum.anio_max) {
-      datasets.push(line({
-        label: t("sec.hidro.hist.legend.max", { anio: state.acum.anio_max }),
-        curva: yearById(state.acum.anio_max).curva
-      }, "#0d6e4f", 1.4, [4, 3]));
-    }
-    if (item.anio !== state.acum.anio_min) {
-      datasets.push(line({
-        label: t("sec.hidro.hist.legend.min", { anio: state.acum.anio_min }),
-        curva: yearById(state.acum.anio_min).curva
-      }, "#7a1532", 1.4, [4, 3]));
-    }
-    var months = MES[lang()];
-    destroy("acum");
-    charts.acum = new window.Chart(document.getElementById("hidro-chart-acumulado"), {
-      type: "line",
-      data: { datasets: datasets },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        animation: false,
-        parsing: false,
-        interaction: { mode: "nearest", intersect: false },
-        plugins: {
-          legend: { position: "bottom", labels: { boxWidth: 14, font: { size: 11 } } },
-          tooltip: {
-            callbacks: {
-              title: function (items) {
-                var day = items[0] && items[0].parsed ? items[0].parsed.x : 0;
-                var idx = Math.max(0, Math.min(11, Math.floor(day / 30.44)));
-                return months[idx];
-              },
-              label: function (ctx) {
-                return ctx.dataset.label + ": " + nf(ctx.parsed.y, 1) + " hm³";
-              }
-            }
-          }
-        },
-        scales: {
-          x: {
-            type: "linear",
-            min: 0,
-            max: 365,
-            ticks: {
-              stepSize: 30.44,
-              callback: function (value) {
-                var idx = Math.round(value / 30.44);
-                return months[idx] || "";
-              },
-              maxRotation: 0
-            },
-            grid: { color: "rgba(26, 111, 168, 0.08)" }
-          },
-          y: {
-            title: { display: true, text: t("sec.hidro.hist.axis.hm3"), color: "#1f1418" },
-            ticks: {
-              callback: function (value) { return nf(value, 0); }
-            },
-            grid: { color: "rgba(26, 111, 168, 0.12)" }
-          }
-        }
-      }
-    });
   }
 
   function trendLine(rows, tr) {
@@ -543,13 +387,10 @@
   }
 
   function draw() {
-    if (!state.acum || !panelVisible()) return;
+    if (!state.anual || !panelVisible()) return;
     loadScript(CHART_SRC).then(function () {
       if (!panelVisible()) return;
       requestAnimationFrame(function () {
-        fillYears();
-        refreshYearLabels();
-        renderAcum();
         renderAnual();
         renderSources();
       });
@@ -561,26 +402,22 @@
   function load() {
     setStatus(t("sec.hidro.hist.loading"));
     bustLinks();
-    Promise.all([
-      fetch(url("acumulado.json"), { cache: "no-store" }).then(function (r) { return r.json(); }),
-      fetch(url("datos_anuales.json"), { cache: "no-store" }).then(function (r) { return r.json(); })
-    ]).then(function (parts) {
-      state.acum = parts[0];
-      state.anual = parts[1];
-      var act = document.getElementById("hidro-hist-act");
-      if (act) act.textContent = t("sec.hidro.hist.updated", { fecha: fd(state.anual.generado) });
-      setStatus("");
-      draw();
-    }).catch(function () {
-      setStatus(t("sec.hidro.hist.error"));
-    });
+    fetch(url("datos_anuales.json"), { cache: "no-store" })
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        state.anual = data;
+        var act = document.getElementById("hidro-hist-act");
+        if (act) act.textContent = t("sec.hidro.hist.updated", { fecha: fd(state.anual.generado) });
+        setStatus("");
+        draw();
+      })
+      .catch(function () {
+        setStatus(t("sec.hidro.hist.error"));
+      });
   }
 
   var root = document.getElementById("serie-historica");
   if (!root) return;
-  root.addEventListener("change", function (event) {
-    if (event.target && event.target.id === "hidro-hist-anio") renderAcum();
-  });
   root.addEventListener("click", function (event) {
     var tab = event.target.closest("[data-hist-tab]");
     if (tab) {
@@ -603,8 +440,7 @@
 
   document.addEventListener("oia:page", function (event) {
     if (event.detail !== "info-hidrologica") return;
-    if (charts.acum) {
-      charts.acum.resize();
+    if (charts.media) {
       ["media", "maxmin", "anom"].forEach(function (key) { if (charts[key]) charts[key].resize(); });
       charts.emb.forEach(function (chart) { chart.resize(); });
       return;
