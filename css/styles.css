@@ -1261,6 +1261,25 @@ header.section-head--bar h2 {
   padding: 0.75rem 0.9rem 0.85rem;
 }
 
+.instituto-logo {
+  display: block;
+  width: 7rem;
+  height: auto;
+  margin: 0 auto 0.65rem;
+  object-fit: contain;
+  background: #fff;
+  border-radius: 50%;
+}
+
+.card--instituto-agua {
+  text-align: center;
+}
+
+.card--instituto-agua h3,
+.card--instituto-agua p {
+  text-align: left;
+}
+
 .red-grid .card h3 {
   margin: 0 0 0.35rem;
   font-size: 1rem;

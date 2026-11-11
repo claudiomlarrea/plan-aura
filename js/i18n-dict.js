@@ -1106,6 +1106,10 @@ window.I18N_DICT = {
     es: "Sitio del Instituto del Agua",
     en: "Water Institute website"
   },
+  "sec.red.institutoAgua.logoAlt": {
+    es: "Instituto del Agua · UCCuyo",
+    en: "Water Institute · UCCuyo"
+  },
   "sec.red.labGraffigna.title": {
     es: "Laboratorio Graffigna",
     en: "Graffigna Laboratory"
