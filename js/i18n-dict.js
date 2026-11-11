@@ -1673,6 +1673,14 @@ window.I18N_DICT = {
     es: "Criterios de evaluación de la productividad del agua de riego influenciada por la contaminación del agua y la salinización de los suelos. Luis F. Jiménez. Proyecto IA-1-1-13 · versión editorial 2026.",
     en: "Evaluation criteria for irrigation-water productivity under water contamination and soil salinization. Luis F. Jiménez. Project IA-1-1-13 · editorial version 2026."
   },
+  "sec.art.010.title": {
+    es: "Proyecto Vicuña: desalinización del río Blanco y La Palca",
+    en: "Vicuña Project: desalination of the Blanco and La Palca rivers"
+  },
+  "sec.art.010.meta": {
+    es: "Alternativa al suministro desde el Pacífico para mejorar la calidad del agua de Iglesia, Jáchal y Huaco. Versión ampliada: balances de masa, costos e impacto socioeconómico. Luis F. Jiménez. Octubre 2026.",
+    en: "An alternative to Pacific supply to improve water quality in Iglesia, Jáchal and Huaco. Expanded version: mass balances, costs and socioeconomic impact. Luis F. Jiménez. October 2026."
+  },
   "sec.publicaciones.kicker": {
     es: "Difusión",
     en: "Outreach"
