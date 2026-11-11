@@ -87,34 +87,6 @@
                 </ul>
               </li>
 
-              <li class="nav-item has-submenu">
-                <button
-                  type="button"
-                  class="nav-submenu-toggle"
-                  aria-expanded="false"
-                  aria-controls="nav-sub-recursos"
-                  data-i18n="nav.group.recursos"
-                >
-                  Recursos
-                </button>
-                <ul class="nav-submenu" id="nav-sub-recursos">
-                  <li>
-                    <a href="#info-hidrologica" data-i18n="nav.infoHidrologica"
-                      >Información hidrológica básica</a
-                    >
-                  </li>
-                  <li>
-                    <a href="#datos-hidrologicos" data-i18n="nav.datosHidrologicos"
-                      >Laboratorio de datos hídricos</a
-                    >
-                  </li>
-                  <li>
-                    <a href="#embalses-cotas" data-i18n="nav.embalsesCotas"
-                      >Embalses y cotas</a
-                    >
-                  </li>
-                </ul>
-              </li>
 
               <li class="nav-item has-submenu">
                 <button
@@ -128,8 +100,6 @@
                 </button>
                 <ul class="nav-submenu" id="nav-sub-difusion">
                   <li><a href="#noticias" data-i18n="nav.noticias">Noticias</a></li>
-                  <li><a href="#articulos" data-i18n="nav.articulos">Publicaciones</a></li>
-                  <li><a href="#publicaciones" data-i18n="nav.publicaciones">Biblioteca del Agua</a></li>
                   <li><a href="#galeria" data-i18n="nav.galeria">Galería de imágenes</a></li>
                   <li><a href="#visitas" data-i18n="nav.visitas">Visitas al Plan AURA</a></li>
                 </ul>
@@ -155,8 +125,7 @@
           </p>
           <div class="hero-actions">
             <a class="btn btn-ghost" href="#el-plan" data-i18n="hero.cta.plan">Conocer el Plan</a>
-            <a class="btn btn-ghost" href="#articulos" data-i18n="hero.cta.articulos">Publicaciones</a>
-            <a class="btn btn-ghost" href="#publicaciones" data-i18n="hero.cta.biblioteca">Biblioteca del Agua</a>
+            <a class="btn btn-ghost" href="https://claudiomlarrea.github.io/observatorio-ia/instituto-del-agua/#articulos">Instituto del Agua</a>
             <a class="btn btn-ghost" href="#galeria" data-i18n="hero.cta.galeria">Galería de imágenes</a>
           </div>
           <div class="hero-mail-row">
@@ -380,369 +349,11 @@
         </div>
       </section>
 
-      <section
-        class="section section--hidro page-panel"
-        id="info-hidrologica"
-        data-page="info-hidrologica"
-        aria-labelledby="sec-hidro"
-      >
-        <div class="section-inner">
-          <header class="section-head section-head--bar section-head--water">
-            <p class="section-kicker" data-i18n="sec.hidro.kicker">Formación</p>
-            <h2 id="sec-hidro" data-i18n="sec.hidro.title">Información hidrológica básica</h2>
-          </header>
-          <p class="text-intro" data-i18n="sec.hidro.intro">
-            Ideas clave para comprender el agua en San Juan y el sentido del Plan AURA:
-            de dónde viene el recurso, cómo circula y por qué el ahorro y el uso responsable
-            importan en un territorio árido.
-          </p>
 
-          <div class="hidro-kpis" id="hidro-kpis"></div>
-          <p class="hidro-note" id="hidro-asof"></p>
-          <p class="hidro-status" id="hidro-datos-status" role="status"></p>
 
-          <div class="card hidro-historia" id="hidro-historia">
-            <h3 data-i18n="sec.hidro.histChart.title">Caudal medio de cada año hidrológico</h3>
-            <div class="hidro-chart hidro-chart--acum" id="hidro-chart-historia-wrap" role="img">
-              <canvas id="hidro-chart-historia" aria-hidden="true"></canvas>
-            </div>
-            <p class="hidro-note" id="hidro-historia-caption"></p>
-          </div>
 
-          <div class="card hidro-datos" id="caudales-embalses">
-            <h3 data-i18n="sec.hidro.datos.title">Caudales y embalses por década</h3>
-            <p data-i18n="sec.hidro.datos.lead">
-              Caudal del río San Juan en Km 101 desde 1910, agrupado por década.
-              Cada década se abre en medias mensuales. No se interpola: un mes sin dato publicado queda en s/d.
-            </p>
 
-            <div class="hidro-decadas-bar">
-              <label class="hidro-year" for="hidro-decada-select">
-                <span data-i18n="sec.hidro.dec.selector">Década</span>
-                <select id="hidro-decada-select"></select>
-              </label>
-              <button type="button" class="btn btn-primary" id="hidro-expand-all" data-i18n="sec.hidro.dec.expandAll">Expandir todo</button>
-            </div>
-            <div class="hidro-table-wrap hidro-table-wrap--scroll">
-              <table class="hidro-table hidro-table--decadas" id="hidro-decadas-table"></table>
-            </div>
-            <p class="hidro-note" id="hidro-decadas-nota"></p>
 
-            <div class="hidro-chart-toolbar">
-              <div class="hidro-tabs" id="hidro-chart-tabs" role="group">
-                <button type="button" data-chart-view="decadas" data-i18n="sec.hidro.dec.tabDecadas">Por década</button>
-                <button type="button" data-chart-view="meses" class="is-on" data-i18n="sec.hidro.dec.tabMeses">Meses de la década</button>
-              </div>
-              <div class="hidro-decada-nav">
-                <button type="button" id="hidro-decada-prev" data-i18n-attr="aria-label:sec.hidro.dec.prev" aria-label="Década anterior">‹</button>
-                <label class="visually-hidden" for="hidro-chart-decada-select" data-i18n="sec.hidro.dec.selector">Década</label>
-                <select id="hidro-chart-decada-select"></select>
-                <button type="button" id="hidro-decada-next" data-i18n-attr="aria-label:sec.hidro.dec.next" aria-label="Década siguiente">›</button>
-              </div>
-            </div>
-            <p class="hidro-note" data-i18n="sec.hidro.dec.hint">Elegí una década en el selector o tocá una barra.</p>
-            <div class="hidro-chart hidro-chart--acum" id="hidro-chart-vista-wrap" role="img">
-              <canvas id="hidro-chart-vista" aria-hidden="true"></canvas>
-            </div>
-            <p class="hidro-note" data-i18n="sec.hidro.datos.chartsNote">
-              El gráfico de barras es el caudal medio de cada década; el de meses, la década elegida.
-              El PNG y el PDF de esta vista se descargan al final de la sección.
-            </p>
-
-            <p class="hidro-fuente">
-              <span data-i18n="sec.hidro.datos.sourceLabel">Fuente:</span>
-              <a id="hidro-fuente-link" href="https://hidraulica.sanjuan.gob.ar/" target="_blank" rel="noopener noreferrer">Departamento de Hidráulica de San Juan</a><span data-i18n="sec.hidro.datos.sourceRest">, planilla diaria «Distribución de Riego». s/d = sin dato publicado. Las descargas se generan con estos mismos datos.</span>
-            </p>
-          </div>
-
-          <div class="card hidro-historico" id="serie-historica">
-            <h3 data-i18n="sec.hidro.hist.title">Análisis anual</h3>
-            <p data-i18n="sec.hidro.hist.lead">
-              Serie oficial del río San Juan en Km 101 desde el año hidrológico 1909-10
-              (julio–junio) hasta hoy, y cotas anuales de los embalses. Un año con menos
-              de 330 días con dato se muestra en gris y no entra en la media ni en las tendencias.
-              No se acumulan caudales diarios.
-            </p>
-            <p class="hidro-meta" id="hidro-hist-act"></p>
-            <p class="hidro-status" id="hidro-hist-status" role="status"></p>
-
-            <h4 data-i18n="sec.hidro.hist.anualTitle">Análisis anual del caudal en Km 101</h4>
-            <div class="hidro-tabs" role="group" aria-label="Tipo de año">
-              <button type="button" data-hist-tab="anio_hidrologico" class="is-on" data-i18n="sec.hidro.hist.tab.hidro">Año hidrológico (jul–jun)</button>
-              <button type="button" data-hist-tab="anio_calendario" data-i18n="sec.hidro.hist.tab.cal">Año calendario</button>
-            </div>
-            <p class="hidro-tend" id="hidro-hist-tend"></p>
-            <div class="hidro-chart-grid">
-              <div class="hidro-chart-card hidro-chart-card--wide">
-                <div class="hidro-chart hidro-chart--anual"><canvas id="hidro-chart-media" aria-hidden="true"></canvas></div>
-              </div>
-              <div class="hidro-chart-card">
-                <div class="hidro-chart hidro-chart--anual"><canvas id="hidro-chart-maxmin" aria-hidden="true"></canvas></div>
-              </div>
-              <div class="hidro-chart-card">
-                <div class="hidro-chart hidro-chart--anual"><canvas id="hidro-chart-anom" aria-hidden="true"></canvas></div>
-              </div>
-            </div>
-            <div class="hidro-table-wrap hidro-table-wrap--scroll">
-              <table class="hidro-table" id="hidro-hist-tabla"></table>
-            </div>
-            <p class="hidro-note" data-i18n="sec.hidro.hist.tablaNote">
-              En gris: menos de 330 días con dato. Esos años no entran en la media, las anomalías ni las tendencias.
-              La anomalía compara con la media de los años completos 1910–2022. La tendencia es Mann-Kendall con pendiente de Sen.
-            </p>
-
-            <h4 data-i18n="sec.hidro.hist.embTitle">Embalses: cota media, máxima y mínima anual</h4>
-            <div class="hidro-chart-grid" id="hidro-hist-emb"></div>
-            <div class="hidro-table-wrap hidro-table-wrap--scroll">
-              <table class="hidro-table" id="hidro-hist-emb-tabla"></table>
-            </div>
-            <p class="hidro-fuente" id="hidro-hist-fuentes"></p>
-          </div>
-
-          <div class="card hidro-descargas" id="hidro-descargas">
-            <h3 data-i18n="sec.hidro.datos.dl.group">Descargar datos</h3>
-            <div class="hidro-dl__actions">
-              <button type="button" class="btn btn-primary" data-hidro-action="csv-table" disabled data-i18n="sec.hidro.datos.dl.csvTable">Descargar tabla (CSV)</button>
-              <button type="button" class="btn btn-primary" data-hidro-action="xlsx-table" disabled data-i18n="sec.hidro.datos.dl.xlsxTable">Descargar tabla (Excel)</button>
-              <button type="button" class="btn btn-primary" data-hidro-action="json-series" disabled data-i18n="sec.hidro.datos.dl.jsonSeries">Descargar serie completa (JSON)</button>
-              <button type="button" class="btn btn-primary" data-hidro-action="csv-series" disabled data-i18n="sec.hidro.datos.dl.csvSeries">Descargar serie completa (CSV)</button>
-              <a class="btn btn-primary" id="hidro-dl-ah-csv" href="hidrologia/caudal_anual_hidrologico.csv" download data-i18n="sec.hidro.hist.dl.ah">Resumen año hidrológico (CSV)</a>
-              <a class="btn btn-primary" id="hidro-dl-ac-csv" href="hidrologia/caudal_anual_calendario.csv" download data-i18n="sec.hidro.hist.dl.ac">Resumen año calendario (CSV)</a>
-              <a class="btn btn-primary" id="hidro-dl-emb-csv" href="hidrologia/embalses_anual.csv" download data-i18n="sec.hidro.hist.dl.emb">Embalses anuales (CSV)</a>
-              <a class="btn btn-primary" id="hidro-dl-q-csv" href="hidrologia/caudales_diarios.csv" download data-i18n="sec.hidro.hist.dl.qcsv">Caudal diario completo (CSV)</a>
-              <button type="button" class="btn btn-primary" data-hist-dl="xlsx-q" data-i18n="sec.hidro.hist.dl.qxlsx">Caudal diario completo (Excel)</button>
-              <a class="btn btn-primary" id="hidro-dl-e-csv" href="hidrologia/niveles_embalses.csv" download data-i18n="sec.hidro.hist.dl.ecsv">Niveles de embalses (CSV)</a>
-              <button type="button" class="btn btn-primary" data-hist-dl="xlsx-e" data-i18n="sec.hidro.hist.dl.exlsx">Niveles de embalses (Excel)</button>
-              <button type="button" class="btn btn-primary" data-hidro-action="png-historia" disabled data-i18n="sec.hidro.kpi.png">Descargar serie histórica (PNG)</button>
-              <button type="button" class="btn btn-primary" data-hidro-action="pdf-historia" disabled data-i18n="sec.hidro.kpi.pdf">Descargar serie histórica (PDF)</button>
-              <button type="button" class="btn btn-primary" data-hidro-action="png" data-chart="vista" disabled data-i18n="sec.hidro.dec.png">Descargar gráfico de década (PNG)</button>
-              <button type="button" class="btn btn-primary" data-hidro-action="pdf-charts" disabled data-i18n="sec.hidro.dec.pdf">Descargar gráfico de década (PDF)</button>
-            </div>
-            <p class="hidro-note" data-i18n="sec.hidro.kpi.downloadNote">El PNG y el PDF de la serie histórica llevan fondo blanco, título y fuente. El gráfico de década exporta la vista activa: décadas o meses.</p>
-          </div>
-
-          <div class="grid-2">
-            <article class="card">
-              <h3 data-i18n="sec.hidro.ciclo.title">Ciclo hidrológico</h3>
-              <p data-i18n="sec.hidro.ciclo.body">
-                El agua circula entre atmósfera, superficie y subsuelo: precipita, escurre,
-                se infiltra, se evapora y vuelve a la atmósfera. En zonas áridas ese ciclo
-                es frágil: poca lluvia, alta evaporación y fuerte dependencia de lo que
-                llega desde la cordillera.
-              </p>
-            </article>
-            <article class="card">
-              <h3 data-i18n="sec.hidro.nival.title">Régimen nival</h3>
-              <p data-i18n="sec.hidro.nival.body">
-                El río San Juan tiene régimen predominantemente nival: su caudal depende
-                sobre todo de la nieve acumulada en los Andes y del deshielo. Por eso hay
-                años más abundantes y años de escasez, según el ciclo nival.
-              </p>
-            </article>
-            <article class="card">
-              <h3 data-i18n="sec.hidro.fuentes.title">Agua superficial y subterránea</h3>
-              <p data-i18n="sec.hidro.fuentes.body">
-                En el Valle de Tulum conviven el agua superficial (río, embalses y canales)
-                y el agua subterránea del acuífero. Parte del caudal se infiltra y recarga
-                el acuífero; su nivel sube o baja según ciclos húmedos o secos y según el
-                uso que se haga del recurso.
-              </p>
-            </article>
-            <article class="card">
-              <h3 data-i18n="sec.hidro.estres.title">Oferta, demanda y estrés hídrico</h3>
-              <p data-i18n="sec.hidro.estres.body">
-                La oferta es el agua disponible (caudal y reservas). La demanda es lo que
-                requieren hogares, riego, industria y servicios. El estrés hídrico describe
-                la tensión entre ambas: un valor alto no siempre significa «no hay agua»,
-                sino mayor desacople entre lo disponible y lo que se necesita.
-              </p>
-            </article>
-          </div>
-          <article class="card stack-gap-top">
-            <h3 data-i18n="sec.hidro.aura.title">Por qué importa para el Plan AURA</h3>
-            <p data-i18n-html="sec.hidro.aura.body">
-              Conocer estas nociones ayuda a medir, interpretar y comunicar el uso del
-              agua. El Plan AURA promueve ahorro, uso responsable e investigación aplicada
-              en ese marco. Para profundizar, visitá
-              <a href="#articulos">Publicaciones</a> y la
-              <a href="#publicaciones">Biblioteca del Agua</a>.
-            </p>
-          </article>
-          <p class="tile-actions stack-gap-top">
-            <a class="btn btn-primary" href="#datos-hidrologicos" data-i18n="sec.hidro.cta.lab"
-              >Ir al Laboratorio de datos hídricos</a
-            >
-          </p>
-        </div>
-      </section>
-
-      <section
-        class="section section--lab page-panel"
-        id="datos-hidrologicos"
-        data-page="datos-hidrologicos"
-        aria-labelledby="sec-lab"
-      >
-        <div class="section-inner">
-          <header class="section-head section-head--bar section-head--water">
-            <p class="section-kicker" data-i18n="sec.lab.kicker">Investigación</p>
-            <h2 id="sec-lab" data-i18n="sec.lab.title">Laboratorio de datos hídricos</h2>
-          </header>
-          <p class="text-intro" data-i18n-html="sec.lab.intro">
-            Laboratorio para extraer la serie diaria de caudal en Km 101 (desde 1910),
-            calcular estadísticas de un período y comparar otro tramo. Los días sin dato
-            publicado no se interpolan.
-            <a href="#info-hidrologica">Información hidrológica básica</a>.
-          </p>
-
-          <div class="card lab-meta-card">
-            <h3 data-i18n="sec.lab.meta.title">Serie disponible</h3>
-            <div id="lab-meta" class="lab-meta"></div>
-            <p class="hidro-status" id="lab-status" role="status"></p>
-          </div>
-
-          <form class="card lab-form" id="lab-form">
-            <h3 data-i18n="sec.lab.form.title">Período de análisis</h3>
-            <p class="lab-lead" data-i18n="sec.lab.form.lead">
-              Elegí fechas inclusive. El período B es opcional y sirve para comparar.
-            </p>
-            <div class="lab-grid">
-              <fieldset class="lab-fieldset">
-                <legend data-i18n="sec.lab.period.a">Período A</legend>
-                <label class="lab-field">
-                  <span data-i18n="sec.lab.from">Desde</span>
-                  <input type="date" id="lab-from" required />
-                </label>
-                <label class="lab-field">
-                  <span data-i18n="sec.lab.to">Hasta</span>
-                  <input type="date" id="lab-to" required />
-                </label>
-              </fieldset>
-              <fieldset class="lab-fieldset">
-                <legend data-i18n="sec.lab.period.b">Período B (opcional)</legend>
-                <label class="lab-field">
-                  <span data-i18n="sec.lab.from">Desde</span>
-                  <input type="date" id="lab-from-b" />
-                </label>
-                <label class="lab-field">
-                  <span data-i18n="sec.lab.to">Hasta</span>
-                  <input type="date" id="lab-to-b" />
-                </label>
-              </fieldset>
-            </div>
-            <p class="tile-actions">
-              <button type="submit" class="btn btn-primary" data-i18n="sec.lab.apply">
-                Calcular indicadores
-              </button>
-              <button
-                type="button"
-                class="btn btn-ghost"
-                id="lab-dl-range"
-                disabled
-                data-i18n="sec.lab.dl.range"
-              >
-                Descargar recorte (CSV)
-              </button>
-            </p>
-          </form>
-
-          <div class="lab-results">
-            <div class="card" id="lab-stats-a"></div>
-            <div class="card" id="lab-stats-b" hidden></div>
-          </div>
-
-          <div class="card lab-chart-card">
-            <h3 data-i18n="sec.lab.chart.title">Serie del período A</h3>
-            <p class="hidro-note" id="lab-chart-note"></p>
-            <div class="hidro-chart hidro-chart--acum" role="img">
-              <canvas id="lab-chart" aria-hidden="true"></canvas>
-            </div>
-          </div>
-
-          <div class="card lab-cite-card">
-            <h3 data-i18n="sec.lab.cite.title">Cita sugerida</h3>
-            <p class="lab-cite" id="lab-cite"></p>
-            <p class="tile-actions">
-              <button type="button" class="btn btn-ghost" id="lab-cite-copy" data-i18n="sec.lab.cite.copy">
-                Copiar cita
-              </button>
-            </p>
-          </div>
-
-          <div class="card lab-packs">
-            <h3 data-i18n="sec.lab.packs.title">Paquetes completos</h3>
-            <p class="lab-lead" data-i18n="sec.lab.packs.lead">
-              Descargas de la serie completa publicada por el Plan AURA a partir de datos
-              del Departamento de Hidráulica de San Juan.
-            </p>
-            <div class="hidro-dl__actions lab-packs__actions">
-              <a class="btn btn-primary" href="hidrologia/caudales_diarios.csv" download data-i18n="sec.lab.packs.daily"
-                >Caudal diario completo (CSV)</a
-              >
-              <a class="btn btn-primary" href="hidrologia/caudal_anual_hidrologico.csv" download data-i18n="sec.lab.packs.ah"
-                >Resumen año hidrológico (CSV)</a
-              >
-              <a class="btn btn-primary" href="hidrologia/caudal_anual_calendario.csv" download data-i18n="sec.lab.packs.ac"
-                >Resumen año calendario (CSV)</a
-              >
-              <a class="btn btn-primary" href="hidrologia/niveles_embalses.csv" download data-i18n="sec.lab.packs.emb"
-                >Niveles de embalses (CSV)</a
-              >
-              <a class="btn btn-primary" href="hidrologia/manifest.json" download data-i18n="sec.lab.packs.manifest"
-                >Manifest (JSON)</a
-              >
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section
-        class="section section--emb page-panel"
-        id="embalses-cotas"
-        data-page="embalses-cotas"
-        aria-labelledby="sec-emb"
-      >
-        <div class="section-inner">
-          <header class="section-head section-head--bar section-head--water">
-            <p class="section-kicker" data-i18n="sec.emb.kicker">Monitoreo</p>
-            <h2 id="sec-emb" data-i18n="sec.emb.title">Embalses y cotas</h2>
-          </header>
-          <p class="text-intro" data-i18n-html="sec.emb.intro">
-            Niveles de los principales embalses del sistema del río San Juan.
-            Elegí un año para ver la cota media, máxima o mínima, el esquema de
-            llenado y la evolución diaria. Serie disponible desde 2014–2015
-            (según embalse), sin interpolación.
-            <a href="#datos-hidrologicos">Laboratorio de datos hídricos</a>.
-          </p>
-
-          <div class="card emb-controls">
-            <div class="emb-controls__row">
-              <label class="hidro-year" for="emb-year">
-                <span data-i18n="sec.emb.year">Año</span>
-                <select id="emb-year"></select>
-              </label>
-              <label class="hidro-year" for="emb-metric">
-                <span data-i18n="sec.emb.metricLabel">Indicador</span>
-                <select id="emb-metric">
-                  <option value="media">Cota media anual</option>
-                  <option value="max">Cota máxima</option>
-                  <option value="min">Cota mínima</option>
-                </select>
-              </label>
-            </div>
-            <p class="hidro-note" id="emb-asof"></p>
-            <p class="hidro-note" id="emb-year-note"></p>
-            <p class="hidro-status" id="emb-status" role="status"></p>
-          </div>
-
-          <div class="emb-grid" id="emb-grid"></div>
-
-          <p class="hidro-fuente stack-gap-top">
-            <span data-i18n="sec.emb.source">Fuente:</span>
-            Departamento de Hidráulica de San Juan · planilla diaria «Distribución de Riego».
-            <a href="hidrologia/niveles_embalses.csv" download data-i18n="sec.emb.dl">Descargar cotas (CSV)</a>
-          </p>
-        </div>
-      </section>
 
       <section class="section section--red page-panel" id="red" data-page="red" aria-labelledby="sec-red">
         <div class="section-inner">
@@ -894,240 +505,9 @@
         </div>
       </section>
 
-      <section class="section page-panel" id="articulos" data-page="articulos" aria-labelledby="sec-articulos">
-        <div class="section-inner">
-          <header class="section-head section-head--bar section-head--water">
-            <p class="section-kicker" data-i18n="sec.articulos.kicker">Instituto del Agua</p>
-            <h2 id="sec-articulos" data-i18n="sec.articulos.title">Publicaciones</h2>
-          </header>
-          <p class="text-intro" data-i18n="sec.articulos.intro">
-            Artículos del Instituto del Agua de la UCCuyo. Cada título abre el PDF en una pestaña nueva.
-          </p>
-          <div class="doc-grid">
-            <a class="doc-link" href="documentos/publicaciones/Art-002.pdf" target="_blank" rel="noopener noreferrer">
-              <span class="doc-link__tag" data-i18n="sec.articulos.tag">Artículo · PDF</span>
-              <span class="doc-link__title" data-i18n="sec.art.002.title">El valor del agua para la vida y el valor de mercado</span>
-              <span class="doc-link__meta" data-i18n="sec.art.002.meta">Hacia una integración entre economía, biodiversidad y gestión sustentable de los recursos hídricos. Luis F. Jiménez.</span>
-            </a>
-            <a class="doc-link" href="documentos/publicaciones/Art-003.pdf" target="_blank" rel="noopener noreferrer">
-              <span class="doc-link__tag" data-i18n="sec.articulos.tag">Artículo · PDF</span>
-              <span class="doc-link__title" data-i18n="sec.art.003.title">El agua como bien de uso y bien de cambio</span>
-              <span class="doc-link__meta" data-i18n="sec.art.003.meta">El marco conceptual del techo ecológico y el piso social en la gobernanza hídrica del siglo XXI. Luis F. Jiménez.</span>
-            </a>
-            <a class="doc-link" href="documentos/publicaciones/Art-004.pdf" target="_blank" rel="noopener noreferrer">
-              <span class="doc-link__tag" data-i18n="sec.articulos.tag">Artículo · PDF</span>
-              <span class="doc-link__title" data-i18n="sec.art.004.title">Valoración total del agua (VTA) en el Valle de Tulum</span>
-              <span class="doc-link__meta" data-i18n="sec.art.004.meta">Aplicación metodológica, caso numérico constructivo y contraste con la recuperación de la inversión pública. Luis F. Jiménez.</span>
-            </a>
-            <a class="doc-link" href="documentos/publicaciones/Art-005.pdf" target="_blank" rel="noopener noreferrer">
-              <span class="doc-link__tag" data-i18n="sec.articulos.tag">Artículo · PDF</span>
-              <span class="doc-link__title" data-i18n="sec.art.005.title">Balance hídrico integrado y gobernanza de la escasez en el Valle de Tulum</span>
-              <span class="doc-link__meta" data-i18n="sec.art.005.meta">Luis F. Jiménez. Instituto del Agua, UCCuyo.</span>
-            </a>
-            <a class="doc-link" href="documentos/publicaciones/Art-006.pdf" target="_blank" rel="noopener noreferrer">
-              <span class="doc-link__tag" data-i18n="sec.articulos.tag">Artículo · PDF</span>
-              <span class="doc-link__title" data-i18n="sec.art.006.title">De la cultura de la abundancia a la gestión de la escasez hídrica</span>
-              <span class="doc-link__meta" data-i18n="sec.art.006.meta">Reflexiones frente a un ciclo nival extraordinario en la cuenca del río San Juan. Luis F. Jiménez.</span>
-            </a>
-            <a class="doc-link" href="documentos/publicaciones/Art-007.pdf" target="_blank" rel="noopener noreferrer">
-              <span class="doc-link__tag" data-i18n="sec.articulos.tag">Artículo · PDF</span>
-              <span class="doc-link__title" data-i18n="sec.art.007.title">Crisis hídrica y planificación del agua en San Juan</span>
-              <span class="doc-link__meta" data-i18n="sec.art.007.meta">Balance físico, económico y social del Valle de Tulum. Luis F. Jiménez.</span>
-            </a>
-            <a class="doc-link" href="documentos/publicaciones/Art-008.pdf" target="_blank" rel="noopener noreferrer">
-              <span class="doc-link__tag" data-i18n="sec.articulos.tag">Artículo · PDF</span>
-              <span class="doc-link__title" data-i18n="sec.art.008.title">El agua entre el valor de uso y el valor de cambio</span>
-              <span class="doc-link__meta" data-i18n="sec.art.008.meta">Debate institucional, apropiación patrimonial y criterios económicos para la gestión hídrica del Valle de Tulum. Luis F. Jiménez.</span>
-            </a>
-            <a class="doc-link" href="documentos/publicaciones/Art-009.pdf" target="_blank" rel="noopener noreferrer">
-              <span class="doc-link__tag" data-i18n="sec.articulos.tag">Artículo · PDF</span>
-              <span class="doc-link__title" data-i18n="sec.art.009.title">Análisis económico del agua de riego en la provincia de San Juan</span>
-              <span class="doc-link__meta" data-i18n="sec.art.009.meta">Criterios de evaluación de la productividad del agua de riego influenciada por la contaminación del agua y la salinización de los suelos. Luis F. Jiménez. Proyecto IA-1-1-13 · versión editorial 2026.</span>
-            </a>
-            <a class="doc-link" href="documentos/publicaciones/Art-010.pdf" target="_blank" rel="noopener noreferrer">
-              <span class="doc-link__tag" data-i18n="sec.articulos.tag">Artículo · PDF</span>
-              <span class="doc-link__title" data-i18n="sec.art.010.title">Proyecto Vicuña: desalinización del río Blanco y La Palca</span>
-              <span class="doc-link__meta" data-i18n="sec.art.010.meta">Alternativa al suministro desde el Pacífico para mejorar la calidad del agua de Iglesia, Jáchal y Huaco. Versión ampliada: balances de masa, costos e impacto socioeconómico. Luis F. Jiménez. Octubre 2026.</span>
-            </a>
-            <a class="doc-link" href="documentos/publicaciones/Art-011.pdf" target="_blank" rel="noopener noreferrer">
-              <span class="doc-link__tag" data-i18n="sec.articulos.tag">Artículo · PDF</span>
-              <span class="doc-link__title" data-i18n="sec.art.011.title">Fideicomiso Agroalimentario de San Juan (FASJ)</span>
-              <span class="doc-link__meta" data-i18n="sec.art.011.meta">Proyecto estratégico: transformación de la renta minera en soberanía, accesibilidad y seguridad alimentaria provincial. Luis F. Jiménez. Octubre 2026.</span>
-            </a>
-            <a class="doc-link" href="documentos/publicaciones/Art-012.pdf" target="_blank" rel="noopener noreferrer">
-              <span class="doc-link__tag" data-i18n="sec.articulos.tag">Artículo · PDF</span>
-              <span class="doc-link__title" data-i18n="sec.art.012.title">Desarrollo agroalimentario del norte sanjuanino</span>
-              <span class="doc-link__meta" data-i18n="sec.art.012.meta">Estrategia integral de desarrollo agroalimentario, seguridad hidroagrícola y logística proteica para el corredor minero Jáchal–Iglesia–Calingasta. Luis F. Jiménez. Octubre 2026.</span>
-            </a>
-            <a class="doc-link" href="documentos/publicaciones/Art-013.pdf" target="_blank" rel="noopener noreferrer">
-              <span class="doc-link__tag" data-i18n="sec.articulos.tag">Artículo · PDF</span>
-              <span class="doc-link__title" data-i18n="sec.art.013.title">Seguridad alimentaria, balance hídrico y dinámica demográfica en San Juan (2026–2056)</span>
-              <span class="doc-link__meta" data-i18n="sec.art.013.meta">Informe técnico extendido. Luis F. Jiménez. Instituto del Agua, UCCuyo.</span>
-            </a>
-          </div>
-        </div>
-      </section>
 
-      <section class="section section--publicaciones page-panel" id="publicaciones" data-page="publicaciones" aria-labelledby="sec-publicaciones">
-        <div class="section-inner">
-          <header class="section-head section-head--bar section-head--water">
-            <p class="section-kicker" data-i18n="sec.publicaciones.kicker">Difusión</p>
-            <h2 id="sec-publicaciones" data-i18n="sec.publicaciones.title">Biblioteca del Agua</h2>
-          </header>
-          <p class="text-intro" data-i18n="sec.publicaciones.intro">
-            Índice global de artículos científicos en bibliotecas públicas y
-            abiertas del mundo, sobre consumo de agua, uso responsable y
-            racional, ahorro, reutilización, calidad, educación hídrica y los
-            demás ejes del Plan AURA (Res. 418-CS-2024, 767-CS-2025 y
-            849-CS-2026). Los resultados se actualizan al consultar las fuentes.
-          </p>
 
-          <div class="pub-app pub-panel pub-panel--index" id="pub-panel-biblioteca-agua">
-            <p class="pub-panel-intro pub-panel-intro--index">
-              <span data-i18n="sec.biblio.intro" data-i18n-html
-                >Resultados globales desde
-                <a href="https://openalex.org" target="_blank" rel="noopener noreferrer">OpenAlex</a>,
-                <a href="https://www.crossref.org" target="_blank" rel="noopener noreferrer">Crossref</a>,
-                <a href="https://www.semanticscholar.org" target="_blank" rel="noopener noreferrer">Semantic Scholar</a>
-                y
-                <a href="https://europepmc.org" target="_blank" rel="noopener noreferrer">Europe PMC</a>
-                (incluye PubMed), con enlaces de acceso abierto vía
-                <a href="https://unpaywall.org" target="_blank" rel="noopener noreferrer">Unpaywall</a>,
-                para trabajos relacionados con el agua y el Plan AURA. Puede haber
-                faltantes, duplicados o registros a revisar.</span
-              >
-              <span class="pub-index-badge" data-i18n="sec.biblio.badge">Resultados aproximados</span>
-              <span id="pub-index-count-wrap" hidden>
-                · <span id="pub-index-count-label"><strong id="pub-index-total">0</strong></span>
-              </span>
-            </p>
 
-            <div class="pub-index-search">
-              <label class="pub-index-search-label" for="pub-index-q" data-i18n="sec.biblio.search.label"
-                >Buscar por título, DOI o autor/a</label
-              >
-              <div
-                class="pub-index-search-modes"
-                role="radiogroup"
-                aria-label="Tipo de búsqueda"
-                data-i18n-attr="aria-label:sec.biblio.search.modes"
-              >
-                <button
-                  type="button"
-                  class="pub-index-mode pub-index-mode--active"
-                  data-pub-index-mode="auto"
-                  aria-pressed="true"
-                  data-i18n="sec.biblio.mode.auto"
-                >
-                  Auto
-                </button>
-                <button
-                  type="button"
-                  class="pub-index-mode"
-                  data-pub-index-mode="title"
-                  aria-pressed="false"
-                  data-i18n="sec.biblio.mode.title"
-                >
-                  Título
-                </button>
-                <button
-                  type="button"
-                  class="pub-index-mode"
-                  data-pub-index-mode="author"
-                  aria-pressed="false"
-                  data-i18n="sec.biblio.mode.author"
-                >
-                  Autor/a
-                </button>
-                <button
-                  type="button"
-                  class="pub-index-mode"
-                  data-pub-index-mode="doi"
-                  aria-pressed="false"
-                  data-i18n="sec.biblio.mode.doi"
-                >
-                  DOI
-                </button>
-                <div class="pub-index-year pub-index-year--inline">
-                  <label class="pub-index-year-label visually-hidden" for="pub-index-year" data-i18n="sec.biblio.year.label"
-                    >Filtrar por año</label
-                  >
-                  <select
-                    id="pub-index-year"
-                    class="pub-index-year-select"
-                    aria-label="Filtrar publicaciones por año"
-                    title="Filtrar por año"
-                    data-i18n-attr="aria-label:sec.biblio.year.label,title:sec.biblio.year.label"
-                  >
-                    <option value="all" data-i18n="dyn.biblio.allYears">Todos los años</option>
-                  </select>
-                </div>
-              </div>
-              <div class="pub-index-search-row">
-                <input
-                  type="search"
-                  id="pub-index-q"
-                  class="pub-index-search-input"
-                  placeholder="Ej.: water conservation, uso responsable del agua, DOI…"
-                  autocomplete="off"
-                  enterkeyhint="search"
-                  data-i18n-attr="placeholder:sec.biblio.search.placeholder"
-                />
-                <button
-                  type="button"
-                  id="pub-index-q-clear"
-                  class="pub-more-btn pub-index-search-clear"
-                  hidden
-                  data-i18n="sec.biblio.btnClear"
-                >
-                  Limpiar
-                </button>
-                <button
-                  type="button"
-                  id="pub-index-clear-all"
-                  class="pub-more-btn pub-index-search-clear-all"
-                  data-i18n="sec.biblio.btnClearAll"
-                >
-                  Limpiar todo
-                </button>
-              </div>
-              <div class="pub-index-controls">
-                <label class="pub-index-control-label" for="pub-index-size" data-i18n="sec.biblio.size"
-                  >Por página</label
-                >
-                <select
-                  id="pub-index-size"
-                  class="pub-index-control-select"
-                  aria-label="Cantidad por página"
-                  data-i18n-attr="aria-label:sec.biblio.size.aria"
-                >
-                  <option value="15">15</option>
-                  <option value="30">30</option>
-                  <option value="50">50</option>
-                </select>
-                <label class="pub-index-control-label" for="pub-index-sort" data-i18n="sec.biblio.sort"
-                  >Orden</label
-                >
-                <select
-                  id="pub-index-sort"
-                  class="pub-index-control-select"
-                  aria-label="Ordenar publicaciones"
-                  data-i18n-attr="aria-label:sec.biblio.sort.aria"
-                >
-                  <option value="date_desc" data-i18n="sec.biblio.sort.dateDesc">Fecha: más reciente</option>
-                  <option value="date_asc" data-i18n="sec.biblio.sort.dateAsc">Fecha: más antigua</option>
-                  <option value="relevance" data-i18n="sec.biblio.sort.relevance">
-                    Relevancia (si hay búsqueda)
-                  </option>
-                </select>
-              </div>
-              <div id="pub-index-active" class="pub-index-active" aria-live="polite"></div>
-            </div>
-            <div id="pub-index-status" class="pub-status" aria-live="polite"></div>
-            <div class="pub-grid" id="pub-index-grid"></div>
-          </div>
-        </div>
-      </section>
 
       <section class="section section--galeria page-panel" id="galeria" data-page="galeria" aria-labelledby="sec-galeria">
         <div class="section-inner">
@@ -1242,31 +622,9 @@
             </ul>
           </div>
           <div class="footer-col">
-            <h3 data-i18n="nav.group.recursos">Recursos</h3>
-            <ul class="footer-links">
-              <li>
-                <a href="#info-hidrologica" data-i18n="nav.infoHidrologica"
-                  >Información hidrológica básica</a
-                >
-              </li>
-              <li>
-                <a href="#datos-hidrologicos" data-i18n="nav.datosHidrologicos"
-                  >Laboratorio de datos hídricos</a
-                >
-              </li>
-              <li>
-                <a href="#embalses-cotas" data-i18n="nav.embalsesCotas"
-                  >Embalses y cotas</a
-                >
-              </li>
-            </ul>
-          </div>
-          <div class="footer-col">
             <h3 data-i18n="nav.group.difusion">Difusión</h3>
             <ul class="footer-links">
               <li><a href="#noticias" data-i18n="nav.noticias">Noticias</a></li>
-              <li><a href="#articulos" data-i18n="nav.articulos">Publicaciones</a></li>
-              <li><a href="#publicaciones" data-i18n="nav.publicaciones">Biblioteca del Agua</a></li>
               <li><a href="#galeria" data-i18n="nav.galeria">Galería de imágenes</a></li>
               <li><a href="#visitas" data-i18n="nav.visitas">Visitas al Plan AURA</a></li>
             </ul>
@@ -1275,6 +633,9 @@
             <h3 data-i18n="footer.redes.title">Enlaces</h3>
             <ul class="footer-links">
               <li><a href="#contacto" data-i18n="nav.contacto">Contacto</a></li>
+              <li>
+                <a href="https://claudiomlarrea.github.io/observatorio-ia/instituto-del-agua/" target="_blank" rel="noopener noreferrer">Instituto del Agua</a>
+              </li>
               <li>
                 <a href="https://uccuyo.edu.ar" target="_blank" rel="noopener noreferrer" data-i18n="footer.red.uccuyo">Universidad Católica de Cuyo</a>
               </li>
@@ -1340,19 +701,13 @@
 
     <script src="js/i18n-dict.js?v=60" defer></script>
     <script src="js/i18n.js?v=7" defer></script>
-    <script src="js/main.js?v=7" defer></script>
+    <script src="js/main.js?v=8" defer></script>
     <script src="js/galeria-config.js?v=8" defer></script>
     <script src="js/galeria.js?v=6" defer></script>
     <script src="js/publicaciones-config.js?v=3" defer></script>
-    <script src="js/publicaciones-fuentes-abiertas.js?v=2" defer></script>
-    <script src="js/biblioteca-agua.js?v=3" defer></script>
     <script src="js/visitantes-config.js?v=1" defer></script>
     <script src="js/visitantes.js?v=7" defer></script>
     <script src="js/visitas-mapa.js?v=6" defer></script>
-    <script src="js/mesa-ayuda.js?v=9" defer></script>
-    <script src="js/hidrologia.js?v=10" defer></script>
-    <script src="js/hidrologia-historica.js?v=4" defer></script>
-    <script src="js/hidro-lab.js?v=2" defer></script>
-    <script src="js/embalses.js?v=3" defer></script>
+    <script src="js/mesa-ayuda.js?v=10" defer></script>
   </body>
 </html>

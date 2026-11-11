@@ -260,13 +260,13 @@
       return (
         "<p><strong>Basic hydrological information</strong></p>" +
         "<p>This section shows daily flow at Km 101, reservoir levels, decade tables and charts, annual analysis and trends, and short explainers (cycle, snowmelt regime, water stress). Source: San Juan Department of Hydraulics.</p>" +
-        "<p>Open it: <a href=\"#info-hidrologica\">Basic hydrological information</a>.</p>"
+        "<p>Open it: <a href=\"https://claudiomlarrea.github.io/observatorio-ia/instituto-del-agua/#info-hidrologica\">Basic hydrological information</a>.</p>"
       );
     }
     return (
       "<p><strong>Información hidrológica básica</strong></p>" +
       "<p>En esa sección ves el caudal diario en Km 101, cotas de embalses, tablas y gráficos por década, análisis anual y tendencias, y nociones básicas (ciclo, régimen nival, estrés hídrico). Fuente: Departamento de Hidráulica de San Juan.</p>" +
-      "<p>Abrila acá: <a href=\"#info-hidrologica\">Información hidrológica básica</a>.</p>"
+      "<p>Abrila acá: <a href=\"https://claudiomlarrea.github.io/observatorio-ia/instituto-del-agua/#info-hidrologica\">Información hidrológica básica</a>.</p>"
     );
   }
 
@@ -275,13 +275,13 @@
       return (
         "<p><strong>Flow at Km 101</strong></p>" +
         "<p>The San Juan River series at Km 101 runs from hydrological year 1909–10 (July–June) to today. The section shows the latest reading, decade means, monthly detail, annual analysis and trends. Missing published days stay as s/d; they are not interpolated.</p>" +
-        "<p>See <a href=\"#info-hidrologica\">the hydrology section</a> and <a href=\"#serie-historica\">historical series</a>.</p>"
+        "<p>See <a href=\"https://claudiomlarrea.github.io/observatorio-ia/instituto-del-agua/#info-hidrologica\">the hydrology section</a> and <a href=\"https://claudiomlarrea.github.io/observatorio-ia/instituto-del-agua/#serie-historica\">historical series</a>.</p>"
       );
     }
     return (
       "<p><strong>Caudal Km 101</strong></p>" +
       "<p>La serie del río San Juan en Km 101 va desde el año hidrológico 1909-10 (julio–junio) hasta hoy. En la sección ves el dato del día, medias por década, detalle mensual, análisis anual y tendencias. Los días sin dato publicado quedan como s/d; no se interpolan.</p>" +
-      "<p>Miralo en <a href=\"#info-hidrologica\">Información hidrológica básica</a> y en <a href=\"#serie-historica\">serie histórica</a>.</p>"
+      "<p>Miralo en <a href=\"https://claudiomlarrea.github.io/observatorio-ia/instituto-del-agua/#info-hidrologica\">Información hidrológica básica</a> y en <a href=\"https://claudiomlarrea.github.io/observatorio-ia/instituto-del-agua/#serie-historica\">serie histórica</a>.</p>"
     );
   }
 
@@ -290,13 +290,13 @@
       return (
         "<p><strong>Reservoirs and levels</strong></p>" +
         "<p>Choose a year to see mean, max or min elevation for Punta Negra, Ullum, Los Caracoles and Cuesta del Viento, with a fill schematic and the daily series. Data start around 2014–2015.</p>" +
-        "<p>Open <a href=\"#embalses-cotas\">Reservoirs and levels</a>.</p>"
+        "<p>Open <a href=\"https://claudiomlarrea.github.io/observatorio-ia/instituto-del-agua/#embalses-cotas\">Reservoirs and levels</a>.</p>"
       );
     }
     return (
       "<p><strong>Embalses y cotas</strong></p>" +
       "<p>Elegí un año para ver la cota media, máxima o mínima de Punta Negra, Ullum, Los Caracoles y Cuesta del Viento, con un esquema de llenado y la serie diaria. La serie arranca hacia 2014–2015.</p>" +
-      "<p>Abrí <a href=\"#embalses-cotas\">Embalses y cotas</a>.</p>"
+      "<p>Abrí <a href=\"https://claudiomlarrea.github.io/observatorio-ia/instituto-del-agua/#embalses-cotas\">Embalses y cotas</a>.</p>"
     );
   }
 
@@ -305,13 +305,13 @@
       return (
         "<p><strong>Water data lab</strong></p>" +
         "<p>Extract the daily Km 101 series from 1910, compute statistics for a period, optionally compare a second span, download the CSV subset and copy a citation. Unpublished days are not interpolated.</p>" +
-        "<p>Open <a href=\"#datos-hidrologicos\">Water data lab</a>.</p>"
+        "<p>Open <a href=\"https://claudiomlarrea.github.io/observatorio-ia/instituto-del-agua/#datos-hidrologicos\">Water data lab</a>.</p>"
       );
     }
     return (
       "<p><strong>Laboratorio de datos hídricos</strong></p>" +
       "<p>Extraé la serie diaria de Km 101 desde 1910, calculá estadísticas de un período, compará otro tramo si hace falta, descargá el recorte CSV y copiá una cita. Los días sin dato no se interpolan.</p>" +
-      "<p>Abrí <a href=\"#datos-hidrologicos\">Laboratorio de datos hídricos</a>.</p>"
+      "<p>Abrí <a href=\"https://claudiomlarrea.github.io/observatorio-ia/instituto-del-agua/#datos-hidrologicos\">Laboratorio de datos hídricos</a>.</p>"
     );
   }
 
@@ -319,12 +319,12 @@
     if (lang() === "en") {
       return (
         "<p><strong>Download data</strong></p>" +
-        "<p>Use the <a href=\"#datos-hidrologicos\">Water data lab</a> for a date-range CSV, or the package links there and in <a href=\"#hidro-descargas\">Download data</a> for the full daily series, annual summaries, reservoir levels and charts.</p>"
+        "<p>Use the <a href=\"https://claudiomlarrea.github.io/observatorio-ia/instituto-del-agua/#datos-hidrologicos\">Water data lab</a> for a date-range CSV, or the package links there and in <a href=\"https://claudiomlarrea.github.io/observatorio-ia/instituto-del-agua/#hidro-descargas\">Download data</a> for the full daily series, annual summaries, reservoir levels and charts.</p>"
       );
     }
     return (
       "<p><strong>Descargar datos</strong></p>" +
-      "<p>Usá el <a href=\"#datos-hidrologicos\">Laboratorio de datos hídricos</a> para un CSV por rango de fechas, o los paquetes de ahí y de <a href=\"#hidro-descargas\">Descargar datos</a> para la serie diaria completa, resúmenes anuales, cotas y gráficos.</p>"
+      "<p>Usá el <a href=\"https://claudiomlarrea.github.io/observatorio-ia/instituto-del-agua/#datos-hidrologicos\">Laboratorio de datos hídricos</a> para un CSV por rango de fechas, o los paquetes de ahí y de <a href=\"https://claudiomlarrea.github.io/observatorio-ia/instituto-del-agua/#hidro-descargas\">Descargar datos</a> para la serie diaria completa, resúmenes anuales, cotas y gráficos.</p>"
     );
   }
 
@@ -333,13 +333,13 @@
       return (
         "<p><strong>Hydrological cycle</strong></p>" +
         "<p>Water moves between atmosphere, surface, and subsurface: it precipitates, runs off, infiltrates, evaporates, and returns to the atmosphere. In arid zones that cycle is fragile: little rainfall, high evaporation, and strong dependence on what arrives from the Andes.</p>" +
-        "<p>More in <a href=\"#info-hidrologica\">Basic hydrological information</a>.</p>"
+        "<p>More in <a href=\"https://claudiomlarrea.github.io/observatorio-ia/instituto-del-agua/#info-hidrologica\">Basic hydrological information</a>.</p>"
       );
     }
     return (
       "<p><strong>Ciclo hidrológico</strong></p>" +
       "<p>El agua circula entre atmósfera, superficie y subsuelo: precipita, escurre, se infiltra, se evapora y vuelve a la atmósfera. En zonas áridas ese ciclo es frágil: poca lluvia, alta evaporación y fuerte dependencia de lo que llega desde la cordillera.</p>" +
-      "<p>Más en <a href=\"#info-hidrologica\">Información hidrológica básica</a>.</p>"
+      "<p>Más en <a href=\"https://claudiomlarrea.github.io/observatorio-ia/instituto-del-agua/#info-hidrologica\">Información hidrológica básica</a>.</p>"
     );
   }
 
@@ -348,13 +348,13 @@
       return (
         "<p><strong>Snowmelt regime</strong></p>" +
         "<p>The San Juan River has a predominantly nival regime: its flow depends mainly on Andean snowpack and snowmelt. That is why there are wetter years and scarcer years, according to the snow cycle.</p>" +
-        "<p>More in <a href=\"#info-hidrologica\">Basic hydrological information</a>.</p>"
+        "<p>More in <a href=\"https://claudiomlarrea.github.io/observatorio-ia/instituto-del-agua/#info-hidrologica\">Basic hydrological information</a>.</p>"
       );
     }
     return (
       "<p><strong>Régimen nival</strong></p>" +
       "<p>El río San Juan tiene régimen predominantemente nival: su caudal depende sobre todo de la nieve acumulada en los Andes y del deshielo. Por eso hay años más abundantes y años de escasez, según el ciclo nival.</p>" +
-      "<p>Más en <a href=\"#info-hidrologica\">Información hidrológica básica</a>.</p>"
+      "<p>Más en <a href=\"https://claudiomlarrea.github.io/observatorio-ia/instituto-del-agua/#info-hidrologica\">Información hidrológica básica</a>.</p>"
     );
   }
 
@@ -363,13 +363,13 @@
       return (
         "<p><strong>Surface and groundwater</strong></p>" +
         "<p>In the Tulum Valley, surface water (river, reservoirs, and canals) and aquifer groundwater coexist. Part of the flow infiltrates and recharges the aquifer; its level rises or falls with wet or dry cycles and with how the resource is used.</p>" +
-        "<p>More in <a href=\"#info-hidrologica\">Basic hydrological information</a>.</p>"
+        "<p>More in <a href=\"https://claudiomlarrea.github.io/observatorio-ia/instituto-del-agua/#info-hidrologica\">Basic hydrological information</a>.</p>"
       );
     }
     return (
       "<p><strong>Agua superficial y subterránea</strong></p>" +
       "<p>En el Valle de Tulum conviven el agua superficial (río, embalses y canales) y el agua subterránea del acuífero. Parte del caudal se infiltra y recarga el acuífero; su nivel sube o baja según ciclos húmedos o secos y según el uso que se haga del recurso.</p>" +
-      "<p>Más en <a href=\"#info-hidrologica\">Información hidrológica básica</a>.</p>"
+      "<p>Más en <a href=\"https://claudiomlarrea.github.io/observatorio-ia/instituto-del-agua/#info-hidrologica\">Información hidrológica básica</a>.</p>"
     );
   }
 
@@ -378,24 +378,24 @@
       return (
         "<p><strong>What is water stress?</strong></p>" +
         "<p>Supply is the water available (flow and reserves). Demand is what households, irrigation, industry, and services require. Water stress describes the tension between them: a high value does not always mean “there is no water,” but a greater mismatch between what is available and what is needed.</p>" +
-        "<p>More in <a href=\"#info-hidrologica\">Basic hydrological information</a>.</p>"
+        "<p>More in <a href=\"https://claudiomlarrea.github.io/observatorio-ia/instituto-del-agua/#info-hidrologica\">Basic hydrological information</a>.</p>"
       );
     }
     return (
       "<p><strong>Qué es el estrés hídrico</strong></p>" +
       "<p>La oferta es el agua disponible (caudal y reservas). La demanda es lo que requieren hogares, riego, industria y servicios. El estrés hídrico describe la tensión entre ambas: un valor alto no siempre significa «no hay agua», sino mayor desacople entre lo disponible y lo que se necesita.</p>" +
-      "<p>Más en <a href=\"#info-hidrologica\">Información hidrológica básica</a>.</p>"
+      "<p>Más en <a href=\"https://claudiomlarrea.github.io/observatorio-ia/instituto-del-agua/#info-hidrologica\">Información hidrológica básica</a>.</p>"
     );
   }
 
   function htmlFallback() {
     if (lang() === "en") {
       return (
-        "<p>I can help with <strong>hydrology</strong> (basic info, data lab, reservoirs, downloads) and the Plan. Try the quick buttons or open <a href=\"#info-hidrologica\">Basic hydrological information</a>. Write to <a href=\"mailto:" + MAIL + "\">" + MAIL + "</a> if needed.</p>"
+        "<p>I can help with <strong>hydrology</strong> (basic info, data lab, reservoirs, downloads) and the Plan. Try the quick buttons or open <a href=\"https://claudiomlarrea.github.io/observatorio-ia/instituto-del-agua/#info-hidrologica\">Basic hydrological information</a>. Write to <a href=\"mailto:" + MAIL + "\">" + MAIL + "</a> if needed.</p>"
       );
     }
     return (
-      "<p>Puedo ayudarte con <strong>hidrología</strong> (información básica, laboratorio, embalses, descargas) y el Plan. Probá los botones o abrí <a href=\"#info-hidrologica\">Información hidrológica básica</a>. Consultas: <a href=\"mailto:" + MAIL + "\">" + MAIL + "</a>.</p>"
+      "<p>Puedo ayudarte con <strong>hidrología</strong> (información básica, laboratorio, embalses, descargas) y el Plan. Probá los botones o abrí <a href=\"https://claudiomlarrea.github.io/observatorio-ia/instituto-del-agua/#info-hidrologica\">Información hidrológica básica</a>. Consultas: <a href=\"mailto:" + MAIL + "\">" + MAIL + "</a>.</p>"
     );
   }
 

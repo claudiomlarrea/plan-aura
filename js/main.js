@@ -2,12 +2,21 @@
   var toggle = document.querySelector(".nav-toggle");
   var nav = document.querySelector("#site-nav");
   var baseTitle = "Plan Integral de Ahorro y Uso Responsable del Agua | UCCuyo";
+  var INSTITUTO =
+    "https://claudiomlarrea.github.io/observatorio-ia/instituto-del-agua/";
+  var movedPages = {
+    "info-hidrologica": INSTITUTO + "#info-hidrologica",
+    "datos-hidrologicos": INSTITUTO + "#datos-hidrologicos",
+    "embalses-cotas": INSTITUTO + "#embalses-cotas",
+    articulos: INSTITUTO + "#articulos",
+    publicaciones: INSTITUTO + "#publicaciones",
+    biblioteca: INSTITUTO + "#publicaciones",
+    "biblioteca-del-agua": INSTITUTO + "#publicaciones"
+  };
   var aliases = {
     contenido: "inicio",
     comision: "equipo",
     marco: "documentos",
-    "biblioteca-del-agua": "publicaciones",
-    biblioteca: "publicaciones",
     convocatoria: "el-plan"
   };
   var pageTitles = {
@@ -18,8 +27,6 @@
     red: "Red institucional · Plan AURA",
     documentos: "Marco normativo · Plan AURA",
     noticias: "Noticias · Plan AURA",
-    articulos: "Publicaciones · Plan AURA",
-    publicaciones: "Biblioteca del Agua · Plan AURA",
     galeria: "Galería de imágenes · Plan AURA",
     visitas: "Visitas al Plan AURA · Plan AURA",
     contacto: "Contacto · Plan AURA"
@@ -46,6 +53,11 @@
 
   function showPage(hash, push) {
     var raw = String(hash || "").replace(/^#/, "") || "inicio";
+    var dest = movedPages[raw] || movedPages[aliases[raw]];
+    if (dest) {
+      location.replace(dest);
+      return;
+    }
     var id = pageIdFromHash(hash);
     var panel = document.querySelector('.page-panel[data-page="' + id + '"]');
     if (!panel) return;
