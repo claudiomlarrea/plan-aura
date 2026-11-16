@@ -40,7 +40,9 @@ def parse_html_planilla(raw_bytes):
             "embalses": {k: (num_es(f.get(c)), num_es(f.get(h)), num_es(f.get(hd))) for k, (c, h, hd) in emb.items()}}
 
 def parse_pdf_planilla(path):
-    t = subprocess.run(["pdftotext", "-layout", "-l", "1", path, "-"], capture_output=True, text=True).stdout
+    proc = subprocess.run(["pdftotext", "-layout", "-l", "1", path, "-"], capture_output=True, text=True)
+    if proc.returncode != 0: return None
+    t = proc.stdout
     m = re.search(r"Fecha:\s*(\d\d/\d\d/\d{4})", t)
     if not m: return None
     fecha = dt.datetime.strptime(m.group(1), "%d/%m/%Y").date()
@@ -52,3 +54,9 @@ def parse_pdf_planilla(path):
         mm = re.search(p + r"[ \t]*" + N + r"[ \t]+" + N + r"[ \t]+" + N, t)
         emb[k] = tuple(num(x) for x in mm.groups()) if mm else (None, None, None)
     return {"fecha": fecha, "km101": num(q.group(1)) if q else None, "embalses": emb}
+
+def planilla_con_medicion(res):
+    """True si hay caudal Km 101 o al menos una cota. Una fecha sola no alcanza."""
+    if not res: return False
+    if res.get("km101") is not None: return True
+    return any(niv is not None for niv, _vol, _disp in res.get("embalses", {}).values())
