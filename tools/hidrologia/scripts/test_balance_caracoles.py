@@ -56,8 +56,12 @@ class Balance(unittest.TestCase):
             self.assertEqual(fila["cota_caracoles"], cota)
             self.assertTrue(fila["interpolado"])
             self.assertEqual(fila["cota_interpolada"], cota_interpolada)
-        for fecha in (dt.date(2026, 11, 6), dt.date(2026, 11, 7), dt.date(2026, 11, 8), dt.date(2026, 11, 9)):
-            self.assertEqual(por_fecha[fecha]["nota"], b.NOTA_SIN_PLANILLA)
+        for fecha, (descarga, almacenamiento) in b.COMPONENTES_05_09.items():
+            fila = por_fecha[fecha]
+            self.assertEqual(fila["nota"], "interpolado")
+            self.assertEqual(fila["descarga_m3s"], descarga)
+            self.assertEqual(fila["almacenamiento_caracoles_m3s"], almacenamiento)
+            self.assertEqual(round(descarga + almacenamiento, 1), fila["caudal_estimado_m3s"])
         media = sum(por_fecha[f]["caudal_estimado_m3s"] for f in b.RAMPA_05_09) / 5
         self.assertAlmostEqual(media, 73.3, delta=0.05)
         self.assertFalse(por_fecha[dt.date(2026, 11, 4)]["interpolado"])

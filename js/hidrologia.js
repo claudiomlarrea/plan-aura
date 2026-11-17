@@ -1204,7 +1204,7 @@
       style.textContent = [
         "#hidro-balance { margin: 0 0 1.5rem; }",
         "#hidro-balance .hidro-balance-leyenda { display: inline-block; margin: 0 0 0.8rem; padding: 0.28rem 0.7rem; border-radius: 999px; background: #7a1532; color: #fff; font-weight: 700; letter-spacing: 0.04em; }",
-        "#hidro-balance .hidro-balance-chart { position: relative; height: 300px; margin: 0.4rem 0 0.8rem; }",
+        "#hidro-balance .hidro-balance-chart { position: relative; height: 340px; margin: 0.4rem 0 0.8rem; }",
         "#hidro-balance .hidro-balance-metodo { margin-top: 0.8rem; }",
         "#hidro-balance .hidro-balance-metodo p { white-space: pre-wrap; }",
         "#hidro-balance tr.hidro-balance-interp td { color: #8a4b12; }"
@@ -1219,13 +1219,16 @@
         ? balanceText("pendiente", "pending")
         : (isNum(row.caudal_estimado_m3s) ? formatFixed(row.caudal_estimado_m3s, 1) : MISSING);
       var descarga = isNum(row.descarga_m3s) ? formatFixed(row.descarga_m3s, 1) : MISSING;
+      var almacenamiento = isNum(row.almacenamiento_caracoles_m3s) ? formatFixed(row.almacenamiento_caracoles_m3s, 1) : MISSING;
       var ventana = row.dias_ventana == null ? MISSING : String(row.dias_ventana);
       var medido = isNum(row.km101_medido_m3s) ? formatFixed(row.km101_medido_m3s, 3) : MISSING;
       var marca = row.interpolado ? " class=\"hidro-balance-interp\"" : "";
+      var nota = row.nota === "pendiente" ? "" : (row.nota || "");
       return "<tr" + marca + "><th scope=\"row\">" + escHtml(formatFechaTabla(row.fecha)) + "</th><td>" + escHtml(estimado) +
         "</td><td>" + escHtml(formatCota(row.cota_caracoles)) + "</td><td>" + escHtml(descarga) +
+        "</td><td>" + escHtml(almacenamiento) +
         "</td><td>" + escHtml(ventana) + "</td><td>" + escHtml(medido) + "</td><td>" +
-        escHtml(row.nota && row.nota !== "pendiente" ? row.nota : "") + "</td></tr>";
+        escHtml(nota) + "</td></tr>";
     }).join("");
     var validacion = doc.validacion && doc.validacion.texto ? doc.validacion.texto : "";
     host.innerHTML =
@@ -1235,8 +1238,8 @@
       )) + "</h3>" +
       "<p class=\"hidro-balance-leyenda\">" + escHtml(balanceText("ESTIMADO, no medido", "ESTIMATED, not measured")) + "</p>" +
       "<p>" + escHtml(balanceText(
-        "Estimación por balance de Los Caracoles, Punta Negra y Ullum y del desembalse de Ullum. ESTIMADO, no medido: no es el caudal de Km 101. En un hueco de 2 a 7 días la línea discontinua reparte el volumen del balance; la línea sólida es el balance de un día con planilla.",
-        "Estimate from Los Caracoles, Punta Negra and Ullum storage plus the Ullum release. ESTIMATED, not measured: it is not the Km 101 flow. Over a 2–7 day gap the dashed line spreads the balance volume; the solid line is a one-day balance with a published sheet."
+        "Estimación por balance de Los Caracoles, Punta Negra y Ullum y del desembalse de Ullum. ESTIMADO, no medido: no es el caudal de Km 101. La línea gruesa es el caudal; las finas son la descarga a Punta Negra y el almacenamiento en Caracoles. En un hueco de 2 a 7 días van discontinuas, punteadas y con marcador hueco.",
+        "Estimate from Los Caracoles, Punta Negra and Ullum storage plus the Ullum release. ESTIMATED, not measured: it is not the Km 101 flow. The thick line is the inflow; the thin lines are the release toward Punta Negra and the Caracoles storage change. Over a 2–7 day gap they are dashed or dotted, with a hollow marker."
       )) + "</p>" +
       "<div class=\"hidro-chart hidro-balance-chart\" id=\"hidro-balance-chart-wrap\" role=\"img\" aria-label=\"" +
       escHtml(balanceText(
@@ -1251,9 +1254,14 @@
       escHtml(balanceText("Caudal estimado (m³/s)", "Estimated flow (m³/s)")) + "</th><th>" +
       escHtml(balanceText("Cota Caracoles (m s.n.m.)", "Caracoles level (m a.s.l.)")) + "</th><th>" +
       escHtml(balanceText("Descarga a Punta Negra (m³/s)", "Release toward Punta Negra (m³/s)")) + "</th><th>" +
+      escHtml(balanceText("Almacenamiento Caracoles (m³/s)", "Caracoles storage (m³/s)")) + "</th><th>" +
       escHtml(balanceText("Días de ventana", "Window (days)")) + "</th><th>" +
       escHtml(balanceText("Km 101 medido (m³/s), solo referencia", "Measured Km 101 (m³/s), reference only")) + "</th><th>" +
-      escHtml(balanceText("Nota", "Note")) + "</th></tr></thead><tbody>" + body + "</tbody></table></div>" +
+      escHtml(balanceText("Nota", "Note")) + "</th></tr></thead><tbody>" + body +       "</tbody></table></div>" +
+      "<p class=\"hidro-note\">" + escHtml(balanceText(
+        "Nota. «interpolado»: la descarga a Punta Negra y el almacenamiento en Caracoles siguen una rampa lineal entre las estimaciones diarias de los extremos, desplazada para conservar el volumen de cada parte en ese hueco de 2 a 7 días. En cada día, descarga + almacenamiento = caudal estimado. Del 5 al 9/11 se conserva el balance 5→10/11 (descarga ≈ 33,0 m³/s, almacenamiento ≈ 40,3 m³/s, caudal 73,3 m³/s). Donde no hubo planilla de DH, la cota de Caracoles también está interpolada. Un hueco de más de 7 días no se rellena.",
+        "Note. “interpolated”: the release toward Punta Negra and the Caracoles storage change follow a linear ramp between the daily estimates at the ends, shifted so each part keeps its balance volume over that 2–7 day gap. Each day, release + storage = estimated inflow. From 5 to 9 Nov the 5–10 Nov balance is kept (release ≈ 33.0 m³/s, storage ≈ 40.3 m³/s, inflow 73.3 m³/s). Where DH published no sheet, the Caracoles level is interpolated too. A gap longer than 7 days is left empty."
+      )) + "</p>" +
       "<p class=\"hidro-note\">" + escHtml(validacion) + "</p>" +
       "<details class=\"hidro-balance-metodo\" open><summary>" + escHtml(balanceText("Nota del método", "Method note")) +
       "</summary><p class=\"hidro-note\">" + escHtml(doc.metodo || "") + "</p></details>" +
@@ -1276,19 +1284,35 @@
     var solid = [];
     var dashed = [];
     var dashedRadius = [];
+    var descargaSolida = [];
+    var descargaPunteada = [];
+    var almacenamientoSolido = [];
+    var almacenamientoPunteado = [];
+    var radioHueco = [];
     var cursor = fechas[0];
     var end = fechas[fechas.length - 1];
+    function valorDe(row, campo) {
+      return row && isNum(row[campo]) ? row[campo] : null;
+    }
     while (cursor <= end) {
       var row = rows[cursor];
       var prev = rows[addIsoDays(cursor, -1)];
       var next = rows[addIsoDays(cursor, 1)];
-      var valor = row && isNum(row.caudal_estimado_m3s) ? row.caudal_estimado_m3s : null;
+      var valor = valorDe(row, "caudal_estimado_m3s");
       var esRampa = !!(row && row.interpolado);
+      var uneRampa = esRampa || (prev && prev.interpolado) || (next && next.interpolado);
       labels.push(formatFechaCorta(cursor));
       iso.push(cursor);
       solid.push(!esRampa ? valor : null);
-      dashed.push(valor != null && (esRampa || (prev && prev.interpolado) || (next && next.interpolado)) ? valor : null);
+      dashed.push(valor != null && uneRampa ? valor : null);
       dashedRadius.push(esRampa ? 6 : 0);
+      var descarga = valorDe(row, "descarga_m3s");
+      var almacenamiento = valorDe(row, "almacenamiento_caracoles_m3s");
+      descargaSolida.push(!esRampa ? descarga : null);
+      descargaPunteada.push(descarga != null && uneRampa ? descarga : null);
+      almacenamientoSolido.push(!esRampa ? almacenamiento : null);
+      almacenamientoPunteado.push(almacenamiento != null && uneRampa ? almacenamiento : null);
+      radioHueco.push(esRampa ? 4 : 0);
       cursor = addIsoDays(cursor, 1);
     }
     if (balanceChart) {
@@ -1310,7 +1334,8 @@
           pointRadius: 3.5,
           pointBackgroundColor: "#7a1532",
           pointBorderColor: "#7a1532",
-          fill: false
+          fill: false,
+          soloDiario: true
         }, {
           label: balanceText("Interpolado (conserva el volumen del balance)", "Interpolated (keeps the balance volume)"),
           data: dashed,
@@ -1324,7 +1349,62 @@
           pointBackgroundColor: "#ffffff",
           pointBorderColor: "#c47b2b",
           pointBorderWidth: 2,
-          fill: false
+          fill: false,
+          soloInterpolado: true
+        }, {
+          label: balanceText("Descarga a Punta Negra", "Release toward Punta Negra"),
+          data: descargaSolida,
+          borderColor: "#0a5c5e",
+          backgroundColor: "#0a5c5e",
+          borderWidth: 1,
+          spanGaps: false,
+          tension: 0,
+          pointRadius: 2,
+          pointBackgroundColor: "#0a5c5e",
+          fill: false,
+          soloDiario: true
+        }, {
+          label: balanceText("Descarga interpolada", "Interpolated release"),
+          data: descargaPunteada,
+          borderColor: "#0a5c5e",
+          backgroundColor: "#ffffff",
+          borderDash: [1, 3],
+          borderWidth: 1,
+          spanGaps: false,
+          tension: 0,
+          pointRadius: radioHueco,
+          pointBackgroundColor: "#ffffff",
+          pointBorderColor: "#0a5c5e",
+          pointBorderWidth: 1.5,
+          fill: false,
+          soloInterpolado: true
+        }, {
+          label: balanceText("Almacenamiento Caracoles", "Caracoles storage"),
+          data: almacenamientoSolido,
+          borderColor: "#1a6fa8",
+          backgroundColor: "#1a6fa8",
+          borderWidth: 1,
+          spanGaps: false,
+          tension: 0,
+          pointRadius: 2,
+          pointBackgroundColor: "#1a6fa8",
+          fill: false,
+          soloDiario: true
+        }, {
+          label: balanceText("Almacenamiento interpolado", "Interpolated storage"),
+          data: almacenamientoPunteado,
+          borderColor: "#1a6fa8",
+          backgroundColor: "#ffffff",
+          borderDash: [1, 3],
+          borderWidth: 1,
+          spanGaps: false,
+          tension: 0,
+          pointRadius: radioHueco,
+          pointBackgroundColor: "#ffffff",
+          pointBorderColor: "#1a6fa8",
+          pointBorderWidth: 1.5,
+          fill: false,
+          soloInterpolado: true
         }]
       },
       options: {
@@ -1344,7 +1424,10 @@
           },
           tooltip: {
             filter: function (item) {
-              if (item.datasetIndex === 1) return !!(rows[iso[item.dataIndex]] && rows[iso[item.dataIndex]].interpolado);
+              var ds = item.chart.data.datasets[item.datasetIndex];
+              var es = !!(rows[iso[item.dataIndex]] && rows[iso[item.dataIndex]].interpolado);
+              if (ds.soloInterpolado) return es && item.raw != null;
+              if (ds.soloDiario) return !es && item.raw != null;
               return item.raw != null;
             },
             callbacks: {
