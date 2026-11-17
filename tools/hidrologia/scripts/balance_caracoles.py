@@ -65,7 +65,15 @@ RAMPA_05_09 = {
     dt.date(2026, 11, 8): (78.1, 1083.79, True),
     dt.date(2026, 11, 9): (83.0, 1084.25, True),
 }
-NOTA_SIN_PLANILLA = "interpolado (sin planilla DH; conserva el volumen del balance 05→10/11)"
+NOTA_INTERPOLADO = "interpolado"
+# Descarga a Punta Negra y almacenamiento en Caracoles, en m³/s.
+COMPONENTES_05_09 = {
+    dt.date(2026, 11, 5): (35.5, 28.2),
+    dt.date(2026, 11, 6): (34.2, 34.3),
+    dt.date(2026, 11, 7): (33.0, 40.3),
+    dt.date(2026, 11, 8): (31.7, 46.4),
+    dt.date(2026, 11, 9): (30.5, 52.5),
+}
 
 FUENTE = (
     "Departamento de Hidráulica de San Juan, planilla diaria «Distribución de Riego» "
@@ -96,16 +104,20 @@ def texto_metodo():
         "Si D' es el día siguiente, ese balance es el caudal del día D. Si el hueco es de "
         "2 a 7 días, el volumen del balance se reparte con una rampa lineal desde la "
         "estimación diaria del día anterior a D hasta la estimación diaria de D', desplazada "
-        "para que la media de D a D'−1 conserve ese volumen. Los días sin planilla quedan "
-        "marcados interpolado y su cota de Caracoles se interpola en línea entre las dos "
-        "lecturas. Un hueco de más de 7 días no se rellena. Si todavía no hay lectura "
-        "siguiente, la última fila queda pendiente.\n\n"
+        "para que la media de D a D'−1 conserve ese volumen. La descarga a Punta Negra y el "
+        "almacenamiento en Caracoles se reparten con la misma rampa, cada uno conservando "
+        "la media de su propia parte, y en cada día descarga + almacenamiento = caudal estimado. "
+        "Esos días quedan marcados interpolado. Si no hubo planilla, la cota de Caracoles "
+        "también se interpola en línea entre las dos lecturas. Un hueco de más de 7 días no "
+        "se rellena. Si todavía no hay lectura siguiente, la última fila queda pendiente.\n\n"
         "El caudal medido en Km 101, cuando existe ese día, se copia en km101_medido_m3s "
         "solo como referencia. El Departamento de Hidráulica no mide Km 101 desde el "
         "09/11/2026 (vagoneta rota) y no publicó planillas el 06, 07, 08 ni el 09/11. "
         "El balance 05→10/11 (media 73,3 m³/s, cota 1082,41 m el 05/11) se reparte en la "
-        "rampa 63,7; 68,5; 73,3; 78,1 y 83,0 m³/s. Las cotas del 06 al 09/11 son 1082,87; "
-        "1083,33; 1083,79 y 1084,25 m.\n\n"
+        "rampa 63,7; 68,5; 73,3; 78,1 y 83,0 m³/s. De esa media, la descarga a Punta Negra "
+        "aporta unos 33,0 m³/s (35,5; 34,2; 33,0; 31,7 y 30,5) y el almacenamiento en "
+        "Caracoles unos 40,3 m³/s (28,2; 34,3; 40,3; 46,4 y 52,5). Las cotas del 06 al 09/11 "
+        "son 1082,87; 1083,33; 1083,79 y 1084,25 m.\n\n"
         "Validación histórica local de este balance contra el Km 101 medido "
         f"({c['periodo']}): a escala diaria, sesgo −{_txt(abs(c['diario_sesgo_m3s']))} m³/s, "
         f"error medio absoluto {_txt(c['diario_error_medio_abs_m3s'])} m³/s, "
@@ -149,22 +161,10 @@ def caudal_intervalo(primera, siguiente):
     media = (primera["desembalse_m3s"] + siguiente["desembalse_m3s"]) / 2.0
     delta = {k: siguiente["volumen_hm3"][k] - primera["volumen_hm3"][k] for k in EMBALSES}
     segundos = dias * 86400.0
-    entrada = media + sum(delta.values()) * 1e6 / segundos
+    almacenamiento = delta["Los Caracoles"] * 1e6 / segundos
     descarga = media + (delta["Punta Negra"] + delta["Ullum"]) * 1e6 / segundos
-    return dias, entrada, descarga
-
-
-def _tramo(inicio, fin):
-    if inicio.month == fin.month and inicio.year == fin.year:
-        return f"{inicio.day:02d}→{fin.day:02d}/{fin.month:02d}"
-    return f"{inicio.day:02d}/{inicio.month:02d}→{fin.day:02d}/{fin.month:02d}"
-
-
-def nota_interpolado(inicio, fin, sin_planilla):
-    tramo = _tramo(inicio, fin)
-    if sin_planilla:
-        return f"interpolado (sin planilla DH; conserva el volumen del balance {tramo})"
-    return f"interpolado (conserva el volumen del balance {tramo})"
+    entrada = descarga + almacenamiento
+    return dias, entrada, descarga, almacenamiento
 
 
 def repartir(ancla_izq, ancla_der, n, media):
@@ -181,13 +181,31 @@ def repartir(ancla_izq, ancla_der, n, media):
     return [valor + corrimiento for valor in crudos]
 
 
-def _fila(fecha, cota, cota_interpolada, caudal, descarga, dias, interpolado, km101, nota):
+def _partes(caudal, descarga, almacenamiento):
+    """Redondea a 0,1 m³/s y deja caudal = descarga + almacenamiento."""
+    q = redondear(caudal, 1) if caudal is not None else None
+    d = redondear(descarga, 1) if descarga is not None else None
+    a = redondear(almacenamiento, 1) if almacenamiento is not None else None
+    if q is None or d is None or a is None or abs((d + a) - q) < 0.001:
+        return q, d, a
+    resto_d = abs(descarga - d)
+    resto_a = abs(almacenamiento - a)
+    if resto_d >= resto_a:
+        d = redondear(q - a, 1)
+    else:
+        a = redondear(q - d, 1)
+    return q, d, a
+
+
+def _fila(fecha, cota, cota_interpolada, caudal, descarga, almacenamiento, dias, interpolado, km101, nota):
     medido = None if km101 is None else km101.get(fecha)
+    q, d, a = _partes(caudal, descarga, almacenamiento)
     return {
         "fecha": fecha.isoformat(),
-        "caudal_estimado_m3s": redondear(caudal, 1) if caudal is not None else None,
+        "caudal_estimado_m3s": q,
         "cota_caracoles": redondear(cota, 2) if cota is not None else None,
-        "descarga_m3s": redondear(descarga, 1) if descarga is not None else None,
+        "descarga_m3s": d,
+        "almacenamiento_caracoles_m3s": a,
         "dias_ventana": dias,
         "km101_medido_m3s": redondear(medido, 3) if medido is not None else None,
         "interpolado": bool(interpolado),
@@ -208,13 +226,14 @@ def serie_balance(lecturas, km101=None, inicio=INICIO, max_dias=MAX_DIAS):
         if dias < 1 or dias > max_dias:
             intervalos.append({"primera": primera, "siguiente": siguiente, "dias": dias, "descartar": True})
             continue
-        _, entrada, descarga = caudal_intervalo(primera, siguiente)
+        _, entrada, descarga, almacenamiento = caudal_intervalo(primera, siguiente)
         intervalos.append({
             "primera": primera, "siguiente": siguiente, "dias": dias,
-            "entrada": entrada, "descarga": descarga, "descartar": False,
+            "entrada": entrada, "descarga": descarga, "almacenamiento": almacenamiento,
+            "descartar": False,
         })
     diario = {
-        it["primera"]["fecha"]: (it["entrada"], it["descarga"])
+        it["primera"]["fecha"]: (it["entrada"], it["descarga"], it["almacenamiento"])
         for it in intervalos if not it["descartar"] and it["dias"] == 1
     }
     filas = []
@@ -225,7 +244,7 @@ def serie_balance(lecturas, km101=None, inicio=INICIO, max_dias=MAX_DIAS):
         if it["dias"] == 1:
             filas.append(_fila(
                 primera["fecha"], primera.get("cota_caracoles"), False,
-                it["entrada"], it["descarga"], 1, False, km101, None,
+                it["entrada"], it["descarga"], it["almacenamiento"], 1, False, km101, None,
             ))
             continue
         siguiente = it["siguiente"]
@@ -234,6 +253,7 @@ def serie_balance(lecturas, km101=None, inicio=INICIO, max_dias=MAX_DIAS):
         der = diario.get(siguiente["fecha"])
         caudales = repartir(None if izq is None else izq[0], None if der is None else der[0], n, it["entrada"])
         descargas = repartir(None if izq is None else izq[1], None if der is None else der[1], n, it["descarga"])
+        almacen = repartir(None if izq is None else izq[2], None if der is None else der[2], n, it["almacenamiento"])
         for k in range(n):
             fecha = primera["fecha"] + dt.timedelta(days=k)
             lectura = por_lectura.get(fecha)
@@ -250,14 +270,14 @@ def serie_balance(lecturas, km101=None, inicio=INICIO, max_dias=MAX_DIAS):
                     cota = cota_s + (cota_e - cota_s) * (k / n)
                     cota_interpolada = True
             filas.append(_fila(
-                fecha, cota, cota_interpolada, caudales[k], descargas[k], n, True, km101,
-                nota_interpolado(primera["fecha"], siguiente["fecha"], lectura is None),
+                fecha, cota, cota_interpolada, caudales[k], descargas[k], almacen[k], n, True, km101,
+                "interpolado",
             ))
     if ok and ok[-1]["fecha"] >= inicio:
         ultima = ok[-1]
         filas.append(_fila(
             ultima["fecha"], ultima.get("cota_caracoles"), False,
-            None, None, None, False, km101, "pendiente",
+            None, None, None, None, False, km101, "pendiente",
         ))
     return filas
 
@@ -296,10 +316,15 @@ def errores_referencia(filas):
             errores.append(f"{fecha.isoformat()} debe marcarse interpolado")
         if bool(fila.get("cota_interpolada")) != cota_interpolada:
             errores.append(f"{fecha.isoformat()} cota_interpolada={fila.get('cota_interpolada')}")
-        if cota_interpolada and fila.get("nota") != NOTA_SIN_PLANILLA:
+        if fila.get("nota") != NOTA_INTERPOLADO:
             errores.append(f"{fecha.isoformat()} nota {fila.get('nota')!r}")
-        if fecha == dt.date(2026, 11, 5) and fila.get("nota") != "interpolado (conserva el volumen del balance 05→10/11)":
-            errores.append(f"05/11 nota {fila.get('nota')!r}")
+        descarga, almacenamiento = COMPONENTES_05_09[fecha]
+        if fila.get("descarga_m3s") != descarga:
+            errores.append(f"{fecha.isoformat()} descarga {fila.get('descarga_m3s')} (esperado {descarga})")
+        if fila.get("almacenamiento_caracoles_m3s") != almacenamiento:
+            errores.append(f"{fecha.isoformat()} almacenamiento {fila.get('almacenamiento_caracoles_m3s')} (esperado {almacenamiento})")
+        if abs((descarga + almacenamiento) - caudal) > 0.001:
+            errores.append(f"{fecha.isoformat()} las partes no suman el caudal")
     if len(rampas) == 5 and abs(sum(rampas) / 5 - 73.3) > 0.05:
         errores.append(f"la media 05–09 es {sum(rampas) / 5}, no 73,3")
     return errores
@@ -386,7 +411,8 @@ def escribir_csv(filas, path):
     import csv
     campos = [
         "fecha", "caudal_estimado_m3s", "cota_caracoles", "descarga_m3s",
-        "dias_ventana", "km101_medido_m3s", "interpolado", "cota_interpolada", "nota",
+        "almacenamiento_caracoles_m3s", "dias_ventana", "km101_medido_m3s",
+        "interpolado", "cota_interpolada", "nota",
     ]
     with open(path, "w", encoding="utf-8-sig", newline="") as fh:
         w = csv.writer(fh, delimiter=";")
@@ -397,6 +423,7 @@ def escribir_csv(filas, path):
                 _csv_num(fila["caudal_estimado_m3s"], 1),
                 _csv_num(fila["cota_caracoles"], 2),
                 _csv_num(fila["descarga_m3s"], 1),
+                _csv_num(fila["almacenamiento_caracoles_m3s"], 1),
                 "" if fila["dias_ventana"] is None else str(fila["dias_ventana"]),
                 _csv_num(fila["km101_medido_m3s"], 3),
                 "true" if fila["interpolado"] else "false",
