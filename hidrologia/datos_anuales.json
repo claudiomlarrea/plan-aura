@@ -1,5 +1,5 @@
 {
- "generado": "2026-11-15",
+ "generado": "2026-11-16",
  "zona_horaria": "America/Argentina/San_Juan",
  "criterio_completo": ">= 330 días con dato",
  "fuentes": [
@@ -3159,9 +3159,9 @@
  "embalses": {
   "Punta Negra": {
    "unidad": "m.s.n.m.",
-   "registros": 3889,
+   "registros": 3890,
    "desde": "2015-12-23",
-   "hasta": "2026-11-15",
+   "hasta": "2026-11-16",
    "anio_calendario": [
     {
      "anio": 2015,
@@ -3275,7 +3275,7 @@
     },
     {
      "anio": 2026,
-     "dias_con_dato": 305,
+     "dias_con_dato": 306,
      "completo": false,
      "media_msnm": 923.61,
      "max_msnm": 926.9,
@@ -3410,9 +3410,9 @@
     },
     {
      "anio": "2026-27",
-     "dias_con_dato": 130,
+     "dias_con_dato": 131,
      "completo": false,
-     "media_msnm": 923.39,
+     "media_msnm": 923.4,
      "max_msnm": 926.9,
      "fecha_max": "2026-08-24",
      "min_msnm": 920.19,
@@ -3435,9 +3435,9 @@
   },
   "Ullum": {
    "unidad": "m.s.n.m.",
-   "registros": 4269,
+   "registros": 4270,
    "desde": "2014-12-01",
-   "hasta": "2026-11-15",
+   "hasta": "2026-11-16",
    "anio_calendario": [
     {
      "anio": 2014,
@@ -3561,9 +3561,9 @@
     },
     {
      "anio": 2026,
-     "dias_con_dato": 305,
+     "dias_con_dato": 306,
      "completo": false,
-     "media_msnm": 755.96,
+     "media_msnm": 755.97,
      "max_msnm": 762.24,
      "fecha_max": "2026-09-07",
      "min_msnm": 751.03,
@@ -3706,7 +3706,7 @@
     },
     {
      "anio": "2026-27",
-     "dias_con_dato": 130,
+     "dias_con_dato": 131,
      "completo": false,
      "media_msnm": 759.65,
      "max_msnm": 762.24,
@@ -3731,9 +3731,9 @@
   },
   "Los Caracoles": {
    "unidad": "m.s.n.m.",
-   "registros": 4258,
+   "registros": 4259,
    "desde": "2014-12-01",
-   "hasta": "2026-11-15",
+   "hasta": "2026-11-16",
    "anio_calendario": [
     {
      "anio": 2014,
@@ -3857,11 +3857,11 @@
     },
     {
      "anio": 2026,
-     "dias_con_dato": 303,
+     "dias_con_dato": 304,
      "completo": false,
-     "media_msnm": 1083.97,
-     "max_msnm": 1089.65,
-     "fecha_max": "2026-11-15",
+     "media_msnm": 1083.99,
+     "max_msnm": 1090.96,
+     "fecha_max": "2026-11-16",
      "min_msnm": 1080.54,
      "fecha_min": "2026-10-24"
     }
@@ -4002,11 +4002,11 @@
     },
     {
      "anio": "2026-27",
-     "dias_con_dato": 130,
+     "dias_con_dato": 131,
      "completo": false,
-     "media_msnm": 1083.25,
-     "max_msnm": 1089.65,
-     "fecha_max": "2026-11-15",
+     "media_msnm": 1083.31,
+     "max_msnm": 1090.96,
+     "fecha_max": "2026-11-16",
      "min_msnm": 1080.54,
      "fecha_min": "2026-10-24"
     }
@@ -4027,9 +4027,9 @@
   },
   "Cuesta del Viento": {
    "unidad": "m.s.n.m.",
-   "registros": 4065,
+   "registros": 4066,
    "desde": "2014-12-01",
-   "hasta": "2026-11-15",
+   "hasta": "2026-11-16",
    "anio_calendario": [
     {
      "anio": 2014,
@@ -4153,7 +4153,7 @@
     },
     {
      "anio": 2026,
-     "dias_con_dato": 268,
+     "dias_con_dato": 269,
      "completo": false,
      "media_msnm": 1522.72,
      "max_msnm": 1524.64,
@@ -4298,7 +4298,7 @@
     },
     {
      "anio": "2026-27",
-     "dias_con_dato": 118,
+     "dias_con_dato": 119,
      "completo": false,
      "media_msnm": 1523.62,
      "max_msnm": 1524.64,
