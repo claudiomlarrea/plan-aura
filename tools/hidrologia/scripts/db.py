@@ -12,6 +12,8 @@ def connect():
       fecha DATE, embalse TEXT, nivel REAL, unidad TEXT, volumen_hm3 REAL,
       volumen_disponible_hm3 REAL, fuente TEXT, descargado_en TIMESTAMP,
       PRIMARY KEY(fecha, embalse));
+    CREATE TABLE IF NOT EXISTS desembalse_ullum(
+      fecha DATE PRIMARY KEY, caudal_m3s REAL, fuente TEXT, descargado_en TIMESTAMP);
     """)
     return c
 
@@ -32,6 +34,19 @@ def upsert_caudal(c, fecha, valor, fuente, ts):
 # Rango físico plausible de cota (m.s.n.m.). Valores fuera de rango son errores de carga en la planilla
 # (p.ej. Cuesta del Viento "1,523" el 04/10/2022) y se descartan sin corregir.
 RANGO_COTA = {"Ullum": (700, 800), "Punta Negra": (850, 1000), "Los Caracoles": (1000, 1150), "Cuesta del Viento": (1450, 1560)}
+
+def upsert_desembalse(c, fecha, valor, fuente, ts):
+    """Desembalse Ullum de la planilla del día D, con fecha D. Nunca se guarda en caudales_diarios."""
+    if valor is None or valor == 0: return None
+    row = c.execute("SELECT caudal_m3s, fuente FROM desembalse_ullum WHERE fecha=?", (str(fecha),)).fetchone()
+    if row is None:
+        c.execute("INSERT INTO desembalse_ullum VALUES(?,?,?,?)", (str(fecha), valor, fuente, ts))
+        return "nuevo"
+    if prio(fuente) > prio(row[1]) or (prio(fuente) == prio(row[1]) and row[0] != valor):
+        c.execute("UPDATE desembalse_ullum SET caudal_m3s=?, fuente=?, descargado_en=? WHERE fecha=?",
+                  (valor, fuente, ts, str(fecha)))
+        return "actualizado" if row[0] != valor else None
+    return None
 
 def upsert_nivel(c, fecha, embalse, nivel, vol, disp, fuente, ts):
     if nivel is None or nivel == 0: return None
@@ -61,6 +76,9 @@ def apply_planilla(c, r, fuente_tag, url, ts):
     f = f"{fuente_tag} | planilla {r['fecha'].strftime('%d/%m/%Y')} 08:00 | {url}"
     st = upsert_caudal(c, r["fecha"] - dt.timedelta(days=1), r["km101"] or None, f, ts)
     if st: out.append(("caudal", r["fecha"] - dt.timedelta(days=1), r["km101"], st))
+    # El desembalse es la lectura de las 08:00 del día D. No se corre a D-1 ni se mezcla con Km 101.
+    st = upsert_desembalse(c, r["fecha"], r.get("desembalse_ullum"), f, ts)
+    if st: out.append(("desembalse_ullum", r["fecha"], r.get("desembalse_ullum"), st))
     for emb, (niv, vol, disp) in r["embalses"].items():
         st = upsert_nivel(c, r["fecha"], emb, niv, vol, disp, f, ts)
         if st: out.append((emb, r["fecha"], niv, st))

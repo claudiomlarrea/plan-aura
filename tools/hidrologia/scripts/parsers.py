@@ -29,6 +29,13 @@ def num_es(s):
     if re.fullmatch(r"\d{1,3}(\.\d{3})+", s): s = s.replace(".", "")
     return num(s)
 
+N_PLANILLA = r"(-?[\d.]+,\d+|-)"
+
+def desembalse_ullum(texto):
+    """Caudal 'Desembalse Ullum' (m³/s) de la planilla de las 08:00. No es el Km 101."""
+    m = re.search(r"Desembalse\s+Ullum(?:\s|<[^>]*>)*" + N_PLANILLA, texto or "", re.I)
+    return num(m.group(1)) if m else None
+
 def parse_html_planilla(raw_bytes):
     t = raw_bytes.decode("latin-1", "replace")
     f = dict(re.findall(r'name="([a-z_0-9]+)"\s+id="[^"]*"\s+value="([^"]*)"', t))
@@ -36,24 +43,26 @@ def parse_html_planilla(raw_bytes):
     fecha = dt.datetime.strptime(f["fecha_planilla"].strip()[:10], "%d/%m/%Y").date()
     emb = {"Ullum": ("g_6", "h_6", "hm_6"), "Punta Negra": ("g_9", "h_7", "hm_7"),
            "Los Caracoles": ("g_7", "h_8", "hm_8"), "Cuesta del Viento": ("g_8", "h_9", "hm_9")}
-    return {"fecha": fecha, "km101": num_es(f.get("e_6")),
+    return {"fecha": fecha, "km101": num_es(f.get("e_6")), "desembalse_ullum": desembalse_ullum(t),
             "embalses": {k: (num_es(f.get(c)), num_es(f.get(h)), num_es(f.get(hd))) for k, (c, h, hd) in emb.items()}}
+
+def parse_pdf_text(t):
+    m = re.search(r"Fecha:\s*(\d\d/\d\d/\d{4})", t or "")
+    if not m: return None
+    fecha = dt.datetime.strptime(m.group(1), "%d/%m/%Y").date()
+    q = re.search(r"Km 101\)?:[ \t]*" + N_PLANILLA, t)
+    pats = {"Ullum": r"Dique Ullum:", "Punta Negra": r"Punta Negra:", "Los Caracoles": r"Caracoles:", "Cuesta del Viento": r"Cuesta del Viento:"}
+    emb = {}
+    for k, p in pats.items():
+        mm = re.search(p + r"[ \t]*" + N_PLANILLA + r"[ \t]+" + N_PLANILLA + r"[ \t]+" + N_PLANILLA, t)
+        emb[k] = tuple(num(x) for x in mm.groups()) if mm else (None, None, None)
+    return {"fecha": fecha, "km101": num(q.group(1)) if q else None,
+            "desembalse_ullum": desembalse_ullum(t), "embalses": emb}
 
 def parse_pdf_planilla(path):
     proc = subprocess.run(["pdftotext", "-layout", "-l", "1", path, "-"], capture_output=True, text=True)
     if proc.returncode != 0: return None
-    t = proc.stdout
-    m = re.search(r"Fecha:\s*(\d\d/\d\d/\d{4})", t)
-    if not m: return None
-    fecha = dt.datetime.strptime(m.group(1), "%d/%m/%Y").date()
-    N = r"(-?[\d.]+,\d+|-)"
-    q = re.search(r"Km 101\)?:[ \t]*" + N, t)
-    pats = {"Ullum": r"Dique Ullum:", "Punta Negra": r"Punta Negra:", "Los Caracoles": r"Caracoles:", "Cuesta del Viento": r"Cuesta del Viento:"}
-    emb = {}
-    for k, p in pats.items():
-        mm = re.search(p + r"[ \t]*" + N + r"[ \t]+" + N + r"[ \t]+" + N, t)
-        emb[k] = tuple(num(x) for x in mm.groups()) if mm else (None, None, None)
-    return {"fecha": fecha, "km101": num(q.group(1)) if q else None, "embalses": emb}
+    return parse_pdf_text(proc.stdout)
 
 def planilla_con_medicion(res):
     """True si hay caudal Km 101 o al menos una cota. Una fecha sola no alcanza."""

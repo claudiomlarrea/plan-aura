@@ -36,9 +36,12 @@ jobs:
       - name: Firma de la serie publicada
         run: |
           sqlite3 tools/hidrologia/caudales.db "
+            CREATE TABLE IF NOT EXISTS desembalse_ullum(
+              fecha DATE PRIMARY KEY, caudal_m3s REAL, fuente TEXT, descargado_en TIMESTAMP);
             SELECT fecha, printf('%.5f', caudal_m3s) FROM caudales_diarios ORDER BY fecha;
-            SELECT fecha, embalse, printf('%.3f', ifnull(nivel, -1))
+            SELECT fecha, embalse, printf('%.3f', ifnull(nivel, -1)), printf('%.3f', ifnull(volumen_hm3, -1))
               FROM niveles_embalses ORDER BY fecha, embalse;
+            SELECT fecha, printf('%.3f', caudal_m3s) FROM desembalse_ullum ORDER BY fecha;
           " | sha256sum > /tmp/hidro-antes.sha
 
       # Falla si el sitio contesta y ninguna planilla del período se lee, o si un
@@ -53,8 +56,9 @@ jobs:
           echo "pushed=false" >> "$GITHUB_OUTPUT"
           sqlite3 tools/hidrologia/caudales.db "
             SELECT fecha, printf('%.5f', caudal_m3s) FROM caudales_diarios ORDER BY fecha;
-            SELECT fecha, embalse, printf('%.3f', ifnull(nivel, -1))
+            SELECT fecha, embalse, printf('%.3f', ifnull(nivel, -1)), printf('%.3f', ifnull(volumen_hm3, -1))
               FROM niveles_embalses ORDER BY fecha, embalse;
+            SELECT fecha, printf('%.3f', caudal_m3s) FROM desembalse_ullum ORDER BY fecha;
           " | sha256sum > /tmp/hidro-despues.sha
           if cmp -s /tmp/hidro-antes.sha /tmp/hidro-despues.sha; then
             git checkout -- tools/hidrologia/caudales.db data/hidrologia hidrologia || true

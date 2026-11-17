@@ -68,7 +68,11 @@ Reconstruir todo desde `raw/`: `python3 tools/hidrologia/scripts/build_db.py`.
 ```
 bash tools/hidrologia/actualizar_todo.sh
 ```
-El workflow `.github/workflows/hidrologia-diaria.yml` lo corre todos los días a las 14:00 (hora de San Juan) y también se puede disparar a mano. Solo commitea si cambia un caudal o una cota.
+El workflow `.github/workflows/hidrologia-diaria.yml` lo corre entre las 08:15 y las 19:15 (hora de San Juan) y también se puede disparar a mano. Solo commitea si cambia un caudal, una cota, un volumen o el Desembalse Ullum.
+
+## Caudal de entrada estimado a Los Caracoles
+
+`scripts/balance_caracoles.py` publica `hidrologia/balance_caracoles.json` y `hidrologia/balance_caracoles.csv` desde el 2026-10-15. Es un balance de agua (Desembalse Ullum y ΔV de Caracoles, Punta Negra y Ullum). No usa el Km 101 medido: si existe ese día, va en `km101_medido_m3s` solo como referencia. Un hueco de 2 a 7 días se reparte con una rampa lineal desplazada para conservar el volumen del balance (`interpolado` y, si no hubo planilla, `cota_interpolada`). Un hueco de más de 7 días no se rellena. El texto de `metodo` incluye la validación local 2016–2026 (sesgo diario −1,5 m³/s, error medio absoluto 18,7, r 0,34; semanal 23 % y r 0,69; mensual 19,5 % y r 0,86; con Q ≥ 60 subestima unos 13 m³/s).
 
 ## Publicación en plan-aura.com.ar (no ejecutada)
 - Sitio estático (HTML/CSS/JS, sin framework) en el repo público GitHub `claudiomlarrea/plan-aura`, rama `main`, raíz,

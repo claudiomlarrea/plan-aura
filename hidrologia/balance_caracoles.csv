@@ -1,0 +1,34 @@
+﻿fecha;caudal_estimado_m3s;cota_caracoles;descarga_m3s;dias_ventana;km101_medido_m3s;interpolado;cota_interpolada;nota
+2026-10-15;24,0;1080,97;29,9;1;35,710;false;false;
+2026-10-16;29,0;1080,90;35,6;1;37,830;false;false;
+2026-10-17;33,2;1080,82;43,1;1;38,930;false;false;
+2026-10-18;39,4;1080,70;42,0;1;40,690;false;false;
+2026-10-19;39,9;1080,67;47,3;1;40,010;false;false;
+2026-10-20;45,1;1080,58;35,2;1;;false;false;
+2026-10-21;32,5;1080,70;40,0;1;46,930;false;false;
+2026-10-22;33,9;1080,61;36,3;1;37,750;false;false;
+2026-10-23;28,7;1080,58;32,0;1;43,090;false;false;
+2026-10-24;52,6;1080,54;11,1;1;40,400;false;false;
+2026-10-25;38,3;1081,04;41,6;1;41,950;false;false;
+2026-10-26;37,4;1081,00;44,9;1;43,920;false;false;
+2026-10-27;42,7;1080,91;70,0;1;41,770;false;false;
+2026-10-28;41,5;1080,58;46,4;2;;true;false;interpolado (conserva el volumen del balance 28→30/10)
+2026-10-29;38,6;1080,61;29,5;2;46,250;true;true;"interpolado (sin planilla DH; conserva el volumen del balance 28→30/10)"
+2026-10-30;34,2;1080,63;19,3;1;52,300;false;false;
+2026-10-31;52,4;1080,81;28,4;1;61,430;false;false;
+2026-11-01;89,2;1081,10;68,2;1;71,710;false;false;
+2026-11-02;62,6;1081,35;41,5;1;74,070;false;false;
+2026-11-03;92,4;1081,60;58,6;1;66,920;false;false;
+2026-11-04;65,9;1082,00;30,8;1;67,430;false;false;
+2026-11-05;63,7;1082,41;35,5;5;;true;false;interpolado (conserva el volumen del balance 05→10/11)
+2026-11-06;68,5;1082,87;34,2;5;;true;true;"interpolado (sin planilla DH; conserva el volumen del balance 05→10/11)"
+2026-11-07;73,3;1083,33;33,0;5;;true;true;"interpolado (sin planilla DH; conserva el volumen del balance 05→10/11)"
+2026-11-08;78,1;1083,79;31,7;5;;true;true;"interpolado (sin planilla DH; conserva el volumen del balance 05→10/11)"
+2026-11-09;83,0;1084,25;30,5;5;93,470;true;true;"interpolado (sin planilla DH; conserva el volumen del balance 05→10/11)"
+2026-11-10;94,8;1084,71;23,3;1;;false;false;
+2026-11-11;105,7;1085,50;24,7;1;;false;false;
+2026-11-12;131,9;1086,38;36,2;1;;false;false;
+2026-11-13;162,9;1087,40;72,0;1;;false;false;
+2026-11-14;187,1;1088,35;59,6;1;;false;false;
+2026-11-15;245,7;1089,65;113,9;1;;false;false;
+2026-11-16;;1090,96;;;;false;false;pendiente
