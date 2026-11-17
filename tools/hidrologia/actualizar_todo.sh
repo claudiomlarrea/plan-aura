@@ -5,3 +5,4 @@ set -euo pipefail
 cd "$(dirname "$0")"
 python3 actualizar.py "$@"
 python3 scripts/analisis_anual.py
+python3 scripts/balance_caracoles.py

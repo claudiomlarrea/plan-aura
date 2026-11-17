@@ -143,7 +143,7 @@ def main():
             continue
         parseadas += 1
         n_cotas = sum(1 for niv, _v, _h in res["embalses"].values() if niv is not None)
-        print(f"{d}  ok{via}  km101={res['km101']}  cotas={n_cotas}  {got['url']}")
+        print(f"{d}  ok{via}  km101={res['km101']}  desembalse_ullum={res.get('desembalse_ullum')}  cotas={n_cotas}  {got['url']}")
         cambios += db.apply_planilla(c, res, "DH_planilla_pdf", got["url"], now)
     # 2) base de datos DH (año actual y anterior). Histórica; un fallo aquí no tapa a las planillas.
     for y in (hoy.year - 1, hoy.year):

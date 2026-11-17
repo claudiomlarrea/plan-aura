@@ -73,10 +73,12 @@
     chartView: "meses",
     selected: null,
     open: {},
-    mode: {}
+    mode: {},
+    balance: null
   };
   var vistaChart = null;
   var historiaChart = null;
+  var balanceChart = null;
   var charts = {};
   var scriptLoads = {};
 
@@ -1150,6 +1152,256 @@
     });
   }
 
+  function balanceLang() {
+    return window.I18N && window.I18N.getLang && window.I18N.getLang() === "en" ? "en" : "es";
+  }
+
+  function balanceText(es, en) {
+    return balanceLang() === "en" ? en : es;
+  }
+
+  function escHtml(value) {
+    return String(value == null ? "" : value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
+  function addIsoDays(iso, days) {
+    var parts = String(iso).split("-");
+    var date = new Date(Date.UTC(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2])));
+    date.setUTCDate(date.getUTCDate() + days);
+    return date.toISOString().slice(0, 10);
+  }
+
+  function balanceHost() {
+    var root = document.getElementById("info-hidrologica");
+    if (!root) return null;
+    var host = document.getElementById("hidro-balance");
+    if (host) return host;
+    var inner = root.querySelector(".section-inner") || root;
+    host = document.createElement("div");
+    host.id = "hidro-balance";
+    host.className = "card hidro-datos";
+    var anchor = document.getElementById("caudales-embalses");
+    if (anchor && anchor.parentNode === inner) inner.insertBefore(host, anchor);
+    else inner.appendChild(host);
+    return host;
+  }
+
+  function renderBalance() {
+    var host = balanceHost();
+    var doc = state.balance;
+    if (!host || !doc || !doc.serie) return;
+    if (balanceChart) {
+      balanceChart.destroy();
+      balanceChart = null;
+    }
+    if (!document.getElementById("hidro-balance-style")) {
+      var style = document.createElement("style");
+      style.id = "hidro-balance-style";
+      style.textContent = [
+        "#hidro-balance { margin: 0 0 1.5rem; }",
+        "#hidro-balance .hidro-balance-leyenda { display: inline-block; margin: 0 0 0.8rem; padding: 0.28rem 0.7rem; border-radius: 999px; background: #7a1532; color: #fff; font-weight: 700; letter-spacing: 0.04em; }",
+        "#hidro-balance .hidro-balance-chart { position: relative; height: 300px; margin: 0.4rem 0 0.8rem; }",
+        "#hidro-balance .hidro-balance-metodo { margin-top: 0.8rem; }",
+        "#hidro-balance .hidro-balance-metodo p { white-space: pre-wrap; }",
+        "#hidro-balance tr.hidro-balance-interp td { color: #8a4b12; }"
+      ].join("\n");
+      document.head.appendChild(style);
+    }
+    var rows = doc.serie.slice().sort(function (a, b) {
+      return String(b.fecha).localeCompare(String(a.fecha));
+    });
+    var body = rows.map(function (row) {
+      var estimado = row.nota === "pendiente"
+        ? balanceText("pendiente", "pending")
+        : (isNum(row.caudal_estimado_m3s) ? formatFixed(row.caudal_estimado_m3s, 1) : MISSING);
+      var descarga = isNum(row.descarga_m3s) ? formatFixed(row.descarga_m3s, 1) : MISSING;
+      var ventana = row.dias_ventana == null ? MISSING : String(row.dias_ventana);
+      var medido = isNum(row.km101_medido_m3s) ? formatFixed(row.km101_medido_m3s, 3) : MISSING;
+      var marca = row.interpolado ? " class=\"hidro-balance-interp\"" : "";
+      return "<tr" + marca + "><th scope=\"row\">" + escHtml(formatFechaTabla(row.fecha)) + "</th><td>" + escHtml(estimado) +
+        "</td><td>" + escHtml(formatCota(row.cota_caracoles)) + "</td><td>" + escHtml(descarga) +
+        "</td><td>" + escHtml(ventana) + "</td><td>" + escHtml(medido) + "</td><td>" +
+        escHtml(row.nota && row.nota !== "pendiente" ? row.nota : "") + "</td></tr>";
+    }).join("");
+    var validacion = doc.validacion && doc.validacion.texto ? doc.validacion.texto : "";
+    host.innerHTML =
+      "<h3>" + escHtml(balanceText(
+        "Caudal de entrada estimado – Los Caracoles (balance de agua)",
+        "Estimated inflow – Los Caracoles (water balance)"
+      )) + "</h3>" +
+      "<p class=\"hidro-balance-leyenda\">" + escHtml(balanceText("ESTIMADO, no medido", "ESTIMATED, not measured")) + "</p>" +
+      "<p>" + escHtml(balanceText(
+        "Estimación por balance de Los Caracoles, Punta Negra y Ullum y del desembalse de Ullum. ESTIMADO, no medido: no es el caudal de Km 101. En un hueco de 2 a 7 días la línea discontinua reparte el volumen del balance; la línea sólida es el balance de un día con planilla.",
+        "Estimate from Los Caracoles, Punta Negra and Ullum storage plus the Ullum release. ESTIMATED, not measured: it is not the Km 101 flow. Over a 2–7 day gap the dashed line spreads the balance volume; the solid line is a one-day balance with a published sheet."
+      )) + "</p>" +
+      "<div class=\"hidro-chart hidro-balance-chart\" id=\"hidro-balance-chart-wrap\" role=\"img\" aria-label=\"" +
+      escHtml(balanceText(
+        "Gráfico de línea del caudal de entrada estimado a Los Caracoles. ESTIMADO, no medido.",
+        "Line chart of the estimated inflow to Los Caracoles. ESTIMATED, not measured."
+      )) + "\"><canvas id=\"hidro-balance-chart\"></canvas></div>" +
+      "<div class=\"hidro-table-wrap hidro-table-wrap--scroll\"><table class=\"hidro-table\"><caption>" +
+      escHtml(balanceText(
+        "Serie diaria desde el 15/10/2026. La columna de Km 101 es solo referencia y no entra en la estimación.",
+        "Daily series from 15 Oct 2026. The Km 101 column is reference only and is not part of the estimate."
+      )) + "</caption><thead><tr><th>" + escHtml(balanceText("Fecha", "Date")) + "</th><th>" +
+      escHtml(balanceText("Caudal estimado (m³/s)", "Estimated flow (m³/s)")) + "</th><th>" +
+      escHtml(balanceText("Cota Caracoles (m s.n.m.)", "Caracoles level (m a.s.l.)")) + "</th><th>" +
+      escHtml(balanceText("Descarga a Punta Negra (m³/s)", "Release toward Punta Negra (m³/s)")) + "</th><th>" +
+      escHtml(balanceText("Días de ventana", "Window (days)")) + "</th><th>" +
+      escHtml(balanceText("Km 101 medido (m³/s), solo referencia", "Measured Km 101 (m³/s), reference only")) + "</th><th>" +
+      escHtml(balanceText("Nota", "Note")) + "</th></tr></thead><tbody>" + body + "</tbody></table></div>" +
+      "<p class=\"hidro-note\">" + escHtml(validacion) + "</p>" +
+      "<details class=\"hidro-balance-metodo\" open><summary>" + escHtml(balanceText("Nota del método", "Method note")) +
+      "</summary><p class=\"hidro-note\">" + escHtml(doc.metodo || "") + "</p></details>" +
+      "<p class=\"hidro-dl__actions\"><a class=\"btn btn-primary\" href=\"hidrologia/balance_caracoles.csv\" download>" +
+      escHtml(balanceText("Descargar CSV", "Download CSV")) + "</a> <a class=\"btn btn-primary\" href=\"hidrologia/balance_caracoles.json\" download>" +
+      escHtml(balanceText("Descargar JSON", "Download JSON")) + "</a></p>";
+    ensureBalanceChart();
+  }
+
+  function drawBalanceChart() {
+    var doc = state.balance;
+    var canvas = document.getElementById("hidro-balance-chart");
+    if (!doc || !canvas || !window.Chart || !panelVisible()) return;
+    var rows = {};
+    (doc.serie || []).forEach(function (row) { rows[row.fecha] = row; });
+    var fechas = Object.keys(rows).sort();
+    if (!fechas.length) return;
+    var labels = [];
+    var iso = [];
+    var solid = [];
+    var dashed = [];
+    var dashedRadius = [];
+    var cursor = fechas[0];
+    var end = fechas[fechas.length - 1];
+    while (cursor <= end) {
+      var row = rows[cursor];
+      var prev = rows[addIsoDays(cursor, -1)];
+      var next = rows[addIsoDays(cursor, 1)];
+      var valor = row && isNum(row.caudal_estimado_m3s) ? row.caudal_estimado_m3s : null;
+      var esRampa = !!(row && row.interpolado);
+      labels.push(formatFechaCorta(cursor));
+      iso.push(cursor);
+      solid.push(!esRampa ? valor : null);
+      dashed.push(valor != null && (esRampa || (prev && prev.interpolado) || (next && next.interpolado)) ? valor : null);
+      dashedRadius.push(esRampa ? 6 : 0);
+      cursor = addIsoDays(cursor, 1);
+    }
+    if (balanceChart) {
+      balanceChart.destroy();
+      balanceChart = null;
+    }
+    balanceChart = new window.Chart(canvas, {
+      type: "line",
+      data: {
+        labels: labels,
+        datasets: [{
+          label: balanceText("Balance diario", "Daily balance"),
+          data: solid,
+          borderColor: "#7a1532",
+          backgroundColor: "#7a1532",
+          borderWidth: 2,
+          spanGaps: false,
+          tension: 0,
+          pointRadius: 3.5,
+          pointBackgroundColor: "#7a1532",
+          pointBorderColor: "#7a1532",
+          fill: false
+        }, {
+          label: balanceText("Interpolado (conserva el volumen del balance)", "Interpolated (keeps the balance volume)"),
+          data: dashed,
+          borderColor: "#c47b2b",
+          backgroundColor: "#ffffff",
+          borderDash: [7, 4],
+          borderWidth: 2,
+          spanGaps: false,
+          tension: 0,
+          pointRadius: dashedRadius,
+          pointBackgroundColor: "#ffffff",
+          pointBorderColor: "#c47b2b",
+          pointBorderWidth: 2,
+          fill: false
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        animation: false,
+        plugins: {
+          legend: {
+            display: true,
+            position: "bottom",
+            labels: {
+              color: "#3d2a24",
+              font: { weight: "700", size: 12 },
+              boxWidth: 28,
+              padding: 14
+            }
+          },
+          tooltip: {
+            filter: function (item) {
+              if (item.datasetIndex === 1) return !!(rows[iso[item.dataIndex]] && rows[iso[item.dataIndex]].interpolado);
+              return item.raw != null;
+            },
+            callbacks: {
+              label: function (ctx) {
+                var row = rows[iso[ctx.dataIndex]];
+                var clase = row && row.interpolado
+                  ? balanceText("Interpolado", "Interpolated")
+                  : balanceText("Balance diario", "Daily balance");
+                return clase + ": " + formatFixed(ctx.parsed.y, 1) + " m³/s · " +
+                  balanceText("ESTIMADO, no medido", "ESTIMATED, not measured");
+              }
+            }
+          }
+        },
+        scales: {
+          y: {
+            title: { display: true, text: "m³/s" },
+            ticks: { callback: function (value) { return formatAxis(value, 0); } }
+          },
+          x: { ticks: { maxRotation: 0, autoSkip: true, maxTicksLimit: 8 } }
+        }
+      }
+    });
+  }
+
+  function ensureBalanceChart() {
+    if (!state.balance || !panelVisible()) return;
+    if (window.Chart) {
+      drawBalanceChart();
+      return;
+    }
+    loadScript(CHART_SRC).then(function () {
+      if (panelVisible()) drawBalanceChart();
+    }).catch(function () {});
+  }
+
+  function loadBalance() {
+    var bust = Date.now();
+    fetch("hidrologia/balance_caracoles.json?v=" + bust, { cache: "no-store" })
+      .then(function (res) {
+        if (!res.ok) throw new Error(String(res.status));
+        return res.json();
+      })
+      .then(function (doc) {
+        state.balance = doc;
+        renderBalance();
+      })
+      .catch(function () {
+        var host = balanceHost();
+        if (!host || state.balance) return;
+        host.innerHTML = "<p class=\"hidro-note\">" + escHtml(balanceText(
+          "La serie estimada todavía no está publicada.",
+          "The estimated series is not published yet."
+        )) + "</p>";
+      });
+  }
+
   function loadData() {
     setStatus(t("sec.hidro.datos.loading"));
     var bust = Date.now();
@@ -1170,6 +1422,7 @@
     }).catch(function () {
       setStatus(t("sec.hidro.datos.error"));
     });
+    loadBalance();
   }
 
   bind();
@@ -1179,10 +1432,13 @@
     if (event.detail !== "info-hidrologica") return;
     if (vistaChart) vistaChart.resize();
     if (historiaChart) historiaChart.resize();
+    if (balanceChart) balanceChart.resize();
     if (!vistaChart || !historiaChart) ensureCharts();
+    if (!balanceChart) ensureBalanceChart();
   });
 
   window.addEventListener("oia:langchange", function () {
+    if (state.balance) renderBalance();
     if (!state.data) return;
     renderKpis();
     renderAsof();

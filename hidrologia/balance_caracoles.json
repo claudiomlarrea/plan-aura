@@ -1,0 +1,389 @@
+{
+  "metodo": "Caudal de entrada estimado a Los Caracoles por balance de agua de la cadena Caracoles–Punta Negra–Ullum. Es una estimación: no es el caudal medido en Km 101 y no lo reemplaza. El Km 101 medido no entra en la cuenta.\n\nDe cada planilla de las 08:00 se leen los volúmenes embalsados (hm³) de Los Caracoles, Punta Negra y Ullum, y el Desembalse Ullum (m³/s). Entre la lectura D y la siguiente D':\nQ_est = media(Desembalse Ullum en D y en D') + (ΔV Caracoles + ΔV Punta Negra + ΔV Ullum) · 1e6 / (Δdías · 86400).\nDescarga hacia Punta Negra inferida = media(Desembalse Ullum) + (ΔV Punta Negra + ΔV Ullum) / Δt.\nSi D' es el día siguiente, ese balance es el caudal del día D. Si el hueco es de 2 a 7 días, el volumen del balance se reparte con una rampa lineal desde la estimación diaria del día anterior a D hasta la estimación diaria de D', desplazada para que la media de D a D'−1 conserve ese volumen. Los días sin planilla quedan marcados interpolado y su cota de Caracoles se interpola en línea entre las dos lecturas. Un hueco de más de 7 días no se rellena. Si todavía no hay lectura siguiente, la última fila queda pendiente.\n\nEl caudal medido en Km 101, cuando existe ese día, se copia en km101_medido_m3s solo como referencia. El Departamento de Hidráulica no mide Km 101 desde el 09/11/2026 (vagoneta rota) y no publicó planillas el 06, 07, 08 ni el 09/11. El balance 05→10/11 (media 73,3 m³/s, cota 1082,41 m el 05/11) se reparte en la rampa 63,7; 68,5; 73,3; 78,1 y 83,0 m³/s. Las cotas del 06 al 09/11 son 1082,87; 1083,33; 1083,79 y 1084,25 m.\n\nValidación histórica local de este balance contra el Km 101 medido (2016–2026): a escala diaria, sesgo −1,5 m³/s, error medio absoluto 18,7 m³/s, r 0,34; a escala semanal, error mediano 23 % y r 0,69; a escala mensual, error mediano 19,5 % y r 0,86. Con caudal medido de 60 m³/s o más, el balance tiende a subestimar unos 13 m³/s.",
+  "fuente": "Departamento de Hidráulica de San Juan, planilla diaria «Distribución de Riego» de las 08:00 (volúmenes embalsados de Los Caracoles, Punta Negra y Ullum, y Desembalse Ullum). https://hidraulica.sanjuan.gob.ar/irrigacionver2/planillas_pdf/",
+  "actualizado": "2026-11-16",
+  "validacion": {
+    "periodo": "2016–2026",
+    "contra": "Km 101 medido, solo comparación; no entra en el cálculo",
+    "diario": {
+      "sesgo_m3s": -1.5,
+      "error_medio_abs_m3s": 18.7,
+      "r": 0.34
+    },
+    "semanal": {
+      "error_mediano_pct": 23,
+      "r": 0.69
+    },
+    "mensual": {
+      "error_mediano_pct": 19.5,
+      "r": 0.86
+    },
+    "con_q_medido_ge_60_m3s": "tiende a subestimar unos 13 m³/s",
+    "texto": "Comparación local contra Km 101 medido (2016–2026), sin usar ese caudal en el cálculo. Diario: sesgo −1,5 m³/s, error medio absoluto 18,7 m³/s, r 0,34. Semanal: error mediano 23 %, r 0,69. Mensual: error mediano 19,5 %, r 0,86. Con Q medido ≥ 60 m³/s tiende a subestimar unos 13 m³/s."
+  },
+  "serie": [
+    {
+      "fecha": "2026-10-15",
+      "caudal_estimado_m3s": 24.0,
+      "cota_caracoles": 1080.97,
+      "descarga_m3s": 29.9,
+      "dias_ventana": 1,
+      "km101_medido_m3s": 35.71,
+      "interpolado": false,
+      "cota_interpolada": false,
+      "nota": null
+    },
+    {
+      "fecha": "2026-10-16",
+      "caudal_estimado_m3s": 29.0,
+      "cota_caracoles": 1080.9,
+      "descarga_m3s": 35.6,
+      "dias_ventana": 1,
+      "km101_medido_m3s": 37.83,
+      "interpolado": false,
+      "cota_interpolada": false,
+      "nota": null
+    },
+    {
+      "fecha": "2026-10-17",
+      "caudal_estimado_m3s": 33.2,
+      "cota_caracoles": 1080.82,
+      "descarga_m3s": 43.1,
+      "dias_ventana": 1,
+      "km101_medido_m3s": 38.93,
+      "interpolado": false,
+      "cota_interpolada": false,
+      "nota": null
+    },
+    {
+      "fecha": "2026-10-18",
+      "caudal_estimado_m3s": 39.4,
+      "cota_caracoles": 1080.7,
+      "descarga_m3s": 42.0,
+      "dias_ventana": 1,
+      "km101_medido_m3s": 40.69,
+      "interpolado": false,
+      "cota_interpolada": false,
+      "nota": null
+    },
+    {
+      "fecha": "2026-10-19",
+      "caudal_estimado_m3s": 39.9,
+      "cota_caracoles": 1080.67,
+      "descarga_m3s": 47.3,
+      "dias_ventana": 1,
+      "km101_medido_m3s": 40.01,
+      "interpolado": false,
+      "cota_interpolada": false,
+      "nota": null
+    },
+    {
+      "fecha": "2026-10-20",
+      "caudal_estimado_m3s": 45.1,
+      "cota_caracoles": 1080.58,
+      "descarga_m3s": 35.2,
+      "dias_ventana": 1,
+      "km101_medido_m3s": null,
+      "interpolado": false,
+      "cota_interpolada": false,
+      "nota": null
+    },
+    {
+      "fecha": "2026-10-21",
+      "caudal_estimado_m3s": 32.5,
+      "cota_caracoles": 1080.7,
+      "descarga_m3s": 40.0,
+      "dias_ventana": 1,
+      "km101_medido_m3s": 46.93,
+      "interpolado": false,
+      "cota_interpolada": false,
+      "nota": null
+    },
+    {
+      "fecha": "2026-10-22",
+      "caudal_estimado_m3s": 33.9,
+      "cota_caracoles": 1080.61,
+      "descarga_m3s": 36.3,
+      "dias_ventana": 1,
+      "km101_medido_m3s": 37.75,
+      "interpolado": false,
+      "cota_interpolada": false,
+      "nota": null
+    },
+    {
+      "fecha": "2026-10-23",
+      "caudal_estimado_m3s": 28.7,
+      "cota_caracoles": 1080.58,
+      "descarga_m3s": 32.0,
+      "dias_ventana": 1,
+      "km101_medido_m3s": 43.09,
+      "interpolado": false,
+      "cota_interpolada": false,
+      "nota": null
+    },
+    {
+      "fecha": "2026-10-24",
+      "caudal_estimado_m3s": 52.6,
+      "cota_caracoles": 1080.54,
+      "descarga_m3s": 11.1,
+      "dias_ventana": 1,
+      "km101_medido_m3s": 40.4,
+      "interpolado": false,
+      "cota_interpolada": false,
+      "nota": null
+    },
+    {
+      "fecha": "2026-10-25",
+      "caudal_estimado_m3s": 38.3,
+      "cota_caracoles": 1081.04,
+      "descarga_m3s": 41.6,
+      "dias_ventana": 1,
+      "km101_medido_m3s": 41.95,
+      "interpolado": false,
+      "cota_interpolada": false,
+      "nota": null
+    },
+    {
+      "fecha": "2026-10-26",
+      "caudal_estimado_m3s": 37.4,
+      "cota_caracoles": 1081.0,
+      "descarga_m3s": 44.9,
+      "dias_ventana": 1,
+      "km101_medido_m3s": 43.92,
+      "interpolado": false,
+      "cota_interpolada": false,
+      "nota": null
+    },
+    {
+      "fecha": "2026-10-27",
+      "caudal_estimado_m3s": 42.7,
+      "cota_caracoles": 1080.91,
+      "descarga_m3s": 70.0,
+      "dias_ventana": 1,
+      "km101_medido_m3s": 41.77,
+      "interpolado": false,
+      "cota_interpolada": false,
+      "nota": null
+    },
+    {
+      "fecha": "2026-10-28",
+      "caudal_estimado_m3s": 41.5,
+      "cota_caracoles": 1080.58,
+      "descarga_m3s": 46.4,
+      "dias_ventana": 2,
+      "km101_medido_m3s": null,
+      "interpolado": true,
+      "cota_interpolada": false,
+      "nota": "interpolado (conserva el volumen del balance 28→30/10)"
+    },
+    {
+      "fecha": "2026-10-29",
+      "caudal_estimado_m3s": 38.6,
+      "cota_caracoles": 1080.61,
+      "descarga_m3s": 29.5,
+      "dias_ventana": 2,
+      "km101_medido_m3s": 46.25,
+      "interpolado": true,
+      "cota_interpolada": true,
+      "nota": "interpolado (sin planilla DH; conserva el volumen del balance 28→30/10)"
+    },
+    {
+      "fecha": "2026-10-30",
+      "caudal_estimado_m3s": 34.2,
+      "cota_caracoles": 1080.63,
+      "descarga_m3s": 19.3,
+      "dias_ventana": 1,
+      "km101_medido_m3s": 52.3,
+      "interpolado": false,
+      "cota_interpolada": false,
+      "nota": null
+    },
+    {
+      "fecha": "2026-10-31",
+      "caudal_estimado_m3s": 52.4,
+      "cota_caracoles": 1080.81,
+      "descarga_m3s": 28.4,
+      "dias_ventana": 1,
+      "km101_medido_m3s": 61.43,
+      "interpolado": false,
+      "cota_interpolada": false,
+      "nota": null
+    },
+    {
+      "fecha": "2026-11-01",
+      "caudal_estimado_m3s": 89.2,
+      "cota_caracoles": 1081.1,
+      "descarga_m3s": 68.2,
+      "dias_ventana": 1,
+      "km101_medido_m3s": 71.71,
+      "interpolado": false,
+      "cota_interpolada": false,
+      "nota": null
+    },
+    {
+      "fecha": "2026-11-02",
+      "caudal_estimado_m3s": 62.6,
+      "cota_caracoles": 1081.35,
+      "descarga_m3s": 41.5,
+      "dias_ventana": 1,
+      "km101_medido_m3s": 74.07,
+      "interpolado": false,
+      "cota_interpolada": false,
+      "nota": null
+    },
+    {
+      "fecha": "2026-11-03",
+      "caudal_estimado_m3s": 92.4,
+      "cota_caracoles": 1081.6,
+      "descarga_m3s": 58.6,
+      "dias_ventana": 1,
+      "km101_medido_m3s": 66.92,
+      "interpolado": false,
+      "cota_interpolada": false,
+      "nota": null
+    },
+    {
+      "fecha": "2026-11-04",
+      "caudal_estimado_m3s": 65.9,
+      "cota_caracoles": 1082.0,
+      "descarga_m3s": 30.8,
+      "dias_ventana": 1,
+      "km101_medido_m3s": 67.43,
+      "interpolado": false,
+      "cota_interpolada": false,
+      "nota": null
+    },
+    {
+      "fecha": "2026-11-05",
+      "caudal_estimado_m3s": 63.7,
+      "cota_caracoles": 1082.41,
+      "descarga_m3s": 35.5,
+      "dias_ventana": 5,
+      "km101_medido_m3s": null,
+      "interpolado": true,
+      "cota_interpolada": false,
+      "nota": "interpolado (conserva el volumen del balance 05→10/11)"
+    },
+    {
+      "fecha": "2026-11-06",
+      "caudal_estimado_m3s": 68.5,
+      "cota_caracoles": 1082.87,
+      "descarga_m3s": 34.2,
+      "dias_ventana": 5,
+      "km101_medido_m3s": null,
+      "interpolado": true,
+      "cota_interpolada": true,
+      "nota": "interpolado (sin planilla DH; conserva el volumen del balance 05→10/11)"
+    },
+    {
+      "fecha": "2026-11-07",
+      "caudal_estimado_m3s": 73.3,
+      "cota_caracoles": 1083.33,
+      "descarga_m3s": 33.0,
+      "dias_ventana": 5,
+      "km101_medido_m3s": null,
+      "interpolado": true,
+      "cota_interpolada": true,
+      "nota": "interpolado (sin planilla DH; conserva el volumen del balance 05→10/11)"
+    },
+    {
+      "fecha": "2026-11-08",
+      "caudal_estimado_m3s": 78.1,
+      "cota_caracoles": 1083.79,
+      "descarga_m3s": 31.7,
+      "dias_ventana": 5,
+      "km101_medido_m3s": null,
+      "interpolado": true,
+      "cota_interpolada": true,
+      "nota": "interpolado (sin planilla DH; conserva el volumen del balance 05→10/11)"
+    },
+    {
+      "fecha": "2026-11-09",
+      "caudal_estimado_m3s": 83.0,
+      "cota_caracoles": 1084.25,
+      "descarga_m3s": 30.5,
+      "dias_ventana": 5,
+      "km101_medido_m3s": 93.47,
+      "interpolado": true,
+      "cota_interpolada": true,
+      "nota": "interpolado (sin planilla DH; conserva el volumen del balance 05→10/11)"
+    },
+    {
+      "fecha": "2026-11-10",
+      "caudal_estimado_m3s": 94.8,
+      "cota_caracoles": 1084.71,
+      "descarga_m3s": 23.3,
+      "dias_ventana": 1,
+      "km101_medido_m3s": null,
+      "interpolado": false,
+      "cota_interpolada": false,
+      "nota": null
+    },
+    {
+      "fecha": "2026-11-11",
+      "caudal_estimado_m3s": 105.7,
+      "cota_caracoles": 1085.5,
+      "descarga_m3s": 24.7,
+      "dias_ventana": 1,
+      "km101_medido_m3s": null,
+      "interpolado": false,
+      "cota_interpolada": false,
+      "nota": null
+    },
+    {
+      "fecha": "2026-11-12",
+      "caudal_estimado_m3s": 131.9,
+      "cota_caracoles": 1086.38,
+      "descarga_m3s": 36.2,
+      "dias_ventana": 1,
+      "km101_medido_m3s": null,
+      "interpolado": false,
+      "cota_interpolada": false,
+      "nota": null
+    },
+    {
+      "fecha": "2026-11-13",
+      "caudal_estimado_m3s": 162.9,
+      "cota_caracoles": 1087.4,
+      "descarga_m3s": 72.0,
+      "dias_ventana": 1,
+      "km101_medido_m3s": null,
+      "interpolado": false,
+      "cota_interpolada": false,
+      "nota": null
+    },
+    {
+      "fecha": "2026-11-14",
+      "caudal_estimado_m3s": 187.1,
+      "cota_caracoles": 1088.35,
+      "descarga_m3s": 59.6,
+      "dias_ventana": 1,
+      "km101_medido_m3s": null,
+      "interpolado": false,
+      "cota_interpolada": false,
+      "nota": null
+    },
+    {
+      "fecha": "2026-11-15",
+      "caudal_estimado_m3s": 245.7,
+      "cota_caracoles": 1089.65,
+      "descarga_m3s": 113.9,
+      "dias_ventana": 1,
+      "km101_medido_m3s": null,
+      "interpolado": false,
+      "cota_interpolada": false,
+      "nota": null
+    },
+    {
+      "fecha": "2026-11-16",
+      "caudal_estimado_m3s": null,
+      "cota_caracoles": 1090.96,
+      "descarga_m3s": null,
+      "dias_ventana": null,
+      "km101_medido_m3s": null,
+      "interpolado": false,
+      "cota_interpolada": false,
+      "nota": "pendiente"
+    }
+  ]
+}
