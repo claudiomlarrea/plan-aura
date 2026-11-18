@@ -1,7 +1,7 @@
 {
   "metodo": "Caudal de entrada estimado a Los Caracoles por balance de agua de la cadena Caracoles–Punta Negra–Ullum. Es una estimación: no es el caudal medido en Km 101 y no lo reemplaza. El Km 101 medido no entra en la cuenta.\n\nDe cada planilla de las 08:00 se leen los volúmenes embalsados (hm³) de Los Caracoles, Punta Negra y Ullum, y el Desembalse Ullum (m³/s). Entre la lectura D y la siguiente D':\nQ_est = media(Desembalse Ullum en D y en D') + (ΔV Caracoles + ΔV Punta Negra + ΔV Ullum) · 1e6 / (Δdías · 86400).\nDescarga hacia Punta Negra inferida = media(Desembalse Ullum) + (ΔV Punta Negra + ΔV Ullum) / Δt.\nSi D' es el día siguiente, ese balance es el caudal del día D. Si el hueco es de 2 a 7 días, el volumen del balance se reparte con una rampa lineal desde la estimación diaria del día anterior a D hasta la estimación diaria de D', desplazada para que la media de D a D'−1 conserve ese volumen. La descarga a Punta Negra y el almacenamiento en Caracoles se reparten con la misma rampa, cada uno conservando la media de su propia parte, y en cada día descarga + almacenamiento = caudal estimado. Esos días quedan marcados interpolado. Si no hubo planilla, la cota de Caracoles también se interpola en línea entre las dos lecturas. Un hueco de más de 7 días no se rellena. Si todavía no hay lectura siguiente, la última fila queda pendiente.\n\nEl caudal medido en Km 101, cuando existe ese día, se copia en km101_medido_m3s solo como referencia y km101_clase queda en medido. El 09/11/2026 es una medición del Departamento de Hidráulica: 93,47 m³/s, en la planilla del 10/11. No hay medición de Km 101 el 05, 06, 07 ni el 08/11, ni desde el 10/11 (vagoneta rota), y no publicó planillas el 06, 07, 08 ni el 09/11. La rampa del balance sigue interpolando el ingreso a Caracoles; eso no reemplaza el caudal medido del 09/11. El balance 05→10/11 (media 73,3 m³/s, cota 1082,41 m el 05/11) se reparte en la rampa 63,7; 68,5; 73,3; 78,1 y 83,0 m³/s. De esa media, la descarga a Punta Negra aporta unos 33,0 m³/s (35,5; 34,2; 33,0; 31,7 y 30,5) y el almacenamiento en Caracoles unos 40,3 m³/s (28,2; 34,3; 40,3; 46,4 y 52,5). Las cotas del 06 al 09/11 son 1082,87; 1083,33; 1083,79 y 1084,25 m.\n\nValidación histórica local de este balance contra el Km 101 medido (2016–2026): a escala diaria, sesgo −1,5 m³/s, error medio absoluto 18,7 m³/s, r 0,34; a escala semanal, error mediano 23 % y r 0,69; a escala mensual, error mediano 19,5 % y r 0,86. Con caudal medido de 60 m³/s o más, el balance tiende a subestimar unos 13 m³/s.",
   "fuente": "Departamento de Hidráulica de San Juan, planilla diaria «Distribución de Riego» de las 08:00 (volúmenes embalsados de Los Caracoles, Punta Negra y Ullum, y Desembalse Ullum). https://hidraulica.sanjuan.gob.ar/irrigacionver2/planillas_pdf/",
-  "actualizado": "2026-11-16",
+  "actualizado": "2026-11-17",
   "validacion": {
     "periodo": "2016–2026",
     "contra": "Km 101 medido, solo comparación; no entra en el cálculo",
@@ -440,8 +440,21 @@
     },
     {
       "fecha": "2026-11-16",
-      "caudal_estimado_m3s": null,
+      "caudal_estimado_m3s": 210.7,
       "cota_caracoles": 1090.96,
+      "descarga_m3s": 93.0,
+      "almacenamiento_caracoles_m3s": 117.7,
+      "dias_ventana": 1,
+      "km101_medido_m3s": null,
+      "km101_clase": null,
+      "interpolado": false,
+      "cota_interpolada": false,
+      "nota": null
+    },
+    {
+      "fecha": "2026-11-17",
+      "caudal_estimado_m3s": null,
+      "cota_caracoles": 1092.1,
       "descarga_m3s": null,
       "almacenamiento_caracoles_m3s": null,
       "dias_ventana": null,
