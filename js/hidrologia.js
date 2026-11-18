@@ -74,7 +74,8 @@
     selected: null,
     open: {},
     mode: {},
-    balance: null
+    balance: null,
+    cierre: null
   };
   var vistaChart = null;
   var historiaChart = null;
@@ -1464,6 +1465,232 @@
     }).catch(function () {});
   }
 
+  var CIERRE_JSON = "data/hidrologia/pronostico_cierre_mes.json";
+  var CIERRE_ETIQUETA = "Estimación del Instituto del Agua – no es dato oficial del Departamento de Hidráulica";
+
+  function hm1(value) {
+    return isNum(value) ? formatFixed(value, 1) : MISSING;
+  }
+
+  function cierreHost() {
+    var root = document.getElementById("info-hidrologica");
+    if (!root) return null;
+    var host = document.getElementById("hidro-cierre");
+    if (host) return host;
+    var inner = root.querySelector(".section-inner") || root;
+    host = document.createElement("div");
+    host.id = "hidro-cierre";
+    host.className = "card hidro-datos";
+    var anchor = document.getElementById("hidro-historia") || document.getElementById("caudales-embalses");
+    if (anchor && (anchor.parentNode === inner || inner.contains(anchor))) inner.insertBefore(host, anchor);
+    else inner.appendChild(host);
+    return host;
+  }
+
+  function cierreStyles() {
+    if (document.getElementById("hidro-cierre-style")) return;
+    var style = document.createElement("style");
+    style.id = "hidro-cierre-style";
+    style.textContent = [
+      "#hidro-cierre { margin: 0 0 1.5rem; max-width: 100%; min-width: 0; }",
+      "#hidro-cierre h3 { margin-bottom: 0.45rem; }",
+      "#hidro-cierre .hidro-cierre-aviso { display: block; margin: 0 0 0.85rem; padding: 0.6rem 0.75rem; border-radius: 8px; background: #7a1532; color: #fff; font-weight: 700; line-height: 1.35; }",
+      "#hidro-cierre .hidro-cierre-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(9.2rem, 1fr)); gap: 0.55rem; margin: 0 0 0.85rem; }",
+      "#hidro-cierre .hidro-cierre-kpi { min-width: 0; padding: 0.6rem 0.7rem; border: 1px solid rgba(43, 143, 201, 0.22); border-radius: 8px; background: #fff; }",
+      "#hidro-cierre .hidro-cierre-kpi span { display: block; color: #5c4f54; font-size: 0.78rem; line-height: 1.3; }",
+      "#hidro-cierre .hidro-cierre-kpi strong { display: block; margin-top: 0.15rem; color: #4a0c1f; font-size: 1.28rem; font-variant-numeric: tabular-nums; line-height: 1.15; overflow-wrap: anywhere; }",
+      "#hidro-cierre .hidro-cierre-kpi small { display: block; margin-top: 0.2rem; color: #5c4f54; font-size: 0.78rem; font-weight: 600; }",
+      "#hidro-cierre .hidro-cierre-leyenda { display: flex; flex-wrap: wrap; gap: 0.35rem 0.85rem; list-style: none; padding: 0; margin: 0 0 0.75rem; font-size: 0.85rem; }",
+      "#hidro-cierre .hidro-cierre-leyenda i { display: inline-block; width: 0.75rem; height: 0.75rem; margin-right: 0.28rem; border-radius: 2px; vertical-align: -1px; }",
+      "#hidro-cierre .is-medido { background: #1a6fa8; }",
+      "#hidro-cierre .is-estimado { background: #c47b2b; }",
+      "#hidro-cierre .is-proyectado { background: #0a5c5e; }",
+      "#hidro-cierre .is-media { background: #7a1532; }",
+      "#hidro-cierre .hidro-cierre-bar { position: relative; height: 22px; margin: 0.15rem 0 0.45rem; }",
+      "#hidro-cierre .hidro-cierre-track { position: absolute; left: 0; right: 0; top: 6px; height: 10px; border-radius: 999px; background: #e7f3fa; }",
+      "#hidro-cierre .hidro-cierre-seg { position: absolute; top: 6px; height: 10px; }",
+      "#hidro-cierre .hidro-cierre-media { position: absolute; top: 0; width: 2px; height: 22px; background: #7a1532; }",
+      "#hidro-cierre .hidro-cierre-metodo { margin-top: 0.8rem; }",
+      "#hidro-cierre .hidro-cierre-metodo p { white-space: pre-wrap; }",
+      "#hidro-cierre .hidro-table { min-width: 28rem; }",
+      "@media (max-width: 640px) {",
+      "  #hidro-cierre .hidro-cierre-grid { grid-template-columns: 1fr 1fr; }",
+      "  #hidro-cierre h3 { font-size: 1.2rem; }",
+      "  #hidro-cierre .hidro-cierre-kpi strong { font-size: 1.12rem; }",
+      "}",
+      "@media (max-width: 380px) {",
+      "  #hidro-cierre .hidro-cierre-grid { grid-template-columns: 1fr; }",
+      "}"
+    ].join("\n");
+    document.head.appendChild(style);
+  }
+
+  var MES_EN = {
+    enero: "January", febrero: "February", marzo: "March", abril: "April",
+    mayo: "May", junio: "June", julio: "July", agosto: "August",
+    septiembre: "September", octubre: "October", noviembre: "November", diciembre: "December"
+  };
+
+  function mesEn(nombre) {
+    return MES_EN[nombre] || nombre || "the month";
+  }
+
+  function cierreClase(clase) {
+    if (clase === "medido") return balanceText("Medido", "Measured");
+    if (clase === "estimado") return balanceText("Estimado", "Estimated");
+    return balanceText("Proyectado", "Projected");
+  }
+
+  function cierreVsMedia(doc) {
+    var media = doc.media_historica_hm3;
+    var diff = doc.diferencia_vs_media_hm3;
+    var mes = doc.mes_nombre || "";
+    if (!isNum(media) || !isNum(diff)) {
+      return balanceText("Sin media histórica del mes.", "No historical mean for this month.");
+    }
+    if (Math.abs(diff) < 0.05) {
+      return balanceText(
+        "El cierre coincide con la media histórica de " + mes + " (" + hm1(media) + " hm³).",
+        "The month-end total matches the historical mean for " + mesEn(mes) + " (" + hm1(media) + " hm³)."
+      );
+    }
+    if (diff < 0) {
+      return balanceText(
+        "Faltan " + hm1(Math.abs(diff)) + " hm³ para alcanzar la media histórica de " + mes + " (" + hm1(media) + " hm³).",
+        hm1(Math.abs(diff)) + " hm³ short of the historical mean for " + mesEn(mes) + " (" + hm1(media) + " hm³)."
+      );
+    }
+    return balanceText(
+      "El cierre supera la media histórica de " + mes + " (" + hm1(media) + " hm³) en " + hm1(diff) + " hm³.",
+      "The month-end total is " + hm1(diff) + " hm³ above the historical mean for " + mesEn(mes) + " (" + hm1(media) + " hm³)."
+    );
+  }
+
+  function renderCierre() {
+    var host = cierreHost();
+    var doc = state.cierre;
+    if (!host || !doc) return;
+    cierreStyles();
+    var scale = Math.max(
+      doc.total_mes_p90_hm3 || 0,
+      doc.media_historica_hm3 || 0,
+      doc.total_mes_hm3 || 0,
+      1
+    );
+    function pct(value) {
+      return Math.max(0, (Number(value) || 0) / scale * 100);
+    }
+    var wMed = pct(doc.acumulado_medido_hm3);
+    var wEst = pct(doc.acumulado_estimado_hm3);
+    var wPro = pct(doc.proyectado_restante_hm3);
+    var mediaLeft = pct(doc.media_historica_hm3);
+    var hasta = doc.ultimo_dia_con_caudal ? formatFechaCorta(doc.ultimo_dia_con_caudal) : MISSING;
+    var mes = doc.mes_nombre || "";
+    var anios = doc.media_historica_anios ? String(doc.media_historica_anios) : "";
+    var mediaNota = doc.media_historica_fuente === "respaldo"
+      ? balanceText("respaldo", "fallback")
+      : (anios ? balanceText(anios + " noviembres completos", anios + " complete Novembers") : "");
+    if (doc.mes && doc.mes.slice(5) !== "11") {
+      mediaNota = anios ? balanceText(anios + " meses completos", anios + " complete months") : mediaNota;
+    }
+    var filas = (doc.dias || []).map(function (row) {
+      var marca = row.clase === "estimado" ? " class=\"hidro-balance-interp\"" : "";
+      return "<tr" + marca + "><th scope=\"row\">" + escHtml(formatFechaCorta(row.fecha)) + "</th><td>" +
+        escHtml(cierreClase(row.clase)) + "</td><td>" + escHtml(isNum(row.q_m3s) ? formatFixed(row.q_m3s, row.clase === "proyectado" ? 1 : 2) : MISSING) +
+        "</td><td>" + escHtml(isNum(row.volumen_hm3) ? formatFixed(row.volumen_hm3, 2) : MISSING) + "</td></tr>";
+    }).join("");
+    var titulo = doc.titulo || balanceText(
+      "Pronóstico de cierre de mes – Río San Juan Km 101",
+      "Month-end outlook – San Juan River Km 101"
+    );
+    host.innerHTML =
+      "<h3>" + escHtml(balanceLang() === "en"
+        ? "Month-end outlook – San Juan River Km 101"
+        : titulo) + "</h3>" +
+      "<p class=\"hidro-cierre-aviso\">" + escHtml(CIERRE_ETIQUETA) + "</p>" +
+      "<p>" + escHtml(balanceText(
+        "Volumen de " + (mes || "este mes") + " en Km 101. Lo medido sale de la planilla del Departamento de Hidráulica. Del 5 al 9/11/2026 el caudal es la interpolación del balance y desde el 10/11/2026, donde no hay medición, es la entrada estimada a Los Caracoles (salida a Punta Negra más la variación de almacenamiento). Los días sin dato se proyectan con un grado-día.",
+        (mesEn(mes) || "This month") + " volume at Km 101. Measured days come from the Hydraulics Department sheet. From 5 to 9 Nov 2026 the flow is the balance interpolation, and from 10 Nov 2026, where there is no measurement, it is the estimated inflow to Los Caracoles (release toward Punta Negra plus the storage change). Days without a figure are projected with a degree-day model."
+      )) + "</p>" +
+      "<div class=\"hidro-cierre-grid\">" +
+      cierreKpi(balanceText("Acumulado medido", "Measured to date"), hm1(doc.acumulado_medido_hm3) + " hm³",
+        (doc.dias_medidos || 0) + " " + balanceText("días", "days")) +
+      cierreKpi(balanceText("Acumulado estimado", "Estimated to date"), hm1(doc.acumulado_estimado_hm3) + " hm³",
+        (doc.dias_estimados || 0) + " " + balanceText("días", "days")) +
+      cierreKpi(balanceText("Proyectado restante", "Projected remainder"), hm1(doc.proyectado_restante_hm3) + " hm³",
+        "P10–P90 " + hm1(doc.proyectado_restante_p10_hm3) + "–" + hm1(doc.proyectado_restante_p90_hm3)) +
+      cierreKpi(balanceText("Total del mes", "Month total"), hm1(doc.total_mes_hm3) + " hm³",
+        "P10–P90 " + hm1(doc.total_mes_p10_hm3) + "–" + hm1(doc.total_mes_p90_hm3)) +
+      cierreKpi(balanceText("Media histórica del mes", "Historical month mean"), hm1(doc.media_historica_hm3) + " hm³", mediaNota) +
+      cierreKpi(balanceText("Falta para cerrar el mes", "Left to close the month"),
+        String(doc.falta_dias || 0) + " " + balanceText("días", "days"),
+        hm1(doc.falta_volumen_hm3) + " hm³") +
+      "</div>" +
+      "<div class=\"hidro-cierre-bar\" role=\"img\" aria-label=\"" + escHtml(balanceText(
+        "Barras de volumen medido, estimado y proyectado, con la media histórica.",
+        "Bars for measured, estimated and projected volume, with the historical mean."
+      )) + "\">" +
+      "<div class=\"hidro-cierre-track\"></div>" +
+      "<span class=\"hidro-cierre-seg is-medido\" style=\"left:0;width:" + wMed.toFixed(2) + "%\"></span>" +
+      "<span class=\"hidro-cierre-seg is-estimado\" style=\"left:" + wMed.toFixed(2) + "%;width:" + wEst.toFixed(2) + "%\"></span>" +
+      "<span class=\"hidro-cierre-seg is-proyectado\" style=\"left:" + (wMed + wEst).toFixed(2) + "%;width:" + wPro.toFixed(2) + "%\"></span>" +
+      (isNum(doc.media_historica_hm3) ? "<i class=\"hidro-cierre-media\" style=\"left:" + mediaLeft.toFixed(2) + "%\"></i>" : "") +
+      "</div>" +
+      "<ul class=\"hidro-cierre-leyenda\"><li><i class=\"is-medido\"></i>" + escHtml(balanceText("Medido", "Measured")) +
+      "</li><li><i class=\"is-estimado\"></i>" + escHtml(balanceText("Estimado", "Estimated")) +
+      "</li><li><i class=\"is-proyectado\"></i>" + escHtml(balanceText("Proyectado", "Projected")) +
+      "</li><li><i class=\"is-media\"></i>" + escHtml(balanceText("Media histórica", "Historical mean")) + "</li></ul>" +
+      "<p class=\"hidro-note\">" + escHtml(balanceText(
+        "Caudal incorporado hasta el " + hasta + ". " + cierreVsMedia(doc),
+        "Flow included through " + hasta + ". " + cierreVsMedia(doc)
+      )) + "</p>" +
+      "<details class=\"hidro-cierre-metodo\"><summary>" + escHtml(balanceText("Día por día", "Day by day")) +
+      "</summary><div class=\"hidro-table-wrap hidro-table-wrap--scroll\"><table class=\"hidro-table\"><caption>" +
+      escHtml(balanceText(
+        (mes ? mes.charAt(0).toUpperCase() + mes.slice(1) : "Mes") + " día por día. El proyectado no es una medición.",
+        mesEn(mes) + " day by day. Projected values are not measurements."
+      )) +
+      "</caption><thead><tr><th>" + escHtml(balanceText("Fecha", "Date")) + "</th><th>" +
+      escHtml(balanceText("Clase", "Class")) + "</th><th>" + escHtml(balanceText("Caudal (m³/s)", "Flow (m³/s)")) +
+      "</th><th>" + escHtml(balanceText("Volumen (hm³)", "Volume (hm³)")) + "</th></tr></thead><tbody>" +
+      filas + "</tbody></table></div></details>" +
+      "<details class=\"hidro-cierre-metodo\"><summary>" + escHtml(balanceText("Nota del método", "Method note")) +
+      "</summary><p class=\"hidro-note\">" + escHtml(doc.metodo || "") + "</p></details>" +
+      "<p class=\"hidro-dl__actions\"><a class=\"btn btn-primary\" href=\"" + escHtml(CIERRE_JSON) + "\" download>" +
+      escHtml(balanceText("Descargar JSON", "Download JSON")) + "</a></p>";
+  }
+
+  function cierreKpi(label, value, note) {
+    return "<div class=\"hidro-cierre-kpi\"><span>" + escHtml(label) + "</span><strong>" + escHtml(value) +
+      "</strong>" + (note ? "<small>" + escHtml(note) + "</small>" : "") + "</div>";
+  }
+
+  function loadCierre() {
+    var bust = Date.now();
+    fetch(CIERRE_JSON + "?v=" + bust, { cache: "no-store" })
+      .then(function (res) {
+        if (!res.ok) throw new Error(String(res.status));
+        return res.json();
+      })
+      .then(function (doc) {
+        state.cierre = doc;
+        renderCierre();
+      })
+      .catch(function () {
+        var host = cierreHost();
+        if (!host || state.cierre) return;
+        cierreStyles();
+        host.innerHTML = "<h3>" + escHtml(balanceText(
+          "Pronóstico de cierre de mes – Río San Juan Km 101",
+          "Month-end outlook – San Juan River Km 101"
+        )) + "</h3><p class=\"hidro-cierre-aviso\">" + escHtml(CIERRE_ETIQUETA) + "</p><p class=\"hidro-note\">" +
+          escHtml(balanceText(
+            "El pronóstico de cierre todavía no está publicado.",
+            "The month-end outlook is not published yet."
+          )) + "</p>";
+      });
+  }
+
   function loadBalance() {
     var bust = Date.now();
     fetch("hidrologia/balance_caracoles.json?v=" + bust, { cache: "no-store" })
@@ -1506,6 +1733,7 @@
       setStatus(t("sec.hidro.datos.error"));
     });
     loadBalance();
+    loadCierre();
   }
 
   bind();
@@ -1521,6 +1749,7 @@
   });
 
   window.addEventListener("oia:langchange", function () {
+    if (state.cierre) renderCierre();
     if (state.balance) renderBalance();
     if (!state.data) return;
     renderKpis();

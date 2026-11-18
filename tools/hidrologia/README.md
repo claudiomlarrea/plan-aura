@@ -68,7 +68,17 @@ Reconstruir todo desde `raw/`: `python3 tools/hidrologia/scripts/build_db.py`.
 ```
 bash tools/hidrologia/actualizar_todo.sh
 ```
-El workflow `.github/workflows/hidrologia-diaria.yml` lo corre entre las 08:15 y las 19:15 (hora de San Juan) y también se puede disparar a mano. Solo commitea si cambia un caudal, una cota, un volumen o el Desembalse Ullum.
+El workflow `.github/workflows/hidrologia-diaria.yml` lo corre entre las 08:15 y las 19:15 (hora de San Juan) y también se puede disparar a mano. Commitea si cambia un caudal, una cota, un volumen, el Desembalse Ullum o el pronóstico de cierre de mes.
+
+## Pronóstico de cierre de mes (Km 101)
+
+`scripts/pronostico_cierre_mes.py` escribe `data/hidrologia/pronostico_cierre_mes.json`. No baja planillas: lee `caudales.db` y `hidrologia/balance_caracoles.json`.
+
+El volumen diario es Q (m³/s) × 86400 / 1e6. Hasta el 04/11/2026 entra el caudal medido. Del 05/11/2026 en adelante, si el balance marca el día como interpolado o no hay medición DH, entra el caudal estimado (salida a Punta Negra + variación de almacenamiento en Los Caracoles). Los días sin ninguno de los dos se proyectan:
+
+Q(d) = 42 + C · 5,2 · T⁺(d−2) · 8419 · 1000 / 86400
+
+C = 0,19 (banda P10–P90 con 0,12 y 0,24). T⁺ es la temperatura diaria a 3.850 m de Open-Meteo (lat −31,9, lon −70,0, gradiente 6,5 °C/km desde la celda) y, pasado el horizonte, la climatología 1991–2020 guardada en `clima_3850.json`. El bloque lo dibuja `js/hidrologia.js` en Información hidrológica. La etiqueta visible dice que es una estimación del Instituto del Agua, no un dato oficial del Departamento de Hidráulica.
 
 ## Caudal de entrada estimado a Los Caracoles
 
