@@ -4,7 +4,7 @@ on:
   schedule:
     # Minuto 15, no el minuto 0: GitHub descarta crones en el pico de cada hora.
     # 11:15–22:15 UTC = 08:15 a 19:15 en San Juan (UTC−3, sin horario de verano).
-    # Si la planilla no cambió, el job no hace commit.
+    # Si la planilla no cambió, igual se publica el pronóstico de cierre cuando cambia.
     - cron: "15 11-22 * * *"
   workflow_dispatch:
 
@@ -49,7 +49,7 @@ jobs:
       - name: Bajar planillas oficiales y regenerar JSON/CSV
         run: bash tools/hidrologia/actualizar_todo.sh
 
-      - name: Publicar solo si la serie cambió
+      - name: Publicar si cambió la serie o el pronóstico de cierre
         id: publicar
         run: |
           set -euo pipefail
@@ -60,19 +60,33 @@ jobs:
               FROM niveles_embalses ORDER BY fecha, embalse;
             SELECT fecha, printf('%.3f', caudal_m3s) FROM desembalse_ullum ORDER BY fecha;
           " | sha256sum > /tmp/hidro-despues.sha
+          serie_cambio=1
           if cmp -s /tmp/hidro-antes.sha /tmp/hidro-despues.sha; then
+            serie_cambio=0
             git checkout -- tools/hidrologia/caudales.db data/hidrologia hidrologia || true
-            echo "Sin datos nuevos. No se commitea nada y no se interpola."
-            exit 0
+            echo "Sin datos nuevos de caudal ni de embalses. No se interpola."
+            # El grado-día cambia con el día y con Open-Meteo aunque la planilla no.
+            python3 tools/hidrologia/scripts/pronostico_cierre_mes.py || {
+              echo "AVISO: no se pudo regenerar el pronóstico de cierre de mes." >&2
+            }
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/hidrologia/tabla_hidrologica.json hidrologia tools/hidrologia/caudales.db
+          if [ "$serie_cambio" -eq 1 ]; then
+            git add data/hidrologia/tabla_hidrologica.json hidrologia tools/hidrologia/caudales.db
+          fi
+          if [ -f data/hidrologia/pronostico_cierre_mes.json ]; then
+            git add data/hidrologia/pronostico_cierre_mes.json
+          fi
           if git diff --cached --quiet; then
-            echo "La firma cambió pero el diff publicado está vacío."
+            echo "Nada nuevo para publicar."
             exit 0
           fi
-          git commit -m "Actualizar series hidrológicas oficiales"
+          if [ "$serie_cambio" -eq 1 ]; then
+            git commit -m "Actualizar series hidrológicas oficiales y el pronóstico de cierre de mes"
+          else
+            git commit -m "Actualizar el pronóstico de cierre de mes"
+          fi
           git push
           echo "pushed=true" >> "$GITHUB_OUTPUT"
 

@@ -1,0 +1,333 @@
+{
+  "titulo": "Pronóstico de cierre de mes – Río San Juan Km 101",
+  "etiqueta": "Estimación del Instituto del Agua – no es dato oficial del Departamento de Hidráulica",
+  "estacion": "Río San Juan Km 101",
+  "generado": "2026-11-18",
+  "zona_horaria": "America/Argentina/San_Juan",
+  "mes": "2026-11",
+  "mes_nombre": "noviembre",
+  "anio": 2026,
+  "hoy": "2026-11-18",
+  "dias_del_mes": 30,
+  "ultimo_dia_con_caudal": "2026-11-15",
+  "acumulado_medido_hm3": 24.2,
+  "acumulado_estimado_hm3": 111.9,
+  "dias_medidos": 4,
+  "dias_estimados": 11,
+  "proyectado_restante_hm3": 61.1,
+  "proyectado_restante_p10_hm3": 58.6,
+  "proyectado_restante_p90_hm3": 62.8,
+  "dias_proyectados": 15,
+  "total_mes_hm3": 197.2,
+  "total_mes_p10_hm3": 194.7,
+  "total_mes_p90_hm3": 198.9,
+  "media_historica_hm3": 210.5,
+  "media_historica_anios": 115,
+  "media_historica_fuente": "serie",
+  "diferencia_vs_media_hm3": -13.3,
+  "falta_dias": 15,
+  "falta_volumen_hm3": 61.1,
+  "parametros": {
+    "C": 0.19,
+    "C_p10": 0.12,
+    "C_p90": 0.24,
+    "DDF_mm_c_dia": 5.2,
+    "area_nival_km2": 8419,
+    "area_rango_m": [
+      3200,
+      4500
+    ],
+    "qbase_m3s": 42.0,
+    "retardo_dias": 2,
+    "elevacion_objetivo_m": 3850,
+    "gradiente_c_km": 6.5,
+    "lat": -31.9,
+    "lon": -70.0,
+    "m3_por_mm_km2": 1000,
+    "estimado_desde": "2026-11-05"
+  },
+  "temperatura": {
+    "fuente": "Open-Meteo",
+    "lat": -31.9,
+    "lon": -70.0,
+    "elevacion_celda_m": 3127.0,
+    "elevacion_objetivo_m": 3850,
+    "gradiente_c_km": 6.5,
+    "horizonte_pronostico": "2026-12-03",
+    "climatologia": "1991-2020",
+    "variable": "temperature_2m_mean"
+  },
+  "metodo": "Cierre de mes del Río San Juan en Km 101. Es una estimación del Instituto del Agua: no es un dato oficial del Departamento de Hidráulica.\n\nEl volumen de cada día, en hm³, es el caudal en m³/s por 86400 / 1e6. Los días con caudal publicado por el Departamento de Hidráulica van como MEDIDO. Si el balance de Los Caracoles marca el día como interpolado o estimado, se usa ese caudal y va como ESTIMADO aunque la planilla traiga un número (del 5 al 9/11/2026 la rampa es el dato que entra). Desde el 10/11/2026, donde no hay medición DH, el caudal es el de entrada a Los Caracoles: salida hacia Punta Negra más la variación de almacenamiento en Caracoles. Un día sin marca y sin medición DH desde el 05/11/2026 también queda como estimado cuando el balance tiene caudal; si no lo tiene, se proyecta.\n\nLos días que faltan usan un grado-día con retardo de 2 días: Q(d) = 42 + C · 5,2 · T⁺(d−2) · 8419 · 1000 / 86400. C es 0,19 (P10 = 0,12 y P90 = 0,24). 5,2 es el factor de grado-día en mm/°C/día. 8419 km² es el área nival entre 3.200 y 4.500 m. El 1000 pasa milímetros por kilómetro cuadrado a metros cúbicos. T⁺ es el máximo entre la temperatura diaria y cero, llevada a 3.850 m. La temperatura sale de Open-Meteo (lat −31,9, lon −70,0) y se corrige 6,5 °C por kilómetro desde la elevación de la celda. Pasado el horizonte del pronóstico se usa la media 1991–2020 de ese día del año, con la misma corrección. La base de 42 m³/s no depende de C: la banda cubre solo el término de derretimiento.",
+  "dias": [
+    {
+      "fecha": "2026-11-01",
+      "clase": "medido",
+      "q_m3s": 71.71,
+      "volumen_hm3": 6.196
+    },
+    {
+      "fecha": "2026-11-02",
+      "clase": "medido",
+      "q_m3s": 74.07,
+      "volumen_hm3": 6.4
+    },
+    {
+      "fecha": "2026-11-03",
+      "clase": "medido",
+      "q_m3s": 66.92,
+      "volumen_hm3": 5.782
+    },
+    {
+      "fecha": "2026-11-04",
+      "clase": "medido",
+      "q_m3s": 67.43,
+      "volumen_hm3": 5.826
+    },
+    {
+      "fecha": "2026-11-05",
+      "clase": "estimado",
+      "q_m3s": 63.7,
+      "volumen_hm3": 5.504
+    },
+    {
+      "fecha": "2026-11-06",
+      "clase": "estimado",
+      "q_m3s": 68.5,
+      "volumen_hm3": 5.918
+    },
+    {
+      "fecha": "2026-11-07",
+      "clase": "estimado",
+      "q_m3s": 73.3,
+      "volumen_hm3": 6.333
+    },
+    {
+      "fecha": "2026-11-08",
+      "clase": "estimado",
+      "q_m3s": 78.1,
+      "volumen_hm3": 6.748
+    },
+    {
+      "fecha": "2026-11-09",
+      "clase": "estimado",
+      "q_m3s": 83.0,
+      "volumen_hm3": 7.171
+    },
+    {
+      "fecha": "2026-11-10",
+      "clase": "estimado",
+      "q_m3s": 94.8,
+      "volumen_hm3": 8.191
+    },
+    {
+      "fecha": "2026-11-11",
+      "clase": "estimado",
+      "q_m3s": 105.7,
+      "volumen_hm3": 9.132
+    },
+    {
+      "fecha": "2026-11-12",
+      "clase": "estimado",
+      "q_m3s": 131.9,
+      "volumen_hm3": 11.396
+    },
+    {
+      "fecha": "2026-11-13",
+      "clase": "estimado",
+      "q_m3s": 162.9,
+      "volumen_hm3": 14.075
+    },
+    {
+      "fecha": "2026-11-14",
+      "clase": "estimado",
+      "q_m3s": 187.1,
+      "volumen_hm3": 16.165
+    },
+    {
+      "fecha": "2026-11-15",
+      "clase": "estimado",
+      "q_m3s": 245.7,
+      "volumen_hm3": 21.228
+    },
+    {
+      "fecha": "2026-11-16",
+      "clase": "proyectado",
+      "q_m3s": 99.81,
+      "volumen_hm3": 8.624,
+      "t_plus_c": 0.6,
+      "t_origen": "pronostico",
+      "q_p10_m3s": 78.51,
+      "q_p90_m3s": 115.03,
+      "volumen_p10_hm3": 6.784,
+      "volumen_p90_hm3": 9.938
+    },
+    {
+      "fecha": "2026-11-17",
+      "clase": "proyectado",
+      "q_m3s": 61.3,
+      "volumen_hm3": 5.297,
+      "t_plus_c": 0.2,
+      "t_origen": "pronostico",
+      "q_p10_m3s": 54.19,
+      "q_p90_m3s": 66.38,
+      "volumen_p10_hm3": 4.682,
+      "volumen_p90_hm3": 5.735
+    },
+    {
+      "fecha": "2026-11-18",
+      "clase": "proyectado",
+      "q_m3s": 42.0,
+      "volumen_hm3": 3.629,
+      "t_plus_c": 0.0,
+      "t_origen": "pronostico",
+      "q_p10_m3s": 42.0,
+      "q_p90_m3s": 42.0,
+      "volumen_p10_hm3": 3.629,
+      "volumen_p90_hm3": 3.629
+    },
+    {
+      "fecha": "2026-11-19",
+      "clase": "proyectado",
+      "q_m3s": 42.0,
+      "volumen_hm3": 3.629,
+      "t_plus_c": 0.0,
+      "t_origen": "pronostico",
+      "q_p10_m3s": 42.0,
+      "q_p90_m3s": 42.0,
+      "volumen_p10_hm3": 3.629,
+      "volumen_p90_hm3": 3.629
+    },
+    {
+      "fecha": "2026-11-20",
+      "clase": "proyectado",
+      "q_m3s": 42.0,
+      "volumen_hm3": 3.629,
+      "t_plus_c": 0.0,
+      "t_origen": "pronostico",
+      "q_p10_m3s": 42.0,
+      "q_p90_m3s": 42.0,
+      "volumen_p10_hm3": 3.629,
+      "volumen_p90_hm3": 3.629
+    },
+    {
+      "fecha": "2026-11-21",
+      "clase": "proyectado",
+      "q_m3s": 42.0,
+      "volumen_hm3": 3.629,
+      "t_plus_c": 0.0,
+      "t_origen": "pronostico",
+      "q_p10_m3s": 42.0,
+      "q_p90_m3s": 42.0,
+      "volumen_p10_hm3": 3.629,
+      "volumen_p90_hm3": 3.629
+    },
+    {
+      "fecha": "2026-11-22",
+      "clase": "proyectado",
+      "q_m3s": 42.0,
+      "volumen_hm3": 3.629,
+      "t_plus_c": 0.0,
+      "t_origen": "pronostico",
+      "q_p10_m3s": 42.0,
+      "q_p90_m3s": 42.0,
+      "volumen_p10_hm3": 3.629,
+      "volumen_p90_hm3": 3.629
+    },
+    {
+      "fecha": "2026-11-23",
+      "clase": "proyectado",
+      "q_m3s": 42.0,
+      "volumen_hm3": 3.629,
+      "t_plus_c": 0.0,
+      "t_origen": "pronostico",
+      "q_p10_m3s": 42.0,
+      "q_p90_m3s": 42.0,
+      "volumen_p10_hm3": 3.629,
+      "volumen_p90_hm3": 3.629
+    },
+    {
+      "fecha": "2026-11-24",
+      "clase": "proyectado",
+      "q_m3s": 42.0,
+      "volumen_hm3": 3.629,
+      "t_plus_c": 0.0,
+      "t_origen": "pronostico",
+      "q_p10_m3s": 42.0,
+      "q_p90_m3s": 42.0,
+      "volumen_p10_hm3": 3.629,
+      "volumen_p90_hm3": 3.629
+    },
+    {
+      "fecha": "2026-11-25",
+      "clase": "proyectado",
+      "q_m3s": 42.0,
+      "volumen_hm3": 3.629,
+      "t_plus_c": 0.0,
+      "t_origen": "pronostico",
+      "q_p10_m3s": 42.0,
+      "q_p90_m3s": 42.0,
+      "volumen_p10_hm3": 3.629,
+      "volumen_p90_hm3": 3.629
+    },
+    {
+      "fecha": "2026-11-26",
+      "clase": "proyectado",
+      "q_m3s": 42.0,
+      "volumen_hm3": 3.629,
+      "t_plus_c": 0.0,
+      "t_origen": "pronostico",
+      "q_p10_m3s": 42.0,
+      "q_p90_m3s": 42.0,
+      "volumen_p10_hm3": 3.629,
+      "volumen_p90_hm3": 3.629
+    },
+    {
+      "fecha": "2026-11-27",
+      "clase": "proyectado",
+      "q_m3s": 42.0,
+      "volumen_hm3": 3.629,
+      "t_plus_c": 0.0,
+      "t_origen": "pronostico",
+      "q_p10_m3s": 42.0,
+      "q_p90_m3s": 42.0,
+      "volumen_p10_hm3": 3.629,
+      "volumen_p90_hm3": 3.629
+    },
+    {
+      "fecha": "2026-11-28",
+      "clase": "proyectado",
+      "q_m3s": 42.0,
+      "volumen_hm3": 3.629,
+      "t_plus_c": 0.0,
+      "t_origen": "pronostico",
+      "q_p10_m3s": 42.0,
+      "q_p90_m3s": 42.0,
+      "volumen_p10_hm3": 3.629,
+      "volumen_p90_hm3": 3.629
+    },
+    {
+      "fecha": "2026-11-29",
+      "clase": "proyectado",
+      "q_m3s": 42.0,
+      "volumen_hm3": 3.629,
+      "t_plus_c": 0.0,
+      "t_origen": "pronostico",
+      "q_p10_m3s": 42.0,
+      "q_p90_m3s": 42.0,
+      "volumen_p10_hm3": 3.629,
+      "volumen_p90_hm3": 3.629
+    },
+    {
+      "fecha": "2026-11-30",
+      "clase": "proyectado",
+      "q_m3s": 42.0,
+      "volumen_hm3": 3.629,
+      "t_plus_c": 0.0,
+      "t_origen": "pronostico",
+      "q_p10_m3s": 42.0,
+      "q_p90_m3s": 42.0,
+      "volumen_p10_hm3": 3.629,
+      "volumen_p90_hm3": 3.629
+    }
+  ]
+}
