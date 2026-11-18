@@ -111,8 +111,11 @@ def texto_metodo():
         "también se interpola en línea entre las dos lecturas. Un hueco de más de 7 días no "
         "se rellena. Si todavía no hay lectura siguiente, la última fila queda pendiente.\n\n"
         "El caudal medido en Km 101, cuando existe ese día, se copia en km101_medido_m3s "
-        "solo como referencia. El Departamento de Hidráulica no mide Km 101 desde el "
-        "09/11/2026 (vagoneta rota) y no publicó planillas el 06, 07, 08 ni el 09/11. "
+        "solo como referencia y km101_clase queda en medido. El 09/11/2026 es una medición "
+        "del Departamento de Hidráulica: 93,47 m³/s, en la planilla del 10/11. No hay "
+        "medición de Km 101 el 05, 06, 07 ni el 08/11, ni desde el 10/11 (vagoneta rota), "
+        "y no publicó planillas el 06, 07, 08 ni el 09/11. La rampa del balance sigue "
+        "interpolando el ingreso a Caracoles; eso no reemplaza el caudal medido del 09/11. "
         "El balance 05→10/11 (media 73,3 m³/s, cota 1082,41 m el 05/11) se reparte en la "
         "rampa 63,7; 68,5; 73,3; 78,1 y 83,0 m³/s. De esa media, la descarga a Punta Negra "
         "aporta unos 33,0 m³/s (35,5; 34,2; 33,0; 31,7 y 30,5) y el almacenamiento en "
@@ -208,6 +211,7 @@ def _fila(fecha, cota, cota_interpolada, caudal, descarga, almacenamiento, dias,
         "almacenamiento_caracoles_m3s": a,
         "dias_ventana": dias,
         "km101_medido_m3s": redondear(medido, 3) if medido is not None else None,
+        "km101_clase": "medido" if medido is not None else None,
         "interpolado": bool(interpolado),
         "cota_interpolada": bool(cota_interpolada),
         "nota": nota,
@@ -412,7 +416,7 @@ def escribir_csv(filas, path):
     campos = [
         "fecha", "caudal_estimado_m3s", "cota_caracoles", "descarga_m3s",
         "almacenamiento_caracoles_m3s", "dias_ventana", "km101_medido_m3s",
-        "interpolado", "cota_interpolada", "nota",
+        "km101_clase", "interpolado", "cota_interpolada", "nota",
     ]
     with open(path, "w", encoding="utf-8-sig", newline="") as fh:
         w = csv.writer(fh, delimiter=";")
@@ -426,6 +430,7 @@ def escribir_csv(filas, path):
                 _csv_num(fila["almacenamiento_caracoles_m3s"], 1),
                 "" if fila["dias_ventana"] is None else str(fila["dias_ventana"]),
                 _csv_num(fila["km101_medido_m3s"], 3),
+                fila.get("km101_clase") or "",
                 "true" if fila["interpolado"] else "false",
                 "true" if fila["cota_interpolada"] else "false",
                 fila["nota"] or "",

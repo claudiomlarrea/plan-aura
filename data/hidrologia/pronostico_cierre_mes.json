@@ -10,23 +10,23 @@
   "hoy": "2026-11-18",
   "dias_del_mes": 30,
   "ultimo_dia_con_caudal": "2026-11-15",
-  "acumulado_medido_hm3": 24.2,
-  "acumulado_estimado_hm3": 111.9,
-  "dias_medidos": 4,
-  "dias_estimados": 11,
-  "proyectado_restante_hm3": 61.1,
-  "proyectado_restante_p10_hm3": 58.6,
-  "proyectado_restante_p90_hm3": 62.8,
+  "acumulado_medido_hm3": 32.3,
+  "acumulado_estimado_hm3": 104.7,
+  "dias_medidos": 5,
+  "dias_estimados": 10,
+  "proyectado_restante_hm3": 71.1,
+  "proyectado_restante_p10_hm3": 62.3,
+  "proyectado_restante_p90_hm3": 77.4,
   "dias_proyectados": 15,
-  "total_mes_hm3": 197.2,
-  "total_mes_p10_hm3": 194.7,
-  "total_mes_p90_hm3": 198.9,
+  "total_mes_hm3": 208.1,
+  "total_mes_p10_hm3": 199.3,
+  "total_mes_p90_hm3": 214.4,
   "media_historica_hm3": 210.5,
   "media_historica_anios": 115,
   "media_historica_fuente": "serie",
-  "diferencia_vs_media_hm3": -13.3,
+  "diferencia_vs_media_hm3": -2.4,
   "falta_dias": 15,
-  "falta_volumen_hm3": 61.1,
+  "falta_volumen_hm3": 71.1,
   "parametros": {
     "C": 0.19,
     "C_p10": 0.12,
@@ -41,23 +41,33 @@
     "retardo_dias": 2,
     "elevacion_objetivo_m": 3850,
     "gradiente_c_km": 6.5,
-    "lat": -31.9,
-    "lon": -70.0,
-    "m3_por_mm_km2": 1000,
-    "estimado_desde": "2026-11-05"
+    "divisor_m3s": 86.4,
+    "formula": "max(qbase, C*DDF*Tplus*area/86.4)",
+    "estimado_desde": "2026-11-05",
+    "interpolado_km101": [
+      "2026-11-05",
+      "2026-11-08"
+    ],
+    "medido_09_11_2026_m3s": 93.47
   },
   "temperatura": {
     "fuente": "Open-Meteo",
-    "lat": -31.9,
-    "lon": -70.0,
-    "elevacion_celda_m": 3127.0,
+    "grilla": "cuenca-alta-0.2deg-26",
+    "n_celdas": 26,
     "elevacion_objetivo_m": 3850,
     "gradiente_c_km": 6.5,
+    "correccion": "sesgo de cota: cada celda a 3.850 m con 6,5 °C/km, luego promedio",
     "horizonte_pronostico": "2026-12-03",
-    "climatologia": "1991-2020",
-    "variable": "temperature_2m_mean"
+    "climatologia": "1991-2020, todavía no hizo falta: el pronóstico cubre el mes",
+    "variable": "temperature_2m_mean",
+    "referencia_instituto_t_plus_c": {
+      "2026-11-14": 1.95,
+      "2026-11-15": 1.0
+    },
+    "grilla_2026-11-14": 1.8,
+    "grilla_2026-11-15": 1.08
   },
-  "metodo": "Cierre de mes del Río San Juan en Km 101. Es una estimación del Instituto del Agua: no es un dato oficial del Departamento de Hidráulica.\n\nEl volumen de cada día, en hm³, es el caudal en m³/s por 86400 / 1e6. Los días con caudal publicado por el Departamento de Hidráulica van como MEDIDO. Si el balance de Los Caracoles marca el día como interpolado o estimado, se usa ese caudal y va como ESTIMADO aunque la planilla traiga un número (del 5 al 9/11/2026 la rampa es el dato que entra). Desde el 10/11/2026, donde no hay medición DH, el caudal es el de entrada a Los Caracoles: salida hacia Punta Negra más la variación de almacenamiento en Caracoles. Un día sin marca y sin medición DH desde el 05/11/2026 también queda como estimado cuando el balance tiene caudal; si no lo tiene, se proyecta.\n\nLos días que faltan usan un grado-día con retardo de 2 días: Q(d) = 42 + C · 5,2 · T⁺(d−2) · 8419 · 1000 / 86400. C es 0,19 (P10 = 0,12 y P90 = 0,24). 5,2 es el factor de grado-día en mm/°C/día. 8419 km² es el área nival entre 3.200 y 4.500 m. El 1000 pasa milímetros por kilómetro cuadrado a metros cúbicos. T⁺ es el máximo entre la temperatura diaria y cero, llevada a 3.850 m. La temperatura sale de Open-Meteo (lat −31,9, lon −70,0) y se corrige 6,5 °C por kilómetro desde la elevación de la celda. Pasado el horizonte del pronóstico se usa la media 1991–2020 de ese día del año, con la misma corrección. La base de 42 m³/s no depende de C: la banda cubre solo el término de derretimiento.",
+  "metodo": "Cierre de mes del Río San Juan en Km 101. Es una estimación del Instituto del Agua: no es un dato oficial del Departamento de Hidráulica.\n\nEl volumen de cada día, en hm³, es el caudal en m³/s por 86400 / 1e6. Los días con caudal publicado por el Departamento de Hidráulica van como MEDIDO, aunque el balance de ese día esté interpolado. El 09/11/2026 es medido: 93,47 m³/s (planilla del 10/11). Del 5 al 8/11 no hay medición y entra la rampa del balance. Desde el 10/11/2026, donde no hay medición DH, el caudal es el de entrada a Los Caracoles: salida hacia Punta Negra más la variación de almacenamiento. Si el balance no tiene caudal, el día se proyecta.\n\nLos días que faltan usan un grado-día con retardo de 2 días y piso de base: Q(D) = max(42, C · 5,2 · T⁺(D−2) · 8419 / 86,4). C es 0,19 (P10 = 0,12 y P90 = 0,24) y ya está calibrado al caudal total: 42 m³/s no se suma encima. 5,2 es el factor de grado-día en mm/°C/día. 8419 km² es el área nival entre 3.200 y 4.500 m. El 86,4 pasa milímetros por kilómetro cuadrado a m³/s. T⁺ es el máximo entre cero y el promedio de 26 celdas de la cuenca alta. Cada celda se corre a 3.850 m con 6,5 °C/km (corrección de sesgo por altura) y después se promedia. La grilla es de 0,2° entre 30,5° S y 32,3° S y entre 69,6° O y 70,4° O; de las celdas que caen en 3.200–4.500 m se dejan las 26 más cercanas a 3.850 m. Pasado el horizonte del pronóstico se usa la media 1991–2020 de esa grilla. El 14/11/2026 la referencia del Instituto es 1,95 °C y el 15/11 es 1,00 °C (Q del 16/11 ≈ 185 m³/s y del 17/11 ≈ 95 m³/s). El piso de 42 m³/s no depende de C.",
   "dias": [
     {
       "fecha": "2026-11-01",
@@ -109,9 +119,9 @@
     },
     {
       "fecha": "2026-11-09",
-      "clase": "estimado",
-      "q_m3s": 83.0,
-      "volumen_hm3": 7.171
+      "clase": "medido",
+      "q_m3s": 93.47,
+      "volumen_hm3": 8.076
     },
     {
       "fecha": "2026-11-10",
@@ -152,26 +162,26 @@
     {
       "fecha": "2026-11-16",
       "clase": "proyectado",
-      "q_m3s": 99.81,
-      "volumen_hm3": 8.624,
-      "t_plus_c": 0.6,
+      "q_m3s": 172.91,
+      "volumen_hm3": 14.94,
+      "t_plus_c": 1.8,
       "t_origen": "pronostico",
-      "q_p10_m3s": 78.51,
-      "q_p90_m3s": 115.03,
-      "volumen_p10_hm3": 6.784,
-      "volumen_p90_hm3": 9.938
+      "q_p10_m3s": 109.21,
+      "q_p90_m3s": 218.42,
+      "volumen_p10_hm3": 9.436,
+      "volumen_p90_hm3": 18.871
     },
     {
       "fecha": "2026-11-17",
       "clase": "proyectado",
-      "q_m3s": 61.3,
-      "volumen_hm3": 5.297,
-      "t_plus_c": 0.2,
+      "q_m3s": 104.41,
+      "volumen_hm3": 9.021,
+      "t_plus_c": 1.08,
       "t_origen": "pronostico",
-      "q_p10_m3s": 54.19,
-      "q_p90_m3s": 66.38,
-      "volumen_p10_hm3": 4.682,
-      "volumen_p90_hm3": 5.735
+      "q_p10_m3s": 65.94,
+      "q_p90_m3s": 131.89,
+      "volumen_p10_hm3": 5.698,
+      "volumen_p90_hm3": 11.395
     },
     {
       "fecha": "2026-11-18",

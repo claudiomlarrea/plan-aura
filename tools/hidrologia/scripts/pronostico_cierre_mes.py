@@ -8,16 +8,19 @@ proyectan con un modelo grado-día.
 
 Volumen del día (hm³) = Q (m³/s) × 86400 / 1e6.
 
-Q_proj(d) = Qbase + C · DDF · T⁺(d−2) · Área · 1000 / 86400
+Q(D) = max(42, C · DDF · T⁺(D−2) · A / 86,4)
 
-El 1000 convierte mm·km² a m³ (1 mm sobre 1 km²). DDF está en mm/°C/día
-y el área nival en km²; sin ese factor el término de derretimiento queda
-en el orden de 0,1 m³/s por °C y la banda P10–P90 desaparece.
+42 m³/s es un piso, no un sumando: C ya está calibrado al caudal total y
+sumarlo otra vez contaría la base dos veces. A = 8.419 km² (ocho mil
+cuatrocientos diecinueve; el punto es el separador de miles). DDF está en
+mm/°C/día. Dividir por 86,4 pasa mm·km²/día a m³/s (86,4 = 86400/1000).
 
-T⁺ es la temperatura diaria en 3.850 m: Open-Meteo en (−31,9; −70,0),
-corregida con 6,5 °C/km desde la elevación de la celda. Después del
-horizonte del pronóstico se usa la climatología 1991–2020 del mismo punto.
-La banda P10–P90 recorre C = 0,12 y C = 0,24. El valor central usa C = 0,19.
+T⁺ es el máximo entre cero y el promedio de 26 celdas Open-Meteo de la
+cuenca alta (3.200–4.500 m, grilla de 0,2°), cada una llevada a 3.850 m
+con 6,5 °C/km antes de promediar. Esa corrección de cota es el sesgo que
+se saca. Después del horizonte se usa la climatología 1991–2020 de la
+misma grilla. La banda P10–P90 recorre C = 0,12 y C = 0,24; el piso de
+42 m³/s no depende de C.
 """
 import calendar
 import datetime as dt
@@ -25,6 +28,7 @@ import json
 import os
 import sqlite3
 import sys
+import time
 
 import requests
 
@@ -46,9 +50,9 @@ QBASE = 42.0
 RETARDO = 2
 ELEVACION = 3850
 GRADIENTE = 6.5
-LAT = -31.9
-LON = -70.0
-M3_POR_MM_KM2 = 1000
+# 86,4 = 86400/1000: mm/día · km² → m³/s.
+DIVISOR = 86.4
+GRILLA = os.path.join(B, "grilla_cuenca_alta.json")
 MEDIA_RESPALDO = {11: 210.5}
 CLIMA_DESDE = dt.date(1991, 1, 1)
 CLIMA_HASTA = dt.date(2020, 12, 31)
@@ -74,14 +78,27 @@ def hm3(q_m3s):
     return q_m3s * 86400.0 / 1e6
 
 
+def t_a_cota(t_celda, elevacion_celda, objetivo=ELEVACION, gradiente=GRADIENTE):
+    """Lleva la temperatura de la celda a la cota objetivo. Puede ser negativa."""
+    return float(t_celda) - gradiente * (objetivo - float(elevacion_celda)) / 1000.0
+
+
 def t_positiva(t_celda, elevacion_celda, objetivo=ELEVACION, gradiente=GRADIENTE):
-    """Temperatura en la cota objetivo, truncada a cero. Baja si la celda está más abajo."""
-    t = float(t_celda) - gradiente * (objetivo - float(elevacion_celda)) / 1000.0
-    return max(t, 0.0)
+    """Temperatura en la cota objetivo, truncada a cero. La conserva el nombre anterior."""
+    return max(t_a_cota(t_celda, elevacion_celda, objetivo, gradiente), 0.0)
+
+
+def t_plus_grilla(temperaturas_a_3850):
+    """T⁺ del promedio espacial. Se trunca el promedio, no cada celda."""
+    if not temperaturas_a_3850:
+        raise ValueError("la grilla no tiene temperaturas")
+    return max(sum(temperaturas_a_3850) / len(temperaturas_a_3850), 0.0)
 
 
 def q_proyectado(t_plus, c=C, ddf=DDF, area=AREA_KM2, qbase=QBASE):
-    return qbase + c * ddf * float(t_plus) * area * M3_POR_MM_KM2 / 86400.0
+    """Piso de caudal base. C ya incluye la base: no se suma 42 encima del derretimiento."""
+    derretimiento = c * ddf * float(t_plus) * area / DIVISOR
+    return max(qbase, derretimiento)
 
 
 def redondear(valor, decimales):
@@ -102,15 +119,18 @@ def _marca_estimada(fila):
 def clasificar_dia(fecha, medido, fila_balance):
     """Devuelve ('medido'|'estimado', q) o (None, None) si el día se proyecta.
 
-    Una marca de estimado del balance gana sobre el caudal DH del mismo día
-    (el 05–09/11/2026 está interpolado aunque el 09 tenga un valor de planilla).
-    Desde el 05/11/2026, un día sin medición DH usa el balance si lo hay.
+    Si hay caudal DH, el día es MEDIDO aunque el balance de Caracoles esté
+    interpolado. El 09/11/2026 es 93,47 m³/s (planilla del 10/11). La rampa
+    05–08/11 no tiene medición y entra como estimada. Desde el 10/11, sin
+    medición DH, se usa el balance.
     """
+    if fila_balance and fila_balance.get("km101_clase") == "medido" and medido is None:
+        medido = fila_balance.get("km101_medido_m3s")
     q_est = None if not fila_balance else fila_balance.get("caudal_estimado_m3s")
-    if _marca_estimada(fila_balance) and q_est is not None:
-        return "estimado", float(q_est)
     if medido is not None:
         return "medido", float(medido)
+    if _marca_estimada(fila_balance) and q_est is not None:
+        return "estimado", float(q_est)
     if fecha >= ESTIMADO_DESDE and q_est is not None:
         return "estimado", float(q_est)
     return None, None
@@ -256,10 +276,11 @@ def construir(hoy, caudales, balance, t_plus, origen_t, temperatura_meta=None):
             "retardo_dias": RETARDO,
             "elevacion_objetivo_m": ELEVACION,
             "gradiente_c_km": GRADIENTE,
-            "lat": LAT,
-            "lon": LON,
-            "m3_por_mm_km2": M3_POR_MM_KM2,
+            "divisor_m3s": DIVISOR,
+            "formula": "max(qbase, C*DDF*Tplus*area/86.4)",
             "estimado_desde": ESTIMADO_DESDE.isoformat(),
+            "interpolado_km101": ["2026-11-05", "2026-11-08"],
+            "medido_09_11_2026_m3s": 93.47,
         },
         "temperatura": meta,
         "metodo": texto_metodo(),
@@ -289,23 +310,24 @@ def texto_metodo():
         "Cierre de mes del Río San Juan en Km 101. Es una estimación del Instituto del Agua: "
         "no es un dato oficial del Departamento de Hidráulica.\n\n"
         "El volumen de cada día, en hm³, es el caudal en m³/s por 86400 / 1e6. "
-        "Los días con caudal publicado por el Departamento de Hidráulica van como MEDIDO. "
-        "Si el balance de Los Caracoles marca el día como interpolado o estimado, se usa ese "
-        "caudal y va como ESTIMADO aunque la planilla traiga un número (del 5 al 9/11/2026 "
-        "la rampa es el dato que entra). Desde el 10/11/2026, donde no hay medición DH, el "
-        "caudal es el de entrada a Los Caracoles: salida hacia Punta Negra más la variación "
-        "de almacenamiento en Caracoles. Un día sin marca y sin medición DH desde el "
-        "05/11/2026 también queda como estimado cuando el balance tiene caudal; si no lo "
-        "tiene, se proyecta.\n\n"
-        "Los días que faltan usan un grado-día con retardo de 2 días: "
-        "Q(d) = 42 + C · 5,2 · T⁺(d−2) · 8419 · 1000 / 86400. "
-        "C es 0,19 (P10 = 0,12 y P90 = 0,24). 5,2 es el factor de grado-día en mm/°C/día. "
-        "8419 km² es el área nival entre 3.200 y 4.500 m. El 1000 pasa milímetros por "
-        "kilómetro cuadrado a metros cúbicos. T⁺ es el máximo entre la temperatura diaria "
-        "y cero, llevada a 3.850 m. La temperatura sale de Open-Meteo (lat −31,9, lon −70,0) "
-        "y se corrige 6,5 °C por kilómetro desde la elevación de la celda. Pasado el horizonte "
-        "del pronóstico se usa la media 1991–2020 de ese día del año, con la misma corrección. "
-        "La base de 42 m³/s no depende de C: la banda cubre solo el término de derretimiento."
+        "Los días con caudal publicado por el Departamento de Hidráulica van como MEDIDO, "
+        "aunque el balance de ese día esté interpolado. El 09/11/2026 es medido: 93,47 m³/s "
+        "(planilla del 10/11). Del 5 al 8/11 no hay medición y entra la rampa del balance. "
+        "Desde el 10/11/2026, donde no hay medición DH, el caudal es el de entrada a Los "
+        "Caracoles: salida hacia Punta Negra más la variación de almacenamiento. Si el "
+        "balance no tiene caudal, el día se proyecta.\n\n"
+        "Los días que faltan usan un grado-día con retardo de 2 días y piso de base: "
+        "Q(D) = max(42, C · 5,2 · T⁺(D−2) · 8419 / 86,4). "
+        "C es 0,19 (P10 = 0,12 y P90 = 0,24) y ya está calibrado al caudal total: 42 m³/s "
+        "no se suma encima. 5,2 es el factor de grado-día en mm/°C/día. 8419 km² es el área "
+        "nival entre 3.200 y 4.500 m. El 86,4 pasa milímetros por kilómetro cuadrado a m³/s. "
+        "T⁺ es el máximo entre cero y el promedio de 26 celdas de la cuenca alta. Cada celda "
+        "se corre a 3.850 m con 6,5 °C/km (corrección de sesgo por altura) y después se "
+        "promedia. La grilla es de 0,2° entre 30,5° S y 32,3° S y entre 69,6° O y 70,4° O; "
+        "de las celdas que caen en 3.200–4.500 m se dejan las 26 más cercanas a 3.850 m. "
+        "Pasado el horizonte del pronóstico se usa la media 1991–2020 de esa grilla. "
+        "El 14/11/2026 la referencia del Instituto es 1,95 °C y el 15/11 es 1,00 °C "
+        "(Q del 16/11 ≈ 185 m³/s y del 17/11 ≈ 95 m³/s). El piso de 42 m³/s no depende de C."
     )
 
 
@@ -315,13 +337,17 @@ def _sesion():
     return s
 
 
-def _diario_open_meteo(session, url, params):
-    r = session.get(url, params=params, timeout=120)
-    r.raise_for_status()
-    doc = r.json()
-    if doc.get("error"):
-        raise RuntimeError(doc.get("reason") or "Open-Meteo rechazó el pedido")
-    daily = doc.get("daily") or {}
+def cargar_grilla(path=GRILLA):
+    with open(path, encoding="utf-8") as fh:
+        doc = json.load(fh)
+    puntos = doc.get("puntos") or []
+    if len(puntos) < 20:
+        raise RuntimeError(f"la grilla {path} no tiene las celdas de la cuenca alta")
+    return doc
+
+
+def _medias_diarias(bloque):
+    daily = bloque.get("daily") or {}
     fechas = daily.get("time") or []
     medias = daily.get("temperature_2m_mean")
     if medias is None:
@@ -331,65 +357,117 @@ def _diario_open_meteo(session, url, params):
             None if a is None or b is None else (a + b) / 2.0
             for a, b in zip(tmax, tmin)
         ]
-    if "elevation" not in doc:
-        raise RuntimeError("Open-Meteo no informó la elevación de la celda")
-    serie = {}
-    for fecha, temp in zip(fechas, medias):
-        if temp is None:
+    return fechas, medias
+
+
+def _pedido_grilla(session, url, params, puntos):
+    params = dict(params)
+    params["latitude"] = ",".join(f"{p['lat']:.2f}" for p in puntos)
+    params["longitude"] = ",".join(f"{p['lon']:.2f}" for p in puntos)
+    params.setdefault("timezone", "America/Argentina/San_Juan")
+    params.setdefault("daily", "temperature_2m_mean")
+    ultimo = None
+    for intento in range(6):
+        r = session.get(url, params=params, timeout=180)
+        if r.status_code != 429:
+            r.raise_for_status()
+            break
+        ultimo = r
+        time.sleep(2 + intento * 3)
+    else:
+        ultimo.raise_for_status()
+    doc = r.json()
+    if isinstance(doc, dict) and doc.get("error"):
+        raise RuntimeError(doc.get("reason") or "Open-Meteo rechazó el pedido")
+    bloques = doc if isinstance(doc, list) else [doc]
+    if len(bloques) != len(puntos):
+        raise RuntimeError(
+            f"Open-Meteo devolvió {len(bloques)} celdas y la grilla tiene {len(puntos)}"
+        )
+    return bloques
+
+
+def _promedio_dia(bloques, puntos, indice):
+    """Promedio de las temperaturas del día ya llevadas a 3.850 m. None si falta la grilla."""
+    valores = []
+    for bloque, punto in zip(bloques, puntos):
+        fechas, medias = _medias_diarias(bloque)
+        if indice >= len(medias) or medias[indice] is None:
             continue
-        serie[dt.date.fromisoformat(fecha)] = float(temp)
-    return float(doc["elevation"]), serie
+        elev = bloque.get("elevation", punto.get("elevacion_m"))
+        if elev is None:
+            continue
+        valores.append(t_a_cota(medias[indice], elev))
+    if len(valores) < max(20, int(0.8 * len(puntos))):
+        return None
+    return t_plus_grilla(valores)
 
 
-def bajar_pronostico(session, hoy):
-    """Temperatura de la celda: pasado reciente y pronóstico (hasta 16 días)."""
-    # El caudal del día 1 usa la temperatura de dos días antes.
+def bajar_pronostico(session, hoy, puntos):
+    """Pronóstico y pasado reciente de las 26 celdas. Devuelve fecha → T⁺."""
     past = min(92, (hoy - dt.date(hoy.year, hoy.month, 1)).days + RETARDO + 3)
-    elev, serie = _diario_open_meteo(session, "https://api.open-meteo.com/v1/forecast", {
-        "latitude": LAT,
-        "longitude": LON,
-        "daily": "temperature_2m_mean,temperature_2m_max,temperature_2m_min",
-        "timezone": "America/Argentina/San_Juan",
+    bloques = _pedido_grilla(session, "https://api.open-meteo.com/v1/forecast", {
         "past_days": past,
         "forecast_days": 16,
-    })
-    if not serie:
+    }, puntos)
+    fechas, _ = _medias_diarias(bloques[0])
+    if not fechas:
         raise RuntimeError("Open-Meteo no devolvió temperaturas diarias")
-    return elev, serie, max(serie)
+    serie = {}
+    for i, fecha in enumerate(fechas):
+        valor = _promedio_dia(bloques, puntos, i)
+        if valor is None:
+            continue
+        serie[dt.date.fromisoformat(fecha)] = valor
+    if not serie:
+        raise RuntimeError("la grilla no tuvo temperaturas utilizables")
+    return serie, max(serie)
 
 
 def _clave_mes_dia(fecha):
     return f"{fecha.month:02d}-{fecha.day:02d}"
 
 
-def cargar_climatologia(session, path=CLIMA):
-    """Media 1991–2020 de T⁺ en 3.850 m, por mes-día. Se cachea junto al script."""
-    if os.path.exists(path):
-        with open(path, encoding="utf-8") as fh:
-            doc = json.load(fh)
-        if doc.get("periodo") == "1991-2020" and doc.get("t_plus_3850"):
-            return doc
-    elev, serie = _diario_open_meteo(session, "https://archive-api.open-meteo.com/v1/archive", {
-        "latitude": LAT,
-        "longitude": LON,
-        "start_date": CLIMA_DESDE.isoformat(),
-        "end_date": CLIMA_HASTA.isoformat(),
-        "daily": "temperature_2m_mean",
-        "timezone": "America/Argentina/San_Juan",
-    })
+def _climatologia_cacheada(path, grilla_id):
+    if not path or not os.path.exists(path):
+        return None
+    with open(path, encoding="utf-8") as fh:
+        doc = json.load(fh)
+    if doc.get("periodo") == "1991-2020" and doc.get("grilla") == grilla_id and doc.get("t_media_3850"):
+        return doc
+    return None
+
+
+def cargar_climatologia(session, puntos, path=CLIMA, grilla_id="cuenca-alta-0.2deg-26"):
+    """Media 1991–2020 del promedio de la grilla a 3.850 m, por mes-día."""
+    cache = _climatologia_cacheada(path, grilla_id)
+    if cache is not None:
+        return cache
     grupos = {}
-    for fecha, temp in serie.items():
-        grupos.setdefault(_clave_mes_dia(fecha), []).append(t_positiva(temp, elev))
+    # Un año entero de 26 celdas recibe 429. Se baja de a un trimestre.
+    trimestres = (("01-01", "03-31"), ("04-01", "06-30"), ("07-01", "09-30"), ("10-01", "12-31"))
+    for anio in range(CLIMA_DESDE.year, CLIMA_HASTA.year + 1):
+        for inicio_md, fin_md in trimestres:
+            time.sleep(0.4)
+            bloques = _pedido_grilla(session, "https://archive-api.open-meteo.com/v1/archive", {
+                "start_date": f"{anio}-{inicio_md}",
+                "end_date": f"{anio}-{fin_md}",
+            }, puntos)
+            fechas, _ = _medias_diarias(bloques[0])
+            for i, fecha in enumerate(fechas):
+                valor = _promedio_dia(bloques, puntos, i)
+                if valor is None:
+                    continue
+                grupos.setdefault(_clave_mes_dia(dt.date.fromisoformat(fecha)), []).append(valor)
     if len(grupos) < 360:
-        raise RuntimeError("la climatología de Open-Meteo llegó incompleta")
+        raise RuntimeError("la climatología de la grilla llegó incompleta")
     doc = {
-        "lat": LAT,
-        "lon": LON,
         "periodo": "1991-2020",
-        "elevacion_celda_m": elev,
+        "grilla": grilla_id,
         "elevacion_objetivo_m": ELEVACION,
         "gradiente_c_km": GRADIENTE,
-        "t_plus_3850": {k: round(sum(v) / len(v), 3) for k, v in sorted(grupos.items())},
+        "n_celdas": len(puntos),
+        "t_media_3850": {k: round(sum(v) / len(v), 3) for k, v in sorted(grupos.items())},
     }
     os.makedirs(os.path.dirname(path), exist_ok=True)
     with open(path, "w", encoding="utf-8") as fh:
@@ -398,39 +476,54 @@ def cargar_climatologia(session, path=CLIMA):
     return doc
 
 
-def temperaturas_del_mes(hoy, elev_pronostico, serie_celda, clima):
-    """T⁺ en 3.850 m para cada día que el caudal del mes puede necesitar (con retardo)."""
+def _climatologia_necesaria(hoy, serie):
     inicio = dt.date(hoy.year, hoy.month, 1) - dt.timedelta(days=RETARDO)
     fin = dt.date(hoy.year, hoy.month, _dias_del_mes(hoy.year, hoy.month))
-    horizonte = max(serie_celda) if serie_celda else inicio
+    cursor = inicio
+    while cursor <= fin:
+        if cursor not in serie:
+            return True
+        cursor += dt.timedelta(days=1)
+    return False
+
+
+def temperaturas_del_mes(hoy, serie_grilla, clima, grilla):
+    """T⁺ de la grilla para cada día que el caudal del mes puede necesitar."""
+    inicio = dt.date(hoy.year, hoy.month, 1) - dt.timedelta(days=RETARDO)
+    fin = dt.date(hoy.year, hoy.month, _dias_del_mes(hoy.year, hoy.month))
+    horizonte = max(serie_grilla) if serie_grilla else inicio
     t_plus = {}
     origen = {}
     cursor = inicio
     while cursor <= fin:
-        if cursor in serie_celda and cursor <= horizonte:
-            t_plus[cursor] = t_positiva(serie_celda[cursor], elev_pronostico)
+        if cursor in serie_grilla and cursor <= horizonte:
+            t_plus[cursor] = float(serie_grilla[cursor])
             origen[cursor] = "pronostico"
         else:
             clave = _clave_mes_dia(cursor)
-            tabla = clima.get("t_plus_3850") or {}
+            tabla = clima.get("t_media_3850") or {}
             if clave not in tabla and cursor.month == 2 and cursor.day == 29:
                 clave = "02-28"
             if clave not in tabla:
                 raise KeyError(f"sin climatología para {cursor.isoformat()}")
-            t_plus[cursor] = float(tabla[clave])
+            t_plus[cursor] = max(float(tabla[clave]), 0.0)
             origen[cursor] = "climatologia"
         cursor += dt.timedelta(days=1)
     meta = {
         "fuente": "Open-Meteo",
-        "lat": LAT,
-        "lon": LON,
-        "elevacion_celda_m": elev_pronostico,
+        "grilla": grilla.get("id"),
+        "n_celdas": len(grilla.get("puntos") or []),
         "elevacion_objetivo_m": ELEVACION,
         "gradiente_c_km": GRADIENTE,
+        "correccion": "sesgo de cota: cada celda a 3.850 m con 6,5 °C/km, luego promedio",
         "horizonte_pronostico": horizonte.isoformat(),
-        "climatologia": "1991-2020",
+        "climatologia": clima.get("periodo") or "1991-2020",
         "variable": "temperature_2m_mean",
+        "referencia_instituto_t_plus_c": {"2026-11-14": 1.95, "2026-11-15": 1.00},
     }
+    for fecha, clave in ((dt.date(2026, 11, 14), "grilla_2026-11-14"), (dt.date(2026, 11, 15), "grilla_2026-11-15")):
+        if fecha in serie_grilla:
+            meta[clave] = redondear(serie_grilla[fecha], 2)
     return t_plus, origen, meta
 
 
@@ -446,9 +539,20 @@ def generar(hoy=None, db_path=DB, balance_path=BALANCE, clima_path=CLIMA, sessio
     session = session or _sesion()
     caudales = cargar_caudales(db_path)
     balance = cargar_balance(balance_path)
-    elev, serie, _horizonte = bajar_pronostico(session, hoy)
-    clima = cargar_climatologia(session, clima_path)
-    t_plus, origen, meta = temperaturas_del_mes(hoy, elev, serie, clima)
+    grilla = cargar_grilla()
+    puntos = grilla["puntos"]
+    serie, _horizonte = bajar_pronostico(session, hoy, puntos)
+    clima_cacheada = _climatologia_cacheada(clima_path, grilla.get("id"))
+    if clima_cacheada is not None:
+        clima = clima_cacheada
+    elif _climatologia_necesaria(hoy, serie):
+        clima = cargar_climatologia(session, puntos, clima_path, grilla.get("id"))
+    else:
+        clima = {
+            "t_media_3850": {},
+            "periodo": "1991-2020, todavía no hizo falta: el pronóstico cubre el mes",
+        }
+    t_plus, origen, meta = temperaturas_del_mes(hoy, serie, clima, grilla)
     return construir(hoy, caudales, balance, t_plus, origen, meta)
 
 

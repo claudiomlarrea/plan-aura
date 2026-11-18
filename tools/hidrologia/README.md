@@ -74,11 +74,11 @@ El workflow `.github/workflows/hidrologia-diaria.yml` lo corre entre las 08:15 y
 
 `scripts/pronostico_cierre_mes.py` escribe `data/hidrologia/pronostico_cierre_mes.json`. No baja planillas: lee `caudales.db` y `hidrologia/balance_caracoles.json`.
 
-El volumen diario es Q (m³/s) × 86400 / 1e6. Hasta el 04/11/2026 entra el caudal medido. Del 05/11/2026 en adelante, si el balance marca el día como interpolado o no hay medición DH, entra el caudal estimado (salida a Punta Negra + variación de almacenamiento en Los Caracoles). Los días sin ninguno de los dos se proyectan:
+El volumen diario es Q (m³/s) × 86400 / 1e6. El caudal DH es MEDIDO, también el 09/11/2026 (93,47 m³/s, planilla del 10/11: `km101_clase` = medido en el balance). Del 05 al 08/11 entra la rampa interpolada. Desde el 10/11, sin medición, entra el balance de Los Caracoles (salida a Punta Negra + variación de almacenamiento). Los días sin ninguno de los dos se proyectan con piso de base:
 
-Q(d) = 42 + C · 5,2 · T⁺(d−2) · 8419 · 1000 / 86400
+Q(D) = max(42, C · 5,2 · T⁺(D−2) · 8419 / 86,4)
 
-C = 0,19 (banda P10–P90 con 0,12 y 0,24). T⁺ es la temperatura diaria a 3.850 m de Open-Meteo (lat −31,9, lon −70,0, gradiente 6,5 °C/km desde la celda) y, pasado el horizonte, la climatología 1991–2020 guardada en `clima_3850.json`. El bloque lo dibuja `js/hidrologia.js` en Información hidrológica. La etiqueta visible dice que es una estimación del Instituto del Agua, no un dato oficial del Departamento de Hidráulica.
+C = 0,19 (banda P10–P90 con 0,12 y 0,24) y ya está calibrado al caudal total: 42 m³/s no se suma. T⁺ es el promedio de las 26 celdas de `grilla_cuenca_alta.json` (cuenca alta, 3.200–4.500 m), cada una llevada a 3.850 m con 6,5 °C/km. Pasado el horizonte se usa la climatología 1991–2020 de esa grilla en `clima_3850.json`. El bloque lo dibuja `js/hidrologia.js`. La etiqueta visible dice que es una estimación del Instituto del Agua, no un dato oficial del Departamento de Hidráulica.
 
 ## Caudal de entrada estimado a Los Caracoles
 

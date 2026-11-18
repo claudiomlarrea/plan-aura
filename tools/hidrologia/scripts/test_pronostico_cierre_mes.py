@@ -16,12 +16,20 @@ BALANCE = os.path.join(
 
 class Formula(unittest.TestCase):
     def test_mm_km2_a_m3s(self):
-        # 1 mm sobre 8419 km² en un día, sin caudal base.
+        # 1 mm sobre 8419 km² en un día, sin piso.
         q = p.q_proyectado(1.0, c=1.0, ddf=1.0, area=8419, qbase=0)
-        self.assertAlmostEqual(q, 8419 * 1000 / 86400, places=6)
+        self.assertAlmostEqual(q, 8419 / 86.4, places=6)
 
-    def test_sin_grados_queda_la_base(self):
+    def test_el_42_es_piso(self):
         self.assertAlmostEqual(p.q_proyectado(0.0), 42.0)
+        self.assertAlmostEqual(p.q_proyectado(0.2), 42.0)
+        derretimiento = 0.19 * 5.2 * 1.95 * 8419 / 86.4
+        self.assertGreater(derretimiento, 42.0)
+        self.assertAlmostEqual(p.q_proyectado(1.95), derretimiento, places=4)
+
+    def test_promedio_espacial_antes_de_truncar(self):
+        self.assertAlmostEqual(p.t_plus_grilla([3.0, -1.0]), 1.0)
+        self.assertEqual(p.t_plus_grilla([-2.0, -4.0]), 0.0)
 
     def test_correccion_de_altura(self):
         # Celda a 3127 m: 3.850 − 3127 = 723 m → 4,70 °C más frío.
@@ -35,11 +43,14 @@ class Formula(unittest.TestCase):
 
 
 class Clasificacion(unittest.TestCase):
-    def test_marca_de_interpolado_gana_sobre_el_dh(self):
-        fila = {"interpolado": True, "caudal_estimado_m3s": 83.0, "km101_medido_m3s": 93.47}
+    def test_el_09_11_medido_no_lo_pisa_la_rampa(self):
+        fila = {
+            "interpolado": True, "caudal_estimado_m3s": 83.0,
+            "km101_medido_m3s": 93.47, "km101_clase": "medido", "nota": "interpolado",
+        }
         clase, q = p.clasificar_dia(dt.date(2026, 11, 9), 93.47, fila)
-        self.assertEqual(clase, "estimado")
-        self.assertAlmostEqual(q, 83.0)
+        self.assertEqual(clase, "medido")
+        self.assertAlmostEqual(q, 93.47)
 
     def test_medido_antes_de_la_ventana(self):
         fila = {"interpolado": False, "caudal_estimado_m3s": 65.9, "nota": None}
@@ -80,21 +91,19 @@ class Cierre(unittest.TestCase):
         self.assertAlmostEqual(por["2026-11-04"]["q_m3s"], 67.43)
         self.assertEqual(por["2026-11-05"]["clase"], "estimado")
         self.assertAlmostEqual(por["2026-11-05"]["q_m3s"], 63.7)
-        self.assertEqual(por["2026-11-09"]["clase"], "estimado")
-        self.assertAlmostEqual(por["2026-11-09"]["q_m3s"], 83.0)
+        self.assertEqual(por["2026-11-08"]["clase"], "estimado")
+        self.assertEqual(por["2026-11-09"]["clase"], "medido")
+        self.assertAlmostEqual(por["2026-11-09"]["q_m3s"], 93.47)
         self.assertEqual(por["2026-11-15"]["clase"], "estimado")
         self.assertAlmostEqual(por["2026-11-15"]["q_m3s"], 245.7)
         self.assertEqual(por["2026-11-16"]["clase"], "proyectado")
         self.assertEqual(por["2026-11-14"]["clase"], "estimado")
-        # El 14 ya tiene caudal de balance: el grado-día no lo pisa.
         self.assertAlmostEqual(por["2026-11-14"]["q_m3s"], 187.1)
-        # El primer día proyectado que ve T⁺(12/11) = 2 °C es el 14, que ya está estimado.
-        # El 16 usa T⁺ del 14, que es 0. Ningún proyectado cae 2 días después del 12
-        # salvo que el 14 estuviera libre. Con datos reales el 14 está estimado,
-        # así que el pulso de prueba no entra. Se fuerza en un mes sintético abajo.
         self.assertEqual(doc["dias_proyectados"], 15)
-        self.assertEqual(doc["dias_medidos"], 4)
-        self.assertEqual(doc["dias_estimados"], 11)
+        self.assertEqual(doc["dias_medidos"], 5)
+        self.assertEqual(doc["dias_estimados"], 10)
+        self.assertAlmostEqual(doc["acumulado_medido_hm3"], 32.3)
+        self.assertAlmostEqual(doc["acumulado_estimado_hm3"], 104.7)
         self.assertAlmostEqual(doc["media_historica_hm3"], 210.5)
         self.assertEqual(doc["media_historica_anios"], 115)
         self.assertEqual(doc["etiqueta"], p.ETIQUETA)

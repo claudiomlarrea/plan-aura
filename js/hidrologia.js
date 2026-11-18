@@ -1609,8 +1609,8 @@
         : titulo) + "</h3>" +
       "<p class=\"hidro-cierre-aviso\">" + escHtml(CIERRE_ETIQUETA) + "</p>" +
       "<p>" + escHtml(balanceText(
-        "Volumen de " + (mes || "este mes") + " en Km 101. Lo medido sale de la planilla del Departamento de Hidráulica. Del 5 al 9/11/2026 el caudal es la interpolación del balance y desde el 10/11/2026, donde no hay medición, es la entrada estimada a Los Caracoles (salida a Punta Negra más la variación de almacenamiento). Los días sin dato se proyectan con un grado-día.",
-        (mesEn(mes) || "This month") + " volume at Km 101. Measured days come from the Hydraulics Department sheet. From 5 to 9 Nov 2026 the flow is the balance interpolation, and from 10 Nov 2026, where there is no measurement, it is the estimated inflow to Los Caracoles (release toward Punta Negra plus the storage change). Days without a figure are projected with a degree-day model."
+        "Volumen de " + (mes || "este mes") + " en Km 101. Lo medido sale de la planilla del Departamento de Hidráulica, incluido el 9/11/2026 (93,47 m³/s). Del 5 al 8/11 el caudal es la interpolación del balance y desde el 10/11, donde no hay medición, es la entrada estimada a Los Caracoles (salida a Punta Negra más la variación de almacenamiento). Los días sin dato se proyectan con un grado-día que no baja de 42 m³/s.",
+        (mesEn(mes) || "This month") + " volume at Km 101. Measured days come from the Hydraulics Department sheet, including 9 Nov 2026 (93.47 m³/s). From 5 to 8 Nov the flow is the balance interpolation, and from 10 Nov, where there is no measurement, it is the estimated inflow to Los Caracoles (release toward Punta Negra plus the storage change). Days without a figure are projected with a degree-day model that does not fall below 42 m³/s."
       )) + "</p>" +
       "<div class=\"hidro-cierre-grid\">" +
       cierreKpi(balanceText("Acumulado medido", "Measured to date"), hm1(doc.acumulado_medido_hm3) + " hm³",
