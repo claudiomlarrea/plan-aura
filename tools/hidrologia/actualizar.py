@@ -16,6 +16,8 @@ Uso:  python3 actualizar.py [--dias 30]
 Código de salida 1 si la fuente contestó y ninguna planilla del período se pudo leer,
 o si un cuerpo bajado no es un PDF legible con fecha y al menos una medición.
 Un 404 (y la consulta oficial que vuelve al buscador) es «aún no publicada».
+Si la fuente no responde (5xx, 408, 429, timeout o corte de red) no se inventa
+ni se interpola ningún día: se conservan las series ya publicadas y se sale con 0.
 """
 import sys, os, re, argparse, datetime as dt, requests
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "scripts"))
@@ -35,25 +37,33 @@ def fecha_sj():
     except Exception:
         return dt.date.today()
 
+def http_caido(status):
+    """La fuente no entregó una planilla. Un 403 o un HTML 200 siguen siendo respuesta."""
+    return status >= 500 or status in (408, 429)
+
 def pdf_desde_consulta(session, d):
     """La carga oficial (POST fecha) embebe planillas_pdf/<archivo>.pdf.
     Devuelve ('pdf', bytes, url), ('ausente',) si el buscador dice que no está,
-    o ('error', detalle) si la ficha no se pudo leer."""
+    ('caida', detalle) si no hubo respuesta usable, o ('error', detalle) si la ficha
+    contestó y no se pudo leer."""
     try:
         r = session.post(f"{BASE}/irrigacion_2025_fecha.php", data={"fecha": d.isoformat()},
                          timeout=60, allow_redirects=False)
     except Exception as e:
-        return ("error", f"consulta: {e}")
+        return ("caida", f"consulta: {e}")
     loc = r.headers.get("Location") or ""
     if "irrigacion_2025_mostrar.php" not in loc:
         if r.status_code in (301, 302, 303, 307, 308) or r.status_code == 404:
             return ("ausente",)
-        return ("error", f"consulta HTTP {r.status_code} location={loc or '-'}")
+        detalle = f"consulta HTTP {r.status_code} location={loc or '-'}"
+        return ("caida" if http_caido(r.status_code) else "error", detalle)
     try:
         page = session.get(f"{BASE}/irrigacion_2025_mostrar.php", timeout=60)
-        page.raise_for_status()
     except Exception as e:
-        return ("error", f"mostrar: {e}")
+        return ("caida", f"mostrar: {e}")
+    if page.status_code >= 400:
+        detalle = f"mostrar HTTP {page.status_code}"
+        return ("caida" if http_caido(page.status_code) else "error", detalle)
     m = re.search(r'(?:src|href)="([^"]*planillas_pdf/[^"]+\.pdf)"', page.text, re.I)
     if not m:
         return ("error", "la ficha no embebe un PDF de planillas_pdf")
@@ -62,13 +72,14 @@ def pdf_desde_consulta(session, d):
     try:
         pdf = session.get(url, timeout=60)
     except Exception as e:
-        return ("error", f"embed: {e}")
+        return ("caida", f"embed: {e}")
     if es_pdf(pdf.content):
         return ("pdf", pdf.content, url)
-    return ("error", f"embed HTTP {pdf.status_code} sin PDF ({url})")
+    detalle = f"embed HTTP {pdf.status_code} sin PDF ({url})"
+    return ("caida" if http_caido(pdf.status_code) else "error", detalle)
 
 def bajar_planilla(session, d):
-    """Devuelve un dict estado: pdf | ausente | no-pdf | error, con url y body si hay PDF."""
+    """Devuelve un dict estado: pdf | ausente | no-pdf | error | caida, con url y body si hay PDF."""
     url = parsers.URL_PDF.format(d=d)
     try:
         r = session.get(url, timeout=60)
@@ -76,6 +87,8 @@ def bajar_planilla(session, d):
         alt = pdf_desde_consulta(session, d)
         if alt[0] == "pdf":
             return {"dia": d, "estado": "pdf", "url": alt[2], "body": alt[1], "http": 200, "via": "consulta"}
+        if alt[0] == "caida":
+            return {"dia": d, "estado": "caida", "url": url, "detalle": f"{e}; {alt[1]}"}
         if alt[0] == "ausente":
             return {"dia": d, "estado": "error", "url": url, "detalle": str(e)}
         return {"dia": d, "estado": "error", "url": url, "detalle": f"{e}; {alt[1]}"}
@@ -86,11 +99,25 @@ def bajar_planilla(session, d):
         return {"dia": d, "estado": "pdf", "url": alt[2], "body": alt[1], "http": 200, "via": "consulta"}
     if r.status_code == 404 and alt[0] == "ausente":
         return {"dia": d, "estado": "ausente", "url": url, "http": 404}
-    if alt[0] == "error":
+    if http_caido(r.status_code) and alt[0] == "caida":
+        return {"dia": d, "estado": "caida", "url": url, "detalle": alt[1]}
+    if alt[0] in ("error", "caida"):
         return {"dia": d, "estado": "error", "url": url, "detalle": alt[1]}
     ctype = r.headers.get("content-type", "")
     return {"dia": d, "estado": "no-pdf", "url": url, "http": r.status_code,
             "detalle": f"{ctype} {len(r.content)} bytes"}
+
+def codigo_salida(parseadas, respuestas, duras, caidas, errores_planilla):
+    """1 si un PDF bajado no sirve, o si la fuente contestó y no se leyó ninguna planilla.
+    0 si se leyó alguna, o si todo el período fue caída (se conservan las series)."""
+    if duras:
+        return 1
+    if parseadas:
+        return 0
+    otras = errores_planilla - caidas
+    if respuestas or otras > 0:
+        return 1
+    return 0
 
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--dias", type=int, default=30,
@@ -104,14 +131,17 @@ def main():
     parseadas = 0
     ausentes = 0
     respuestas = 0
+    caidas = 0
     duras = []
     # 1) planillas PDF (siempre se vuelven a bajar: una republicación del mismo día tiene que entrar)
     for i in range(a.dias, -1, -1):
         d = hoy - dt.timedelta(days=i)
         got = bajar_planilla(session, d)
-        if got["estado"] == "error":
+        if got["estado"] in ("error", "caida"):
             errores.append(f"{d}: {got['detalle']}")
-            print(f"{d}  error  {got['detalle']}")
+            print(f"{d}  {got['estado']}  {got['detalle']}")
+            if got["estado"] == "caida":
+                caidas += 1
             continue
         respuestas += 1
         if got["estado"] == "ausente":
@@ -167,16 +197,18 @@ def main():
     u = c.execute("SELECT max(fecha) FROM caudales_diarios").fetchone()[0]
     n = c.execute("SELECT max(fecha) FROM niveles_embalses").fetchone()[0]
     print(f"Último caudal Km101: {u} | última lectura de embalses: {n}")
-    print(f"RESUMEN planillas parseadas={parseadas} ausentes={ausentes} ilegibles={len(duras)} red={len([e for e in errores if not str(e).startswith('chart2')])} hoy={hoy}")
+    red = len([e for e in errores if not str(e).startswith("chart2")])
+    print(f"RESUMEN planillas parseadas={parseadas} ausentes={ausentes} ilegibles={len(duras)} red={red} caidas={caidas} hoy={hoy}")
     for e in errores: print("AVISO:", e, file=sys.stderr)
     for e in duras: print("ERROR:", e, file=sys.stderr)
-    if duras or parseadas == 0:
-        if not duras and respuestas:
+    if codigo_salida(parseadas, respuestas, duras, caidas, red):
+        if not duras:
             print("ERROR: la fuente respondió pero ninguna planilla del período se pudo leer. "
                   "No se publica una serie vieja como si estuviera al día.", file=sys.stderr)
-        elif not duras:
-            print("ERROR: no hubo respuesta utilizable de las planillas.", file=sys.stderr)
         sys.exit(1)
+    if parseadas == 0:
+        print("AVISO: la fuente no respondió. Se conservan las series ya publicadas, sin interpolar.",
+              file=sys.stderr)
 
 if __name__ == "__main__":
     main()
