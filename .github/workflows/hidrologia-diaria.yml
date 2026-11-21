@@ -46,6 +46,7 @@ jobs:
 
       # Falla si el sitio contesta y ninguna planilla del período se lee, o si un
       # PDF no trae fecha y mediciones. Un 404 suelto es «aún no publicada».
+      # Un 502, un timeout o un corte de red no tiran el job: se conserva la serie.
       - name: Bajar planillas oficiales y regenerar JSON/CSV
         run: bash tools/hidrologia/actualizar_todo.sh
 
