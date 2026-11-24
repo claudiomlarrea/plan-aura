@@ -1,5 +1,5 @@
 {
- "generado": "2026-11-22",
+ "generado": "2026-11-23",
  "caudal_km101": {
   "fecha": "2026-11-09",
   "m3s": 93.47,
@@ -10,28 +10,28 @@
  },
  "embalses": {
   "Cuesta del Viento": {
-   "fecha": "2026-11-22",
-   "cota_msnm": 1524.3,
-   "volumen_hm3": 128.56,
-   "volumen_disponible_hm3": 90.1
+   "fecha": "2026-11-23",
+   "cota_msnm": 1524.33,
+   "volumen_hm3": 128.84,
+   "volumen_disponible_hm3": 90.38
   },
   "Los Caracoles": {
-   "fecha": "2026-11-22",
-   "cota_msnm": 1095.65,
-   "volumen_hm3": 367.11,
-   "volumen_disponible_hm3": 126.46
+   "fecha": "2026-11-23",
+   "cota_msnm": 1096.03,
+   "volumen_hm3": 370.82,
+   "volumen_disponible_hm3": 130.17
   },
   "Punta Negra": {
-   "fecha": "2026-11-22",
-   "cota_msnm": 926.87,
-   "volumen_hm3": 250.88,
-   "volumen_disponible_hm3": 55.23
+   "fecha": "2026-11-23",
+   "cota_msnm": 927.08,
+   "volumen_hm3": 252.81,
+   "volumen_disponible_hm3": 57.16
   },
   "Ullum": {
-   "fecha": "2026-11-22",
-   "cota_msnm": 759.15,
-   "volumen_hm3": 138.01,
-   "volumen_disponible_hm3": -12.5
+   "fecha": "2026-11-23",
+   "cota_msnm": 759.13,
+   "volumen_hm3": 137.72,
+   "volumen_disponible_hm3": -12.79
   }
  },
  "fuentes": [
