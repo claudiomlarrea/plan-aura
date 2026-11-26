@@ -27,6 +27,7 @@
     red: "Red institucional · Plan AURA",
     documentos: "Marco normativo · Plan AURA",
     noticias: "Noticias · Plan AURA",
+    "acciones-2026": "Acciones realizadas 2026 · Plan AURA",
     galeria: "Galería de imágenes · Plan AURA",
     visitas: "Visitas al Plan AURA · Plan AURA",
     contacto: "Contacto · Plan AURA"

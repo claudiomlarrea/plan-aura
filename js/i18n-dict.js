@@ -122,6 +122,10 @@ window.I18N_DICT = {
     es: "Galería de imágenes",
     en: "Image gallery"
   },
+  "nav.acciones": {
+    es: "Acciones realizadas 2026",
+    en: "Actions carried out in 2026"
+  },
   "nav.noticias": {
     es: "Noticias",
     en: "News"
@@ -162,6 +166,10 @@ window.I18N_DICT = {
   "hero.cta.galeria": {
     es: "Galería de imágenes",
     en: "Image gallery"
+  },
+  "hero.cta.acciones": {
+    es: "Acciones realizadas 2026",
+    en: "Actions carried out in 2026"
   },
   "hero.cta.articulos": {
     es: "Publicaciones",
@@ -1907,6 +1915,58 @@ window.I18N_DICT = {
     en: "Full call-for-proposals text"
   },
 
+  "sec.acciones.kicker": {
+    es: "Seguimiento 2026",
+    en: "2026 follow-up"
+  },
+  "sec.acciones.title": {
+    es: "Acciones realizadas 2026 · Plan AURA",
+    en: "Actions carried out in 2026 · Plan AURA"
+  },
+  "sec.acciones.intro": {
+    es: "Cada unidad académica, nivel educativo o área completa el mismo formulario y lo carga en la carpeta de su unidad. Fecha límite: viernes 4 de diciembre de 2026.",
+    en: "Each academic unit, education level, or area completes the same form and uploads it to its own folder. Deadline: Friday, 4 December 2026."
+  },
+  "sec.acciones.download.title": {
+    es: "Descargar el formulario",
+    en: "Download the form"
+  },
+  "sec.acciones.download.body": {
+    es: "El PDF se puede descargar sin iniciar sesión. Completalo y después cargá el archivo en la carpeta de tu unidad.",
+    en: "The PDF can be downloaded without signing in. Complete it, then upload the file to your unit's folder."
+  },
+  "sec.acciones.download.btn": {
+    es: "Descargar PDF",
+    en: "Download PDF"
+  },
+  "sec.acciones.upload.title": {
+    es: "Cargar el archivo completado",
+    en: "Upload the completed file"
+  },
+  "sec.acciones.upload.body": {
+    es: "Elegí la unidad y abrí su carpeta de Drive. Entrá con una cuenta @uccuyo.edu.ar y subí el PDF completado.",
+    en: "Choose the unit and open its Drive folder. Sign in with an @uccuyo.edu.ar account and upload the completed PDF."
+  },
+  "sec.acciones.upload.label": {
+    es: "Unidad académica",
+    en: "Academic unit"
+  },
+  "sec.acciones.upload.placeholder": {
+    es: "Elegí tu unidad",
+    en: "Choose your unit"
+  },
+  "sec.acciones.upload.btn": {
+    es: "Cargar archivo",
+    en: "Upload file"
+  },
+  "sec.acciones.upload.all": {
+    es: "Ver todas las carpetas",
+    en: "View all folders"
+  },
+  "sec.acciones.folder.tag": {
+    es: "Carpeta Drive",
+    en: "Drive folder"
+  },
   "sec.galeria.kicker": {
     es: "Archivo visual",
     en: "Visual archive"

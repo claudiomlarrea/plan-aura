@@ -1473,6 +1473,49 @@ header.section-head--bar h2 {
   border: 1px solid rgba(var(--rgb-water), 0.25);
 }
 
+.acciones-cargar {
+  margin: 1rem 0 1.25rem;
+}
+
+.acciones-upload {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 0.85rem;
+}
+
+.acciones-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  flex: 1 1 18rem;
+  min-width: min(100%, 18rem);
+}
+
+.acciones-field label {
+  font-weight: 700;
+  font-size: 0.92rem;
+}
+
+.acciones-field select {
+  font: inherit;
+  color: inherit;
+  padding: 0.7rem 0.85rem;
+  border-radius: var(--radius);
+  border: 1px solid rgba(var(--rgb-inst), 0.28);
+  background: #fff;
+}
+
+.acciones-note {
+  margin: 0.85rem 0 0;
+}
+
+.btn.is-disabled {
+  opacity: 0.55;
+  box-shadow: none;
+  transform: none;
+}
+
 .doc-grid {
   display: grid;
   gap: 0.85rem;
