@@ -57,7 +57,7 @@
     "elevacion_objetivo_m": 3850,
     "gradiente_c_km": 6.5,
     "correccion": "sesgo de cota: cada celda a 3.850 m con 6,5 °C/km, luego promedio",
-    "horizonte_pronostico": "2026-12-12",
+    "horizonte_pronostico": "2026-12-13",
     "climatologia": "1991-2020, todavía no hizo falta: el pronóstico cubre el mes",
     "variable": "temperature_2m_mean",
     "referencia_instituto_t_plus_c": {
